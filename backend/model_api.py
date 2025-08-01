@@ -18,7 +18,7 @@ def set_model():
 def get_current_model():
     model = active_model_override.get("model", "auto")
     key_map = {
-        "gpt-4o": "OPENAI_KEY_FAST",
+        "gpt-4o-vision": "OPENAI_KEY_FAST",
         "gpt-4.1": "OPENAI_KEY_STANDARD",
         "gpt-4.1-mini": "OPENAI_KEY_MINI",
         "o3": "OPENAI_KEY_STANDARD",

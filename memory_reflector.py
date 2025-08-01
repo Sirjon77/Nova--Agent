@@ -25,7 +25,7 @@ def refine_code_snippets():
         )
 
         response = openai.ChatCompletion.create(
-            model="gpt-4o",
+            model="gpt-4o-mini",
             messages=[
                 {"role": "system", "content": "You are a senior Python refactor bot."},
                 {"role": "user", "content": prompt_refine}

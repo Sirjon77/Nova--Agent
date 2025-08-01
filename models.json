@@ -1,7 +1,7 @@
 {
-  "default": "gpt-4o",
+  "default": "gpt-4o-mini",
   "models": {
-    "gpt-4o": {
+    "gpt-4o-vision": {
       "key": "API_KEY",
       "max_tokens": 128000,
       "cost": 10.0
