@@ -1,4 +1,25 @@
-SQLAlchemy==2.0.30\nalembic==1.13.1\nboto3\ncrewai\nfastapi==0.111.0\nflask\nopenai\npandas\npydantic==2.8.1\npython-dotenv==1.0.1\npyyaml\nrequests\ntenacity\ntiktoken>=0.5.1\nuvicorn\nuvicorn[standard]==0.29.0\nweaviate-client\njsonschema\ngitpythonlangchain>=0.1.0\npython-jose\nhttpx\nprometheus-client
+SQLAlchemy==2.0.30
+alembic==1.13.1
+boto3
+crewai
+fastapi==0.111.0
+flask
+openai
+pandas
+pydantic==2.8.1
+python-dotenv==1.0.1
+pyyaml
+requests
+tenacity
+tiktoken>=0.5.1
+uvicorn
+uvicorn[standard]==0.29.0
+weaviate-client
+jsonschema
+gitpythonlangchain>=0.1.0
+python-jose
+httpx
+prometheus-client
 pytest
 pytest-asyncio
 coverage
@@ -8,3 +29,7 @@ prometheus-fastapi-instrumentator
 starlette
 pyyaml
 psutil
+# NLP Dependencies
+sentence-transformers>=2.2.0
+numpy>=1.21.0
+scikit-learn>=1.0.0

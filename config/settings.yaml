@@ -84,3 +84,24 @@ changelog:
   watch:
     - {name: "Runway", changelog_url: "https://api.runwayml.com/version", current_version: "1.0.0"}
     - {name: "Seedance", changelog_url: "https://api.seedance.ai/version", current_version: "0.9.2"}
+
+# NLP Configuration for Advanced Intent Classification
+nlp:
+  confidence_threshold: 0.7
+  max_context_history: 50
+  training_data_dir: "data/nlp_training"
+  enable_ai_classification: true
+  enable_semantic_classification: true
+  enable_rule_based_classification: true
+  model_settings:
+    sentence_transformer_model: "all-MiniLM-L6-v2"
+    openai_model: "gpt-4o-mini"  # Valid OpenAI model name
+    embedding_dimension: 384
+  performance:
+    max_response_time_ms: 500
+    cache_embeddings: true
+    cache_size: 1000
+  logging:
+    level: "INFO"
+    log_classifications: true
+    log_confidence_scores: true
