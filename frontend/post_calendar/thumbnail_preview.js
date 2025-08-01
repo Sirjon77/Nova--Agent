@@ -1,0 +1,1 @@
+// JS: Preview component for post thumbnails

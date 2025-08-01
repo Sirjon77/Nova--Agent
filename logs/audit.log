@@ -1,0 +1,12 @@
+{"ts": "2025-07-24T03:52:35", "user": "system", "event": "governance_cycle_start", "meta": {}}
+{"ts": "2025-07-24T03:52:35", "user": "system", "event": "channel_flagged_retire", "meta": {"channel_id": "ch1", "score": -0.45}}
+{"ts": "2025-07-24T03:52:35", "user": "system", "event": "channel_flagged_retire", "meta": {"channel_id": "ch2", "score": 4.91}}
+{"ts": "2025-07-24T03:52:35", "user": "system", "event": "channel_flagged_retire", "meta": {"channel_id": "ch3", "score": 10.54}}
+{"ts": "2025-07-24T03:56:37", "user": "system", "event": "governance_cycle_start", "meta": {}}
+{"ts": "2025-07-24T03:56:37", "user": "system", "event": "channel_flagged_retire", "meta": {"channel_id": "c1", "score": 5.0}}
+{"ts": "2025-07-25T04:33:58", "user": "user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-07-25T04:33:58", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-07-25T04:33:58", "user": "user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-07-25T04:33:58", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-07-25T04:33:58", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-07-25T04:33:58", "user": "admin", "event": "jwt_auth_success", "meta": {}}

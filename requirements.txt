@@ -1,0 +1,10 @@
+SQLAlchemy==2.0.30\nalembic==1.13.1\nboto3\ncrewai\nfastapi==0.111.0\nflask\nopenai\npandas\npydantic==2.8.1\npython-dotenv==1.0.1\npyyaml\nrequests\ntenacity\ntiktoken>=0.5.1\nuvicorn\nuvicorn[standard]==0.29.0\nweaviate-client\njsonschema\ngitpythonlangchain>=0.1.0\npython-jose\nhttpx\nprometheus-client
+pytest
+pytest-asyncio
+coverage
+fastapi
+uvicorn
+prometheus-fastapi-instrumentator
+starlette
+pyyaml
+psutil

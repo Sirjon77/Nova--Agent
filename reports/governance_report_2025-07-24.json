@@ -1,0 +1,29 @@
+{
+  "timestamp": "2025-07-24T03:56:37",
+  "channels": [
+    {
+      "channel_id": "c1",
+      "score": 5.0,
+      "flag": "retire",
+      "action": "reduce_content_output"
+    }
+  ],
+  "trends": [
+    {
+      "keyword": "test",
+      "interest": 0,
+      "projected_rpm": 0.0,
+      "source": "google_trends",
+      "scanned_on": "2025-07-24"
+    }
+  ],
+  "tools": [
+    {
+      "tool": "google_trends",
+      "latency_ms": 104,
+      "status": "error",
+      "score": 40
+    }
+  ],
+  "changelogs": []
+}

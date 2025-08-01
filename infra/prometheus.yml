@@ -1,0 +1,7 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: "nova-agent"
+    static_configs:
+      - targets: ["nova-agent:9000"]

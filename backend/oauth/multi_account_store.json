@@ -1,0 +1,17 @@
+{
+    "accounts": [
+        {
+            "platform": "instagram",
+            "label": "Main Brand IG",
+            "access_token": "<ENCRYPTED>",
+            "refresh_token": "<ENCRYPTED>",
+            "page_id": "1234567890",
+            "scopes": [
+                "content_publish",
+                "pages_read_engagement"
+            ],
+            "status": "valid",
+            "last_checked": "2025-06-28T00:00:00Z"
+        }
+    ]
+}

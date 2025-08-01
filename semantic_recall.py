@@ -1,0 +1,1 @@
+# Fallback recall logic using vector proximity to previous RPM scorers

@@ -1,0 +1,121 @@
+{
+  "test": {
+    "records": [
+      {
+        "timestamp": 1753500895.109033,
+        "rpm": 2.0,
+        "views": 1000,
+        "ctr": 0.05,
+        "retention": 0.6
+      }
+    ],
+    "avg_rpm": 2.0,
+    "avg_views": 1000.0,
+    "avg_ctr": 0.05,
+    "avg_retention": 0.6
+  },
+  "prompt01": {
+    "records": [
+      {
+        "timestamp": 1753501239.9256506,
+        "rpm": 1.68,
+        "views": 2500,
+        "ctr": 0.019,
+        "retention": 0.53
+      }
+    ],
+    "avg_rpm": 1.68,
+    "avg_views": 2500.0,
+    "avg_ctr": 0.019,
+    "avg_retention": 0.53
+  },
+  "promo_test_1": {
+    "records": [
+      {
+        "timestamp": 1753502054.8105803,
+        "rpm": 3.5,
+        "views": 1200,
+        "ctr": 0.04,
+        "retention": 0.5
+      },
+      {
+        "timestamp": 1753502076.297675,
+        "rpm": 3.5,
+        "views": 1200,
+        "ctr": 0.04,
+        "retention": 0.5
+      }
+    ],
+    "avg_rpm": 3.5,
+    "avg_views": 1200.0,
+    "avg_ctr": 0.04,
+    "avg_retention": 0.5
+  },
+  "promo_test_2": {
+    "records": [
+      {
+        "timestamp": 1753502054.8109996,
+        "rpm": 1.2,
+        "views": 600,
+        "ctr": 0.02,
+        "retention": 0.3
+      },
+      {
+        "timestamp": 1753502076.2983327,
+        "rpm": 1.2,
+        "views": 600,
+        "ctr": 0.02,
+        "retention": 0.3
+      }
+    ],
+    "avg_rpm": 1.2,
+    "avg_views": 600.0,
+    "avg_ctr": 0.02,
+    "avg_retention": 0.3
+  },
+  "digest_test_1": {
+    "records": [
+      {
+        "timestamp": 1753502212.2125962,
+        "rpm": 4.0,
+        "views": 1500,
+        "ctr": 0.05,
+        "retention": 0.6
+      }
+    ],
+    "avg_rpm": 4.0,
+    "avg_views": 1500.0,
+    "avg_ctr": 0.05,
+    "avg_retention": 0.6
+  },
+  "digest_test_2": {
+    "records": [
+      {
+        "timestamp": 1753502212.2132719,
+        "rpm": 2.0,
+        "views": 800,
+        "ctr": 0.02,
+        "retention": 0.4
+      }
+    ],
+    "avg_rpm": 2.0,
+    "avg_views": 800.0,
+    "avg_ctr": 0.02,
+    "avg_retention": 0.4
+  },
+  "Test prompt": {
+    "records": [
+      {
+        "timestamp": 1753502878.1459558,
+        "rpm": 4.62,
+        "views": 662,
+        "ctr": 0.017,
+        "retention": 0.72
+      }
+    ],
+    "avg_rpm": 4.62,
+    "avg_views": 662.0,
+    "avg_ctr": 0.017,
+    "avg_retention": 0.72
+  }
+}

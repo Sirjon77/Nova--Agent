@@ -1,0 +1,39 @@
+
+<!-- frontend/model_settings.html -->
+<div style="padding: 1rem; font-family: sans-serif;">
+  <h2>🧠 Model Selection</h2>
+  <label for="model">Select Model:</label>
+  <select id="model" name="model">
+    <option value="auto">Auto (Smart Switch)</option>
+    <option value="gpt-4o">GPT-4o (Fastest)</option>
+    <option value="gpt-4.1">GPT-4.1 (Deep Reasoning)</option>
+    <option value="gpt-4.1-mini">GPT-4.1 Mini (Cheap)</option>
+    <option value="o3">OpenAI o3 (Advanced Logic)</option>
+  </select>
+  <button onclick="setModel()">Apply</button>
+
+  <h3>🔍 Active Model Info</h3>
+  <p id="currentModel">Loading...</p>
+
+  <script>
+    function setModel() {
+      const model = document.getElementById("model").value;
+      fetch('/api/set-model', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ model: model })
+      })
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("currentModel").innerText = "Model set to: " + data.model;
+      });
+    }
+
+    // Fetch current model on load
+    fetch('/api/current-model')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("currentModel").innerText = "Model: " + data.model + " | Source Key: " + data.key;
+      });
+  </script>
+</div>

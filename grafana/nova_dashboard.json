@@ -1,0 +1,29 @@
+{
+  "title": "Nova Agent Overview",
+  "panels": [
+    {
+      "type": "graph",
+      "title": "Tasks executed",
+      "targets": [
+        {
+          "expr": "nova_tasks_executed_total",
+          "legendFormat": "tasks"
+        }
+      ]
+    },
+    {
+      "type": "graph",
+      "title": "Governance cycles",
+      "targets": [
+        {
+          "expr": "nova_governance_runs_total",
+          "legendFormat": "governance"
+        }
+      ]
+    }
+  ],
+  "time": {
+    "from": "now-24h",
+    "to": "now"
+  }
+}

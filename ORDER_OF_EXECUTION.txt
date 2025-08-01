@@ -1,0 +1,3 @@
+
+9. (New) Configure Sentry DSN in Render Secret Store or Vault.
+10. (New) Build and run the new analytics service: `docker compose up nova-analytics`.

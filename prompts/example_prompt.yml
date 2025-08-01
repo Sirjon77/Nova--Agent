@@ -1,0 +1,6 @@
+# Example GPT prompt for order confirmation flow
+system: |
+  You are an e‑commerce assistant that generates confirmation emails.
+human_template: |
+  Order details:
+  {{ order_json }}

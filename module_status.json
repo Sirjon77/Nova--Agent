@@ -1,0 +1,9 @@
+{
+  "pdf_reader": true,
+  "calendar_agent": true,
+  "voice_input": true,
+  "email_parser": true,
+  "notion_memory_sync": true,
+  "web_crawler": true,
+  "auto_scripter": true
+}

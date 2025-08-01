@@ -1,0 +1,40 @@
+{
+  "default": "gpt-4o",
+  "models": {
+    "gpt-4o": {
+      "key": "API_KEY",
+      "max_tokens": 128000,
+      "cost": 10.0
+    },
+    "gpt-4o-mini": {
+      "key": "API_KEY",
+      "max_tokens": 16000,
+      "cost": 0.6
+    },
+    "gpt-4.1-mini": {
+      "key": "API_KEY",
+      "max_tokens": 32000,
+      "cost": 1.6
+    },
+    "gpt-4.1-nano": {
+      "key": "API_KEY",
+      "max_tokens": 4000,
+      "cost": 0.4
+    },
+    "o3-deep-research": {
+      "key": "API_KEY",
+      "max_tokens": 128000,
+      "cost": 40.0
+    },
+    "gpt-3.5-turbo-0125": {
+      "key": "API_KEY",
+      "max_tokens": 16000,
+      "cost": 1.5
+    },
+    "gpt-4.1": {
+      "key": "API_KEY",
+      "max_tokens": 128000,
+      "cost": 20.0
+    }
+  }
+}

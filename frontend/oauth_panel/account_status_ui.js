@@ -1,0 +1,1 @@
+// JS: Shows token validity, refresh prompts, and reauth buttons per linked account

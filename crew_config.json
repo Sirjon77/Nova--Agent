@@ -1,0 +1,43 @@
+{
+  "TrendResearchCrew": [
+    {
+      "name": "TikTokScannerAgent",
+      "role": "Scan TikTok for trending sounds, formats, and niches.",
+      "goal": "Return a daily summary of top-performing TikTok trends."
+    },
+    {
+      "name": "FormatAnalyzerAgent",
+      "role": "Analyze which video formats are currently favored by the algorithm.",
+      "goal": "Suggest 3 format templates based on recent engagement patterns."
+    }
+  ],
+  "ContentCreatorCrew": [
+    {
+      "name": "ScriptWriterAgent",
+      "role": "Write short, high-retention scripts for trending video topics.",
+      "goal": "Generate 5 scripts per avatar per day based on current trend data."
+    },
+    {
+      "name": "CaptionGeneratorAgent",
+      "role": "Generate captions and emojis for social hooks.",
+      "goal": "Output engaging caption lines for all published video scripts."
+    }
+  ],
+  "DistributionCrew": [
+    {
+      "name": "PosterAgent",
+      "role": "Handle automated posting to TikTok, YouTube Shorts, and Reels.",
+      "goal": "Publish at optimal hours with A/B test variation if enabled."
+    },
+    {
+      "name": "RPMTrackerAgent",
+      "role": "Track revenue and RPM fluctuations across platforms.",
+      "goal": "Alert Nova if RPM falls below threshold or spikes unexpectedly."
+    },
+    {
+      "name": "MonetizationAgent",
+      "role": "Scan for new monetization opportunities (e.g., new payouts, brand deals).",
+      "goal": "List all open monetization channels weekly."
+    }
+  ]
+}

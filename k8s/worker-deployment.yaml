@@ -1,0 +1,31 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nova-worker
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nova-worker
+  template:
+    metadata:
+      labels:
+        app: nova-worker
+    spec:
+      containers:
+        - name: worker
+          image: ghcr.io/youruser/nova-worker:latest
+          env:
+            - name: REDIS_URL
+              value: redis://redis:6379/0
+          resources:
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8000
+            initialDelaySeconds: 30
+            periodSeconds: 10

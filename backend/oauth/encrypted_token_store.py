@@ -1,0 +1,1 @@
+# Encrypts/decrypts tokens using Fernet encryption for secure storage

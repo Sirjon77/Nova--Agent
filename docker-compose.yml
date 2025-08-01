@@ -1,0 +1,32 @@
+version: '3.9'
+services:
+# ------------------------------
+# Memory Upgrade: Redis service
+# ------------------------------
+  redis:
+    image: redis:6
+    restart: always
+    ports:
+      - "6379:6379"
+
+# --- Governance dashboard services ---
+loki:
+  image: grafana/loki:2.9.4
+  ports:
+    - "3100:3100"
+  command: -config.file=/etc/loki/local-config.yaml
+
+promtail:
+  image: grafana/promtail:2.9.4
+  volumes:
+    - /var/log:/var/log
+  command: -config.file=/etc/promtail/config.yml
+
+grafana:
+  image: grafana/grafana:10.3.3
+  ports:
+    - "3000:3000"
+  depends_on:
+    - loki
+  environment:
+    - GF_SECURITY_ADMIN_PASSWORD=admin

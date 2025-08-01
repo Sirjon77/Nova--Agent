@@ -1,0 +1,86 @@
+governance:
+  output_dir: reports
+  notify:
+    email: "ops@example.com"
+    slack_channel: "#nova-governance"
+  niche:
+    weights:  { rpm: 2.0, watch: 1.5, ctr: 1.0, subs: 1.0 }
+    consistency_bonus: 5
+    thresholds: { retire: 25, watch: 40, promote: 65 }
+  trends:
+    rpm_multiplier: 0.8
+    top_n: 25
+    # enable or disable additional trend sources beyond Google Trends
+    # when true, the trend scanner will attempt to fetch trending topics
+    # from TikTok and vidIQ. Without API credentials these lists will be empty.
+    use_tiktok: false
+    use_vidiq: false
+    # When true, the trend scanner will attempt to fetch audience
+    # insights from Global Web Index (GWI) via the integrations.gwi helper.
+    # Requires GWI_TREND_ENDPOINT and GWI_API_KEY environment variables.
+    use_gwi: false
+    # Optional region code for GWI trend queries.  Defaults to "us" if not
+    # set.  Ignored if use_gwi is false.
+    gwi_region: "us"
+    # Number of GWI trends to fetch.  Default is 10.  Ignored if use_gwi
+    # is false.
+    gwi_limit: 10
+    # If using vidIQ trending keywords, specify your API key here. Without
+    # a key the trend scanner will return an empty list. See
+    # integrations/vidiq.py for details.
+    vidiq_api_key: ""
+
+    # Enable or disable Google Ads Keyword Planner trends.  When true,
+    # the trend scanner will return a static set of high‑volume search
+    # queries unless proper API credentials are provided via a future
+    # integration.  See nova/governance/trend_scanner.py for details.
+    use_google_ads: false
+
+    # Enable or disable affiliate product trend scanning.  When true,
+    # the trend scanner will return a static list of trending product
+    # categories.  Replace with a real affiliate API integration when
+    # available.  See nova/governance/trend_scanner.py for details.
+    use_affiliate: false
+  tools:
+    cost_threshold: 0.002
+    # List of external tools to monitor. Each tool has a name, a ping URL
+    # used to check its availability, an expected response time in
+    # milliseconds and an estimated cost per call. Tool health checks
+    # will ping these endpoints during the governance cycle and report
+    # latency and status in the governance report.
+    list:
+      - name: "openai"
+        ping_url: "https://api.openai.com/v1/models"
+        expected_ms: 500
+        cost_per_call: 0.01
+      - name: "runway"
+        ping_url: "https://api.runwayml.com/status"
+        expected_ms: 1000
+        cost_per_call: 0.005
+      - name: "metricool"
+        ping_url: "https://api.metricool.com/status"
+        expected_ms: 800
+        cost_per_call: 0.003
+      - name: "publer"
+        ping_url: "https://api.publer.io/v1/status"
+        expected_ms: 1000
+        cost_per_call: 0.002
+
+# Accounts configuration for multi-account posting.  Each platform
+# maps to a list of account identifiers (usernames or IDs) to which
+# content should be distributed.  Modify these values to reflect
+# your actual accounts.  If a platform is omitted or has an empty
+# list, no posts will be distributed for that platform.
+accounts:
+  tiktok: []
+  instagram: []
+  youtube: []
+  facebook: []
+
+auth:
+  jwt_secret_env: JWT_SECRET_KEY
+
+changelog:
+  watch:
+    - {name: "Runway", changelog_url: "https://api.runwayml.com/version", current_version: "1.0.0"}
+    - {name: "Seedance", changelog_url: "https://api.seedance.ai/version", current_version: "0.9.2"}

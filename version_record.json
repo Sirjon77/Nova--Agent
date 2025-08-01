@@ -1,0 +1,17 @@
+{
+  "version_id": "v2.3-RPM_ElitePlus",
+  "label": "Global Top 0.01% \u2014 Fully Autonomous RPM Agent",
+  "timestamp": "2025-06-28",
+  "features": [
+    "Daily trend parsing + RPM merging",
+    "Live funnel & prompt analytics dashboard",
+    "Semantic vector fallback via Weaviate",
+    "Prompt anomaly detection + loop health tracking",
+    "Encrypted token rotation + multi-brand orchestration",
+    "Prompt evolution trees + performance lineage tagging"
+  ],
+  "boot_default": true,
+  "status": "Active",
+  "global_rank": "Top 0.01%",
+  "source_zip": "Nova_Agent_v2.3-RPM_ElitePlus.zip"
+}

@@ -1,0 +1,16 @@
+{
+    "heartbeat_interval_minutes": 180,
+    "auto_mode": true,
+    "max_daily_posts": 120,
+    "preferred_avatar": "Avatar 3",
+    "auto_reflect": true,
+    "content_priority": [
+        "RPM",
+        "Engagement"
+    ],
+    "niches": [
+        "Fitness",
+        "Finance",
+        "Luxury"
+    ]
+}

@@ -1,0 +1,1 @@
+# Parses exported CSVs from GWI and structures insights per brand

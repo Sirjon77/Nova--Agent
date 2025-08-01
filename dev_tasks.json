@@ -1,0 +1,49 @@
+{
+    "Post Calendar GUI": {
+        "description": "Frontend panel for scheduled posts with drag-and-drop rescheduling and preview thumbnails.",
+        "components": [
+            "calendar_view.js",
+            "drag_reschedule.js",
+            "thumbnail_preview.js"
+        ],
+        "status": "To Do"
+    },
+    "Engagement Analytics Dashboard": {
+        "description": "Dashboard displaying RPM trends, best post times, and top-performing avatars/prompts from Meta, YouTube, and TikTok APIs.",
+        "components": [
+            "rpm_chart.js",
+            "posting_times_heatmap.js",
+            "avatar_performance.js",
+            "api_meta.py",
+            "api_youtube.py",
+            "api_tiktok.py"
+        ],
+        "status": "To Do"
+    },
+    "OAuth + Account Linking Panel": {
+        "description": "GUI and backend for linking social accounts securely and managing token expiration.",
+        "components": [
+            "oauth_gui.js",
+            "token_storage.py",
+            "error_detection.py"
+        ],
+        "status": "To Do"
+    },
+    "Auto-Repost Logic": {
+        "description": "Logic to detect top-performing posts and schedule reposts with variation and spacing.",
+        "components": [
+            "repost_scheduler.py",
+            "prompt_variation.py"
+        ],
+        "status": "To Do"
+    },
+    "Campaign Folders & Asset Tagging": {
+        "description": "Interface for organizing media and prompts into campaigns with avatar linkage and performance tracking.",
+        "components": [
+            "campaign_folder.js",
+            "asset_tagger.py",
+            "campaign_tracker.py"
+        ],
+        "status": "To Do"
+    }
+}

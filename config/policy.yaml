@@ -1,0 +1,5 @@
+sandbox:
+  allowed_tools:
+    - google_trends
+    - httpx
+  memory_limit_mb: 512

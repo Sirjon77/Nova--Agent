@@ -1,0 +1,19 @@
+{
+    "boot_sequence": {
+        "default_loop": "nova_loop.py",
+        "modules_enabled": [
+            "post_calendar",
+            "analytics_dashboard",
+            "oauth_panel",
+            "auto_repost_logic",
+            "campaign_folders"
+        ],
+        "boot_injected_at": "v2.1-FI"
+    },
+    "version_tag": {
+        "version": "v2.1-FI",
+        "label": "Full Integrated Social Optimization Build",
+        "description": "Includes Post Calendar, Analytics Dashboard, OAuth linking, Auto-Repost logic, Campaign tagging system. This version runs all modules by default in Nova's loop.",
+        "timestamp": "2025-06-28"
+    }
+}

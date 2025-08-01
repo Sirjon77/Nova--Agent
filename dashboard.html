@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Nova Agent Dashboard</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; background: #111; color: #eee; }
+    table { width: 100%%; border-collapse: collapse; margin-top: 2rem; }
+    th, td { border: 1px solid #444; padding: 8px; text-align: center; }
+    th { background-color: #222; }
+    h1 { color: #0f0; }
+    select, button { padding: 0.5rem; margin-top: 1rem; background: #222; color: #eee; border: 1px solid #555; }
+  </style>
+</head>
+<body>
+  <h1>Nova Agent — Model Usage Dashboard</h1>
+
+  <div>
+    <label for="modelSwitcher">Switch Active Model:</label>
+    <select id="modelSwitcher"></select>
+    <button onclick="switchModel()">Switch</button>
+  </div>
+
+  <div id="status" style="margin-top: 1rem; color: #0f0;"></div>
+  <div id="content">Loading model usage...</div>
+
+  <script>
+    let models = [];
+
+    function fetchModels() {
+      fetch('/api/current-model').then(res => res.json()).then(data => {
+        const current = data.model;
+        fetch('/models.json').then(r => r.json()).then(cfg => {
+          models = Object.keys(cfg.models);
+          const dropdown = document.getElementById('modelSwitcher');
+          dropdown.innerHTML = '';
+          models.forEach(m => {
+            const opt = document.createElement('option');
+            opt.value = m;
+            opt.textContent = m;
+            if (m === current) opt.selected = true;
+            dropdown.appendChild(opt);
+          });
+        });
+      });
+    }
+
+    function switchModel() {
+      const selected = document.getElementById('modelSwitcher').value;
+      fetch('/api/set-model', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({model: selected})
+      }).then(() => {
+        document.getElementById('status').textContent = `✅ Switched to ${selected}`;
+      });
+    }
+
+    fetch('/dashboard/data').then(res => res.json()).then(data => {
+      let html = '<table><tr><th>Model</th><th>Tokens Used</th><th>Estimated Cost</th><th>Calls</th></tr>';
+      for (let model in data) {
+        const row = data[model];
+        html += `<tr><td>${model}</td><td>${row.tokens}</td><td>$${(row.tokens / 1000 * row.cost).toFixed(4)}</td><td>${row.calls}</td></tr>`;
+      }
+      html += '</table>';
+      document.getElementById('content').innerHTML = html;
+    });
+
+    fetchModels();
+  </script>
+
+<div style="margin-top:2rem;">
+  
+<div style="margin-top:2rem;">
+  <h2>🔌 Plugin Manager</h2>
+  <p>Enable or disable plug-and-play Nova modules:</p>
+  <div id="pluginControls"></div>
+</div>
+
+<script>
+  function fetchModules() {
+    fetch('/api/modules').then(res => res.json()).then(data => {
+      const container = document.getElementById('pluginControls');
+      let html = "<table><tr><th>Module</th><th>Status</th><th>Action</th></tr>";
+      for (const [mod, enabled] of Object.entries(data)) {
+        html += `<tr>
+          <td>${mod}</td>
+          <td>${enabled ? "✅ ON" : "❌ OFF"}</td>
+          <td><button onclick="toggleModule('${mod}', ${!enabled})">${enabled ? "Disable" : "Enable"}</button></td>
+        </tr>`;
+      }
+      html += "</table>";
+      container.innerHTML = html;
+    });
+  }
+
+  function toggleModule(name, enabled) {
+    fetch('/api/modules/toggle', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ module: name, enabled: enabled })
+    }).then(fetchModules);
+  }
+
+  fetchModules();
+</script>
+
+  <p>Enable or disable plug-and-play Nova modules:</p>
+  <div id="pluginControls"></div>
+</div>
+
+<script>
+  const availableModules = ["pdf_reader", "calendar_agent", "voice_input", "email_parser", "notion_memory_sync", "web_crawler", "auto_scripter"];
+  const state = {};
+
+  function renderModuleToggles() {
+    let html = "<table><tr><th>Module</th><th>Status</th><th>Action</th></tr>";
+    availableModules.forEach(mod => {
+      const isOn = localStorage.getItem("nova_mod_" + mod) !== "off";
+      state[mod] = isOn;
+      html += `<tr><td>${mod}</td><td>${isOn ? "✅ ON" : "❌ OFF"}</td><td><button onclick="toggleModule('${mod}')">${isOn ? "Disable" : "Enable"}</button></td></tr>`;
+    });
+    html += "</table>";
+    document.getElementById("pluginControls").innerHTML = html;
+  }
+
+  function toggleModule(mod) {
+    const key = "nova_mod_" + mod;
+    const isOn = localStorage.getItem(key) !== "off";
+    localStorage.setItem(key, isOn ? "off" : "on");
+    renderModuleToggles();
+  }
+
+  renderModuleToggles();
+</script>
+
+</body>
+</html>

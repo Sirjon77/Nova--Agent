@@ -1,0 +1,24 @@
+{
+  "logs": [
+    {
+      "timestamp": "2025-06-28T16:00:00",
+      "message": "Loop started"
+    },
+    {
+      "timestamp": "2025-06-28T16:01:00",
+      "message": "Post to YouTube successful"
+    },
+    {
+      "timestamp": "2025-06-28T16:02:00",
+      "message": "API error detected on TikTok. Retrying..."
+    },
+    {
+      "timestamp": "2025-06-28T16:03:00",
+      "message": "Memory sync complete"
+    },
+    {
+      "timestamp": "2025-06-28T16:04:00",
+      "message": "Loop cycle complete"
+    }
+  ]
+}

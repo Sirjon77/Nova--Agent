@@ -1,0 +1,23 @@
+{
+  "title": "Nova Agent Overview",
+  "panels": [
+    {
+      "type": "graph",
+      "title": "CPU",
+      "targets": [
+        {
+          "expr": "process_cpu_seconds_total"
+        }
+      ]
+    },
+    {
+      "type": "graph",
+      "title": "OpenAI retries",
+      "targets": [
+        {
+          "expr": "openai_retries_total"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "title": "Nova Agent Overview",
+  "panels": [
+    {
+      "type": "graph",
+      "title": "Tasks/min",
+      "targets": [
+        {
+          "expr": "rate(nova_tasks_executed_total[1m])"
+        }
+      ]
+    },
+    {
+      "type": "stat",
+      "title": "Memory items",
+      "targets": [
+        {
+          "expr": "nova_memory_items"
+        }
+      ]
+    }
+  ]
+}
