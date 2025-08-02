@@ -37,7 +37,16 @@ def _load_config() -> Dict:
             pass
     return _DEFAULT_TIERS
 
-MODEL_TIERS = _load_config()
+MODEL_TIERS = {
+    "ultra_light":   {"model": "gpt-4o-mini",          "routes": ["micro_summary", "caption_fix"]},
+    "light":         {"model": "gpt-4o-mini",          "routes": ["summary", "caption"]},
+    "multimodal_core": {"model": "gpt-4o-vision",     "routes": ["multimodal"]},
+    "core":          {"model": "gpt-4o-mini",          "routes": ["general", "analysis"]},
+    "retrieval":     {"model": "gpt-4o-mini",          "routes": ["retrieval"]},  # Fixed: was gpt-4o-mini-search
+    "heavy":         {"model": "gpt-4o",               "routes": ["complex_analysis"]},
+    "tts_asr":       {"model": "gpt-4o-mini",          "routes": ["voice"]},  # Fixed: was gpt-4o-mini-TTS
+    "ultra":         {"model": "gpt-4o",               "routes": ["research", "governance"]}
+}
 
 # Map model name to ENV var suffix
 _ENV_MAP = {

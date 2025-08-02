@@ -1,70 +1,50 @@
 {
   "ultra_light": {
     "model": "gpt-4o-mini",
-    "routes": [
-      "micro_summary",
-      "caption_fix"
-    ],
-    "enabled": true
+    "routes": ["micro_summary", "caption_fix"],
+    "max_tokens": 500,
+    "temperature": 0.3
   },
-  "budget_creative": {
-    "model": "gpt-4.1-nano",
-    "routes": [
-      "ab_test",
-      "hashtag",
-      "hook"
-    ],
-    "enabled": true
+  "light": {
+    "model": "gpt-4o-mini",
+    "routes": ["summary", "caption"],
+    "max_tokens": 1000,
+    "temperature": 0.4
   },
-  "standard_brain": {
-    "model": "o3",
-    "routes": [
-      "script",
-      "carousel",
-      "dev"
-    ],
-    "enabled": true
+  "core": {
+    "model": "gpt-4o-mini",
+    "routes": ["general", "analysis"],
+    "max_tokens": 2000,
+    "temperature": 0.5
   },
   "multimodal_core": {
     "model": "gpt-4o-vision",
-    "routes": [
-      "multimodal"
-    ],
-    "enabled": true
-  },
-  "deep_research": {
-    "model": "o3-pro",
-    "routes": [
-      "deep_reason"
-    ],
-    "enabled": true
+    "routes": ["multimodal"],
+    "max_tokens": 2000,
+    "temperature": 0.5
   },
   "retrieval": {
-    "model": "gpt-4o-mini-search",
-    "routes": [
-      "retrieval"
-    ],
-    "enabled": true
+    "model": "gpt-4o-mini",
+    "routes": ["retrieval"],
+    "max_tokens": 1500,
+    "temperature": 0.3
   },
-  "embeddings": {
-    "model": "text-embedding-3-small",
-    "routes": [
-      "embedding"
-    ],
-    "enabled": true
+  "heavy": {
+    "model": "gpt-4o",
+    "routes": ["complex_analysis"],
+    "max_tokens": 4000,
+    "temperature": 0.6
   },
   "tts_asr": {
-    "model": "gpt-4o-mini-TTS",
-    "routes": [
-      "voice"
-    ],
-    "enabled": true
+    "model": "gpt-4o-mini",
+    "routes": ["voice"],
+    "max_tokens": 1000,
+    "temperature": 0.4
   },
-  "images": {
-    "model": "GPT-Image-1",
-    "routes": [
-      "image"
-    ],
-    "enabled": true
+  "ultra": {
+    "model": "gpt-4o",
+    "routes": ["research", "governance"],
+    "max_tokens": 8000,
+    "temperature": 0.7
   }
 }

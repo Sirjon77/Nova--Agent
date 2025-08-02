@@ -1,10 +1,10 @@
 """Lightweight agent that maps goals to RPA flow names + args."""
 import json
-from fastapi import FastAPI
+from fastapi import APIRouter
 from pydantic import BaseModel
 from utils.openai_wrapper import chat_completion
 
-app = FastAPI()
+router = APIRouter(prefix="/agents/decision", tags=["agents"])
 
 class DecisionRequest(BaseModel):
     session_id: str
@@ -17,7 +17,7 @@ class DecisionResponse(BaseModel):
 
 SYSTEM = "You are a planner that maps user goals to Zapier/UiPath flow names."
 
-@app.post("/decide", response_model=DecisionResponse)
+@router.post("/decide", response_model=DecisionResponse)
 async def decide(req: DecisionRequest):
     prompt = f"""{SYSTEM}
     GOAL: {req.goal}

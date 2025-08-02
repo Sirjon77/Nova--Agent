@@ -12,7 +12,6 @@ pyyaml
 requests
 tenacity
 tiktoken>=0.5.1
-uvicorn
 uvicorn[standard]==0.29.0
 weaviate-client
 jsonschema
@@ -23,12 +22,10 @@ prometheus-client
 pytest
 pytest-asyncio
 coverage
-fastapi
-uvicorn
 prometheus-fastapi-instrumentator
 starlette
-pyyaml
 psutil
+
 # NLP Dependencies
 sentence-transformers>=2.2.0
 numpy>=1.21.0
@@ -40,6 +37,9 @@ psutil>=5.9.0
 
 # Scheduling Dependencies
 schedule>=1.2.0
+
+# Browser Automation Dependencies
+playwright>=1.40.0
 
 # Additional Dependencies
 redis>=4.5.0

@@ -3,6 +3,9 @@ from fastapi import FastAPI
 from realtime import router as realtime_router
 from routes.research import router as research_router
 from routes.observability import router as observability_router
+from agents.decision_matrix_agent import router as decision_router
+from interface_handler import router as interface_router
+from nova_agent_v4_4.chat_api import router as chat_v4_router
 from pathlib import Path
 import json, os
 import uvicorn
@@ -12,6 +15,9 @@ app = FastAPI()
 app.include_router(realtime_router)
 app.include_router(research_router)
 app.include_router(observability_router)
+app.include_router(decision_router)
+app.include_router(interface_router)
+app.include_router(chat_v4_router)
 
 MODEL_CONFIG_PATH = Path(__file__).resolve().parent / "config" / "model_tiers.json"
 

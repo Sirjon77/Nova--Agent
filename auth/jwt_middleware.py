@@ -68,8 +68,24 @@ except Exception:
     jwt = _MinimalJWT()
 from starlette.middleware.base import BaseHTTPMiddleware
 import os, datetime
+import secrets
 
-SECRET = os.getenv('JWT_SECRET_KEY', 'change-me')
+# Generate a secure random secret if not provided
+def get_jwt_secret():
+    secret = os.getenv('JWT_SECRET_KEY')
+    if not secret:
+        # Generate a secure random key if not provided
+        secret = secrets.token_urlsafe(32)
+        print(f"⚠️  WARNING: JWT_SECRET_KEY not set. Generated temporary key: {secret[:10]}...")
+        print("   Set JWT_SECRET_KEY environment variable for production use.")
+    elif secret == 'change-me':
+        # Generate a secure random key if using the default
+        secret = secrets.token_urlsafe(32)
+        print(f"⚠️  WARNING: Using default JWT_SECRET_KEY. Generated secure key: {secret[:10]}...")
+        print("   Set JWT_SECRET_KEY environment variable for production use.")
+    return secret
+
+SECRET = get_jwt_secret()
 ALGO = 'HS256'
 TTL_MIN = 30
 

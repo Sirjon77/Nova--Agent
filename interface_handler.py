@@ -1,16 +1,16 @@
-from fastapi import FastAPI, WebSocket, WebSocketDisconnect
+from fastapi import APIRouter, WebSocket, WebSocketDisconnect
 from nova.phases.pipeline import run_phases
 import os
 
-app = FastAPI()
+router = APIRouter(prefix="/interface", tags=["interface"])
 WS_SECRET = os.getenv("WS_SECRET_KEY", "changeme")
 
-@app.post("/chat")
+@router.post("/chat")
 async def chat_endpoint(payload: dict):
     message = payload.get("message", "")
     return {"reply": run_phases(message)}
 
-@app.websocket("/ws")
+@router.websocket("/ws")
 async def websocket_endpoint(ws: WebSocket):
     token = ws.query_params.get("token")
     if token != WS_SECRET:

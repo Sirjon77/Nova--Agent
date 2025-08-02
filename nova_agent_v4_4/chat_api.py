@@ -1,17 +1,17 @@
 """FastAPI chat endpoint with short‑ and long‑term memory wiring."""
 import os, uuid, json
-from fastapi import FastAPI, Request, Response, Cookie
+from fastapi import APIRouter, Request, Response, Cookie
 from pydantic import BaseModel
 from memory_router import assemble_prompt, store_short
 from openai import OpenAI
 client = OpenAI()
 
-app = FastAPI()
+router = APIRouter(prefix="/api/v4", tags=["chat"])
 
 class ChatBody(BaseModel):
     message: str
 
-@app.post("/api/chat")
+@router.post("/chat")
 async def chat(body: ChatBody, session_id: str | None = Cookie(default=None)):
     # 1 ▪ Session cookie
     if not session_id:
