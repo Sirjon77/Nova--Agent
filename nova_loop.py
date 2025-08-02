@@ -3,6 +3,7 @@ launch_setup()
 
 import time
 import smtplib
+import asyncio
 from email.message import EmailMessage
 
 from nova_bootloader import load_nova_directive
@@ -17,6 +18,10 @@ from rpm_heatmap import generate_rpm_heatmap
 from funnel_tracker import track_funnel
 from tag_score_engine import tag_and_score
 from retargeting_optimizer import optimize_cta
+
+# Autonomous Research System
+from nova.autonomous_research import run_autonomous_research
+from nova.research_dashboard import get_research_summary
 
 from notion_sync import sync_to_notion
 from sheets_export import export_to_google_sheet
@@ -57,6 +62,24 @@ def run_nova_loop():
     report.append("\n💰 Running Monetization Modules...")
     generate_rpm_heatmap()
     optimize_cta()
+
+    report.append("\n🔬 Running Autonomous Research...")
+    try:
+        # Run autonomous research cycle
+        research_result = asyncio.run(run_autonomous_research())
+        if research_result and "error" not in research_result:
+            report.append(f"✅ Research cycle completed: {research_result.get('experiments_completed', 0)} experiments")
+            
+            # Get research summary
+            research_summary = get_research_summary()
+            if research_summary and "error" not in research_summary:
+                success_rate = research_summary.get("success_rate", 0)
+                avg_improvement = research_summary.get("average_improvement", 0)
+                report.append(f"📊 Research stats: {success_rate:.1f}% success rate, {avg_improvement:.1f}% avg improvement")
+        else:
+            report.append(f"❌ Research cycle failed: {research_result.get('error', 'Unknown error')}")
+    except Exception as e:
+        report.append(f"❌ Research error: {str(e)}")
 
     report.append("\n🔗 Syncing with External Platforms...")
     try:
