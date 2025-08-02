@@ -2,6 +2,7 @@
 from fastapi import FastAPI
 from realtime import router as realtime_router
 from routes.research import router as research_router
+from routes.observability import router as observability_router
 from pathlib import Path
 import json, os
 import uvicorn
@@ -10,6 +11,7 @@ app = FastAPI()
 
 app.include_router(realtime_router)
 app.include_router(research_router)
+app.include_router(observability_router)
 
 MODEL_CONFIG_PATH = Path(__file__).resolve().parent / "config" / "model_tiers.json"
 

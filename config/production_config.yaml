@@ -1,0 +1,165 @@
+# Nova Agent Production Configuration
+# This file contains production-ready configuration settings
+# Environment variables should be set in production deployment
+
+# Security Settings
+security:
+  jwt_secret: ${JWT_SECRET}  # Must be set in environment
+  jwt_algorithm: "HS256"
+  jwt_expiration_hours: 24
+  cors_origins:
+    - "https://yourdomain.com"
+    - "https://admin.yourdomain.com"
+  rate_limit:
+    requests_per_minute: 100
+    burst_limit: 200
+
+# API Configuration
+api:
+  host: "0.0.0.0"
+  port: 8080
+  workers: 4
+  timeout: 30
+  max_request_size: "10MB"
+
+# Database Configuration
+database:
+  url: ${DATABASE_URL}  # Must be set in environment
+  pool_size: 10
+  max_overflow: 20
+  echo: false
+
+# Memory Configuration
+memory:
+  weaviate_url: ${WEAVIATE_URL}  # Must be set in environment
+  weaviate_api_key: ${WEAVIATE_API_KEY}  # Must be set in environment
+  redis_host: ${REDIS_HOST:-localhost}
+  redis_port: ${REDIS_PORT:-6379}
+  redis_password: ${REDIS_PASSWORD}  # Optional
+  max_context_history: 50
+  cleanup_interval_hours: 24
+
+# OpenAI Configuration
+openai:
+  api_key: ${OPENAI_API_KEY}  # Must be set in environment
+  default_model: "gpt-4o-mini"
+  max_tokens: 4000
+  temperature: 0.7
+  timeout: 30
+
+# NLP Configuration
+nlp:
+  confidence_threshold: 0.7
+  max_context_history: 50
+  training_data_dir: "data/nlp_training"
+  enable_ai_classification: true
+  enable_semantic_classification: true
+  enable_rule_based_classification: true
+  model_settings:
+    sentence_transformer_model: "all-MiniLM-L6-v2"
+    openai_model: "gpt-4o-mini"
+    embedding_dimension: 384
+  performance:
+    max_response_time_ms: 500
+    cache_embeddings: true
+    cache_size: 1000
+  logging:
+    level: "INFO"
+    log_classifications: true
+    log_confidence_scores: true
+
+# Autonomous Research Configuration
+autonomous_research:
+  enabled: true
+  cycle_frequency_hours: 24
+  max_concurrent_experiments: 3
+  min_confidence_threshold: 0.7
+  performance_thresholds:
+    response_time: 0.8
+    accuracy: 0.85
+    user_satisfaction: 0.8
+    memory_efficiency: 0.9
+    error_rate: 0.15
+    throughput: 0.9
+
+# Governance Configuration
+governance:
+  enabled: true
+  schedule:
+    niche_scoring: "02:00"
+    tool_health_check: "03:00"
+    trend_scanning: "04:00"
+    performance_analysis: "05:00"
+    system_optimization: "06:00"
+  retention_days: 30
+  alert_thresholds:
+    performance_degradation: 0.1
+    error_rate: 0.05
+    memory_usage: 0.8
+
+# Observability Configuration
+observability:
+  enabled: true
+  metrics_port: 9090
+  prometheus_enabled: true
+  health_check_interval: 60
+  audit_log_retention_days: 30
+  performance_history_size: 1000
+  error_history_size: 100
+
+# External Integrations
+integrations:
+  notion:
+    enabled: ${NOTION_ENABLED:-false}
+    api_key: ${NOTION_API_KEY}
+    database_id: ${NOTION_DATABASE_ID}
+  
+  sheets:
+    enabled: ${SHEETS_ENABLED:-false}
+    credentials_file: ${GOOGLE_CREDENTIALS_FILE}
+    spreadsheet_id: ${GOOGLE_SPREADSHEET_ID}
+  
+  metricool:
+    enabled: ${METRICOOL_ENABLED:-false}
+    api_key: ${METRICOOL_API_KEY}
+    account_id: ${METRICOOL_ACCOUNT_ID}
+  
+  convertkit:
+    enabled: ${CONVERTKIT_ENABLED:-false}
+    api_key: ${CONVERTKIT_API_KEY}
+    form_id: ${CONVERTKIT_FORM_ID}
+  
+  gumroad:
+    enabled: ${GUMROAD_ENABLED:-false}
+    api_key: ${GUMROAD_API_KEY}
+    product_id: ${GUMROAD_PRODUCT_ID}
+
+# Logging Configuration
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/nova.log"
+  max_size: "10MB"
+  backup_count: 5
+  console: true
+
+# Performance Configuration
+performance:
+  max_concurrent_requests: 100
+  request_timeout: 30
+  memory_limit: "1GB"
+  cpu_limit: 2
+
+# Monitoring Configuration
+monitoring:
+  health_check_endpoint: "/observability/health"
+  metrics_endpoint: "/observability/metrics"
+  alert_webhook: ${ALERT_WEBHOOK_URL}
+  slack_webhook: ${SLACK_WEBHOOK_URL}
+
+# Development/Testing
+development:
+  debug: false
+  test_mode: false
+  mock_external_apis: false
+  enable_chaos_testing: false 
