@@ -74,12 +74,22 @@ class MemoryManager:
         
         # Try to initialize Weaviate for long-term memory
         try:
-            from memory import is_memory_available, get_memory_status
-            self.weaviate_available = is_memory_available()
-            if self.weaviate_available:
+            import weaviate
+            weaviate_url = os.getenv("WEAVIATE_URL")
+            weaviate_api_key = os.getenv("WEAVIATE_API_KEY")
+            
+            if weaviate_url and weaviate_api_key:
+                # Test Weaviate connection
+                client = weaviate.Client(
+                    url=weaviate_url,
+                    auth_client_secret=weaviate.AuthApiKey(api_key=weaviate_api_key)
+                )
+                client.schema.get()  # Test connection
+                self.weaviate_available = True
                 logger.info("Weaviate connected for long-term memory")
             else:
-                logger.warning("Weaviate not available for long-term memory")
+                self.weaviate_available = False
+                logger.warning("Weaviate not available - missing environment variables")
         except Exception as e:
             self.weaviate_available = False
             logger.warning(f"Failed to initialize Weaviate: {e}")
@@ -132,13 +142,8 @@ class MemoryManager:
             bool: True if stored successfully
         """
         try:
-            if self.weaviate_available:
-                # Store in Weaviate
-                from memory import save_to_memory
-                return save_to_memory(namespace, key, content, metadata)
-            else:
-                # Fallback to file storage
-                return self._store_long_term_file(namespace, key, content, metadata)
+            # Always use file storage for now - Weaviate integration handled separately
+            return self._store_long_term_file(namespace, key, content, metadata)
                 
         except Exception as e:
             logger.error(f"Failed to add long-term memory: {e}")
@@ -157,13 +162,8 @@ class MemoryManager:
             List of relevant memory entries
         """
         try:
-            if self.weaviate_available:
-                # Search Weaviate
-                from memory import query_memory
-                return query_memory(namespace, query, top_k)
-            else:
-                # Fallback to file search
-                return self._search_long_term_file(query, namespace, top_k)
+            # Always use file search for now - Weaviate integration handled separately
+            return self._search_long_term_file(query, namespace, top_k)
                 
         except Exception as e:
             logger.error(f"Failed to get relevant memories: {e}")
@@ -300,11 +300,16 @@ class MemoryManager:
             logger.error(f"Failed to log interaction: {e}")
             return False
     
+    def is_available(self) -> bool:
+        """Check if memory system is fully available."""
+        return self.redis_available or self.weaviate_available
+    
     def get_memory_status(self) -> Dict[str, Any]:
         """Get status of all memory systems."""
         return {
             "redis_available": self.redis_available,
             "weaviate_available": self.weaviate_available,
+            "fully_available": self.is_available(),
             "short_term_count": self._get_short_term_count(),
             "long_term_count": self._get_long_term_count(),
             "summary_count": self._get_summary_count(),
@@ -555,3 +560,50 @@ def store_long(session_id: str, content: str, metadata: Optional[Dict[str, Any]]
 def get_short(session_id: str, limit: int = 10) -> List[Dict[str, Any]]:
     """Get short-term memory for session."""
     return memory_manager.get_short_term(session_id, limit) 
+
+# Singleton MemoryManager for global access
+_memory_manager: Optional["MemoryManager"] = None
+
+def get_global_memory_manager() -> "MemoryManager":
+    """
+    Return a singleton MemoryManager so every module shares one connection pool.
+    
+    Returns:
+        MemoryManager: Global singleton instance
+    """
+    global _memory_manager
+    if _memory_manager is None:
+        _memory_manager = MemoryManager()
+        logger.info("Global MemoryManager singleton initialized")
+    return _memory_manager
+
+def is_available() -> bool:
+    """
+    Check if the global memory manager is available.
+    
+    Returns:
+        bool: True if memory system is available
+    """
+    try:
+        mm = get_global_memory_manager()
+        return mm.is_available()
+    except Exception:
+        return False
+
+def get_status() -> Dict[str, Any]:
+    """
+    Get status of the global memory manager.
+    
+    Returns:
+        Dict[str, Any]: Memory system status
+    """
+    try:
+        mm = get_global_memory_manager()
+        return mm.get_memory_status()
+    except Exception as e:
+        return {
+            "fully_available": False,
+            "error": str(e),
+            "weaviate_available": False,
+            "redis_available": False
+        } 
