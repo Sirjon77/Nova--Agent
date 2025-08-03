@@ -12,6 +12,17 @@ import time
 import subprocess
 import logging
 from typing import Optional
+from datetime import datetime
+
+# Use model registry for model resolution
+try:
+    from nova_core.model_registry import resolve as resolve_model, get_default_model
+    DEFAULT_MODEL = get_default_model()
+except ImportError:
+    # Fallback if model registry not available
+    def resolve_model(alias: str) -> str:
+        return alias
+    DEFAULT_MODEL = "gpt-4o"
 
 logger = logging.getLogger(__name__)
 
@@ -20,60 +31,69 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 MEMORY_LOG = "nova_memory_log.json"
 FRONTEND_DIR = "./frontend"
 
-# Default model - use valid OpenAI model names
-DEFAULT_MODEL = "gpt-4o-mini"  # Valid OpenAI model name
-
 def log_memory_entry(prompt: str, response: str) -> None:
     """
-    Log code generation activities to memory for future reference.
+    Log a memory entry to the Nova memory log.
     
     Args:
-        prompt: The original prompt/instruction
-        response: The generated code or response
+        prompt: The input prompt or instruction
+        response: The generated response or code
     """
+    memory_file = "nova_memory_log.json"
+    timestamp = datetime.utcnow().isoformat()
+    
     entry = {
-        "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
+        "timestamp": timestamp,
         "prompt": prompt,
-        "response": response
+        "response": response,
+        "module": "self_coder"
     }
     
     try:
-        if not os.path.exists(MEMORY_LOG):
-            with open(MEMORY_LOG, "w") as f:
-                json.dump([entry], f, indent=2)
-        else:
-            with open(MEMORY_LOG, "r+") as f:
+        # Load existing entries
+        if os.path.exists(memory_file):
+            with open(memory_file, "r") as f:
                 data = json.load(f)
-                data.append(entry)
-                f.seek(0)
-                json.dump(data, f, indent=2)
+        else:
+            data = []
         
-        logger.info(f"Logged memory entry: {len(prompt)} chars prompt, {len(response)} chars response")
+        # Add new entry
+        data.append(entry)
+        
+        # Write back to file
+        with open(memory_file, "w") as f:
+            json.dump(data, f, indent=2)
+            
+        logger.info(f"Logged memory entry: {len(data)} total entries")
         
     except Exception as e:
         logger.error(f"Failed to log memory entry: {e}")
 
 def write_module_from_instruction(task_description: str, filename: str = "new_module.py") -> Optional[str]:
     """
-    Generate a Python module from a natural language description.
+    Generate a Python module from a natural language instruction.
     
     Args:
         task_description: Natural language description of the module to create
         filename: Output filename for the generated module
         
     Returns:
-        str: Generated filename if successful, None otherwise
+        str: Path to the generated file, or None if generation failed
     """
     reasoning = (
-        "Analyze the task and break it into logical steps. "
-        "Verify assumptions and use standard libraries unless a specific package is required."
+        "You are an expert Python developer. Create a complete, functional Python module "
+        "based on the user's description. Include proper imports, error handling, "
+        "docstrings, and follow PEP 8 conventions. The code should be production-ready."
     )
 
     full_prompt = f"{reasoning}\nTask: {task_description}"
 
     try:
+        # Use model registry to resolve model alias
+        model = resolve_model(DEFAULT_MODEL)
+        
         response = openai.ChatCompletion.create(
-            model=DEFAULT_MODEL,  # Fixed: use valid model name
+            model=model,  # Now uses resolved official model ID
             messages=[
                 {"role": "system", "content": "You are Nova Agent's autonomous module builder."},
                 {"role": "user", "content": full_prompt}

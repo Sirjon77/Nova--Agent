@@ -5,14 +5,25 @@ from datetime import datetime
 
 openai.api_key = os.getenv("OPENAI_API_KEY", "")
 
+# Use model registry for model resolution
+try:
+    from nova_core.model_registry import resolve as resolve_model
+except ImportError:
+    # Fallback function if model registry not available
+    def resolve_model(alias: str) -> str:
+        return alias
+
 def summarize_text(text, max_tokens=500):
     if not openai.api_key:
         print("[OpenAI] API key missing. Skipping summarization.")
         return text[:max_tokens]
 
     try:
+        # Use model registry to resolve model alias
+        model = resolve_model("gpt-3.5-turbo")
+        
         response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
+            model=model,  # Now uses resolved official model ID
             messages=[
                 {"role": "system", "content": "Summarize this web content concisely."},
                 {"role": "user", "content": text[:3000]}
