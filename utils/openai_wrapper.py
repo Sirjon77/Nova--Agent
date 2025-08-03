@@ -7,13 +7,16 @@ logger = logging.getLogger("openai_wrapper")
 API_KEY = os.getenv("OPENAI_API_KEY") or os.getenv("OPENAI_KEY")
 openai.api_key = API_KEY
 
-# Use model registry for default and fallback models
+# Use the new OpenAI client wrapper that forces model translation
 try:
-    from nova_core.model_registry import resolve as resolve_model, get_default_model
+    from nova.services.openai_client import chat_completion as nova_chat_completion
+    from nova_core.model_registry import get_default_model
     DEFAULT_MODEL = get_default_model()
-    FALLBACK_MODEL = resolve_model("gpt-3.5-turbo")
+    FALLBACK_MODEL = "gpt-3.5-turbo"
 except ImportError:
-    # Fallback if model registry not available
+    # Fallback if wrapper not available
+    def nova_chat_completion(messages, model=None, **kwargs):
+        return openai.ChatCompletion.create(messages=messages, **kwargs)
     DEFAULT_MODEL = "gpt-4o"
     FALLBACK_MODEL = "gpt-3.5-turbo"
 
@@ -35,12 +38,8 @@ def estimate_cost(prompt: str, model: str):
     return tok / 1000 * 0.03
 
 def chat_completion(prompt: str, model: str = None, temperature: float = 0.2, **kwargs) -> str:
-    # Resolve model alias to official OpenAI model ID
-    try:
-        chosen = resolve_model(model) if model else DEFAULT_MODEL
-    except KeyError as e:
-        logger.error(f"Invalid model alias: {e}")
-        chosen = FALLBACK_MODEL
+    # Use the wrapper that automatically translates model aliases
+    chosen = model or DEFAULT_MODEL
     
     # watchdog
     if estimate_cost(prompt, chosen) > MAX_COST_DOLLARS:
@@ -49,9 +48,9 @@ def chat_completion(prompt: str, model: str = None, temperature: float = 0.2, **
     
     for attempt in range(3):
         try:
-            resp = openai.ChatCompletion.create(
-                model=chosen,
+            resp = nova_chat_completion(
                 messages=[{"role":"user","content":prompt}],
+                model=chosen,  # Will be automatically translated to official model ID
                 temperature=temperature,
                 **kwargs
             )

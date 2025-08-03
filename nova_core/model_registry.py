@@ -1,83 +1,70 @@
+"""Single‑source registry for OpenAI model identifiers.
+
+Internal aliases (e.g. "gpt‑4o‑mini") are translated to official model names
+before an API request is issued so that *only* valid identifiers reach OpenAI.
 """
-Central mapping of *friendly* model aliases -> official OpenAI model IDs.
+from enum import Enum
+from typing import Optional
 
-Add new aliases here only. This ensures all model names are validated
-and normalized before being sent to the OpenAI API.
-"""
 
-from os import getenv
-from typing import Dict, List, Optional, Union
+class Model(str, Enum):
+    # ── Official public models ────────────────────────────────────────────────
+    GPT_4 = "gpt-4o"
+    GPT_3_5_TURBO = "gpt-3.5-turbo"
 
-# 1️⃣ canonical mapping
-MODEL_MAP: Dict[str, str] = {
-    # GPT-4 tier
-    "gpt-4o-mini":   "gpt-4o",          # official name 2025-05-13
-    "gpt-4o-vision": "gpt-4o",          # same backend, diff alias
-    "gpt-4-turbo":   "gpt-4o",          # team shorthand
-    "gpt-4":         "gpt-4o",          # legacy alias
-    "gpt-4o":        "gpt-4o",          # direct mapping (no change)
-    
-    # GPT-3.5 tier
-    "gpt-3.5-mini":  "gpt-3.5-turbo",
-    "gpt-3.5":       "gpt-3.5-turbo",
-    "gpt-3.5-turbo": "gpt-3.5-turbo",   # direct mapping (no change)
-    
-    # Legacy/alternative names
-    "gpt-4o-mini-search": "gpt-4o",     # was invalid, now maps to gpt-4o
-    "gpt-4o-mini-TTS": "gpt-4o",        # was invalid, now maps to gpt-4o
+    # ── Internal shorthands / legacy aliases ─────────────────────────────────
+    GPT_4_MINI = "gpt-4o-mini"          # maps → GPT_4
+    GPT_4_VISION = "gpt-4o-vision"      # maps → GPT_4
+    O3 = "o3"                           # maps → GPT_3_5_TURBO
+    O3_PRO = "o3-pro"                   # maps → GPT_4
+
+    DEFAULT = GPT_4
+
+
+_ALIAS_TO_OFFICIAL = {
+    Model.GPT_4_MINI: Model.GPT_4,
+    Model.GPT_4_VISION: Model.GPT_4,
+    Model.O3: Model.GPT_3_5_TURBO,
+    Model.O3_PRO: Model.GPT_4,
 }
 
-# 2️⃣ default used by Nova when nothing is configured
-DEFAULT_ALIAS = getenv("NOVA_DEFAULT_MODEL", "gpt-4o-mini")
 
+def to_official(name: Optional[str] = None) -> str:
+    """Return an official OpenAI model name for *any* supported alias."""
+    if not name:
+        return Model.DEFAULT.value
+    try:
+        alias = Model(name)
+    except ValueError:  # unknown → assume caller supplied a valid public name
+        return name
+    return _ALIAS_TO_OFFICIAL.get(alias, alias).value
+
+
+# Backward compatibility functions
 def resolve(alias: Optional[str] = None) -> str:
-    """
-    Convert a friendly alias to the exact OpenAI model name.
-    
-    Args:
-        alias: Model alias to resolve. If None, uses DEFAULT_ALIAS.
-        
-    Returns:
-        str: Official OpenAI model ID
-        
-    Raises:
-        KeyError: if alias not in registry
-    """
-    alias = (alias or DEFAULT_ALIAS).strip()
-    
-    # Check if it's a known alias
-    if alias in MODEL_MAP:
-        return MODEL_MAP[alias]
-    
-    # If it's already an official model ID, allow but warn
-    if alias.startswith("gpt-"):
-        import warnings
-        warnings.warn(
-            f"Prefer using a Nova alias, not raw model id '{alias}'.",
-            UserWarning,
-            stacklevel=2,
-        )
-        return alias
-    
-    # Unknown alias
-    raise KeyError(
-        f"Unknown model alias '{alias}'. "
-        f"Available aliases: {list(MODEL_MAP.keys())}. "
-        "Add it to MODEL_MAP or use an official model ID."
-    )
+    """Convert a friendly alias to the exact OpenAI model name."""
+    return to_official(alias)
 
-def get_available_aliases() -> List[str]:
-    """Get list of all available model aliases."""
-    return list(MODEL_MAP.keys())
-
-def get_official_models() -> List[str]:
-    """Get list of all official OpenAI model IDs used."""
-    return list(set(MODEL_MAP.values()))
-
-def is_valid_alias(alias: str) -> bool:
-    """Check if an alias is valid."""
-    return alias in MODEL_MAP
 
 def get_default_model() -> str:
     """Get the default model ID."""
-    return resolve(DEFAULT_ALIAS) 
+    return Model.DEFAULT.value
+
+
+def get_available_aliases() -> list[str]:
+    """Get list of all available model aliases."""
+    return [model.value for model in Model]
+
+
+def get_official_models() -> list[str]:
+    """Get list of all official OpenAI model IDs used."""
+    return list(set(_ALIAS_TO_OFFICIAL.values()))
+
+
+def is_valid_alias(alias: str) -> bool:
+    """Check if an alias is valid."""
+    try:
+        Model(alias)
+        return True
+    except ValueError:
+        return False 

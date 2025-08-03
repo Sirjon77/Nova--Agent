@@ -5,13 +5,13 @@ from datetime import datetime
 
 openai.api_key = os.getenv("OPENAI_API_KEY", "")
 
-# Use model registry for model resolution
+# Use the new OpenAI client wrapper that forces model translation
 try:
-    from nova_core.model_registry import resolve as resolve_model
+    from nova.services.openai_client import chat_completion
 except ImportError:
-    # Fallback function if model registry not available
-    def resolve_model(alias: str) -> str:
-        return alias
+    # Fallback to direct OpenAI call if wrapper not available
+    def chat_completion(messages, model=None, **kwargs):
+        return openai.ChatCompletion.create(messages=messages, **kwargs)
 
 def summarize_text(text, max_tokens=500):
     if not openai.api_key:
@@ -19,15 +19,13 @@ def summarize_text(text, max_tokens=500):
         return text[:max_tokens]
 
     try:
-        # Use model registry to resolve model alias
-        model = resolve_model("gpt-3.5-turbo")
-        
-        response = openai.ChatCompletion.create(
-            model=model,  # Now uses resolved official model ID
+        # Use the wrapper that automatically translates model aliases
+        response = chat_completion(
             messages=[
                 {"role": "system", "content": "Summarize this web content concisely."},
                 {"role": "user", "content": text[:3000]}
             ],
+            model="gpt-3.5-turbo",  # Will be automatically translated to "gpt-3.5-turbo"
             max_tokens=max_tokens,
             temperature=0.5
         )

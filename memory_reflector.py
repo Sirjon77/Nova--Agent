@@ -6,13 +6,13 @@ import openai
 openai.api_key = os.getenv("OPENAI_API_KEY")
 MEMORY_LOG = "nova_memory_log.json"
 
-# Use model registry for model resolution
+# Use the new OpenAI client wrapper that forces model translation
 try:
-    from nova_core.model_registry import resolve as resolve_model
+    from nova.services.openai_client import chat_completion
 except ImportError:
-    # Fallback function if model registry not available
-    def resolve_model(alias: str) -> str:
-        return alias
+    # Fallback to direct OpenAI call if wrapper not available
+    def chat_completion(messages, model=None, **kwargs):
+        return openai.ChatCompletion.create(messages=messages, **kwargs)
 
 def refine_code_snippets():
     if not os.path.exists(MEMORY_LOG):
@@ -32,15 +32,13 @@ def refine_code_snippets():
             f"{original}"
         )
 
-        # Use model registry to resolve model alias
-        model = resolve_model("gpt-4o-mini")
-        
-        response = openai.ChatCompletion.create(
-            model=model,  # Now uses resolved official model ID
+        # Use the wrapper that automatically translates model aliases
+        response = chat_completion(
             messages=[
                 {"role": "system", "content": "You are a senior Python refactor bot."},
                 {"role": "user", "content": prompt_refine}
             ],
+            model="gpt-4o-mini",  # Will be automatically translated to "gpt-4o"
             temperature=0.3
         )
 

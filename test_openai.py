@@ -1,24 +1,22 @@
 import os
 import openai
 
-# Use model registry for model resolution
+# Use the new OpenAI client wrapper that forces model translation
 try:
-    from nova_core.model_registry import resolve as resolve_model
+    from nova.services.openai_client import chat_completion
 except ImportError:
-    # Fallback function if model registry not available
-    def resolve_model(alias: str) -> str:
-        return alias
+    # Fallback to direct OpenAI call if wrapper not available
+    def chat_completion(messages, model=None, **kwargs):
+        return openai.ChatCompletion.create(messages=messages, **kwargs)
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
-# Use model registry to resolve model alias
-model = resolve_model("gpt-4o-mini")
-
-response = openai.ChatCompletion.create(
-    model=model,  # Now uses resolved official model ID
+# Use the wrapper that automatically translates model aliases
+response = chat_completion(
     messages=[
         {"role": "user", "content": "Hello, this is a test message."}
-    ]
+    ],
+    model="gpt-4o-mini"  # Will be automatically translated to "gpt-4o"
 )
 
 print(response.choices[0].message.content)
