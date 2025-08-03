@@ -169,6 +169,20 @@ class MemoryManager:
             logger.error(f"Failed to get relevant memories: {e}")
             return []
     
+    def query_long_term(self, namespace: str, query: str, top_k: int = 5) -> List[Dict[str, Any]]:
+        """
+        Query long-term memory (alias for get_relevant_memories).
+        
+        Args:
+            namespace: Memory namespace to search
+            query: Search query
+            top_k: Number of results to return
+            
+        Returns:
+            List of relevant memory entries
+        """
+        return self.get_relevant_memories(query, namespace, top_k)
+    
     def get_short_term(self, session_id: str, limit: int = 10) -> List[Dict[str, Any]]:
         """
         Get recent short-term memories for a session.
