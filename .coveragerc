@@ -1,0 +1,21 @@
+[run]
+branch = True
+source = 
+    nova
+    utils
+    memory
+omit =
+    */tests/*
+    */__init__.py
+    */memory/legacy_adapter.py
+    */nova_core/__init__.py
+    */nova/services/__init__.py
+
+[report]
+exclude_lines =
+    pragma: no cover
+    if TYPE_CHECKING:
+    if __name__ == .__main__.:
+    raise NotImplementedError
+    raise AssertionError
+    raise ImportError 
