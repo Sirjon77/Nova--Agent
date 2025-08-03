@@ -15,6 +15,14 @@ from typing import Dict, Tuple
 
 CONFIG_PATH = Path(__file__).resolve().parent.parent / "config" / "model_tiers.json"
 
+# Use model registry for model resolution
+try:
+    from nova_core.model_registry import resolve as resolve_model
+except ImportError:
+    # Fallback function if model registry not available
+    def resolve_model(alias: str) -> str:
+        return alias
+
 # Default model map (can be overridden by on‑disk JSON)
 _DEFAULT_TIERS = {
     "ultra_light":   {"model": "gpt-4o-mini",          "routes": ["micro_summary", "caption_fix"]},
@@ -22,9 +30,9 @@ _DEFAULT_TIERS = {
     "standard_brain": {"model": "o3",                 "routes": ["script", "carousel", "dev"]},
     "multimodal_core": {"model": "gpt-4o-vision",     "routes": ["multimodal"]},
     "deep_research": {"model": "o3-pro",              "routes": ["deep_reason"]},
-    "retrieval":     {"model": "gpt-4o-mini-search",  "routes": ["retrieval"]},
+    "retrieval":     {"model": "gpt-4o-mini",          "routes": ["retrieval"]},  # Fixed: was gpt-4o-mini-search
     "embeddings":    {"model": "text-embedding-3-small", "routes": ["embedding"]},
-    "tts_asr":       {"model": "gpt-4o-mini-TTS",     "routes": ["voice"]},
+    "tts_asr":       {"model": "gpt-4o-mini",          "routes": ["voice"]},  # Fixed: was gpt-4o-mini-TTS
     "images":        {"model": "GPT-Image-1",         "routes": ["image"]},
 }
 
@@ -48,16 +56,13 @@ MODEL_TIERS = {
     "ultra":         {"model": "gpt-4o",               "routes": ["research", "governance"]}
 }
 
-# Map model name to ENV var suffix
+# Map model name to ENV var suffix (using resolved model names)
 _ENV_MAP = {
-    "gpt-4o-mini": "OPENAI_KEY_MINI",
-    "gpt-4.1-nano": "OPENAI_KEY_NANO",
+    "gpt-4o": "OPENAI_KEY_FAST",           # Resolved from gpt-4o-mini, gpt-4o-vision, etc.
+    "gpt-3.5-turbo": "OPENAI_KEY_STANDARD", # Resolved from gpt-3.5-mini, gpt-3.5, etc.
     "o3": "OPENAI_KEY_STANDARD",
-    "gpt-4o-vision": "OPENAI_KEY_FAST",
     "o3-pro": "OPENAI_KEY_PRO",
-    "gpt-4o-mini-search": "OPENAI_KEY_MINI",
     "text-embedding-3-small": "OPENAI_KEY_EMBED",
-    "gpt-4o-mini-TTS": "OPENAI_KEY_MINI",
     "GPT-Image-1": "OPENAI_KEY_IMAGE",
 }
 
@@ -99,5 +104,15 @@ def select_model(task_meta: Dict) -> Tuple[str, str]:
             if depth_score >= 6:
                 model = "o3-pro"
 
-    api_key = os.getenv(_ENV_MAP.get(model, "OPENAI_API_KEY"), os.getenv("OPENAI_API_KEY"))
-    return model, api_key
+    # 3. Resolve model alias to official OpenAI model ID
+    try:
+        resolved_model = resolve_model(model)
+    except KeyError:
+        # If model is not in registry, use as-is (might be a custom model)
+        resolved_model = model
+
+    # 4. Get API key
+    api_key_env = _ENV_MAP.get(resolved_model, "OPENAI_API_KEY")
+    api_key = os.getenv(api_key_env) or os.getenv("OPENAI_API_KEY")
+
+    return resolved_model, api_key

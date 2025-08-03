@@ -7,8 +7,16 @@ logger = logging.getLogger("openai_wrapper")
 API_KEY = os.getenv("OPENAI_API_KEY") or os.getenv("OPENAI_KEY")
 openai.api_key = API_KEY
 
-DEFAULT_MODEL = os.getenv("DEFAULT_GPT_MODEL", "o3")
-FALLBACK_MODEL = os.getenv("FALLBACK_GPT_MODEL", "gpt-3.5-turbo")
+# Use model registry for default and fallback models
+try:
+    from nova_core.model_registry import resolve as resolve_model, get_default_model
+    DEFAULT_MODEL = get_default_model()
+    FALLBACK_MODEL = resolve_model("gpt-3.5-turbo")
+except ImportError:
+    # Fallback if model registry not available
+    DEFAULT_MODEL = "gpt-4o"
+    FALLBACK_MODEL = "gpt-3.5-turbo"
+
 MAX_COST_DOLLARS = float(os.getenv("MAX_PROMPT_COST", "0.005"))
 
 _enc_cache = {}
@@ -27,11 +35,18 @@ def estimate_cost(prompt: str, model: str):
     return tok / 1000 * 0.03
 
 def chat_completion(prompt: str, model: str = None, temperature: float = 0.2, **kwargs) -> str:
-    chosen = model or DEFAULT_MODEL
+    # Resolve model alias to official OpenAI model ID
+    try:
+        chosen = resolve_model(model) if model else DEFAULT_MODEL
+    except KeyError as e:
+        logger.error(f"Invalid model alias: {e}")
+        chosen = FALLBACK_MODEL
+    
     # watchdog
     if estimate_cost(prompt, chosen) > MAX_COST_DOLLARS:
         logger.info("Downgrading model due to cost watchdog")
         chosen = FALLBACK_MODEL
+    
     for attempt in range(3):
         try:
             resp = openai.ChatCompletion.create(
