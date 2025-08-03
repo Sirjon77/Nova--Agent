@@ -4,6 +4,17 @@ from fastapi import APIRouter, Request, Response, Cookie
 from pydantic import BaseModel
 from memory_router import assemble_prompt, store_short
 from openai import OpenAI
+
+# Use model registry for model resolution
+try:
+    from nova_core.model_registry import resolve as resolve_model, get_default_model
+except ImportError:
+    # Fallback function if model registry not available
+    def resolve_model(alias: str) -> str:
+        return alias
+    def get_default_model() -> str:
+        return "gpt-4o"
+
 client = OpenAI()
 
 router = APIRouter(prefix="/api/v4", tags=["chat"])
@@ -23,9 +34,13 @@ async def chat(body: ChatBody, session_id: str | None = Cookie(default=None)):
     user_msg = body.message
     prompt = assemble_prompt(session_id, user_msg)
 
+    # Use model registry to resolve model alias
+    model_alias = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
+    model = resolve_model(model_alias)
+
     # Call the LLM
     completion = client.chat.completions.create(
-        model=os.getenv("OPENAI_MODEL", "gpt-4o-mini"),
+        model=model,  # Now uses resolved official model ID
         messages=[{"role": "user", "content": prompt}],
     )
 

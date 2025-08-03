@@ -11,40 +11,47 @@ This module provides advanced text summarization capabilities:
 import re
 import logging
 from typing import Optional, Dict, Any, List
-from utils.openai_wrapper import chat_completion
-from utils.memory_manager import memory_manager
+import time
+
+# Use model registry for model resolution
+try:
+    from nova_core.model_registry import resolve as resolve_model, get_default_model
+except ImportError:
+    # Fallback function if model registry not available
+    def resolve_model(alias: str) -> str:
+        return alias
+    def get_default_model() -> str:
+        return "gpt-4o"
 
 logger = logging.getLogger(__name__)
 
 class EnhancedSummarizer:
     """
-    Enhanced summarizer with recursive summarization and context handling.
-    
-    Features:
-    - Recursive summarization for long texts
-    - Context-aware prompts
-    - Token limit management
-    - Format handling
-    - Error recovery
+    Enhanced summarization system with recursive processing, context awareness,
+    and automatic memory storage.
     """
     
     def __init__(self, 
                  max_chunk_size: int = 3000,
                  max_summary_length: int = 500,
-                 model: str = "gpt-4o-mini"):
+                 model: str = None):
         """
         Initialize the enhanced summarizer.
         
         Args:
             max_chunk_size: Maximum characters per chunk
             max_summary_length: Maximum tokens for summary
-            model: OpenAI model to use
+            model: OpenAI model to use (will be resolved through registry)
         """
         self.max_chunk_size = max_chunk_size
         self.max_summary_length = max_summary_length
-        self.model = model
         
-        logger.info(f"EnhancedSummarizer initialized with model: {model}")
+        # Use model registry to resolve model alias
+        if model is None:
+            model = get_default_model()
+        self.model = resolve_model(model)
+        
+        logger.info(f"EnhancedSummarizer initialized with model: {self.model}")
     
     def summarize_text(self, 
                       text: str, 

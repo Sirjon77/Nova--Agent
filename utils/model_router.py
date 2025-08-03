@@ -2,6 +2,16 @@
 import json
 import re
 
+# Use model registry for model resolution
+try:
+    from nova_core.model_registry import resolve as resolve_model, get_default_model
+except ImportError:
+    # Fallback function if model registry not available
+    def resolve_model(alias: str) -> str:
+        return alias
+    def get_default_model() -> str:
+        return "gpt-4o"
+
 MODELS_FILE = "models.json"
 STATE = {"active_model": None}
 
@@ -33,13 +43,11 @@ def detect_task_based_model(message: str):
         return "o3-deep-research"
     elif "script" in lower:
         return "gpt-4.1"
-        return "gpt-4.1-mini"
     elif "hook" in lower or "idea" in lower:
-        return "gpt-4o-mini"
+        return resolve_model("gpt-4o-mini")  # Use model registry
     elif "summarize" in lower or "shorten" in lower:
         return "gpt-4.1-nano"
     return None
-
 
 # log_model_usage removed
 
@@ -47,8 +55,11 @@ def detect_task_based_model(message: str):
 # log_model_usage(model_name, num_tokens_used)
 # ---- Auto Model Selector patch (Tier‑A upgrade) ----
 import os
-def _choose_model(prompt: str, preferred: str = "gpt-4o-mini"):
+def _choose_model(prompt: str, preferred: str = None):
     """Select cheaper/faster model if prompt is short."""
+    if preferred is None:
+        preferred = get_default_model()  # Use model registry default
+    
     length = len(prompt)
     if length > 4000:
         return preferred  # large prompt: stick to mini
