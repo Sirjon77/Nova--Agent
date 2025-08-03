@@ -7,7 +7,7 @@ that translate technical errors into helpful user responses.
 
 import logging
 from typing import Dict, Any, Optional, List
-from utils.memory_manager import memory_manager
+from utils.memory_manager import get_global_memory_manager
 
 logger = logging.getLogger(__name__)
 

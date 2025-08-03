@@ -1,7 +1,8 @@
-from memory import query_memory
+from utils.memory_manager import get_global_memory_manager
 
 def run_nova_selftest():
-    directives = query_memory("system_directives")
+    mm = get_global_memory_manager()
+    directives = mm.get_relevant_memories("system_directives", namespace="system", top_k=5)
     if not directives:
         return "❌ No system directive found in memory."
 

@@ -9,7 +9,7 @@ from pathlib import Path
 from unittest.mock import patch, MagicMock
 
 from utils.memory_manager import get_global_memory_manager, MemoryManager
-from memory import save_to_memory, query_memory, is_memory_available, get_memory_status
+from memory.legacy_adapter import save_to_memory, query_memory, is_memory_available, get_memory_status
 
 
 class TestMemoryMigration:
@@ -38,22 +38,22 @@ class TestMemoryMigration:
     
     def test_deprecated_save_to_memory_warning(self):
         """Test that save_to_memory emits deprecation warning."""
-        with pytest.warns(DeprecationWarning, match="save_to_memory is deprecated"):
+        with pytest.warns(DeprecationWarning, match="save_to_memory.*deprecated"):
             save_to_memory("test_namespace", "test_key", "test_content")
     
     def test_deprecated_query_memory_warning(self):
         """Test that query_memory emits deprecation warning."""
-        with pytest.warns(DeprecationWarning, match="query_memory is deprecated"):
+        with pytest.warns(DeprecationWarning, match="query_memory.*deprecated"):
             query_memory("test_namespace", "test_query")
     
     def test_deprecated_is_memory_available_warning(self):
         """Test that is_memory_available emits deprecation warning."""
-        with pytest.warns(DeprecationWarning, match="is_memory_available is deprecated"):
+        with pytest.warns(DeprecationWarning, match="is_memory_available.*deprecated"):
             is_memory_available()
     
     def test_deprecated_get_memory_status_warning(self):
         """Test that get_memory_status emits deprecation warning."""
-        with pytest.warns(DeprecationWarning, match="get_memory_status is deprecated"):
+        with pytest.warns(DeprecationWarning, match="get_memory_status.*deprecated"):
             get_memory_status()
     
     def test_global_memory_manager_singleton(self):

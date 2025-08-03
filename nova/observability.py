@@ -359,8 +359,9 @@ class NovaObservability:
     def _check_memory_health(self) -> Dict[str, Any]:
         """Check memory system health."""
         try:
-            from memory import get_memory_status
-            memory_status = get_memory_status()
+            from utils.memory_manager import get_global_memory_manager
+            mm = get_global_memory_manager()
+            memory_status = mm.get_memory_status()
             
             issues = []
             status = "healthy"

@@ -25,8 +25,7 @@ from nova.nlp.context_manager import ContextManager
 from nova.autonomous_research import AutonomousResearcher, ResearchHypothesis, Experiment
 from nova.governance_scheduler import GovernanceScheduler
 from nova.observability import NovaObservability
-from utils.memory_manager import MemoryManager
-from memory import save_to_memory, query_memory, get_memory_status
+from utils.memory_manager import MemoryManager, get_global_memory_manager
 
 class TestNLPIntentClassification:
     """Test NLP intent classification system."""

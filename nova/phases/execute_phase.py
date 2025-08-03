@@ -247,17 +247,20 @@ def _execute_query_memory(parameters: Dict[str, Any], strategy: Dict[str, Any]) 
         depth = parameters.get("depth", 10)
         include_context = parameters.get("include_context", True)
         
-        # Simulate memory query (replace with actual memory system)
-        memory_results = [
-            "Resumed Nova loop at 10:30 AM",
-            "Generated 3 TikTok videos",
-            "RPM check: $0.85 average",
-            "Switched to Avatar 2"
-        ]
+        # Use the new memory manager
+        from utils.memory_manager import get_global_memory_manager
+        mm = get_global_memory_manager()
+        
+        # Query memory using the new system
+        memory_results = mm.get_relevant_memories(query, namespace="general", top_k=depth)
+        
+        if not memory_results:
+            return f"🧠 No memory results found for '{query}'"
         
         response = f"🧠 Memory query results for '{query}':\n"
-        for i, result in enumerate(memory_results[:depth], 1):
-            response += f"  {i}. {result}\n"
+        for i, result in enumerate(memory_results, 1):
+            content = result.get("content", str(result))
+            response += f"  {i}. {content}\n"
         
         return response.strip()
         
