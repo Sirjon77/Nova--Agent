@@ -33,6 +33,13 @@ def to_official(name: Optional[str] = None) -> str:
     """Return an official OpenAI model name for *any* supported alias."""
     if not name:
         return Model.DEFAULT.value
+    
+    # Strip whitespace
+    name = name.strip()
+    
+    if not name:
+        return Model.DEFAULT.value
+    
     try:
         alias = Model(name)
     except ValueError:  # unknown → assume caller supplied a valid public name

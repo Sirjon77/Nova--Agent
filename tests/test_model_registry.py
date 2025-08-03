@@ -23,7 +23,7 @@ def test_legacy_invalid_aliases():
 def test_default_model():
     """Test default model handling."""
     assert to_official(None) == Model.DEFAULT.value
-    assert to_official("") == ""
+    assert to_official("") == Model.DEFAULT.value  # Empty string should return default
 
 
 def test_backward_compatibility():
