@@ -1,16 +1,15 @@
 import os
 from redis_client import r
-from openai import OpenAI
 
-# Use model registry for model resolution
+# Use the new OpenAI client wrapper that forces model translation
 try:
-    from nova_core.model_registry import resolve as resolve_model
+    from nova.services.openai_client import chat_completion
 except ImportError:
-    # Fallback function if model registry not available
-    def resolve_model(alias: str) -> str:
-        return alias
-
-client = OpenAI()
+    # Fallback to direct OpenAI call if wrapper not available
+    from openai import OpenAI
+    client = OpenAI()
+    def chat_completion(messages, model=None, **kwargs):
+        return client.chat.completions.create(messages=messages, **kwargs)
 
 def summarise_if_needed(session_id: str):
     key = f"hist:{session_id}"
@@ -19,15 +18,13 @@ def summarise_if_needed(session_id: str):
     if len(joined) < 8000:
         return
     
-    # Use model registry to resolve model alias
-    model = resolve_model("gpt-4o-mini")
-    
-    completion = client.chat.completions.create(
-        model=model,  # Now uses resolved official model ID
+    # Use the wrapper that automatically translates model aliases
+    completion = chat_completion(
         messages=[
             {"role": "system", "content": "Summarise the following chat as one sentence."},
             {"role": "user", "content": joined},
         ],
+        model="gpt-4o-mini",  # Will be automatically translated to "gpt-4o"
     )
     summary = completion.choices[0].message.content.strip()
     r.set(f"summary:{session_id}", summary)

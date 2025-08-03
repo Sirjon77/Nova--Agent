@@ -3,19 +3,16 @@ import os, uuid, json
 from fastapi import APIRouter, Request, Response, Cookie
 from pydantic import BaseModel
 from memory_router import assemble_prompt, store_short
-from openai import OpenAI
 
-# Use model registry for model resolution
+# Use the new OpenAI client wrapper that forces model translation
 try:
-    from nova_core.model_registry import resolve as resolve_model, get_default_model
+    from nova.services.openai_client import chat_completion
 except ImportError:
-    # Fallback function if model registry not available
-    def resolve_model(alias: str) -> str:
-        return alias
-    def get_default_model() -> str:
-        return "gpt-4o"
-
-client = OpenAI()
+    # Fallback to direct OpenAI call if wrapper not available
+    from openai import OpenAI
+    client = OpenAI()
+    def chat_completion(messages, model=None, **kwargs):
+        return client.chat.completions.create(messages=messages, **kwargs)
 
 router = APIRouter(prefix="/api/v4", tags=["chat"])
 
@@ -34,14 +31,13 @@ async def chat(body: ChatBody, session_id: str | None = Cookie(default=None)):
     user_msg = body.message
     prompt = assemble_prompt(session_id, user_msg)
 
-    # Use model registry to resolve model alias
+    # Use the wrapper that automatically translates model aliases
     model_alias = os.getenv("OPENAI_MODEL", "gpt-4o")
-    model = resolve_model(model_alias)
 
-    # Call the LLM
-    completion = client.chat.completions.create(
-        model=model,  # Now uses resolved official model ID
+    # Call the LLM using the wrapper
+    completion = chat_completion(
         messages=[{"role": "user", "content": prompt}],
+        model=model_alias,  # Will be automatically translated to official model ID
     )
 
     assistant_reply = completion.choices[0].message.content
