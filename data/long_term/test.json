@@ -16,5 +16,23 @@
     "content": "test",
     "timestamp": 1754206286.825344,
     "metadata": {}
+  },
+  {
+    "key": "test",
+    "content": "test",
+    "timestamp": 1754206368.917933,
+    "metadata": {}
+  },
+  {
+    "key": "validation",
+    "content": "Memory integration test successful",
+    "timestamp": 1754206391.84338,
+    "metadata": {}
+  },
+  {
+    "key": "legacy",
+    "content": "Legacy adapter test",
+    "timestamp": 1754206391.893085,
+    "metadata": {}
   }
 ]
