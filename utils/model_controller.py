@@ -25,14 +25,14 @@ except ImportError:
 
 # Default model map (can be overridden by on‑disk JSON)
 _DEFAULT_TIERS = {
-    "ultra_light":   {"model": "gpt-4o-mini",          "routes": ["micro_summary", "caption_fix"]},
+    "ultra_light":   {"model": "gpt-3.5-turbo",       "routes": ["micro_summary", "caption_fix"]},
     "budget_creative": {"model": "gpt-4.1-nano",      "routes": ["ab_test", "hashtag", "hook"]},
     "standard_brain": {"model": "o3",                 "routes": ["script", "carousel", "dev"]},
-    "multimodal_core": {"model": "gpt-4o-vision",     "routes": ["multimodal"]},
+    "multimodal_core": {"model": "gpt-4o",            "routes": ["multimodal"]},
     "deep_research": {"model": "o3-pro",              "routes": ["deep_reason"]},
-    "retrieval":     {"model": "gpt-4o-mini",          "routes": ["retrieval"]},  # Fixed: was gpt-4o-mini-search
+    "retrieval":     {"model": "gpt-4o",              "routes": ["retrieval"]},
     "embeddings":    {"model": "text-embedding-3-small", "routes": ["embedding"]},
-    "tts_asr":       {"model": "gpt-4o-mini",          "routes": ["voice"]},  # Fixed: was gpt-4o-mini-TTS
+    "tts_asr":       {"model": "gpt-4o",              "routes": ["voice"]},
     "images":        {"model": "GPT-Image-1",         "routes": ["image"]},
 }
 
@@ -46,14 +46,14 @@ def _load_config() -> Dict:
     return _DEFAULT_TIERS
 
 MODEL_TIERS = {
-    "ultra_light":   {"model": "gpt-4o-mini",          "routes": ["micro_summary", "caption_fix"]},
-    "light":         {"model": "gpt-4o-mini",          "routes": ["summary", "caption"]},
-    "multimodal_core": {"model": "gpt-4o-vision",     "routes": ["multimodal"]},
-    "core":          {"model": "gpt-4o-mini",          "routes": ["general", "analysis"]},
-    "retrieval":     {"model": "gpt-4o-mini",          "routes": ["retrieval"]},  # Fixed: was gpt-4o-mini-search
-    "heavy":         {"model": "gpt-4o",               "routes": ["complex_analysis"]},
-    "tts_asr":       {"model": "gpt-4o-mini",          "routes": ["voice"]},  # Fixed: was gpt-4o-mini-TTS
-    "ultra":         {"model": "gpt-4o",               "routes": ["research", "governance"]}
+    "ultra_light":   {"model": "gpt-3.5-turbo",       "routes": ["micro_summary", "caption_fix"]},
+    "light":         {"model": "gpt-3.5-turbo",       "routes": ["summary", "caption"]},
+    "multimodal_core": {"model": "gpt-4o",            "routes": ["multimodal"]},
+    "core":          {"model": "gpt-4o",              "routes": ["general", "analysis"]},
+    "retrieval":     {"model": "gpt-4o",              "routes": ["retrieval"]},
+    "heavy":         {"model": "gpt-4o",              "routes": ["complex_analysis"]},
+    "tts_asr":       {"model": "gpt-4o",              "routes": ["voice"]},
+    "ultra":         {"model": "gpt-4o",              "routes": ["research", "governance"]}
 }
 
 # Map model name to ENV var suffix (using resolved model names)

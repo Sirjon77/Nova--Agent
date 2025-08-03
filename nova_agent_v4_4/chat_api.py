@@ -35,7 +35,7 @@ async def chat(body: ChatBody, session_id: str | None = Cookie(default=None)):
     prompt = assemble_prompt(session_id, user_msg)
 
     # Use model registry to resolve model alias
-    model_alias = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
+    model_alias = os.getenv("OPENAI_MODEL", "gpt-4o")
     model = resolve_model(model_alias)
 
     # Call the LLM

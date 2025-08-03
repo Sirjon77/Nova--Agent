@@ -95,7 +95,7 @@ nlp:
   enable_rule_based_classification: true
   model_settings:
     sentence_transformer_model: "all-MiniLM-L6-v2"
-    openai_model: "gpt-4o-mini"  # Valid OpenAI model name
+    openai_model: "gpt-4o"  # Official OpenAI model name
     embedding_dimension: 384
   performance:
     max_response_time_ms: 500
