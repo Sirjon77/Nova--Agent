@@ -12,8 +12,8 @@ import time
 from utils.memory_manager import MemoryManager, get_global_memory_manager
 from utils.openai_wrapper import nova_chat_completion
 from utils.model_controller import select_model, MODEL_TIERS
-from utils.confidence import calculate_confidence
-from utils.json_logger import log_json
+from utils.confidence import rate_confidence
+from utils.json_logger import log
 from utils.logger import setup_logger
 from utils.memory_ranker import rank_memories
 from utils.memory_vault import MemoryVault
@@ -199,23 +199,26 @@ class TestModelController:
 
 
 class TestConfidence:
-    """Test confidence calculation."""
+    """Test confidence rating functionality."""
     
-    def test_calculate_confidence(self):
-        """Test confidence calculation."""
-        confidence = calculate_confidence(0.8, 0.9)
+    def test_rate_confidence(self):
+        """Test confidence rating."""
+        confidence = rate_confidence("Test action", "Test context")
         assert isinstance(confidence, float)
         assert 0 <= confidence <= 1
     
-    def test_calculate_confidence_edge_cases(self):
-        """Test confidence calculation edge cases."""
-        # Test with zero values
-        confidence = calculate_confidence(0, 0)
+    def test_rate_confidence_edge_cases(self):
+        """Test confidence rating edge cases."""
+        # Test with empty context
+        confidence = rate_confidence("Test action")
         assert isinstance(confidence, float)
+        assert 0 <= confidence <= 1
         
-        # Test with high values
-        confidence = calculate_confidence(1.0, 1.0)
+        # Test with very long action description
+        long_action = "A" * 1000
+        confidence = rate_confidence(long_action)
         assert isinstance(confidence, float)
+        assert 0 <= confidence <= 1
 
 
 class TestJsonLogger:
@@ -224,7 +227,7 @@ class TestJsonLogger:
     def test_log_json(self):
         """Test JSON logging."""
         data = {"test": "value", "number": 42}
-        result = log_json(data)
+        result = log(data)
         assert isinstance(result, str)
         assert "test" in result
         assert "42" in result

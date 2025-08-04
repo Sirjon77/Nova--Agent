@@ -13,7 +13,7 @@ from nova.metrics import tasks_executed, task_duration, memory_items
 # Import modules to test - using mock imports to avoid dependency issues
 # from nova.observability import get_system_health, get_performance_metrics
 from nova.governance_scheduler import GovernanceScheduler
-from nova.autonomous_research import AutonomousResearch
+from nova.autonomous_research import AutonomousResearcher
 from nova.research_dashboard import ResearchDashboard
 
 
@@ -137,12 +137,12 @@ class TestAutonomousResearch:
     
     def test_autonomous_research_initialization(self):
         """Test AutonomousResearch initialization."""
-        research = AutonomousResearch()
+        research = AutonomousResearcher()
         assert research is not None
     
     def test_generate_hypothesis(self):
         """Test hypothesis generation."""
-        research = AutonomousResearch()
+        research = AutonomousResearcher()
         
         # Test hypothesis generation
         hypothesis = research.generate_hypothesis("test topic")
@@ -151,7 +151,7 @@ class TestAutonomousResearch:
     
     def test_design_experiment(self):
         """Test experiment design."""
-        research = AutonomousResearch()
+        research = AutonomousResearcher()
         
         # Test experiment design
         experiment = research.design_experiment("test hypothesis")
@@ -161,7 +161,7 @@ class TestAutonomousResearch:
     
     def test_collect_metrics(self):
         """Test metrics collection."""
-        research = AutonomousResearch()
+        research = AutonomousResearcher()
         
         # Test metrics collection
         metrics = research.collect_metrics("test experiment")
@@ -169,7 +169,7 @@ class TestAutonomousResearch:
     
     def test_analyze_results(self):
         """Test results analysis."""
-        research = AutonomousResearch()
+        research = AutonomousResearcher()
         
         # Test results analysis
         analysis = research.analyze_results("test metrics")
@@ -179,7 +179,7 @@ class TestAutonomousResearch:
     
     def test_generate_recommendations(self):
         """Test recommendations generation."""
-        research = AutonomousResearch()
+        research = AutonomousResearcher()
         
         # Test recommendations generation
         recommendations = research.generate_recommendations("test analysis")
@@ -187,7 +187,7 @@ class TestAutonomousResearch:
     
     def test_run_research_cycle(self):
         """Test complete research cycle."""
-        research = AutonomousResearch()
+        research = AutonomousResearcher()
         
         # Test complete research cycle
         result = research.run_research_cycle("test topic")
@@ -260,7 +260,7 @@ class TestNovaIntegration:
     def test_governance_with_research(self):
         """Test governance integration with research."""
         scheduler = GovernanceScheduler()
-        research = AutonomousResearch()
+        research = AutonomousResearcher()
         
         # Run governance tasks
         governance_result = scheduler.run_niche_scoring()

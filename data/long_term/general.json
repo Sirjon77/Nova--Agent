@@ -1,0 +1,14 @@
+[
+  {
+    "key": "governance_1754280376",
+    "content": "tool_health",
+    "timestamp": 1754280376.3065841,
+    "metadata": "{\"timestamp\": \"2025-08-04T00:06:16.297153\", \"tools\": {\"openai\": {\"status\": \"unhealthy\", \"error\": \"object str can't be used in 'await' expression\"}, \"memory\": {\"status\": \"degraded\", \"details\": {\"redis_available\": false, \"weaviate_available\": false, \"fully_available\": false, \"short_term_count\": 1, \"long_term_count\": 23, \"summary_count\": 0, \"log_count\": 0}}, \"notion\": {\"status\": \"available\"}, \"sheets\": {\"status\": \"not_installed\"}, \"metricool\": {\"status\": \"available\"}, \"convertkit\": {\"status\": \"available\"}, \"gumroad\": {\"status\": \"available\"}}, \"overall_health\": \"degraded\", \"issues\": [\"OpenAI API: object str can't be used in 'await' expression\", \"Memory system not fully available\"]}"
+  },
+  {
+    "key": "autonomous_research_1754280376",
+    "content": "research_cycle",
+    "timestamp": 1754280376.9860091,
+    "metadata": "{\"cycle_timestamp\": \"2025-08-04T00:06:16.985478\", \"hypotheses_generated\": 0, \"experiments_created\": 0, \"experiments_completed\": 0, \"total_hypotheses\": 0, \"total_experiments\": 0, \"total_results\": 0, \"insights\": [\"No research results available yet\"]}"
+  }
+]

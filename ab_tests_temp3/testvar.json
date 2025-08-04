@@ -1,0 +1,82 @@
+{
+  "variants": [
+    "A",
+    "B"
+  ],
+  "serving_log": [
+    {
+      "timestamp": "2025-08-04T03:52:10.969809",
+      "variant": "A"
+    },
+    {
+      "timestamp": "2025-08-04T03:52:23.283339",
+      "variant": "A"
+    },
+    {
+      "timestamp": "2025-08-04T03:53:48.536154",
+      "variant": "A"
+    },
+    {
+      "timestamp": "2025-08-04T03:53:58.991902",
+      "variant": "A"
+    },
+    {
+      "timestamp": "2025-08-04T04:06:08.566205",
+      "variant": "A"
+    },
+    {
+      "timestamp": "2025-08-04T04:10:46.629824",
+      "variant": "A"
+    },
+    {
+      "timestamp": "2025-08-04T04:18:56.585729",
+      "variant": "A"
+    },
+    {
+      "timestamp": "2025-08-04T05:37:51.337445",
+      "variant": "A"
+    }
+  ],
+  "results": [
+    {
+      "timestamp": "2025-08-04T03:52:10.974991",
+      "variant": "A",
+      "metric": 1.23
+    },
+    {
+      "timestamp": "2025-08-04T03:52:23.288761",
+      "variant": "A",
+      "metric": 1.23
+    },
+    {
+      "timestamp": "2025-08-04T03:53:48.542279",
+      "variant": "A",
+      "metric": 1.23
+    },
+    {
+      "timestamp": "2025-08-04T03:53:58.998828",
+      "variant": "A",
+      "metric": 1.23
+    },
+    {
+      "timestamp": "2025-08-04T04:06:08.571106",
+      "variant": "A",
+      "metric": 1.23
+    },
+    {
+      "timestamp": "2025-08-04T04:10:46.636050",
+      "variant": "A",
+      "metric": 1.23
+    },
+    {
+      "timestamp": "2025-08-04T04:18:56.593357",
+      "variant": "A",
+      "metric": 1.23
+    },
+    {
+      "timestamp": "2025-08-04T05:37:51.344500",
+      "variant": "A",
+      "metric": 1.23
+    }
+  ]
+}
