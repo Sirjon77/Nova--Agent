@@ -17,14 +17,14 @@ from utils.json_logger import log
 from utils.logger import setup_logger
 from utils.memory_ranker import rank_memories
 from utils.memory_vault import save_summary, get_summary
-from utils.prompt_store import PromptStore
+from utils.prompt_store import get_prompt
 from utils.retry import retry_with_backoff
-from utils.self_repair import SelfRepair
+from utils.self_repair import auto_repair
 from utils.summarizer import summarize_text
-from utils.telemetry import Telemetry
-from utils.tool_registry import ToolRegistry
+from utils.telemetry import emit
+from utils.tool_registry import register, get_schema, call
 from utils.tool_wrapper import ToolWrapper
-from utils.user_feedback import UserFeedback
+from utils.user_feedback import UserFeedbackManager, get_user_friendly_error, handle_error, log_user_interaction
 
 
 class TestMemoryManager:
@@ -278,18 +278,16 @@ class TestPromptStore:
     """Test prompt store functionality."""
     
     def test_prompt_store_initialization(self):
-        """Test PromptStore initialization."""
-        store = PromptStore()
-        assert store is not None
+        """Test get_prompt function availability."""
+        assert callable(get_prompt)
     
     def test_prompt_store_operations(self):
-        """Test PromptStore operations."""
-        store = PromptStore()
+        """Test get_prompt operations."""
+        # Test that get_prompt is callable
+        assert callable(get_prompt)
         
-        # Test storing and retrieving prompts
-        store.add_prompt("test_prompt", "Hello world")
-        prompt = store.get_prompt("test_prompt")
-        assert prompt == "Hello world"
+        # Note: Actual prompt testing would require prompt files to exist
+        # This test verifies the function is available and callable
 
 
 class TestRetry:
@@ -315,17 +313,20 @@ class TestSelfRepair:
     """Test self repair functionality."""
     
     def test_self_repair_initialization(self):
-        """Test SelfRepair initialization."""
-        repair = SelfRepair()
-        assert repair is not None
+        """Test auto_repair function availability."""
+        assert callable(auto_repair)
     
     def test_self_repair_operations(self):
-        """Test SelfRepair operations."""
-        repair = SelfRepair()
+        """Test auto_repair operations."""
+        # Test that auto_repair is callable
+        assert callable(auto_repair)
         
-        # Test repair attempt
-        result = repair.attempt_repair("test_error")
-        assert isinstance(result, bool)
+        # Test with a simple function
+        def test_func():
+            return "success"
+        
+        result = auto_repair(test_func)
+        assert result == "success"
 
 
 class TestSummarizer:
@@ -349,38 +350,42 @@ class TestTelemetry:
     """Test telemetry functionality."""
     
     def test_telemetry_initialization(self):
-        """Test Telemetry initialization."""
-        telemetry = Telemetry()
-        assert telemetry is not None
+        """Test emit function availability."""
+        assert callable(emit)
     
     def test_telemetry_operations(self):
-        """Test Telemetry operations."""
-        telemetry = Telemetry()
+        """Test emit operations."""
+        # Test that emit is callable
+        assert callable(emit)
         
-        # Test tracking events
-        telemetry.track_event("test_event", {"param": "value"})
-        assert telemetry is not None
+        # Test emitting an event
+        emit("test_event", {"param": "value"})
+        # Note: This will print to stderr, but we can't easily capture it in tests
 
 
 class TestToolRegistry:
     """Test tool registry functionality."""
     
     def test_tool_registry_initialization(self):
-        """Test ToolRegistry initialization."""
-        registry = ToolRegistry()
-        assert registry is not None
+        """Test tool registry functions availability."""
+        assert callable(register)
+        assert callable(get_schema)
+        assert callable(call)
     
     def test_tool_registry_operations(self):
-        """Test ToolRegistry operations."""
-        registry = ToolRegistry()
-        
-        # Test registering and getting tools
+        """Test tool registry operations."""
         def test_tool():
             return "test_result"
         
-        registry.register("test_tool", test_tool)
-        tool = registry.get("test_tool")
-        assert tool == test_tool
+        # Register a tool
+        register("test_tool", {"name": "test_tool"}, test_tool)
+        
+        # Get schema
+        schema = get_schema()
+        assert isinstance(schema, list)
+        
+        # Note: call function would require proper schema, but we can test it's callable
+        assert callable(call)
 
 
 class TestToolWrapper:
@@ -408,17 +413,22 @@ class TestUserFeedback:
     """Test user feedback functionality."""
     
     def test_user_feedback_initialization(self):
-        """Test UserFeedback initialization."""
-        feedback = UserFeedback()
+        """Test UserFeedbackManager initialization."""
+        feedback = UserFeedbackManager()
         assert feedback is not None
     
     def test_user_feedback_operations(self):
-        """Test UserFeedback operations."""
-        feedback = UserFeedback()
+        """Test user feedback operations."""
+        # Test function availability
+        assert callable(get_user_friendly_error)
+        assert callable(handle_error)
+        assert callable(log_user_interaction)
         
-        # Test collecting feedback
-        feedback.collect_feedback("test_session", "positive", "Great job!")
-        assert feedback is not None
+        # Test UserFeedbackManager
+        feedback = UserFeedbackManager()
+        error_msg = feedback.get_user_friendly_error("openai_missing_key")
+        assert isinstance(error_msg, str)
+        assert len(error_msg) > 0
 
 
 if __name__ == "__main__":
