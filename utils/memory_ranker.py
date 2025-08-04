@@ -32,6 +32,20 @@ def score_memory(mem: Dict, query: str = "") -> float:
     sim_score = _fake_similarity(mem.get("content",""), query)
     return RECENCY_WEIGHT * recency_score + RELEVANCE_WEIGHT * sim_score
 
+def rank_memories(memories: List[Dict], query: str = "", top_k: int = 10) -> List[Dict]:
+    """Rank memories by relevance to query and return top_k results."""
+    if not memories:
+        return []
+    
+    # Score each memory
+    scored_memories = [(mem, score_memory(mem, query)) for mem in memories]
+    
+    # Sort by score (highest first)
+    scored_memories.sort(key=lambda x: x[1], reverse=True)
+    
+    # Return top_k results
+    return [mem for mem, score in scored_memories[:top_k]]
+
 # --- Weaviate prune stub ----
 def prune_low_value(weaviate_client, session_id: str, query: str = ""):
     """Delete memories for `session_id` whose score < SIM_THRESHOLD."""
