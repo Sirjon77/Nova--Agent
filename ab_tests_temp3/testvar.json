@@ -35,6 +35,42 @@
     {
       "timestamp": "2025-08-04T05:37:51.337445",
       "variant": "A"
+    },
+    {
+      "timestamp": "2025-08-04T21:11:18.654859",
+      "variant": "A"
+    },
+    {
+      "timestamp": "2025-08-04T21:32:31.617470",
+      "variant": "A"
+    },
+    {
+      "timestamp": "2025-08-04T21:34:33.326367",
+      "variant": "A"
+    },
+    {
+      "timestamp": "2025-08-04T21:43:18.020422",
+      "variant": "A"
+    },
+    {
+      "timestamp": "2025-08-04T21:44:36.526772",
+      "variant": "A"
+    },
+    {
+      "timestamp": "2025-08-04T21:48:32.577578",
+      "variant": "A"
+    },
+    {
+      "timestamp": "2025-08-04T21:49:54.821779",
+      "variant": "A"
+    },
+    {
+      "timestamp": "2025-08-04T21:50:58.706922",
+      "variant": "A"
+    },
+    {
+      "timestamp": "2025-08-04T21:52:07.361879",
+      "variant": "A"
     }
   ],
   "results": [
@@ -75,6 +111,51 @@
     },
     {
       "timestamp": "2025-08-04T05:37:51.344500",
+      "variant": "A",
+      "metric": 1.23
+    },
+    {
+      "timestamp": "2025-08-04T21:11:18.659617",
+      "variant": "A",
+      "metric": 1.23
+    },
+    {
+      "timestamp": "2025-08-04T21:32:31.622077",
+      "variant": "A",
+      "metric": 1.23
+    },
+    {
+      "timestamp": "2025-08-04T21:34:33.332246",
+      "variant": "A",
+      "metric": 1.23
+    },
+    {
+      "timestamp": "2025-08-04T21:43:18.027300",
+      "variant": "A",
+      "metric": 1.23
+    },
+    {
+      "timestamp": "2025-08-04T21:44:36.530831",
+      "variant": "A",
+      "metric": 1.23
+    },
+    {
+      "timestamp": "2025-08-04T21:48:32.581511",
+      "variant": "A",
+      "metric": 1.23
+    },
+    {
+      "timestamp": "2025-08-04T21:49:54.825765",
+      "variant": "A",
+      "metric": 1.23
+    },
+    {
+      "timestamp": "2025-08-04T21:50:58.710702",
+      "variant": "A",
+      "metric": 1.23
+    },
+    {
+      "timestamp": "2025-08-04T21:52:07.368477",
       "variant": "A",
       "metric": 1.23
     }

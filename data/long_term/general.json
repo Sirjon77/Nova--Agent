@@ -10,5 +10,383 @@
     "content": "research_cycle",
     "timestamp": 1754280376.9860091,
     "metadata": "{\"cycle_timestamp\": \"2025-08-04T00:06:16.985478\", \"hypotheses_generated\": 0, \"experiments_created\": 0, \"experiments_completed\": 0, \"total_hypotheses\": 0, \"total_experiments\": 0, \"total_results\": 0, \"insights\": [\"No research results available yet\"]}"
+  },
+  {
+    "key": "governance_1754341849",
+    "content": "niche_scoring",
+    "timestamp": 1754341849.64015,
+    "metadata": "{\"niche_scores\": {\"tech\": 85, \"health\": 72}, \"recommendations\": [\"Focus on tech niche\"]}"
+  },
+  {
+    "key": "governance_1754341849",
+    "content": "tool_health",
+    "timestamp": 1754341849.666067,
+    "metadata": "{\"timestamp\": \"2025-08-04T17:10:49.642301\", \"tools\": {\"openai\": {\"status\": \"unhealthy\", \"error\": \"object str can't be used in 'await' expression\"}, \"memory\": {\"status\": \"degraded\", \"details\": {\"redis_available\": false, \"weaviate_available\": false, \"fully_available\": false, \"short_term_count\": 107, \"long_term_count\": 40, \"summary_count\": 0, \"log_count\": 0}}, \"notion\": {\"status\": \"available\"}, \"sheets\": {\"status\": \"not_installed\"}, \"metricool\": {\"status\": \"available\"}, \"convertkit\": {\"status\": \"available\"}, \"gumroad\": {\"status\": \"available\"}}, \"overall_health\": \"degraded\", \"issues\": [\"OpenAI API: object str can't be used in 'await' expression\", \"Memory system not fully available\"]}"
+  },
+  {
+    "key": "audit_1754341849",
+    "content": "log",
+    "timestamp": 1754341849.670536,
+    "metadata": "{\"type\": \"request\", \"method\": \"GET\", \"endpoint\": \"/test\", \"status\": 200, \"duration\": 0.5, \"timestamp\": \"2025-08-04T17:10:49.670396\"}"
+  },
+  {
+    "key": "audit_1754341849",
+    "content": "log",
+    "timestamp": 1754341849.67202,
+    "metadata": "{\"type\": \"error\", \"error_type\": \"api_error\", \"module\": \"test_module\", \"message\": \"Test error message\", \"timestamp\": \"2025-08-04T17:10:49.671910\"}"
+  },
+  {
+    "key": "autonomous_research_1754341851",
+    "content": "research_cycle",
+    "timestamp": 1754341851.712903,
+    "metadata": "{\"cycle_timestamp\": \"2025-08-04T17:10:51.712758\", \"hypotheses_generated\": 0, \"experiments_created\": 0, \"experiments_completed\": 0, \"total_hypotheses\": 0, \"total_experiments\": 0, \"total_results\": 0, \"insights\": [\"No research results available yet\"]}"
+  },
+  {
+    "key": "autonomous_research_1754341851",
+    "content": "research_cycle",
+    "timestamp": 1754341851.7405481,
+    "metadata": "{\"cycle_timestamp\": \"2025-08-04T17:10:51.740431\", \"hypotheses_generated\": 0, \"experiments_created\": 0, \"experiments_completed\": 0, \"total_hypotheses\": 0, \"total_experiments\": 0, \"total_results\": 0, \"insights\": [\"No research results available yet\"]}"
+  },
+  {
+    "key": "test_session_1754341866",
+    "content": "Content",
+    "timestamp": 1754341866.2899761,
+    "metadata": {}
+  },
+  {
+    "key": "governance_1754343117",
+    "content": "niche_scoring",
+    "timestamp": 1754343117.599545,
+    "metadata": "{\"niche_scores\": {\"tech\": 85, \"health\": 72}, \"recommendations\": [\"Focus on tech niche\"]}"
+  },
+  {
+    "key": "governance_1754343117",
+    "content": "tool_health",
+    "timestamp": 1754343117.6242828,
+    "metadata": "{\"timestamp\": \"2025-08-04T17:31:57.602765\", \"tools\": {\"openai\": {\"status\": \"unhealthy\", \"error\": \"object str can't be used in 'await' expression\"}, \"memory\": {\"status\": \"degraded\", \"details\": {\"redis_available\": false, \"weaviate_available\": false, \"fully_available\": false, \"short_term_count\": 212, \"long_term_count\": 52, \"summary_count\": 0, \"log_count\": 0}}, \"notion\": {\"status\": \"available\"}, \"sheets\": {\"status\": \"not_installed\"}, \"metricool\": {\"status\": \"available\"}, \"convertkit\": {\"status\": \"available\"}, \"gumroad\": {\"status\": \"available\"}}, \"overall_health\": \"degraded\", \"issues\": [\"OpenAI API: object str can't be used in 'await' expression\", \"Memory system not fully available\"]}"
+  },
+  {
+    "key": "audit_1754343117",
+    "content": "log",
+    "timestamp": 1754343117.632978,
+    "metadata": "{\"type\": \"request\", \"method\": \"GET\", \"endpoint\": \"/test\", \"status\": 200, \"duration\": 0.5, \"timestamp\": \"2025-08-04T17:31:57.632758\"}"
+  },
+  {
+    "key": "audit_1754343117",
+    "content": "log",
+    "timestamp": 1754343117.635193,
+    "metadata": "{\"type\": \"error\", \"error_type\": \"api_error\", \"module\": \"test_module\", \"message\": \"Test error message\", \"timestamp\": \"2025-08-04T17:31:57.635028\"}"
+  },
+  {
+    "key": "autonomous_research_1754343119",
+    "content": "research_cycle",
+    "timestamp": 1754343119.674301,
+    "metadata": "{\"cycle_timestamp\": \"2025-08-04T17:31:59.674116\", \"hypotheses_generated\": 0, \"experiments_created\": 0, \"experiments_completed\": 0, \"total_hypotheses\": 0, \"total_experiments\": 0, \"total_results\": 0, \"insights\": [\"No research results available yet\"]}"
+  },
+  {
+    "key": "autonomous_research_1754343119",
+    "content": "research_cycle",
+    "timestamp": 1754343119.720876,
+    "metadata": "{\"cycle_timestamp\": \"2025-08-04T17:31:59.720716\", \"hypotheses_generated\": 0, \"experiments_created\": 0, \"experiments_completed\": 0, \"total_hypotheses\": 0, \"total_experiments\": 0, \"total_results\": 0, \"insights\": [\"No research results available yet\"]}"
+  },
+  {
+    "key": "test_session_1754343139",
+    "content": "Content",
+    "timestamp": 1754343139.586328,
+    "metadata": {}
+  },
+  {
+    "key": "governance_1754343237",
+    "content": "niche_scoring",
+    "timestamp": 1754343237.902118,
+    "metadata": "{\"niche_scores\": {\"tech\": 85, \"health\": 72}, \"recommendations\": [\"Focus on tech niche\"]}"
+  },
+  {
+    "key": "governance_1754343237",
+    "content": "tool_health",
+    "timestamp": 1754343237.92626,
+    "metadata": "{\"timestamp\": \"2025-08-04T17:33:57.905587\", \"tools\": {\"openai\": {\"status\": \"unhealthy\", \"error\": \"object str can't be used in 'await' expression\"}, \"memory\": {\"status\": \"degraded\", \"details\": {\"redis_available\": false, \"weaviate_available\": false, \"fully_available\": false, \"short_term_count\": 317, \"long_term_count\": 64, \"summary_count\": 0, \"log_count\": 0}}, \"notion\": {\"status\": \"available\"}, \"sheets\": {\"status\": \"not_installed\"}, \"metricool\": {\"status\": \"available\"}, \"convertkit\": {\"status\": \"available\"}, \"gumroad\": {\"status\": \"available\"}}, \"overall_health\": \"degraded\", \"issues\": [\"OpenAI API: object str can't be used in 'await' expression\", \"Memory system not fully available\"]}"
+  },
+  {
+    "key": "audit_1754343237",
+    "content": "log",
+    "timestamp": 1754343237.934585,
+    "metadata": "{\"type\": \"request\", \"method\": \"GET\", \"endpoint\": \"/test\", \"status\": 200, \"duration\": 0.5, \"timestamp\": \"2025-08-04T17:33:57.934334\"}"
+  },
+  {
+    "key": "audit_1754343237",
+    "content": "log",
+    "timestamp": 1754343237.937063,
+    "metadata": "{\"type\": \"error\", \"error_type\": \"api_error\", \"module\": \"test_module\", \"message\": \"Test error message\", \"timestamp\": \"2025-08-04T17:33:57.936867\"}"
+  },
+  {
+    "key": "autonomous_research_1754343239",
+    "content": "research_cycle",
+    "timestamp": 1754343239.9745228,
+    "metadata": "{\"cycle_timestamp\": \"2025-08-04T17:33:59.974276\", \"hypotheses_generated\": 0, \"experiments_created\": 0, \"experiments_completed\": 0, \"total_hypotheses\": 0, \"total_experiments\": 0, \"total_results\": 0, \"insights\": [\"No research results available yet\"]}"
+  },
+  {
+    "key": "autonomous_research_1754343240",
+    "content": "research_cycle",
+    "timestamp": 1754343240.0244951,
+    "metadata": "{\"cycle_timestamp\": \"2025-08-04T17:34:00.024279\", \"hypotheses_generated\": 0, \"experiments_created\": 0, \"experiments_completed\": 0, \"total_hypotheses\": 0, \"total_experiments\": 0, \"total_results\": 0, \"insights\": [\"No research results available yet\"]}"
+  },
+  {
+    "key": "test_session_1754343261",
+    "content": "Content",
+    "timestamp": 1754343261.1756191,
+    "metadata": {}
+  },
+  {
+    "key": "governance_1754343765",
+    "content": "niche_scoring",
+    "timestamp": 1754343765.933324,
+    "metadata": "{\"niche_scores\": {\"tech\": 85, \"health\": 72}, \"recommendations\": [\"Focus on tech niche\"]}"
+  },
+  {
+    "key": "governance_1754343765",
+    "content": "tool_health",
+    "timestamp": 1754343765.965255,
+    "metadata": "{\"timestamp\": \"2025-08-04T17:42:45.937328\", \"tools\": {\"openai\": {\"status\": \"unhealthy\", \"error\": \"object str can't be used in 'await' expression\"}, \"memory\": {\"status\": \"degraded\", \"details\": {\"redis_available\": false, \"weaviate_available\": false, \"fully_available\": false, \"short_term_count\": 422, \"long_term_count\": 76, \"summary_count\": 0, \"log_count\": 0}}, \"notion\": {\"status\": \"available\"}, \"sheets\": {\"status\": \"not_installed\"}, \"metricool\": {\"status\": \"available\"}, \"convertkit\": {\"status\": \"available\"}, \"gumroad\": {\"status\": \"available\"}}, \"overall_health\": \"degraded\", \"issues\": [\"OpenAI API: object str can't be used in 'await' expression\", \"Memory system not fully available\"]}"
+  },
+  {
+    "key": "audit_1754343765",
+    "content": "log",
+    "timestamp": 1754343765.972484,
+    "metadata": "{\"type\": \"request\", \"method\": \"GET\", \"endpoint\": \"/test\", \"status\": 200, \"duration\": 0.5, \"timestamp\": \"2025-08-04T17:42:45.972262\"}"
+  },
+  {
+    "key": "audit_1754343765",
+    "content": "log",
+    "timestamp": 1754343765.977031,
+    "metadata": "{\"type\": \"error\", \"error_type\": \"api_error\", \"module\": \"test_module\", \"message\": \"Test error message\", \"timestamp\": \"2025-08-04T17:42:45.976784\"}"
+  },
+  {
+    "key": "autonomous_research_1754343768",
+    "content": "research_cycle",
+    "timestamp": 1754343768.018941,
+    "metadata": "{\"cycle_timestamp\": \"2025-08-04T17:42:48.018754\", \"hypotheses_generated\": 0, \"experiments_created\": 0, \"experiments_completed\": 0, \"total_hypotheses\": 0, \"total_experiments\": 0, \"total_results\": 0, \"insights\": [\"No research results available yet\"]}"
+  },
+  {
+    "key": "autonomous_research_1754343768",
+    "content": "research_cycle",
+    "timestamp": 1754343768.077346,
+    "metadata": "{\"cycle_timestamp\": \"2025-08-04T17:42:48.077142\", \"hypotheses_generated\": 0, \"experiments_created\": 0, \"experiments_completed\": 0, \"total_hypotheses\": 0, \"total_experiments\": 0, \"total_results\": 0, \"insights\": [\"No research results available yet\"]}"
+  },
+  {
+    "key": "test_session_1754343785",
+    "content": "Content",
+    "timestamp": 1754343785.7289228,
+    "metadata": {}
+  },
+  {
+    "key": "governance_1754343847",
+    "content": "niche_scoring",
+    "timestamp": 1754343847.839488,
+    "metadata": "{\"niche_scores\": {\"tech\": 85, \"health\": 72}, \"recommendations\": [\"Focus on tech niche\"]}"
+  },
+  {
+    "key": "governance_1754343847",
+    "content": "tool_health",
+    "timestamp": 1754343847.871788,
+    "metadata": "{\"timestamp\": \"2025-08-04T17:44:07.842672\", \"tools\": {\"openai\": {\"status\": \"unhealthy\", \"error\": \"object str can't be used in 'await' expression\"}, \"memory\": {\"status\": \"degraded\", \"details\": {\"redis_available\": false, \"weaviate_available\": false, \"fully_available\": false, \"short_term_count\": 527, \"long_term_count\": 88, \"summary_count\": 0, \"log_count\": 0}}, \"notion\": {\"status\": \"available\"}, \"sheets\": {\"status\": \"not_installed\"}, \"metricool\": {\"status\": \"available\"}, \"convertkit\": {\"status\": \"available\"}, \"gumroad\": {\"status\": \"available\"}}, \"overall_health\": \"degraded\", \"issues\": [\"OpenAI API: object str can't be used in 'await' expression\", \"Memory system not fully available\"]}"
+  },
+  {
+    "key": "audit_1754343847",
+    "content": "log",
+    "timestamp": 1754343847.882136,
+    "metadata": "{\"type\": \"request\", \"method\": \"GET\", \"endpoint\": \"/test\", \"status\": 200, \"duration\": 0.5, \"timestamp\": \"2025-08-04T17:44:07.881705\"}"
+  },
+  {
+    "key": "audit_1754343847",
+    "content": "log",
+    "timestamp": 1754343847.8855622,
+    "metadata": "{\"type\": \"error\", \"error_type\": \"api_error\", \"module\": \"test_module\", \"message\": \"Test error message\", \"timestamp\": \"2025-08-04T17:44:07.885277\"}"
+  },
+  {
+    "key": "autonomous_research_1754343849",
+    "content": "research_cycle",
+    "timestamp": 1754343849.9349499,
+    "metadata": "{\"cycle_timestamp\": \"2025-08-04T17:44:09.934757\", \"hypotheses_generated\": 0, \"experiments_created\": 0, \"experiments_completed\": 0, \"total_hypotheses\": 0, \"total_experiments\": 0, \"total_results\": 0, \"insights\": [\"No research results available yet\"]}"
+  },
+  {
+    "key": "autonomous_research_1754343850",
+    "content": "research_cycle",
+    "timestamp": 1754343850.018553,
+    "metadata": "{\"cycle_timestamp\": \"2025-08-04T17:44:10.018381\", \"hypotheses_generated\": 0, \"experiments_created\": 0, \"experiments_completed\": 0, \"total_hypotheses\": 0, \"total_experiments\": 0, \"total_results\": 0, \"insights\": [\"No research results available yet\"]}"
+  },
+  {
+    "key": "test_session_1754343864",
+    "content": "Content",
+    "timestamp": 1754343864.918784,
+    "metadata": {}
+  },
+  {
+    "key": "governance_1754344078",
+    "content": "niche_scoring",
+    "timestamp": 1754344078.417824,
+    "metadata": "{\"niche_scores\": {\"tech\": 85, \"health\": 72}, \"recommendations\": [\"Focus on tech niche\"]}"
+  },
+  {
+    "key": "governance_1754344078",
+    "content": "tool_health",
+    "timestamp": 1754344078.4503412,
+    "metadata": "{\"timestamp\": \"2025-08-04T17:47:58.421467\", \"tools\": {\"openai\": {\"status\": \"unhealthy\", \"error\": \"object str can't be used in 'await' expression\"}, \"memory\": {\"status\": \"degraded\", \"details\": {\"redis_available\": false, \"weaviate_available\": false, \"fully_available\": false, \"short_term_count\": 632, \"long_term_count\": 100, \"summary_count\": 0, \"log_count\": 0}}, \"notion\": {\"status\": \"available\"}, \"sheets\": {\"status\": \"not_installed\"}, \"metricool\": {\"status\": \"available\"}, \"convertkit\": {\"status\": \"available\"}, \"gumroad\": {\"status\": \"available\"}}, \"overall_health\": \"degraded\", \"issues\": [\"OpenAI API: object str can't be used in 'await' expression\", \"Memory system not fully available\"]}"
+  },
+  {
+    "key": "audit_1754344078",
+    "content": "log",
+    "timestamp": 1754344078.45662,
+    "metadata": "{\"type\": \"request\", \"method\": \"GET\", \"endpoint\": \"/test\", \"status\": 200, \"duration\": 0.5, \"timestamp\": \"2025-08-04T17:47:58.456400\"}"
+  },
+  {
+    "key": "audit_1754344078",
+    "content": "log",
+    "timestamp": 1754344078.460014,
+    "metadata": "{\"type\": \"error\", \"error_type\": \"api_error\", \"module\": \"test_module\", \"message\": \"Test error message\", \"timestamp\": \"2025-08-04T17:47:58.459482\"}"
+  },
+  {
+    "key": "autonomous_research_1754344080",
+    "content": "research_cycle",
+    "timestamp": 1754344080.50162,
+    "metadata": "{\"cycle_timestamp\": \"2025-08-04T17:48:00.501404\", \"hypotheses_generated\": 0, \"experiments_created\": 0, \"experiments_completed\": 0, \"total_hypotheses\": 0, \"total_experiments\": 0, \"total_results\": 0, \"insights\": [\"No research results available yet\"]}"
+  },
+  {
+    "key": "autonomous_research_1754344080",
+    "content": "research_cycle",
+    "timestamp": 1754344080.569924,
+    "metadata": "{\"cycle_timestamp\": \"2025-08-04T17:48:00.569719\", \"hypotheses_generated\": 0, \"experiments_created\": 0, \"experiments_completed\": 0, \"total_hypotheses\": 0, \"total_experiments\": 0, \"total_results\": 0, \"insights\": [\"No research results available yet\"]}"
+  },
+  {
+    "key": "test_session_1754344098",
+    "content": "Content",
+    "timestamp": 1754344098.525625,
+    "metadata": {}
+  },
+  {
+    "key": "governance_1754344166",
+    "content": "niche_scoring",
+    "timestamp": 1754344166.531005,
+    "metadata": "{\"niche_scores\": {\"tech\": 85, \"health\": 72}, \"recommendations\": [\"Focus on tech niche\"]}"
+  },
+  {
+    "key": "governance_1754344166",
+    "content": "tool_health",
+    "timestamp": 1754344166.5576909,
+    "metadata": "{\"timestamp\": \"2025-08-04T17:49:26.534733\", \"tools\": {\"openai\": {\"status\": \"unhealthy\", \"error\": \"object str can't be used in 'await' expression\"}, \"memory\": {\"status\": \"degraded\", \"details\": {\"redis_available\": false, \"weaviate_available\": false, \"fully_available\": false, \"short_term_count\": 737, \"long_term_count\": 112, \"summary_count\": 0, \"log_count\": 0}}, \"notion\": {\"status\": \"available\"}, \"sheets\": {\"status\": \"not_installed\"}, \"metricool\": {\"status\": \"available\"}, \"convertkit\": {\"status\": \"available\"}, \"gumroad\": {\"status\": \"available\"}}, \"overall_health\": \"degraded\", \"issues\": [\"OpenAI API: object str can't be used in 'await' expression\", \"Memory system not fully available\"]}"
+  },
+  {
+    "key": "audit_1754344166",
+    "content": "log",
+    "timestamp": 1754344166.56422,
+    "metadata": "{\"type\": \"request\", \"method\": \"GET\", \"endpoint\": \"/test\", \"status\": 200, \"duration\": 0.5, \"timestamp\": \"2025-08-04T17:49:26.563980\"}"
+  },
+  {
+    "key": "audit_1754344166",
+    "content": "log",
+    "timestamp": 1754344166.566955,
+    "metadata": "{\"type\": \"error\", \"error_type\": \"api_error\", \"module\": \"test_module\", \"message\": \"Test error message\", \"timestamp\": \"2025-08-04T17:49:26.566759\"}"
+  },
+  {
+    "key": "autonomous_research_1754344168",
+    "content": "research_cycle",
+    "timestamp": 1754344168.614513,
+    "metadata": "{\"cycle_timestamp\": \"2025-08-04T17:49:28.614294\", \"hypotheses_generated\": 0, \"experiments_created\": 0, \"experiments_completed\": 0, \"total_hypotheses\": 0, \"total_experiments\": 0, \"total_results\": 0, \"insights\": [\"No research results available yet\"]}"
+  },
+  {
+    "key": "autonomous_research_1754344168",
+    "content": "research_cycle",
+    "timestamp": 1754344168.6527019,
+    "metadata": "{\"cycle_timestamp\": \"2025-08-04T17:49:28.652520\", \"hypotheses_generated\": 0, \"experiments_created\": 0, \"experiments_completed\": 0, \"total_hypotheses\": 0, \"total_experiments\": 0, \"total_results\": 0, \"insights\": [\"No research results available yet\"]}"
+  },
+  {
+    "key": "test_session_1754344183",
+    "content": "Content",
+    "timestamp": 1754344183.115793,
+    "metadata": {}
+  },
+  {
+    "key": "governance_1754344230",
+    "content": "niche_scoring",
+    "timestamp": 1754344230.362581,
+    "metadata": "{\"niche_scores\": {\"tech\": 85, \"health\": 72}, \"recommendations\": [\"Focus on tech niche\"]}"
+  },
+  {
+    "key": "governance_1754344230",
+    "content": "tool_health",
+    "timestamp": 1754344230.3879302,
+    "metadata": "{\"timestamp\": \"2025-08-04T17:50:30.365650\", \"tools\": {\"openai\": {\"status\": \"unhealthy\", \"error\": \"object str can't be used in 'await' expression\"}, \"memory\": {\"status\": \"degraded\", \"details\": {\"redis_available\": false, \"weaviate_available\": false, \"fully_available\": false, \"short_term_count\": 842, \"long_term_count\": 124, \"summary_count\": 0, \"log_count\": 0}}, \"notion\": {\"status\": \"available\"}, \"sheets\": {\"status\": \"not_installed\"}, \"metricool\": {\"status\": \"available\"}, \"convertkit\": {\"status\": \"available\"}, \"gumroad\": {\"status\": \"available\"}}, \"overall_health\": \"degraded\", \"issues\": [\"OpenAI API: object str can't be used in 'await' expression\", \"Memory system not fully available\"]}"
+  },
+  {
+    "key": "audit_1754344230",
+    "content": "log",
+    "timestamp": 1754344230.394666,
+    "metadata": "{\"type\": \"request\", \"method\": \"GET\", \"endpoint\": \"/test\", \"status\": 200, \"duration\": 0.5, \"timestamp\": \"2025-08-04T17:50:30.394406\"}"
+  },
+  {
+    "key": "audit_1754344230",
+    "content": "log",
+    "timestamp": 1754344230.397388,
+    "metadata": "{\"type\": \"error\", \"error_type\": \"api_error\", \"module\": \"test_module\", \"message\": \"Test error message\", \"timestamp\": \"2025-08-04T17:50:30.397184\"}"
+  },
+  {
+    "key": "autonomous_research_1754344232",
+    "content": "research_cycle",
+    "timestamp": 1754344232.4487429,
+    "metadata": "{\"cycle_timestamp\": \"2025-08-04T17:50:32.448543\", \"hypotheses_generated\": 0, \"experiments_created\": 0, \"experiments_completed\": 0, \"total_hypotheses\": 0, \"total_experiments\": 0, \"total_results\": 0, \"insights\": [\"No research results available yet\"]}"
+  },
+  {
+    "key": "autonomous_research_1754344232",
+    "content": "research_cycle",
+    "timestamp": 1754344232.505311,
+    "metadata": "{\"cycle_timestamp\": \"2025-08-04T17:50:32.505166\", \"hypotheses_generated\": 0, \"experiments_created\": 0, \"experiments_completed\": 0, \"total_hypotheses\": 0, \"total_experiments\": 0, \"total_results\": 0, \"insights\": [\"No research results available yet\"]}"
+  },
+  {
+    "key": "test_session_1754344247",
+    "content": "Content",
+    "timestamp": 1754344247.567706,
+    "metadata": {}
+  },
+  {
+    "key": "governance_1754344293",
+    "content": "niche_scoring",
+    "timestamp": 1754344293.005908,
+    "metadata": "{\"niche_scores\": {\"tech\": 85, \"health\": 72}, \"recommendations\": [\"Focus on tech niche\"]}"
+  },
+  {
+    "key": "governance_1754344293",
+    "content": "tool_health",
+    "timestamp": 1754344293.027425,
+    "metadata": "{\"timestamp\": \"2025-08-04T17:51:33.008981\", \"tools\": {\"openai\": {\"status\": \"unhealthy\", \"error\": \"object str can't be used in 'await' expression\"}, \"memory\": {\"status\": \"degraded\", \"details\": {\"redis_available\": false, \"weaviate_available\": false, \"fully_available\": false, \"short_term_count\": 947, \"long_term_count\": 136, \"summary_count\": 0, \"log_count\": 0}}, \"notion\": {\"status\": \"available\"}, \"sheets\": {\"status\": \"not_installed\"}, \"metricool\": {\"status\": \"available\"}, \"convertkit\": {\"status\": \"available\"}, \"gumroad\": {\"status\": \"available\"}}, \"overall_health\": \"degraded\", \"issues\": [\"OpenAI API: object str can't be used in 'await' expression\", \"Memory system not fully available\"]}"
+  },
+  {
+    "key": "audit_1754344293",
+    "content": "log",
+    "timestamp": 1754344293.03207,
+    "metadata": "{\"type\": \"request\", \"method\": \"GET\", \"endpoint\": \"/test\", \"status\": 200, \"duration\": 0.5, \"timestamp\": \"2025-08-04T17:51:33.031859\"}"
+  },
+  {
+    "key": "audit_1754344293",
+    "content": "log",
+    "timestamp": 1754344293.034357,
+    "metadata": "{\"type\": \"error\", \"error_type\": \"api_error\", \"module\": \"test_module\", \"message\": \"Test error message\", \"timestamp\": \"2025-08-04T17:51:33.034180\"}"
+  },
+  {
+    "key": "autonomous_research_1754344295",
+    "content": "research_cycle",
+    "timestamp": 1754344295.0803788,
+    "metadata": "{\"cycle_timestamp\": \"2025-08-04T17:51:35.080178\", \"hypotheses_generated\": 0, \"experiments_created\": 0, \"experiments_completed\": 0, \"total_hypotheses\": 0, \"total_experiments\": 0, \"total_results\": 0, \"insights\": [\"No research results available yet\"]}"
+  },
+  {
+    "key": "autonomous_research_1754344295",
+    "content": "research_cycle",
+    "timestamp": 1754344295.112918,
+    "metadata": "{\"cycle_timestamp\": \"2025-08-04T17:51:35.112746\", \"hypotheses_generated\": 0, \"experiments_created\": 0, \"experiments_completed\": 0, \"total_hypotheses\": 0, \"total_experiments\": 0, \"total_results\": 0, \"insights\": [\"No research results available yet\"]}"
+  },
+  {
+    "key": "test_session_1754344313",
+    "content": "Content",
+    "timestamp": 1754344313.321363,
+    "metadata": {}
   }
 ]

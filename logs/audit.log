@@ -893,3 +893,1435 @@
 2025-08-04 14:37:45,424 | INFO | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
 {"ts": "2025-08-04T18:37:45", "user": "admin", "event": "jwt_auth_success", "meta": {}}
 2025-08-04 14:37:45,431 | INFO | httpx | HTTP Request: GET http://testserver/api/integrations/metricool/profile/profile123/metrics "HTTP/1.1 200 OK"
+2025-08-04 16:45:35,155 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 16:45:36,653 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 16:45:36,653 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 16:45:44,756 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 16:45:44,757 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 16:49:21,981 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 16:49:23,727 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 16:49:23,727 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 16:49:34,287 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 16:49:34,287 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 16:50:10,178 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 16:50:11,632 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 16:50:11,632 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 16:50:20,483 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 16:50:20,483 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 16:50:30,845 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 16:50:32,264 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 16:50:32,264 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 16:50:40,242 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 16:50:40,242 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 16:50:50,706 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 16:50:52,468 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 16:50:52,468 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 16:51:01,332 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 16:51:01,333 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 16:51:11,679 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 16:51:13,162 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 16:51:13,162 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 16:51:21,068 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 16:51:21,068 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 16:51:31,051 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 16:51:32,481 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 16:51:32,481 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 16:51:40,110 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 16:51:40,110 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 16:51:51,127 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 16:51:52,439 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 16:51:52,439 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 16:52:00,205 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 16:52:00,205 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 16:52:06,361 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 16:52:07,674 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 16:52:07,674 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 16:52:15,399 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 16:52:15,399 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 16:52:21,486 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 16:52:22,840 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 16:52:22,840 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 16:52:30,324 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 16:52:30,325 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 16:52:37,300 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 16:52:38,705 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 16:52:38,705 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 16:52:47,648 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 16:52:47,648 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 16:52:54,082 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 16:52:55,590 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 16:52:55,591 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 16:53:03,588 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 16:53:03,589 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 16:53:10,243 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 16:53:11,623 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 16:53:11,623 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 16:53:19,510 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 16:53:19,510 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 16:53:25,885 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 16:53:27,187 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 16:53:27,187 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 16:53:35,030 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 16:53:35,030 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 16:53:41,804 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 16:53:43,356 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 16:53:43,356 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 16:53:51,575 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 16:53:51,575 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 16:53:58,432 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 16:53:59,966 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 16:53:59,966 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 16:54:07,739 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 16:54:07,739 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 16:54:14,124 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 16:54:15,400 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 16:54:15,401 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 16:54:22,583 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 16:54:22,584 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 16:54:28,615 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 16:54:29,909 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 16:54:29,909 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 16:54:37,252 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 16:54:37,252 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 16:54:43,304 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 16:54:44,552 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 16:54:44,552 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 16:54:51,565 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 16:54:51,565 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 16:54:57,494 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 16:54:58,744 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 16:54:58,744 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 16:55:05,752 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 16:55:05,752 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 16:55:11,998 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 16:55:13,228 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 16:55:13,228 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 16:55:20,207 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 16:55:20,207 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 16:55:26,056 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 16:55:27,271 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 16:55:27,272 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 16:55:34,223 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 16:55:34,223 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 16:55:49,593 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 16:55:50,868 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 16:55:50,868 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 16:55:57,999 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 16:55:57,999 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 16:56:07,958 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 16:56:09,174 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 16:56:09,175 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 16:56:16,234 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 16:56:16,235 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 16:56:22,383 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 16:56:23,581 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 16:56:23,581 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 16:56:30,577 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 16:56:30,577 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 16:56:36,873 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 16:56:38,329 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 16:56:38,330 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 16:56:46,401 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 16:56:46,402 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 16:56:52,887 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 16:56:54,327 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 16:56:54,327 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 16:57:02,877 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 16:57:02,877 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 16:57:09,435 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 16:57:10,916 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 16:57:10,917 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 16:57:19,235 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 16:57:19,235 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 16:57:25,715 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 16:57:27,153 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 16:57:27,154 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 16:57:35,491 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 16:57:35,491 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 16:57:42,539 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 16:57:43,987 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 16:57:43,987 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 16:57:52,200 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 16:57:52,200 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 16:57:58,712 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 16:58:00,229 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 16:58:00,229 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 16:58:09,433 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 16:58:09,433 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 16:58:16,812 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 16:58:18,281 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 16:58:18,281 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 16:58:26,867 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 16:58:26,867 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 16:58:33,654 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 16:58:35,140 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 16:58:35,140 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 16:58:43,711 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 16:58:43,712 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 16:58:50,130 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 16:58:51,553 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 16:58:51,553 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 16:59:00,002 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 16:59:00,002 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 16:59:06,567 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 16:59:08,097 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 16:59:08,097 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 16:59:16,407 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 16:59:16,407 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 16:59:23,075 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 16:59:24,514 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 16:59:24,514 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 16:59:32,816 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 16:59:32,816 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 16:59:39,126 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 16:59:40,556 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 16:59:40,556 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 16:59:48,926 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 16:59:48,926 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 16:59:55,202 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 16:59:56,813 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 16:59:56,813 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 17:00:05,036 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 17:00:05,036 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 17:00:11,372 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 17:00:12,894 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 17:00:12,894 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 17:00:21,280 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 17:00:21,280 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 17:00:28,110 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 17:00:29,531 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 17:00:29,531 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 17:00:37,931 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 17:00:37,932 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 17:00:44,529 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 17:00:46,019 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 17:00:46,019 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 17:00:54,399 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 17:00:54,399 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 17:01:00,847 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 17:01:02,283 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 17:01:02,284 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 17:01:10,797 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 17:01:10,797 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+{"ts": "2025-08-04T21:10:41", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:10:41", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:10:41", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:10:41", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:10:41", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:10:41", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:10:41", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:10:41", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:10:41", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:10:41", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:10:41", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:10:41", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:10:41", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:10:41", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:10:41", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:10:41", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:10:41", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:10:41", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:10:41", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:06", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:06", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:06", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:06", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:06", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:06", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:06", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:06", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:06", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:06", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:06", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:06", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:06", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:06", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:06", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:06", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:06", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:06", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:06", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:06", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:06", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "userX", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "alice", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "bob", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:19", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:20", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:20", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:20", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:20", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:20", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:20", "user": "bob", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:20", "user": "eve", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:20", "user": "alice", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:20", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:20", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:20", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:20", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:20", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:11:20", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+2025-08-04 17:17:33,348 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 17:17:34,654 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 17:17:34,654 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 17:17:43,070 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 17:17:43,070 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 17:17:54,365 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 17:17:55,684 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 17:17:55,684 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 17:18:03,085 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 17:18:03,085 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 17:18:15,174 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 17:18:16,677 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 17:18:16,677 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 17:18:24,852 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 17:18:24,852 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 17:18:37,658 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 17:18:39,172 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 17:18:39,172 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 17:18:47,628 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 17:18:47,628 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 17:18:59,410 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 17:19:00,893 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 17:19:00,893 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 17:19:09,722 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 17:19:09,722 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 17:19:22,124 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 17:19:23,618 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 17:19:23,618 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 17:19:32,617 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 17:19:32,617 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 17:19:51,049 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 17:19:52,611 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 17:19:52,611 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 17:20:02,172 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 17:20:02,172 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 17:20:15,455 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 17:20:17,083 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 17:20:17,083 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 17:20:26,484 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 17:20:26,484 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 17:20:29,872 | INFO | httpx | HTTP Request: GET http://testserver/model/api/current-model "HTTP/1.1 404 Not Found"
+2025-08-04 17:21:36,097 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 17:21:37,869 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 17:21:37,869 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 17:21:47,265 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 17:21:47,265 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 17:21:50,646 | INFO | httpx | HTTP Request: GET http://testserver/status "HTTP/1.1 200 OK"
+2025-08-04 17:21:59,110 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 17:22:00,914 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 17:22:00,915 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 17:22:10,703 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 17:22:10,703 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 17:22:23,447 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 17:22:25,061 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 17:22:25,061 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 17:22:34,615 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 17:22:34,615 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 17:22:51,036 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 17:22:52,686 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 17:22:52,686 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 17:23:02,383 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 17:23:02,383 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 17:29:12,401 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 17:29:13,832 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 17:29:13,832 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 17:29:23,344 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 17:29:23,344 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 17:29:46,534 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 17:29:48,156 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 17:29:48,156 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 17:29:57,146 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 17:29:57,146 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 17:30:20,330 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 17:30:21,800 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 17:30:21,800 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 17:30:31,230 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 17:30:31,230 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 17:30:47,422 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 17:30:48,999 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 17:30:49,000 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 17:30:57,923 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 17:30:57,923 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+{"ts": "2025-08-04T21:31:48", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:31:48", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:31:48", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:31:49", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:31:49", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:31:49", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:31:49", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:31:49", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:31:49", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:31:49", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:31:49", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:31:49", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:31:49", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:31:49", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:31:49", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:31:49", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:31:49", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:31:49", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:31:49", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:19", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:20", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:20", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:20", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:20", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:20", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:20", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:20", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:20", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:20", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:20", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:20", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:20", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:20", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:20", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:20", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:20", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:20", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:20", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:20", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:20", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "userX", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "alice", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "bob", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:31", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:32", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:33", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:33", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:33", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:33", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:33", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:33", "user": "bob", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:33", "user": "eve", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:33", "user": "alice", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:34", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:34", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:34", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:34", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:34", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:32:34", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:33:49", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:33:49", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:33:49", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:33:49", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:33:49", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:33:49", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:33:49", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:33:49", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:33:49", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:33:49", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:33:49", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:33:49", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:33:49", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:33:49", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:33:49", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:33:49", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:33:49", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:33:49", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:33:49", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:21", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:21", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:21", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:21", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:21", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:21", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:21", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:21", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:21", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:21", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:21", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:21", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:21", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:21", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:21", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:21", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:21", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:21", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:21", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:21", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:21", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:32", "user": "userX", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:32", "user": "alice", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:32", "user": "bob", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:33", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:34", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:34", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:34", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:34", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:35", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:35", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:35", "user": "bob", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:35", "user": "eve", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:35", "user": "alice", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:35", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:35", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:35", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:35", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:35", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:34:35", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:42:37", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:42:37", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:42:37", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:42:37", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:42:37", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:42:37", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:42:37", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:42:37", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:42:37", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:42:37", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:42:37", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:42:37", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:42:37", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:42:37", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:42:37", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:42:37", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:42:37", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:42:37", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:42:37", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:05", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:05", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:05", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:05", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:05", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:05", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:05", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:06", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:06", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:06", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:06", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:06", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:06", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:06", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:06", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:06", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:06", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:06", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:06", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:06", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:06", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "userX", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "alice", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "bob", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:17", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:18", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:19", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:19", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:19", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:19", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:19", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:19", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:20", "user": "bob", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:20", "user": "eve", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:20", "user": "alice", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:20", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:20", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:20", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:20", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:20", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:20", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:59", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:59", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:59", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:59", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:59", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:59", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:59", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:59", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:59", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:59", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:59", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:59", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:59", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:59", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:59", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:59", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:59", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:59", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:43:59", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:25", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:25", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:25", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:25", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:25", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:25", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:25", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:25", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:25", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:25", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:25", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:25", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:25", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:25", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:25", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:25", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:25", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:25", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:25", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:25", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:25", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "userX", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "alice", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "bob", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:36", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:37", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:38", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:38", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:38", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:38", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:38", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:38", "user": "bob", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:38", "user": "eve", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:38", "user": "alice", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:39", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:39", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:39", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:39", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:39", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:44:39", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:47:50", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:47:50", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:47:50", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:47:50", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:47:50", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:47:50", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:47:50", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:47:50", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:47:50", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:47:50", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:47:50", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:47:50", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:47:50", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:47:50", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:47:50", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:47:50", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:47:50", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:47:50", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:47:50", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:18", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:18", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:18", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:18", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:18", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:18", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:18", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:18", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:18", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:18", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:18", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:18", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:18", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:18", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:18", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:18", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:18", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:19", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:19", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:19", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:19", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "userX", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "alice", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "bob", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:32", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:33", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:34", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:34", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:34", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:34", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:34", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:34", "user": "bob", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:34", "user": "eve", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:34", "user": "alice", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:35", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:35", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:35", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:35", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:35", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:48:35", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:18", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:18", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:18", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:18", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:18", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:18", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:18", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:18", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:18", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:18", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:18", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:18", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:18", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:18", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:18", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:18", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:18", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:18", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:18", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:43", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:43", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:43", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:43", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:43", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:43", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:43", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:43", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:43", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:43", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:43", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:43", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:43", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:43", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:43", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:43", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:43", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:43", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:43", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:43", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:43", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "userX", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "alice", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "bob", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:54", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:55", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:56", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:56", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:56", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:56", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:56", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:56", "user": "bob", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:56", "user": "eve", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:56", "user": "alice", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:57", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:57", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:57", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:57", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:57", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:49:57", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:21", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:21", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:21", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:21", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:21", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:21", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:21", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:21", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:21", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:21", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:22", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:22", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:22", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:22", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:22", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:22", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:22", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:22", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:22", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:47", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:47", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:47", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:47", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:47", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:47", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:47", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:47", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:47", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:47", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:47", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:47", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:47", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:47", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:47", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:47", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:47", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:47", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:47", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:47", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:47", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "userX", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "alice", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "bob", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:58", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:50:59", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:51:00", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:51:00", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:51:00", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:51:00", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:51:00", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:51:00", "user": "bob", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:51:00", "user": "eve", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:51:00", "user": "alice", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:51:00", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:51:00", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:51:00", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:51:00", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:51:00", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:51:00", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:51:24", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:51:24", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:51:24", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:51:24", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:51:24", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:51:24", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:51:24", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:51:24", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:51:24", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:51:24", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:51:25", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:51:25", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:51:25", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:51:25", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:51:25", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:51:25", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:51:25", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:51:25", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:51:25", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:51:53", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:51:53", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:51:53", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:51:53", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:51:53", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:51:53", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:51:53", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:51:53", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:51:53", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:51:53", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:51:53", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:51:53", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:51:53", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:51:53", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:51:53", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:51:53", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:51:53", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:51:53", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:51:53", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:51:53", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:51:53", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:06", "user": "userX", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:06", "user": "alice", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:06", "user": "bob", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:06", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:06", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:06", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:06", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:06", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:07", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:08", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:09", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:09", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:09", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:09", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:09", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:09", "user": "bob", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:09", "user": "eve", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:09", "user": "alice", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:10", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:10", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:10", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:10", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:10", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-04T21:52:10", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+2025-08-04 17:53:54,275 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 17:53:55,637 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 17:53:55,637 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 17:54:02,901 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 17:54:02,901 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 17:54:15,917 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 17:54:16,993 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 17:54:16,993 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 17:54:23,261 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 17:54:23,261 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 17:54:40,050 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 17:54:41,097 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 17:54:41,097 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 17:54:47,549 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 17:54:47,549 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
