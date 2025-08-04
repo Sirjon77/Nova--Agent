@@ -5,6 +5,7 @@ from pydantic import BaseModel, Field
 import uvicorn
 import asyncio
 from datetime import datetime
+from pathlib import Path
 # Optional Prometheus instrumentation. Import may fail if the package is not
 # installed. We guard the import to allow the API to start without this
 # optional dependency.
@@ -93,6 +94,8 @@ from nova.rpm_leaderboard import PromptLeaderboard
 from nova.prompt_vault import PromptVault
 from nova.analytics import aggregate_metrics, top_prompts, rpm_by_audience  # type: ignore
 
+# NOTE: This is the canonical FastAPI application instance for Nova Agent.
+# Do NOT instantiate FastAPI elsewhere; use this app for adding all routers and routes.
 app = FastAPI(title="Nova Agent API", version="6.7")
 
 # Initialise the A/B test manager.  Tests are stored in the 'ab_tests'
@@ -102,6 +105,15 @@ ab_manager = ABTestManager()
 
 # Attach JWT middleware
 app.add_middleware(JWTAuthMiddleware)
+
+# Enable CORS for all origins (development/public use)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Instrumentation
 if _instrumentation_available and Instrumentator:
@@ -2200,3 +2212,57 @@ async def ws_events(ws: WebSocket):
             await ws.send_text(f"echo: {msg}")
     except WebSocketDisconnect:
         connections.discard(ws)
+
+# Mount all legacy routers and the Flask model API via WSGIMiddleware
+from realtime import router as realtime_router
+from routes.research import router as research_router
+from routes.observability import router as observability_router
+from agents.decision_matrix_agent import router as decision_router
+from interface_handler import router as interface_router
+from nova_agent_v4_4.chat_api import router as chat_v4_router
+
+# Include all routers on the single FastAPI app
+app.include_router(realtime_router)
+app.include_router(research_router)
+app.include_router(observability_router)
+app.include_router(decision_router)
+app.include_router(interface_router)
+app.include_router(chat_v4_router)
+
+# Add missing endpoints from main.py
+@app.get("/status", tags=["meta"])
+def read_status():
+    return {
+        "status": "Nova Agent v6.7 running",
+        "loop": "heartbeat active",
+        "version": "6.7",
+        "features": ["autonomous_research", "nlp_intent_detection", "memory_management"]
+    }
+
+# Define path to model tiers configuration
+MODEL_CONFIG_PATH = Path(__file__).resolve().parent.parent.parent / "config" / "model_tiers.json"
+
+@app.get("/api/current-model-tiers", tags=["meta"])
+async def current_model_tiers():
+    if MODEL_CONFIG_PATH.exists():
+        import json
+        return json.loads(MODEL_CONFIG_PATH.read_text())
+    return {}
+
+# Mount Flask blueprint via WSGIMiddleware
+try:
+    from backend.model_api import model_api  # the Flask Blueprint
+    from flask import Flask
+    from fastapi.middleware.wsgi import WSGIMiddleware
+    
+    # Create a minimal Flask app and register the blueprint
+    flask_app = Flask(__name__)
+    flask_app.register_blueprint(model_api)
+    
+    # Mount the Flask app on the FastAPI app
+    app.mount("/", WSGIMiddleware(flask_app))
+except ImportError:
+    # If Flask components are not available, continue without them
+    pass
+
+__all__ = ["app"]
