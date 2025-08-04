@@ -18,7 +18,7 @@ from utils.logger import setup_logger
 from utils.memory_ranker import rank_memories
 from utils.memory_vault import save_summary, get_summary
 from utils.prompt_store import get_prompt
-from utils.retry import retry_with_backoff
+from utils.retry import retry
 from utils.self_repair import auto_repair
 from utils.summarizer import summarize_text
 from utils.telemetry import emit
@@ -293,10 +293,11 @@ class TestPromptStore:
 class TestRetry:
     """Test retry functionality."""
     
-    def test_retry_with_backoff(self):
-        """Test retry with backoff."""
+    def test_retry_decorator(self):
+        """Test retry decorator."""
         call_count = 0
         
+        @retry(times=3, delay=0.1)
         def failing_function():
             nonlocal call_count
             call_count += 1
@@ -304,7 +305,7 @@ class TestRetry:
                 raise Exception("Temporary failure")
             return "success"
         
-        result = retry_with_backoff(failing_function, max_retries=3)
+        result = failing_function()
         assert result == "success"
         assert call_count == 3
 
