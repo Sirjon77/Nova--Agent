@@ -1,4 +1,4 @@
-"""Thin wrapper around openai.ChatCompletion with alias translation + telemetry."""
+"""Thin wrapper around OpenAI client with alias translation + telemetry."""
 from typing import Sequence, Optional, Dict, Any
 import openai
 import logging
@@ -6,6 +6,9 @@ import logging
 from nova_core.model_registry import to_official, Model
 
 logger = logging.getLogger(__name__)
+
+# Initialize OpenAI client
+client = openai.OpenAI()
 
 
 def chat_completion(
@@ -18,7 +21,7 @@ def chat_completion(
     
     logger.info(f"OpenAI API call: {model} -> {official_name}")
     
-    return openai.ChatCompletion.create(
+    return client.chat.completions.create(
         model=official_name, 
         messages=messages, 
         **kwargs
@@ -35,7 +38,7 @@ def completion(
     
     logger.info(f"OpenAI completion call: {model} -> {official_name}")
     
-    return openai.Completion.create(
+    return client.completions.create(
         model=official_name,
         prompt=prompt,
         **kwargs
