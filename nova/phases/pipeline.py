@@ -29,6 +29,13 @@ def run_phases(message: str, stream: bool = False) -> Union[str, Generator[Tuple
     Returns:
         Final response string or generator for streaming
     """
+    if stream:
+        return _run_phases_stream(message)
+    else:
+        return _run_phases_non_stream(message)
+
+def _run_phases_stream(message: str) -> Generator[Tuple[str, Any], None, None]:
+    """Internal streaming implementation"""
     start_time = time.time()
     
     try:
@@ -37,36 +44,33 @@ def run_phases(message: str, stream: bool = False) -> Union[str, Generator[Tuple
         analysis = analyze(message)
         analysis_time = time.time() - analysis_start
         
-        if stream:
-            yield "analysis", {
-                "result": analysis,
-                "execution_time": analysis_time,
-                "phase": "analysis"
-            }
+        yield "analysis", {
+            "result": analysis,
+            "execution_time": analysis_time,
+            "phase": "analysis"
+        }
         
         # Phase 2: Planning
         planning_start = time.time()
         plan_obj = plan(analysis)
         planning_time = time.time() - planning_start
         
-        if stream:
-            yield "plan", {
-                "result": plan_obj,
-                "execution_time": planning_time,
-                "phase": "planning"
-            }
+        yield "plan", {
+            "result": plan_obj,
+            "execution_time": planning_time,
+            "phase": "planning"
+        }
         
         # Phase 3: Execution
         execution_start = time.time()
         result = execute(plan_obj)
         execution_time = time.time() - execution_start
         
-        if stream:
-            yield "execute", {
-                "result": result,
-                "execution_time": execution_time,
-                "phase": "execution"
-            }
+        yield "execute", {
+            "result": result,
+            "execution_time": execution_time,
+            "phase": "execution"
+        }
         
         # Phase 4: Response
         response_start = time.time()
@@ -89,28 +93,68 @@ def run_phases(message: str, stream: bool = False) -> Union[str, Generator[Tuple
         final_response = respond(result, metadata)
         response_time = time.time() - response_start
         
-        if stream:
-            yield "final", {
-                "result": final_response,
-                "execution_time": response_time,
-                "phase": "response",
-                "metadata": metadata
+        yield "final", {
+            "result": final_response,
+            "execution_time": response_time,
+            "phase": "response",
+            "metadata": metadata
+        }
+        
+    except Exception as e:
+        logger.error(f"Pipeline execution failed: {e}")
+        error_response = f"❌ Pipeline error: {str(e)}"
+        
+        yield "error", {
+            "result": error_response,
+            "error": str(e),
+            "phase": "error"
+        }
+
+def _run_phases_non_stream(message: str) -> str:
+    """Internal non-streaming implementation"""
+    start_time = time.time()
+    
+    try:
+        # Phase 1: Analysis
+        analysis_start = time.time()
+        analysis = analyze(message)
+        analysis_time = time.time() - analysis_start
+        
+        # Phase 2: Planning
+        planning_start = time.time()
+        plan_obj = plan(analysis)
+        planning_time = time.time() - planning_start
+        
+        # Phase 3: Execution
+        execution_start = time.time()
+        result = execute(plan_obj)
+        execution_time = time.time() - execution_start
+        
+        # Phase 4: Response
+        response_start = time.time()
+        
+        # Prepare metadata for response formatting
+        metadata = {
+            "confidence": analysis.get("confidence", 0.0),
+            "classification_method": analysis.get("classification_method", ""),
+            "intent": analysis.get("intent", ""),
+            "entities": analysis.get("entities", {}),
+            "context": analysis.get("context", {}),
+            "execution_time": time.time() - start_time,
+            "phase_times": {
+                "analysis": analysis_time,
+                "planning": planning_time,
+                "execution": execution_time
             }
-            return
+        }
+        
+        final_response = respond(result, metadata)
         
         return final_response
         
     except Exception as e:
         logger.error(f"Pipeline execution failed: {e}")
         error_response = f"❌ Pipeline error: {str(e)}"
-        
-        if stream:
-            yield "error", {
-                "result": error_response,
-                "error": str(e),
-                "phase": "error"
-            }
-            return
         
         return error_response
 

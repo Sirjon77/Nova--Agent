@@ -137,7 +137,7 @@ class AutonomousResearcher:
             performance_analysis = await self._analyze_current_performance()
             
             # Get relevant memories for context
-            memories = get_relevant_memories("performance", "recent", limit=50)
+            memories = get_relevant_memories("performance", "recent", top_k=50)
             
             prompt = f"""
             Based on the following performance analysis and recent system behavior,

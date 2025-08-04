@@ -53,94 +53,113 @@ class NovaObservability:
         
     def _init_prometheus_metrics(self):
         """Initialize Prometheus metrics."""
+        # Create a unique registry for this instance to avoid conflicts
+        from prometheus_client import CollectorRegistry
+        self.registry = CollectorRegistry()
+        
         # Request metrics
         self.request_counter = Counter(
             'nova_requests_total',
             'Total number of requests',
-            ['method', 'endpoint', 'status']
+            ['method', 'endpoint', 'status'],
+            registry=self.registry
         )
         
         self.request_duration = Histogram(
             'nova_request_duration_seconds',
             'Request duration in seconds',
-            ['method', 'endpoint']
+            ['method', 'endpoint'],
+            registry=self.registry
         )
         
         # NLP metrics
         self.nlp_requests = Counter(
             'nova_nlp_requests_total',
             'Total NLP requests',
-            ['intent_type', 'confidence_level']
+            ['intent_type', 'confidence_level'],
+            registry=self.registry
         )
         
         self.nlp_accuracy = Gauge(
             'nova_nlp_accuracy',
-            'NLP intent classification accuracy'
+            'NLP intent classification accuracy',
+            registry=self.registry
         )
         
         # Memory metrics
         self.memory_operations = Counter(
             'nova_memory_operations_total',
             'Memory operations',
-            ['operation_type', 'namespace']
+            ['operation_type', 'namespace'],
+            registry=self.registry
         )
         
         self.memory_size = Gauge(
             'nova_memory_size_bytes',
-            'Memory storage size in bytes'
+            'Memory storage size in bytes',
+            registry=self.registry
         )
         
         # System metrics
         self.cpu_usage = Gauge(
             'nova_cpu_usage_percent',
-            'CPU usage percentage'
+            'CPU usage percentage',
+            registry=self.registry
         )
         
         self.memory_usage = Gauge(
             'nova_memory_usage_bytes',
-            'Memory usage in bytes'
+            'Memory usage in bytes',
+            registry=self.registry
         )
         
         self.disk_usage = Gauge(
             'nova_disk_usage_bytes',
-            'Disk usage in bytes'
+            'Disk usage in bytes',
+            registry=self.registry
         )
         
         # Research metrics
         self.research_experiments = Counter(
             'nova_research_experiments_total',
             'Research experiments',
-            ['status', 'category']
+            ['status', 'category'],
+            registry=self.registry
         )
         
         self.research_success_rate = Gauge(
             'nova_research_success_rate',
-            'Research experiment success rate'
+            'Research experiment success rate',
+            registry=self.registry
         )
         
         # Governance metrics
         self.governance_cycles = Counter(
             'nova_governance_cycles_total',
             'Governance cycles',
-            ['status']
+            ['status'],
+            registry=self.registry
         )
         
         self.governance_duration = Histogram(
             'nova_governance_duration_seconds',
-            'Governance cycle duration in seconds'
+            'Governance cycle duration in seconds',
+            registry=self.registry
         )
         
         # Error metrics
         self.error_counter = Counter(
             'nova_errors_total',
             'Total errors',
-            ['error_type', 'module']
+            ['error_type', 'module'],
+            registry=self.registry
         )
         
         # Performance summary
         self.performance_summary = Summary(
             'nova_performance_summary',
-            'Performance summary statistics'
+            'Performance summary statistics',
+            registry=self.registry
         )
     
     def record_request(self, method: str, endpoint: str, status: int, duration: float):
@@ -393,7 +412,7 @@ class NovaObservability:
     
     def get_metrics(self) -> str:
         """Get Prometheus metrics."""
-        return generate_latest()
+        return generate_latest(self.registry)
     
     def get_performance_summary(self) -> Dict[str, Any]:
         """Get performance summary."""

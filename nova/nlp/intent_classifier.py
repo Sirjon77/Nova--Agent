@@ -197,12 +197,12 @@ class IntentClassifier:
         context = context or {}
         
         # Method 1: Rule-based classification
-        rule_result = self._rule_based_classification(message)
+        rule_result = self._rule_based_classification(message, context)
         if rule_result.confidence > self.confidence_threshold:
             return rule_result
         
         # Method 2: Semantic similarity
-        semantic_result = self._semantic_classification(message)
+        semantic_result = self._semantic_classification(message, context)
         if semantic_result.confidence > self.confidence_threshold:
             return semantic_result
         
@@ -221,8 +221,9 @@ class IntentClassifier:
             classification_method="fallback"
         )
     
-    def _rule_based_classification(self, message: str) -> IntentResult:
+    def _rule_based_classification(self, message: str, context: Dict[str, Any] = None) -> IntentResult:
         """Rule-based classification using regex patterns"""
+        context = context or {}
         message_lower = message.lower()
         
         for intent_type, patterns in self.intent_patterns.items():
@@ -235,7 +236,7 @@ class IntentClassifier:
                         intent=intent_type,
                         confidence=0.85,  # High confidence for exact matches
                         entities=entities,
-                        context={},
+                        context=context,
                         raw_message=message,
                         classification_method="rule_based"
                     )
@@ -244,13 +245,14 @@ class IntentClassifier:
             intent=IntentType.UNKNOWN,
             confidence=0.0,
             entities={},
-            context={},
+            context=context,
             raw_message=message,
             classification_method="rule_based"
         )
     
-    def _semantic_classification(self, message: str) -> IntentResult:
+    def _semantic_classification(self, message: str, context: Dict[str, Any] = None) -> IntentResult:
         """Semantic classification using sentence embeddings"""
+        context = context or {}
         try:
             message_embedding = self.embedder.encode([message])[0]
             
@@ -282,7 +284,7 @@ class IntentClassifier:
                 intent=best_intent,
                 confidence=best_similarity,
                 entities={},
-                context={},
+                context=context,
                 raw_message=message,
                 classification_method="semantic"
             )
