@@ -7,8 +7,12 @@ from nova_core.model_registry import to_official, Model
 
 logger = logging.getLogger(__name__)
 
-# Initialize OpenAI client
-client = openai.OpenAI()
+# Initialize OpenAI client only if API key is available
+client = None
+try:
+    client = openai.OpenAI()
+except Exception:
+    client = None
 
 
 def chat_completion(
@@ -17,6 +21,9 @@ def chat_completion(
     **kwargs
 ) -> Any:
     """Create a chat completion *always* using a valid OpenAI model id."""
+    if not client:
+        raise RuntimeError("OpenAI client not initialized - API key required")
+    
     official_name = to_official(model or Model.DEFAULT.value)
     
     logger.info(f"OpenAI API call: {model} -> {official_name}")
@@ -34,6 +41,9 @@ def completion(
     **kwargs
 ) -> Any:
     """Create a completion *always* using a valid OpenAI model id."""
+    if not client:
+        raise RuntimeError("OpenAI client not initialized - API key required")
+    
     official_name = to_official(model or Model.DEFAULT.value)
     
     logger.info(f"OpenAI completion call: {model} -> {official_name}")
