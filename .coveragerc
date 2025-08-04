@@ -1,5 +1,5 @@
 [run]
-source = nova_core,integrations.teams,integrations.runway,integrations.publer,integrations.metricool,nova.ab_testing,nova.approvals,nova.automation_flags
+source = nova_core,nova,integrations,utils,auth,backend
 omit = 
     */tests/*
     */test_*
