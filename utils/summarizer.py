@@ -357,8 +357,12 @@ Summary:"""
 enhanced_summarizer = EnhancedSummarizer()
 
 # Convenience functions for backward compatibility
-def summarize_text(text: str, title: Optional[str] = None, source: Optional[str] = None) -> str:
+def summarize_text(text: str, title: Optional[str] = None, source: Optional[str] = None, max_length: Optional[int] = None) -> str:
     """Summarize text using enhanced summarizer."""
+    if max_length:
+        # Create a temporary summarizer with custom max length
+        temp_summarizer = EnhancedSummarizer(max_summary_length=max_length)
+        return temp_summarizer.summarize_text(text, title, source)
     return enhanced_summarizer.summarize_text(text, title, source)
 
 def summarize_web_content(url: str, title: str, content: str) -> str:

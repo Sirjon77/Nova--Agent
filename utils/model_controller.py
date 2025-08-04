@@ -113,6 +113,6 @@ def select_model(task_meta: Dict) -> Tuple[str, str]:
 
     # 4. Get API key
     api_key_env = _ENV_MAP.get(resolved_model, "OPENAI_API_KEY")
-    api_key = os.getenv(api_key_env) or os.getenv("OPENAI_API_KEY")
+    api_key = os.getenv(api_key_env) or os.getenv("OPENAI_API_KEY") or ""
 
     return resolved_model, api_key
