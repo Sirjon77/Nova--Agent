@@ -1,9 +1,14 @@
-import yaml, logging, psutil, pathlib, os
+import pathlib
+import yaml
+import logging
+import psutil
+import os
+from typing import Union
 
 log = logging.getLogger("Policy")
 
 class PolicyEnforcer:
-    def __init__(self, path: str | pathlib.Path = 'config/policy.yaml'):
+    def __init__(self, path: Union[str, pathlib.Path] = 'config/policy.yaml'):
         self.path = pathlib.Path(path)
         if not self.path.exists():
             log.warning("Policy file %s not found, using empty policy", self.path)

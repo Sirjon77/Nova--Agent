@@ -126,7 +126,7 @@ def search_keywords(
 def get_trending_videos(
     *,
     region: Optional[str] = None,
-    category: str | None = None,
+    category: Union[str, None] = None,
     max_results: int = 10,
 ) -> List[Dict[str, Any]]:
     """Fetch the current trending videos for a given region via the YouTube API.
