@@ -10,3 +10,37 @@
 {"ts": "2025-07-25T04:33:58", "user": "admin", "event": "jwt_auth_success", "meta": {}}
 {"ts": "2025-07-25T04:33:58", "user": "admin", "event": "jwt_auth_success", "meta": {}}
 {"ts": "2025-07-25T04:33:58", "user": "admin", "event": "jwt_auth_success", "meta": {}}
+2025-08-03 12:44:27,637 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-03 12:44:29,253 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-03 12:44:29,253 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-03 12:46:43,707 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-03 12:46:45,293 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-03 12:46:45,293 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-03 12:48:27,110 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-03 12:48:28,761 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-03 12:48:28,761 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-03 12:49:58,447 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-03 12:50:00,163 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-03 12:50:00,163 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-03 12:50:09,712 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-03 12:50:09,712 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-03 12:52:50,798 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-03 12:52:52,561 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-03 12:52:52,561 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-03 12:53:04,989 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-03 12:53:04,990 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-03 12:54:46,508 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-03 12:54:48,399 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-03 12:54:48,400 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-03 12:55:00,076 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-03 12:55:00,077 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-03 12:56:45,773 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-03 12:56:47,618 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-03 12:56:47,619 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-03 12:56:59,478 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-03 12:56:59,479 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-03 12:58:41,870 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-03 12:58:43,680 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-03 12:58:43,680 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-03 12:58:55,465 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-03 12:58:55,466 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2

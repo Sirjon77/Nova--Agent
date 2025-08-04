@@ -49,12 +49,29 @@ def detect_task_based_model(message: str):
         return "gpt-4.1-nano"
     return None
 
+def get_model_for_task(task_type: str, complexity: str = "medium") -> str:
+    """Get appropriate model for a specific task type and complexity."""
+    if task_type in ["research", "analysis", "evaluation"]:
+        if complexity == "high":
+            return resolve_model("gpt-4o")
+        else:
+            return resolve_model("gpt-4o-mini")
+    elif task_type in ["creative", "writing", "content"]:
+        return resolve_model("gpt-4o")
+    elif task_type in ["summarization", "extraction"]:
+        return resolve_model("gpt-4o-mini")
+    elif task_type in ["classification", "intent"]:
+        return resolve_model("gpt-3.5-turbo")
+    else:
+        return get_default_model()
+
 # log_model_usage removed
 
 # Usage after calling OpenAI:
 # log_model_usage(model_name, num_tokens_used)
 # ---- Auto Model Selector patch (Tier‑A upgrade) ----
 import os
+
 def _choose_model(prompt: str, preferred: str = None):
     """Select cheaper/faster model if prompt is short."""
     if preferred is None:
@@ -67,7 +84,13 @@ def _choose_model(prompt: str, preferred: str = None):
         return os.getenv("DEFAULT_MODEL", "o3")  # faster & cheaper
     return preferred
 
-_original_chat_completion = chat_completion
+# Import chat_completion function
+try:
+    from nova.services.openai_client import chat_completion as _original_chat_completion
+except ImportError:
+    # Fallback if import fails
+    def _original_chat_completion(*args, **kwargs):
+        raise ImportError("OpenAI client not available")
 
 def chat_completion(prompt: str, temperature: float = 0.2, **kwargs):
     model = _choose_model(prompt)

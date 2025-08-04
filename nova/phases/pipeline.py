@@ -10,7 +10,7 @@ This module orchestrates the complete processing pipeline:
 
 import time
 import logging
-from typing import Dict, Any, Generator, Tuple
+from typing import Dict, Any, List, Optional, Tuple, Generator, Union
 from .analyze_phase import analyze
 from .plan_phase import plan
 from .execute_phase import execute
@@ -18,7 +18,7 @@ from .respond_phase import respond
 
 logger = logging.getLogger(__name__)
 
-def run_phases(message: str, stream: bool = False) -> str | Generator[Tuple[str, Any], None, None]:
+def run_phases(message: str, stream: bool = False) -> Union[str, Generator[Tuple[str, Any], None, None]]:
     """
     Run the complete processing pipeline
     

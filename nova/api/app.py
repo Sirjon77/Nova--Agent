@@ -73,7 +73,7 @@ from integrations.youtube import upload_video as _youtube_upload_video
 from integrations.instagram import publish_video as _instagram_publish_video
 from integrations.facebook import publish_post as _facebook_publish_post
 from integrations.tts import synthesize_speech as _synthesize_speech
-from typing import Any, List, Optional, Dict, Tuple
+from typing import Any, List, Optional, Dict, Tuple, Union
 from nova.ab_testing import ABTestManager
 
 # Import new modules for advanced functionalities
@@ -203,7 +203,7 @@ class LoginResponse(BaseModel):
     role: str
 
 
-def _get_user_role(username: str) -> str | None:
+def _get_user_role(username: str) -> Union[str, None]:
     """Return the role associated with a username.
 
     Roles are determined based on environment variables:
@@ -859,7 +859,7 @@ async def list_governance_reports() -> list[str]:
     return [f.name for f in files]
 
 @app.get("/api/governance/report", tags=["governance"], dependencies=[role_required(Role.admin,)])
-async def get_governance_report(date: str | None = None) -> dict:
+async def get_governance_report(date: Union[str, None] = None) -> dict:
     """Return a governance report for a given date or the latest one.
 
     Args:
@@ -897,7 +897,7 @@ async def get_governance_report(date: str | None = None) -> dict:
         raise HTTPException(status_code=500, detail='Failed to read report')
 
 @app.get("/api/logs", tags=["logs"], dependencies=[role_required(Role.admin,)])
-async def get_logs(level: str | None = None) -> dict:
+async def get_logs(level: Union[str, None] = None) -> dict:
     """Return recent audit log entries.
 
     Reads the ``logs/audit.log`` file and returns its contents. An optional

@@ -2,7 +2,7 @@
 import os, uuid, json
 from fastapi import APIRouter, Request, Response, Cookie
 from pydantic import BaseModel
-from memory_router import assemble_prompt, store_short
+from .memory_router import assemble_prompt, store_short
 
 # Use the new OpenAI client wrapper that forces model translation
 try:
