@@ -1,4 +1,8 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException, Depends, Query, Body, Form, File, UploadFile, WebSocket, WebSocketDisconnect, status
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse, FileResponse
+from pydantic import BaseModel, Field
+import uvicorn
 import asyncio
 from datetime import datetime
 # Optional Prometheus instrumentation. Import may fail if the package is not
@@ -445,8 +449,8 @@ class CreateTaskRequest(BaseModel):
             ``roles``, ``domains``, ``outcomes`` and ``niches``.
     """
     type: str
-    duration: int | None = None
-    params: dict | None = None
+    duration: Union[int, None] = None
+    params: Union[dict, None] = None
 
 
 @app.post("/api/tasks", tags=["dashboard"], dependencies=[role_required(Role.admin,)])
@@ -859,42 +863,43 @@ async def list_governance_reports() -> list[str]:
     return [f.name for f in files]
 
 @app.get("/api/governance/report", tags=["governance"], dependencies=[role_required(Role.admin,)])
-async def get_governance_report(date: Union[str, None] = None) -> dict:
-    """Return a governance report for a given date or the latest one.
+async def get_governance_report(date: Union[str, None] = Query(default=None, description="ISO date (YYYY-MM-DD) of report to fetch")):
+    """Return the latest or specified governance report.
 
-    Args:
-        date: Optional date in YYYY-MM-DD format to select a specific report.
-            If not provided, the most recent report is returned.
-
-    Returns:
-        The contents of the selected governance report parsed as a dict.
+    If no date is provided, this endpoint will attempt to find the most recent
+    report file in the configured output directory. If a date is provided,
+    it will look for a report named `governance_report_{date}.json`. If the
+    report cannot be found, a 404 error is returned.
     """
-    import yaml, json, pathlib, datetime
-    # Determine the reports directory
+    # Determine reports directory from configuration; fallback to default
+    reports_dir = pathlib.Path('reports')
     try:
+        import yaml
         cfg = yaml.safe_load(open('config/settings.yaml'))
         reports_dir = pathlib.Path(cfg.get('governance', {}).get('output_dir', 'reports'))
     except Exception:
+        # If config missing or unreadable, use default 'reports'
         reports_dir = pathlib.Path('reports')
-    # Determine which file to load
+
     if date:
-        try:
-            # validate date format
-            datetime.datetime.strptime(date, '%Y-%m-%d')
-        except ValueError:
-            raise HTTPException(status_code=400, detail='Invalid date format, expected YYYY-MM-DD')
-        file_path = reports_dir / f'governance_report_{date}.json'
-        if not file_path.exists():
-            raise HTTPException(status_code=404, detail='Report not found for specified date')
-    else:
-        files = sorted(reports_dir.glob('governance_report_*.json'), reverse=True)
-        if not files:
-            raise HTTPException(status_code=404, detail='No reports found')
-        file_path = files[0]
-    try:
-        return json.loads(file_path.read_text())
-    except Exception:
-        raise HTTPException(status_code=500, detail='Failed to read report')
+        # Validate basic date format
+        if not (len(date) == 10 and date[4] == '-' and date[7] == '-'):
+            raise HTTPException(status_code=400, detail="Date must be in YYYY-MM-DD format")
+        target_file = reports_dir / f"governance_report_{date}.json"
+        if not target_file.exists():
+            raise HTTPException(status_code=404, detail="Report for specified date not found")
+        data = json.loads(target_file.read_text())
+        return data
+
+    # No date specified; find most recent report
+    if not reports_dir.exists():
+        raise HTTPException(status_code=404, detail="No governance reports directory found")
+    files = sorted(reports_dir.glob('governance_report_*.json'), reverse=True)
+    if not files:
+        raise HTTPException(status_code=404, detail="No governance reports available")
+    latest = files[0]
+    data = json.loads(latest.read_text())
+    return data
 
 @app.get("/api/logs", tags=["logs"], dependencies=[role_required(Role.admin,)])
 async def get_logs(level: Union[str, None] = None) -> dict:
@@ -1050,9 +1055,9 @@ class AutomationUpdateRequest(_BaseModel):
     All fields are optional. Only provided flags will be updated. See
     ``nova.automation_flags.DEFAULTS`` for available flags.
     """
-    posting_enabled: bool | None = None
-    generation_enabled: bool | None = None
-    require_approval: bool | None = None
+    posting_enabled: Union[bool, None] = None
+    generation_enabled: Union[bool, None] = None
+    require_approval: Union[bool, None] = None
 
 
 @app.get(
@@ -1215,7 +1220,7 @@ class GumroadLinkRequest(_PydanticBaseModel):
     """
 
     product_slug: str
-    include_affiliate: bool | None = True
+    include_affiliate: Union[bool, None] = True
 
 
 @app.post(
@@ -1253,9 +1258,9 @@ class ConvertKitSubscribeRequest(_PydanticBaseModel):
         tags: Optional list of tag names to apply to the subscriber.
     """
     email: str
-    first_name: str | None = None
-    form_id: str | None = None
-    tags: list[str] | None = None
+    first_name: Union[str, None] = None
+    form_id: Union[str, None] = None
+    tags: Union[list[str], None] = None
 
 
 @app.post(
@@ -1433,9 +1438,9 @@ class HubSpotContactRequest(_PydanticBaseModel):
             "phone").
     """
     email: str
-    first_name: str | None = None
-    last_name: str | None = None
-    properties: dict[str, Any] | None = None
+    first_name: Union[str, None] = None
+    last_name: Union[str, None] = None
+    properties: Union[dict[str, Any], None] = None
 
 
 @app.post(
@@ -1611,10 +1616,10 @@ class SocialPilotPostRequest(_PydanticBaseModel):
     """
 
     content: str
-    media_url: Optional[str] | None = None
-    platforms: Optional[List[str]] | None = None
-    scheduled_time: Optional[datetime] | None = None
-    extras: Optional[dict[str, Any]] | None = None
+    media_url: Union[str, None] = None
+    platforms: Union[List[str], None] = None
+    scheduled_time: Union[datetime, None] = None
+    extras: Union[dict[str, Any], None] = None
 
 
 @app.post(
@@ -1672,10 +1677,10 @@ class PublerPostRequest(_PydanticBaseModel):
         extras: Optional additional payload fields.
     """
     content: str
-    media_url: Optional[str] | None = None
-    platforms: Optional[List[str]] | None = None
-    scheduled_time: Optional[datetime] | None = None
-    extras: Optional[dict[str, Any]] | None = None
+    media_url: Union[str, None] = None
+    platforms: Union[List[str], None] = None
+    scheduled_time: Union[datetime, None] = None
+    extras: Union[dict[str, Any], None] = None
 
 
 @app.post(
@@ -1730,7 +1735,7 @@ class TranslateRequest(_PydanticBaseModel):
     """
     text: str
     target_language: str
-    source_language: Optional[str] | None = None
+    source_language: Union[str, None] = None
     format: str = "text"
 
 
@@ -1962,8 +1967,8 @@ class YouTubeUploadRequest(_PydanticBaseModel):
     """
     file_path: str
     title: str
-    description: Optional[str] | None = None
-    tags: Optional[List[str]] | None = None
+    description: Union[str, None] = None
+    tags: Union[List[str], None] = None
     privacy_status: str = "public"
 
 
@@ -1976,8 +1981,8 @@ class InstagramPostRequest(_PydanticBaseModel):
         thumbnail_url: Optional URL for a custom thumbnail image.
     """
     video_url: str
-    caption: Optional[str] | None = None
-    thumbnail_url: Optional[str] | None = None
+    caption: Union[str, None] = None
+    thumbnail_url: Union[str, None] = None
 
 
 class FacebookPostRequest(_PydanticBaseModel):
@@ -1989,8 +1994,8 @@ class FacebookPostRequest(_PydanticBaseModel):
         media_url: Optional URL to an image or video to attach.
     """
     message: str
-    link: Optional[str] | None = None
-    media_url: Optional[str] | None = None
+    link: Union[str, None] = None
+    media_url: Union[str, None] = None
 
 
 class TTSRequest(_PydanticBaseModel):
@@ -2003,7 +2008,7 @@ class TTSRequest(_PydanticBaseModel):
         format: Audio format (e.g., "mp3", "wav"). Defaults to "mp3".
     """
     text: str
-    voice_id: Optional[str] | None = None
+    voice_id: Union[str, None] = None
     format: str = "mp3"
 
 
@@ -2195,58 +2200,3 @@ async def ws_events(ws: WebSocket):
             await ws.send_text(f"echo: {msg}")
     except WebSocketDisconnect:
         connections.discard(ws)
-
-# -----------------------------------------------------------------------------
-# Governance API endpoints
-#
-# These endpoints expose the latest governance report produced by the nightly
-# governance loop. Only admin users may access these reports because they may
-# contain sensitive performance metrics and tool health information. Reports are
-# stored on disk in the directory configured in `config/settings.yaml` under
-# `governance.output_dir` (default: 'reports'). Files are named
-# `governance_report_YYYY-MM-DD.json`.
-
-import os
-import pathlib
-import json
-from fastapi import HTTPException, Query
-
-
-@app.get("/api/governance/report", tags=["governance"], dependencies=[role_required(Role.admin,)])
-async def get_governance_report(date: str | None = Query(default=None, description="ISO date (YYYY-MM-DD) of report to fetch")):
-    """Return the latest or specified governance report.
-
-    If no date is provided, this endpoint will attempt to find the most recent
-    report file in the configured output directory. If a date is provided,
-    it will look for a report named `governance_report_{date}.json`. If the
-    report cannot be found, a 404 error is returned.
-    """
-    # Determine reports directory from configuration; fallback to default
-    reports_dir = pathlib.Path('reports')
-    try:
-        import yaml
-        cfg = yaml.safe_load(open('config/settings.yaml'))
-        reports_dir = pathlib.Path(cfg.get('governance', {}).get('output_dir', 'reports'))
-    except Exception:
-        # If config missing or unreadable, use default 'reports'
-        reports_dir = pathlib.Path('reports')
-
-    if date:
-        # Validate basic date format
-        if not (len(date) == 10 and date[4] == '-' and date[7] == '-'):
-            raise HTTPException(status_code=400, detail="Date must be in YYYY-MM-DD format")
-        target_file = reports_dir / f"governance_report_{date}.json"
-        if not target_file.exists():
-            raise HTTPException(status_code=404, detail="Report for specified date not found")
-        data = json.loads(target_file.read_text())
-        return data
-
-    # No date specified; find most recent report
-    if not reports_dir.exists():
-        raise HTTPException(status_code=404, detail="No governance reports directory found")
-    files = sorted(reports_dir.glob('governance_report_*.json'), reverse=True)
-    if not files:
-        raise HTTPException(status_code=404, detail="No governance reports available")
-    latest = files[0]
-    data = json.loads(latest.read_text())
-    return data

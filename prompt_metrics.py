@@ -35,7 +35,7 @@ from __future__ import annotations
 import json
 import os
 import time
-from typing import Dict, Any, List, Tuple
+from typing import Dict, Any, List, Tuple, Optional, Iterable, Union
 
 # Define the path to the JSON file used for persisting prompt metrics.
 _DATA_DIR = os.path.join(os.path.dirname(__file__), 'data')
@@ -48,7 +48,6 @@ _DATA_PATH = os.path.join(_DATA_DIR, 'prompt_metrics.json')
 _RECORDS_PATH = os.path.join(_DATA_DIR, 'prompt_metrics_records.json')
 
 # Type aliases for readability
-from typing import Optional, Iterable
 
 def _load_records(filepath: str = _RECORDS_PATH) -> List[Dict[str, Any]]:
     """Load the list of raw prompt metric records.
@@ -182,13 +181,13 @@ def record_prompt_metric(prompt_id: str, *args: Any, **kwargs: Any) -> None:
 
     """
     # Initialise variables with None/default values
-    rpm: float | None = None
-    views: int | None = None
-    ctr: float | None = None
-    retention: float | None = None
-    clicks: int | None = None
+    rpm: Union[float, None] = None
+    views: Union[int, None] = None
+    ctr: Union[float, None] = None
+    retention: Union[float, None] = None
+    clicks: Union[int, None] = None
     country_data: Optional[Dict[str, Any]] = None
-    impressions: int | None = None
+    impressions: Union[int, None] = None
 
     # Extract from keyword arguments first
     if 'rpm' in kwargs:

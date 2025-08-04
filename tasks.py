@@ -28,6 +28,7 @@ from marketing_digest import (
     push_weekly_digest_to_notion,
     generate_landing_pages_for_top_prompts,
 )
+from typing import Union
 
 # If Celery is available, configure the app and register tasks.  If
 # Celery is not installed, define stub functions so that imports
@@ -37,7 +38,7 @@ if Celery is not None:
     app.config_from_object('celeryconfig')
 
     @app.task(name='nova.post_video')
-    def post_video(video_path: str, prompt: str, prompt_id: str | None = None) -> str:
+    def post_video(video_path: str, prompt: str, prompt_id: Union[str, None] = None) -> str:
         """Asynchronous task to post a video across platforms.
 
         Delegates to ``platform_manager.manage_platforms`` and returns
@@ -76,7 +77,7 @@ if Celery is not None:
         return 'Weekly digest and landing pages generated'
 
     @app.task(name='nova.competitor_analysis')
-    def competitor_analysis(seeds: list[str] | None = None, count: int = 10):
+    def competitor_analysis(seeds: Union[list[str], None] = None, count: int = 10):
         """Asynchronously benchmark competitor keywords.
 
         This task invokes the :class:`nova.competitor_analyzer.CompetitorAnalyzer`
@@ -171,7 +172,7 @@ else:
     # Define no-op stubs for environments without Celery.
     app = None  # type: ignore
 
-    def post_video(video_path: str, prompt: str, prompt_id: str | None = None) -> str:
+    def post_video(video_path: str, prompt: str, prompt_id: Union[str, None] = None) -> str:
         """Synchronous fallback for post_video when Celery is unavailable."""
         return manage_platforms(video_path, prompt, prompt_id)
 
@@ -181,7 +182,7 @@ else:
         generate_landing_pages_for_top_prompts(num_pages=3, output_dir='landing_pages')
         return 'Weekly digest and landing pages generated'
 
-    def competitor_analysis(seeds: list[str] | None = None, count: int = 10):
+    def competitor_analysis(seeds: Union[list[str], None] = None, count: int = 10):
         """Synchronous fallback for competitor_analysis when Celery is unavailable."""
         return []
 

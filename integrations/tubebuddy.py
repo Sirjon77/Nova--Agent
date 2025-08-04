@@ -35,7 +35,7 @@ context.
 from __future__ import annotations
 
 import os
-from typing import List, Dict, Any, Optional
+from typing import List, Dict, Any, Optional, Union
 
 import requests
 
@@ -61,7 +61,11 @@ def _get_api_key() -> str:
     return key
 
 
-def search_keywords(query: str, *, max_results: int = 10) -> List[str]:
+def search_keywords(
+    query: str,
+    max_results: int = 10,
+    category: Union[str, None] = None,
+) -> List[str]:
     """Search YouTube for a given query and return a list of related keywords.
 
     This helper uses the YouTube Search API to find videos related to

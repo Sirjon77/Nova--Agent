@@ -57,8 +57,8 @@ class _SimpleJWT:
         self,
         payload: Dict[str, Any],
         secret: str,
-        algorithm: str = 'HS256',
-        headers: Dict[str, Any] | None = None,
+        algorithm: str = "HS256",
+        headers: Union[Dict[str, Any], None] = None,
     ) -> str:
         if algorithm != 'HS256':
             raise JWTError(f"Unsupported algorithm: {algorithm}")
@@ -79,7 +79,7 @@ class _SimpleJWT:
         token: str,
         secret: str,
         algorithms: Iterable[str],
-        options: Dict[str, Any] | None = None,
+        options: Union[Dict[str, Any], None] = None,
     ) -> Dict[str, Any]:
         # Validate algorithm list
         if 'HS256' not in algorithms:

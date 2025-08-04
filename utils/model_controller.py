@@ -11,7 +11,7 @@ The routing table is also persisted to `config/model_tiers.json` for runtime ove
 import os
 import json
 from pathlib import Path
-from typing import Dict, Tuple
+from typing import Dict, Tuple, Union
 
 CONFIG_PATH = Path(__file__).resolve().parent.parent / "config" / "model_tiers.json"
 
@@ -79,7 +79,7 @@ def select_model(task_meta: Dict) -> Tuple[str, str]:
     :param task_meta: {
        'type': 'script' | 'caption_fix' | ...,
        'prompt': str,
-       'force_model': str | None
+       'force_model': Union[str, None]
     }
     :return: (model_name, api_key)
     """

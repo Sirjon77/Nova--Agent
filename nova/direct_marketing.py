@@ -16,7 +16,7 @@ landing page copy and email follow-ups.
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Union
 
 
 @dataclass
@@ -94,10 +94,10 @@ class DirectMarketingPlanner:
         product_name: str,
         benefits: List[str],
         cta: CTA,
-        image_url: str | None = None,
+        image_url: Union[str, None] = None,
         *,
-        meta_pixel_id: str | None = None,
-        tiktok_pixel_id: str | None = None,
+        meta_pixel_id: Union[str, None] = None,
+        tiktok_pixel_id: Union[str, None] = None,
     ) -> str:
         """Generate a simple HTML micro‑landing page with optional tracking pixels.
 
@@ -188,9 +188,9 @@ class DirectMarketingPlanner:
         benefits: List[str],
         offer_code: str,
         *,
-        meta_pixel_id: str | None = None,
-        tiktok_pixel_id: str | None = None,
-        image_url: str | None = None,
+        meta_pixel_id: Union[str, None] = None,
+        tiktok_pixel_id: Union[str, None] = None,
+        image_url: Union[str, None] = None,
     ) -> str:
         """Create a complete funnel landing page for a video and offer.
 

@@ -1,7 +1,7 @@
 
 from dataclasses import dataclass
 from statistics import mean, stdev
-from typing import List
+from typing import List, Union
 
 @dataclass
 class ChannelMetrics:
@@ -16,7 +16,7 @@ class ChannelMetrics:
 class ScoredChannel:
     channel_id: str
     score: float
-    flag: str | None
+    flag: Union[str, None]
 
 class NicheManager:
     def __init__(self, cfg):
