@@ -1,5 +1,5 @@
 {
-  "posting_enabled": false,
-  "generation_enabled": true,
-  "require_approval": false
+  "posting_enabled": true,
+  "generation_enabled": false,
+  "require_approval": true
 }

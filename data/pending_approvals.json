@@ -1,1 +1,19 @@
-[]
+[
+  {
+    "id": "998b0d33-659c-4554-becb-0d7d054dd515",
+    "provider": "publer",
+    "function": "schedule_post",
+    "args": [],
+    "kwargs": {
+      "content": "Test content",
+      "media_url": null,
+      "platforms": null,
+      "scheduled_time": null,
+      "extras": null
+    },
+    "metadata": {
+      "type": "publer_post"
+    },
+    "created_at": "2025-08-04T18:37:02.432088"
+  }
+]
