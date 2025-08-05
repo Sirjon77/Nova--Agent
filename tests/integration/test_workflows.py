@@ -132,17 +132,17 @@ class TestIntegrationWorkflows:
         with patch('integrations.publer.schedule_post') as mock_publer:
             mock_publer.return_value = {"status": "scheduled", "platform": "publer"}
             
-                            with patch('integrations.facebook.publish_post') as mock_fb:
-                    mock_fb.return_value = {"status": "posted", "platform": "facebook"}
+            with patch('integrations.facebook.publish_post') as mock_fb:
+                mock_fb.return_value = {"status": "posted", "platform": "facebook"}
+                
+                with patch('integrations.instagram.publish_post') as mock_ig:
+                    mock_ig.return_value = {"status": "posted", "platform": "instagram"}
                     
-                    with patch('integrations.instagram.publish_post') as mock_ig:
-                        mock_ig.return_value = {"status": "posted", "platform": "instagram"}
-                        
-                        # Post to multiple platforms
-                        results = []
-                        results.append(schedule_post(**content))
-                        results.append(publish_post(**content))
-                        results.append(post_to_instagram(**content))
+                    # Post to multiple platforms
+                    results = []
+                    results.append(schedule_post(**content))
+                    results.append(publish_post(**content))
+                    results.append(post_to_instagram(**content))
                     
                     # Verify all platforms received the post
                     assert len(results) == 3
