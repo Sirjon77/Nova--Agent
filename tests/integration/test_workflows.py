@@ -6,7 +6,7 @@ from nova.governance.governance_loop import run as governance_run
 from nova.autonomous_research import AutonomousResearcher
 
 class TestIntegrationWorkflows:
-        @pytest.mark.asyncio
+    @pytest.mark.asyncio
     async def test_governance_to_content_workflow(self, mock_redis, mock_openai, authenticated_client):
         """Test complete workflow from governance to content creation."""
         # Test that the governance configuration is valid
