@@ -119,8 +119,8 @@ class TestIntegrationWorkflows:
     async def test_multi_platform_posting_workflow(self, mock_redis, mock_openai, authenticated_client):
         """Test workflow for posting to multiple platforms."""
         from integrations.publer import schedule_post
-        from integrations.facebook import post_to_facebook
-        from integrations.instagram import post_to_instagram
+        from integrations.facebook import publish_post
+        from integrations.instagram import publish_post as post_to_instagram
         
         content = {
             "title": "Test Post",
@@ -132,17 +132,17 @@ class TestIntegrationWorkflows:
         with patch('integrations.publer.schedule_post') as mock_publer:
             mock_publer.return_value = {"status": "scheduled", "platform": "publer"}
             
-            with patch('integrations.facebook.post_to_facebook') as mock_fb:
-                mock_fb.return_value = {"status": "posted", "platform": "facebook"}
-                
-                with patch('integrations.instagram.post_to_instagram') as mock_ig:
-                    mock_ig.return_value = {"status": "posted", "platform": "instagram"}
+                            with patch('integrations.facebook.publish_post') as mock_fb:
+                    mock_fb.return_value = {"status": "posted", "platform": "facebook"}
                     
-                    # Post to multiple platforms
-                    results = []
-                    results.append(schedule_post(**content))
-                    results.append(post_to_facebook(**content))
-                    results.append(post_to_instagram(**content))
+                    with patch('integrations.instagram.publish_post') as mock_ig:
+                        mock_ig.return_value = {"status": "posted", "platform": "instagram"}
+                        
+                        # Post to multiple platforms
+                        results = []
+                        results.append(schedule_post(**content))
+                        results.append(publish_post(**content))
+                        results.append(post_to_instagram(**content))
                     
                     # Verify all platforms received the post
                     assert len(results) == 3
