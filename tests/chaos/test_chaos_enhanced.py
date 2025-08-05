@@ -1,6 +1,7 @@
 import pytest
 import time
 import asyncio
+import tempfile
 from unittest.mock import Mock, patch
 from nova.chaos.injector import ChaosConfig, maybe_fail
 
@@ -92,7 +93,7 @@ class TestChaosEnhanced:
                 try:
                     with patch('nova.chaos.injector.maybe_fail') as mock_chaos:
                         mock_chaos.side_effect = lambda cfg: asyncio.sleep(0.01)
-                        mm.store_short(f"key_{i}", {"data": f"value_{i}"})
+                        mm.add_short_term(f"session_{i}", "user", f"data_{i}", {"data": f"value_{i}"})
                         success_count += 1
                 except Exception:
                     pass  # Expected failures due to chaos
