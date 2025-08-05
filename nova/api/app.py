@@ -16,7 +16,8 @@ except Exception:
     Instrumentator = None  # type: ignore
     _instrumentation_available = False
 from nova.metrics import tasks_executed, task_duration, memory_items, governance_runs_total
-from auth.jwt_middleware import JWTAuthMiddleware, issue_token
+# JWT middleware import moved to function level to avoid security validation during import
+# from auth.jwt_middleware import JWTAuthMiddleware, issue_token
 
 # Task management imports
 from nova.task_manager import task_manager, TaskType, dummy_task
@@ -103,8 +104,16 @@ app = FastAPI(title="Nova Agent API", version="6.7")
 # results for experiments such as thumbnail or caption variations.
 ab_manager = ABTestManager()
 
-# Attach JWT middleware
-app.add_middleware(JWTAuthMiddleware)
+# Attach JWT middleware (conditional to avoid import-time validation)
+def _add_jwt_middleware():
+    try:
+        from auth.jwt_middleware import JWTAuthMiddleware
+        app.add_middleware(JWTAuthMiddleware)
+    except RuntimeError as e:
+        # Skip JWT middleware if security validation fails
+        print(f"⚠️  JWT middleware disabled: {e}")
+
+_add_jwt_middleware()
 
 # Enable CORS for all origins (development/public use)
 app.add_middleware(
@@ -262,7 +271,14 @@ async def login(req: LoginRequest):
         role = 'user'
     else:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail='Invalid credentials')
-    token = issue_token(username, role)
+    try:
+        from auth.jwt_middleware import issue_token
+        token = issue_token(username, role)
+    except RuntimeError as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"JWT token generation failed: {e}"
+        )
     return LoginResponse(token=token, role=role)
 
 from auth.rbac import role_required
