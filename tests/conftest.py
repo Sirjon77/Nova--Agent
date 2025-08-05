@@ -47,8 +47,8 @@ with patch('redis.Redis') as mock_redis_class:
 
     mock_redis_class.return_value = mock_redis_instance
 
-# Import after mocking setup
-from nova.api.app import app
+# Import after mocking setup - this is necessary to prevent import errors
+from nova.api.app import app  # noqa: E402
 
 
 @pytest.fixture(scope="session")
@@ -59,21 +59,21 @@ def test_env_vars() -> Dict[str, str]:
         "JWT_SECRET_KEY": "test-secret-key-32-chars-long-for-testing-only",
         "NOVA_ADMIN_USERNAME": "admin",
         "NOVA_ADMIN_PASSWORD": "admin",
-        
+
         # OpenAI API (mocked)
         "OPENAI_API_KEY": "sk-test-key-for-testing-only",
-        
+
         # Redis (mocked)
         "REDIS_URL": "redis://localhost:6379/0",
-        
+
         # Weaviate (mocked)
         "WEAVIATE_API_KEY": "test-weaviate-key",
         "WEAVIATE_URL": "http://localhost:8080",
-        
+
         # Email (mocked)
         "EMAIL_PASSWORD": "test-email-password-16-chars",
         "EMAIL_USERNAME": "test@example.com",
-        
+
         # Integration APIs (mocked)
         "METRICOOL_API_TOKEN": "test-metricool-token",
         "METRICOOL_ACCOUNT_ID": "test-account-id",
@@ -82,7 +82,7 @@ def test_env_vars() -> Dict[str, str]:
         "NOTION_API_KEY": "test-notion-key",
         "CONVERTKIT_API_KEY": "test-convertkit-key",
         "GUMROAD_API_KEY": "test-gumroad-key",
-        
+
         # File paths
         "AUTOMATION_FLAGS_FILE": "test_automation_flags.json",
         "APPROVALS_FILE": "test_approvals.json",
@@ -96,7 +96,7 @@ def mock_redis():
     with patch('redis.Redis') as mock_redis_class:
         # Create a mock Redis instance
         mock_redis_instance = Mock()
-        
+
         # Mock common Redis operations
         mock_redis_instance.set.return_value = True
         mock_redis_instance.get.return_value = None
@@ -109,12 +109,12 @@ def mock_redis():
         mock_redis_instance.hgetall.return_value = {}
         mock_redis_instance.expire.return_value = True
         mock_redis_instance.ttl.return_value = -1
-        
+
         # Mock connection pool
         mock_pool = Mock()
         mock_pool.get_connection.return_value = Mock()
         mock_redis_instance.connection_pool = mock_pool
-        
+
         mock_redis_class.return_value = mock_redis_instance
         yield mock_redis_instance
 
@@ -125,20 +125,19 @@ def mock_openai():
     with patch('openai.OpenAI') as mock_openai_class:
         # Create a mock OpenAI client
         mock_client = Mock()
-        
-        # Mock chat completions
+
+        # Mock chat completion
         mock_chat_completion = Mock()
         mock_chat_completion.choices = [Mock()]
         mock_chat_completion.choices[0].message.content = "Mocked response"
-        mock_chat_completion.choices[0].message.role = "assistant"
         mock_client.chat.completions.create.return_value = mock_chat_completion
-        
-        # Mock completions
+
+        # Mock completion
         mock_completion = Mock()
         mock_completion.choices = [Mock()]
         mock_completion.choices[0].text = "Mocked completion"
         mock_client.completions.create.return_value = mock_completion
-        
+
         mock_openai_class.return_value = mock_client
         yield mock_client
 
@@ -146,38 +145,33 @@ def mock_openai():
 @pytest.fixture(scope="session")
 def mock_weaviate():
     """Mock Weaviate client for all tests."""
-    with patch('weaviate.Client') as mock_weaviate_class:
+    with patch('weaviate.WeaviateClient') as mock_weaviate_class:
+        # Create a mock Weaviate client
         mock_client = Mock()
-        mock_client.is_ready.return_value = True
         mock_client.schema.get.return_value = {}
-        mock_client.data_object.create.return_value = {"id": "test-id"}
-        mock_client.data_object.get.return_value = {"id": "test-id", "properties": {}}
-        mock_client.data_object.delete.return_value = True
-        mock_client.query.get.return_value = Mock()
         mock_weaviate_class.return_value = mock_client
         yield mock_client
 
 
 @pytest.fixture(scope="session")
 def mock_requests():
-    """Mock requests library for HTTP calls."""
+    """Mock requests library for all tests."""
     with patch('requests.get') as mock_get, \
          patch('requests.post') as mock_post, \
          patch('requests.put') as mock_put, \
          patch('requests.delete') as mock_delete:
-        
+
         # Mock successful responses
         mock_response = Mock()
         mock_response.status_code = 200
-        mock_response.json.return_value = {"success": True}
-        mock_response.text = '{"success": true}'
-        mock_response.raise_for_status.return_value = None
-        
+        mock_response.json.return_value = {"status": "success"}
+        mock_response.text = "Mocked response"
+
         mock_get.return_value = mock_response
         mock_post.return_value = mock_response
         mock_put.return_value = mock_response
         mock_delete.return_value = mock_response
-        
+
         yield {
             'get': mock_get,
             'post': mock_post,
@@ -188,59 +182,50 @@ def mock_requests():
 
 @pytest.fixture(scope="function")
 def temp_dir() -> Generator[Path, None, None]:
-    """Provide a temporary directory for test files."""
-    temp_dir = Path(tempfile.mkdtemp())
-    yield temp_dir
-    shutil.rmtree(temp_dir, ignore_errors=True)
+    """Create a temporary directory for testing."""
+    temp_dir = tempfile.mkdtemp()
+    temp_path = Path(temp_dir)
+    yield temp_path
+    shutil.rmtree(temp_dir)
 
 
 @pytest.fixture(scope="function")
 def test_files(temp_dir) -> Generator[Dict[str, Path], None, None]:
-    """Provide test file paths in temporary directory."""
-    files = {
-        'automation_flags': temp_dir / "automation_flags.json",
-        'approvals': temp_dir / "approvals.json",
-        'policy': temp_dir / "policy.yaml",
-        'memory_short': temp_dir / "memory_short.json",
-        'memory_long': temp_dir / "memory_long.json",
-        'logs': temp_dir / "logs.json",
-        'summaries': temp_dir / "summaries.json",
-    }
-    
-    # Create files with default content
-    files['automation_flags'].write_text('{"require_approval": false}')
-    files['approvals'].write_text('[]')
-    files['policy'].write_text('rules: []')
-    files['memory_short'].write_text('[]')
-    files['memory_long'].write_text('[]')
-    files['logs'].write_text('[]')
-    files['summaries'].write_text('[]')
-    
+    """Create test files in temporary directory."""
+    files = {}
+
+    # Create test JSON files
+    files['automation_flags'] = temp_dir / "test_automation_flags.json"
+    files['automation_flags'].write_text('{"feature_enabled": true}')
+
+    files['approvals'] = temp_dir / "test_approvals.json"
+    files['approvals'].write_text('{"pending": []}')
+
+    files['policy'] = temp_dir / "test_policy.yaml"
+    files['policy'].write_text('rules:\n  - name: test_rule\n    enabled: true')
+
     yield files
 
 
 @pytest.fixture(scope="function")
 def authenticated_client(test_env_vars) -> Generator[TestClient, None, None]:
-    """Provide an authenticated TestClient."""
+    """Create an authenticated test client."""
     # Set environment variables
     for key, value in test_env_vars.items():
         os.environ[key] = value
-    
+
+    # Create test client
     client = TestClient(app)
-    
-    # Login to get token
-    login_response = client.post(
-        "/api/auth/login",
-        json={"username": "admin", "password": "admin"}
-    )
-    
-    if login_response.status_code == 200:
-        token = login_response.json()["token"]
-        client.headers.update({"Authorization": f"Bearer {token}"})
-    
+
+    # Add authentication headers
+    client.headers = {
+        "Authorization": "Bearer test-token",
+        "Content-Type": "application/json"
+    }
+
     yield client
-    
-    # Cleanup
+
+    # Clean up environment variables
     for key in test_env_vars:
         if key in os.environ:
             del os.environ[key]
@@ -248,107 +233,93 @@ def authenticated_client(test_env_vars) -> Generator[TestClient, None, None]:
 
 @pytest.fixture(scope="function")
 def unauthenticated_client() -> TestClient:
-    """Provide an unauthenticated TestClient."""
+    """Create an unauthenticated test client."""
     return TestClient(app)
 
 
 @pytest.fixture(scope="function")
 def mock_memory_manager():
-    """Mock MemoryManager for testing."""
-    with patch('utils.memory_manager.MemoryManager') as mock_class:
-        mock_instance = Mock()
-        
-        # Mock status methods
-        mock_instance.is_available.return_value = True
-        mock_instance.get_status.return_value = {
+    """Mock memory manager for testing."""
+    with patch('utils.memory_manager.MemoryManager') as mock_mm_class:
+        mock_mm = Mock()
+        mock_mm.add_short_term.return_value = True
+        mock_mm.add_long_term.return_value = True
+        mock_mm.get_short_term.return_value = [{"role": "user", "content": "test"}]
+        mock_mm.get_relevant_memories.return_value = [{"content": "test memory"}]
+        mock_mm.is_available.return_value = True
+        mock_mm.get_memory_status.return_value = {
             "redis_available": True,
             "weaviate_available": True,
-            "file_available": True
+            "fully_available": True,
+            "short_term_count": 1,
+            "long_term_count": 1,
+            "total_count": 2
         }
-        
-        # Mock storage methods
-        mock_instance.store_short.return_value = True
-        mock_instance.store_long.return_value = True
-        mock_instance.get_short.return_value = {"test": "data"}
-        mock_instance.get_long.return_value = {"test": "data"}
-        mock_instance.delete_short.return_value = True
-        mock_instance.delete_long.return_value = True
-        
-        # Mock singleton pattern
-        mock_class.return_value = mock_instance
-        mock_class._instance = mock_instance
-        
-        yield mock_instance
+        mock_mm_class.return_value = mock_mm
+        yield mock_mm
 
 
 @pytest.fixture(scope="function")
 def mock_security_validator():
-    """Mock SecurityValidator to bypass validation in tests."""
-    with patch('security_validator.SecurityValidator') as mock_class:
-        mock_instance = Mock()
-        mock_instance.validate_env_var.return_value = True
-        mock_instance.validate_all.return_value = True
-        mock_class.return_value = mock_instance
-        yield mock_instance
+    """Mock security validator for testing."""
+    with patch('security_validator.validate_jwt_secret') as mock_validate:
+        mock_validate.return_value = True
+        yield mock_validate
 
 
 @pytest.fixture(scope="function")
 def mock_secret_manager():
-    """Mock SecretManager for testing."""
-    with patch('secret_manager.SecretManager') as mock_class:
-        mock_instance = Mock()
-        mock_instance.get_secret.return_value = "test-secret"
-        mock_instance.audit_access.return_value = None
-        mock_instance.check_rotation_needs.return_value = False
-        mock_instance.get_health_report.return_value = {"status": "healthy"}
-        mock_class.return_value = mock_instance
-        yield mock_instance
+    """Mock secret manager for testing."""
+    with patch('secret_manager.get_secret') as mock_get_secret:
+        mock_get_secret.return_value = "test-secret-value"
+        yield mock_get_secret
 
 
 @pytest.fixture(scope="function")
 def mock_jwt_middleware():
-    """Mock JWT middleware to bypass authentication in tests."""
-    with patch('auth.jwt_middleware.get_jwt_secret') as mock_get_secret, \
-         patch('auth.jwt_middleware.issue_token') as mock_issue_token:
-        
-        mock_get_secret.return_value = "test-secret-key-32-chars-long-for-testing-only"
-        mock_issue_token.return_value = "test.jwt.token"
-        
-        yield {
-            'get_secret': mock_get_secret,
-            'issue_token': mock_issue_token
+    """Mock JWT middleware for testing."""
+    with patch('auth.jwt_middleware.verify_token') as mock_verify:
+        mock_verify.return_value = {
+            "user_id": "test-user",
+            "role": "admin",
+            "exp": 9999999999
         }
+        yield mock_verify
 
 
 @pytest.fixture(scope="function")
 def mock_external_apis():
-    """Mock all external API integrations."""
+    """Mock external API integrations for testing."""
     mocks = {}
-    
-    # Mock various integration modules
+
+    # Mock integration modules
     integration_modules = [
-        'integrations.metricool',
-        'integrations.publer', 
-        'integrations.notion',
+        'integrations.facebook',
+        'integrations.instagram',
+        'integrations.youtube',
+        'integrations.tiktok',
+        'integrations.twitter',
+        'integrations.linkedin',
         'integrations.convertkit',
         'integrations.gumroad',
-        'integrations.teams',
-        'integrations.runway',
-        'integrations.tubebuddy',
-        'integrations.socialpilot',
-        'integrations.beacons',
+        'integrations.notion',
+        'integrations.slack',
         'integrations.hubspot',
+        'integrations.metricool',
+        'integrations.publer',
+        'integrations.socialpilot',
+        'integrations.tubebuddy',
         'integrations.vidiq',
-        'integrations.youtube',
-        'integrations.instagram',
-        'integrations.facebook',
-        'integrations.tiktok',
+        'integrations.translate',
+        'integrations.tts',
+        'integrations.murf',
+        'integrations.naturalreader',
     ]
-    
+
     for module in integration_modules:
         with patch(module) as mock_module:
             mocks[module] = mock_module
-    
+
     yield mocks
 
 
@@ -356,7 +327,7 @@ def mock_external_apis():
 def mock_nova_modules():
     """Mock Nova core modules for testing."""
     mocks = {}
-    
+
     nova_modules = [
         'nova.autonomous_research',
         'nova.governance.governance_loop',
@@ -372,11 +343,11 @@ def mock_nova_modules():
         'nova.phases.execute_phase',
         'nova.phases.respond_phase',
     ]
-    
+
     for module in nova_modules:
         with patch(module) as mock_module:
             mocks[module] = mock_module
-    
+
     yield mocks
 
 
@@ -384,7 +355,7 @@ def mock_nova_modules():
 def mock_utils_modules():
     """Mock utility modules for testing."""
     mocks = {}
-    
+
     utils_modules = [
         'utils.memory_manager',
         'utils.memory_vault',
@@ -407,11 +378,11 @@ def mock_utils_modules():
         'utils.logger',
         'utils.knowledge_publisher',
     ]
-    
+
     for module in utils_modules:
         with patch(module) as mock_module:
             mocks[module] = mock_module
-    
+
     yield mocks
 
 
@@ -435,7 +406,7 @@ def pytest_collection_modifyitems(config, items):
         # Mark integration tests
         if "integration" in item.nodeid.lower():
             item.add_marker(pytest.mark.integration)
-        
+
         # Mark slow tests
         if any(slow_keyword in item.nodeid.lower() for slow_keyword in
                ["slow", "heavy", "comprehensive", "full"]):
@@ -444,4 +415,4 @@ def pytest_collection_modifyitems(config, items):
         # Mark external service tests
         if any(external_keyword in item.nodeid.lower() for external_keyword in
                ["api", "http", "external", "service"]):
-            item.add_marker(pytest.mark.external) 
+            item.add_marker(pytest.mark.external)
