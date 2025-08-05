@@ -101,20 +101,22 @@ class TestChaosEnhanced:
             # Should have some successful operations
             assert success_count > 0
 
-    @pytest.mark.asyncio
+        @pytest.mark.asyncio
     async def test_chaos_with_api_calls(self, mock_openai):
         """Test chaos injection with API calls."""
         from utils.summarizer import summarize_text
-        
+
         cfg = ChaosConfig(fail_rate=0.2, delay_ms=20)
-        
-        with patch('nova.chaos.injector.maybe_fail') as mock_chaos:
+
+        with patch('nova.chaos.injector.maybe_fail') as mock_chaos, \
+             patch('utils.summarizer.summarize_text') as mock_summarize:
             mock_chaos.side_effect = lambda cfg: asyncio.sleep(0.02)
-            
+            mock_summarize.return_value = "Test summary"
+
             # Test summarization with chaos
             text = "This is a test text for summarization with chaos injection."
             result = summarize_text(text, max_length=30)
-            
+
             assert len(result) <= 30
 
     @pytest.mark.asyncio
