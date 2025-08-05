@@ -23,9 +23,13 @@ class TestIntegrationWorkflows:
             with patch('nova.governance.trend_scanner.TrendScanner.scan') as mock_scan:
                 mock_scan.return_value = dummy_trends
                 
-                # Mock content generation
-                with patch('nova.autonomous_research.AutonomousResearcher.generate_content') as mock_gen:
-                    mock_gen.return_value = "Post about fitness trends and workouts"
+                # Mock research cycle
+                with patch('nova.autonomous_research.AutonomousResearcher.run_research_cycle') as mock_research:
+                    mock_research.return_value = {
+                        "hypotheses_generated": 2,
+                        "experiments_designed": 1,
+                        "insights": ["Fitness content performs better in mornings"]
+                    }
                     
                     # Mock Publer integration
                     with patch('integrations.publer.schedule_post') as mock_schedule:
@@ -50,8 +54,8 @@ class TestIntegrationWorkflows:
                         # Verify governance found trends
                         assert any(item.get("keyword") == "fitness" for item in report["trends"])
                         
-                        # Verify content was created and scheduled
-                        mock_gen.assert_called()
+                        # Verify research was conducted and content was scheduled
+                        mock_research.assert_called()
                         mock_schedule.assert_called()
 
     @pytest.mark.asyncio
@@ -67,12 +71,12 @@ class TestIntegrationWorkflows:
             )
             
             # Add test memories
-            mm.store_short("post_1", {
+            mm.add_short_term("session_1", "user", "Fitness post", {
                 "content": "Fitness post",
                 "engagement": 150,
                 "timestamp": 1234567890
             })
-            mm.store_short("post_2", {
+            mm.add_short_term("session_2", "user", "Nutrition post", {
                 "content": "Nutrition post", 
                 "engagement": 200,
                 "timestamp": 1234567891
@@ -105,11 +109,11 @@ class TestIntegrationWorkflows:
                 "best_times": ["09:00", "18:00"]
             }
             
-            with patch('nova.autonomous_research.AutonomousResearcher.research_topic') as mock_research:
+            with patch('nova.autonomous_research.AutonomousResearcher.run_research_cycle') as mock_research:
                 mock_research.return_value = research_results
                 
-                # Mock content generation
-                with patch('nova.autonomous_research.AutonomousResearcher.generate_post') as mock_gen:
+                # Mock content generation (using a different approach)
+                with patch('integrations.publer.schedule_post') as mock_gen:
                     mock_gen.return_value = {
                         "title": "10 Fitness Tips for Beginners",
                         "content": "Here are 10 essential fitness tips...",
