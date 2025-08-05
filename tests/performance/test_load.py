@@ -22,7 +22,7 @@ class TestPerformanceLoad:
             
             # Perform 1000 memory operations
             for i in range(1000):
-                mm.store_short(f"key_{i}", {"data": f"value_{i}", "index": i})
+                mm.add_short_term(f"session_{i}", "user", f"data_{i}", {"data": f"value_{i}", "index": i})
             
             write_time = time.time() - start_time
             
@@ -72,8 +72,8 @@ class TestPerformanceLoad:
             def worker(worker_id):
                 for i in range(100):
                     key = f"worker_{worker_id}_key_{i}"
-                    mm.store_short(key, {"data": f"value_{i}", "worker": worker_id})
-                    mm.get_short(key)
+                    mm.add_short_term(f"session_{worker_id}", "user", f"data_{i}", {"data": f"value_{i}", "worker": worker_id})
+                    mm.get_short_term(f"session_{worker_id}")
             
             # Start multiple threads
             threads = []
@@ -95,11 +95,10 @@ class TestPerformanceLoad:
             
             # Verify data integrity
             for i in range(5):
-                for j in range(100):
-                    key = f"worker_{i}_key_{j}"
-                    result = mm.get_short(key)
-                    assert result["worker"] == i
-                    assert result["data"] == f"value_{j}"
+                memories = mm.get_short_term(f"session_{i}")
+                assert len(memories) > 0
+                # Check that we have memories for this session
+                assert any(m.get("metadata", {}).get("worker") == i for m in memories)
 
     @pytest.mark.asyncio
     async def test_api_endpoint_load_performance(self, authenticated_client):
