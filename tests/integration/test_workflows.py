@@ -70,9 +70,9 @@ class TestIntegrationWorkflows:
         with tempfile.TemporaryDirectory() as temp_dir:
             # Mock research results
             research_results = {
-                "trends": ["fitness", "nutrition"],
-                "content_ideas": ["10 fitness tips", "Healthy meal prep"],
-                "best_times": ["09:00", "18:00"]
+                "hypotheses_generated": 2,
+                "experiments_designed": 1,
+                "insights": ["Fitness content performs better in mornings"]
             }
             
             with patch('nova.autonomous_research.AutonomousResearcher.run_research_cycle') as mock_research:
