@@ -137,30 +137,18 @@ class TestIntegrationWorkflows:
     @pytest.mark.asyncio
     async def test_analytics_to_optimization_workflow(self, mock_redis, mock_openai):
         """Test workflow from analytics to content optimization."""
-        from nova.analytics import analyze_performance
-        from nova.hashtag_optimizer import optimize_hashtags
+        from nova.analytics import aggregate_metrics
         
-        # Mock analytics data
-        analytics_data = {
-            "top_performing_posts": [
-                {"content": "Fitness tips", "engagement": 200, "hashtags": ["#fitness"]},
-                {"content": "Nutrition guide", "engagement": 150, "hashtags": ["#nutrition"]}
-            ],
-            "best_posting_times": ["09:00", "18:00"],
-            "optimal_content_length": 150
-        }
+        # Test analytics aggregation
+        test_metrics = [
+            {"rpm": 150, "views": 1000, "content": "Fitness tips"},
+            {"rpm": 200, "views": 1500, "content": "Nutrition guide"}
+        ]
         
-        with patch('nova.analytics.analyze_performance') as mock_analytics:
-            mock_analytics.return_value = analytics_data
-            
-            with patch('nova.hashtag_optimizer.optimize_hashtags') as mock_optimize:
-                mock_optimize.return_value = ["#fitness", "#health", "#workout"]
-                
-                # Execute optimization workflow
-                performance_data = analyze_performance()
-                optimized_hashtags = optimize_hashtags("fitness content")
-                
-                # Verify optimization based on analytics
-                assert performance_data["optimal_content_length"] == 150
-                assert len(optimized_hashtags) == 3
-                assert "#fitness" in optimized_hashtags 
+        # Execute analytics workflow
+        analytics_result = aggregate_metrics(test_metrics)
+        
+        # Verify analytics results
+        assert analytics_result["count"] == 2
+        assert analytics_result["total_views"] == 2500
+        assert analytics_result["average_rpm"] == 175.0 
