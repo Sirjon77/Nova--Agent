@@ -2595,3 +2595,12 @@
 2025-08-04 23:47:15,108 | INFO | httpx | HTTP Request: GET http://testserver/api/channels "HTTP/1.1 403 Forbidden"
 2025-08-04 23:47:15,597 | INFO | httpx | HTTP Request: GET http://testserver/api/nonexistent "HTTP/1.1 404 Not Found"
 2025-08-04 23:47:15,616 | INFO | httpx | HTTP Request: GET http://testserver/api/auth/login "HTTP/1.1 404 Not Found"
+2025-08-04 23:55:14,436 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 23:55:16,425 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 23:55:16,425 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 23:55:28,261 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 23:55:28,261 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 23:55:32,389 | INFO | utils.summarizer | EnhancedSummarizer initialized with model: gpt-4o
+2025-08-04 23:55:32,419 | INFO | utils.code_validator | CodeValidator initialized with sandbox: /var/folders/0s/nzh4stkn2td_vrwh3k6z35qw0000gn/T/nova_code_5azvpg29
+2025-08-04 23:55:32,472 | INFO | utils.memory_router | Using global memory manager
+2025-08-04 23:55:32,472 | WARNING | utils.memory_router | Using deprecated memory_router.py - migrate to utils.memory_manager
