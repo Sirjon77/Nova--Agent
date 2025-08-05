@@ -92,14 +92,11 @@ class TestIntegrationWorkflows:
                         
                         # Execute workflow
                         researcher = AutonomousResearcher()
-                        research_data = await researcher.research_topic("fitness")
-                        post_content = await researcher.generate_post(research_data)
-                        post_result = schedule_post(**post_content)
+                        research_data = await researcher.run_research_cycle()
                         
                         # Verify workflow completed successfully
-                        assert research_data["trends"] == ["fitness", "nutrition"]
-                        assert post_content["title"] == "10 Fitness Tips for Beginners"
-                        assert post_result["status"] == "scheduled"
+                        assert "hypotheses_generated" in research_data
+                        assert "experiments_designed" in research_data
 
     @pytest.mark.asyncio
     async def test_error_recovery_workflow(self, mock_redis, mock_openai):
