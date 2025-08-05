@@ -27,7 +27,7 @@ class TestIntegrationWorkflows:
     async def test_memory_to_analytics_workflow(self, mock_redis, mock_openai):
         """Test workflow from memory storage to analytics generation."""
         from utils.memory_manager import MemoryManager
-        from nova.analytics import generate_analytics_report
+        from nova.analytics import aggregate_metrics
         
         with tempfile.TemporaryDirectory() as temp_dir:
             mm = MemoryManager(
@@ -48,17 +48,15 @@ class TestIntegrationWorkflows:
             })
             
             # Generate analytics
-            with patch('nova.analytics.generate_analytics_report') as mock_analytics:
-                mock_analytics.return_value = {
-                    "total_posts": 2,
-                    "avg_engagement": 175,
-                    "top_content": "Nutrition post"
-                }
-                
-                report = generate_analytics_report(mm)
-                
-                assert report["total_posts"] == 2
-                assert report["avg_engagement"] == 175
+            test_metrics = [
+                {"engagement": 150, "content": "Fitness post"},
+                {"engagement": 200, "content": "Nutrition post"}
+            ]
+            
+            report = aggregate_metrics(test_metrics)
+            
+            assert "total_engagement" in report
+            assert report["total_engagement"] == 350
 
     @pytest.mark.asyncio
     async def test_research_to_posting_workflow(self, mock_redis, mock_openai, authenticated_client):
