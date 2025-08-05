@@ -15,8 +15,8 @@ import sys
 import tempfile
 import shutil
 from pathlib import Path
-from typing import Generator, Dict, Any
-from unittest.mock import Mock, patch, MagicMock
+from typing import Generator, Dict
+from unittest.mock import Mock, patch
 
 import pytest
 from starlette.testclient import TestClient
@@ -24,8 +24,6 @@ from starlette.testclient import TestClient
 # Add project root to path for imports
 project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
-
-# Import after path setup
 
 # Mock Redis at module level to prevent connection errors during import
 with patch('redis.Redis') as mock_redis_class:
@@ -41,14 +39,15 @@ with patch('redis.Redis') as mock_redis_class:
     mock_redis_instance.hgetall.return_value = {}
     mock_redis_instance.expire.return_value = True
     mock_redis_instance.ttl.return_value = -1
-    
+
     # Mock connection pool
     mock_pool = Mock()
     mock_pool.get_connection.return_value = Mock()
     mock_redis_instance.connection_pool = mock_pool
-    
+
     mock_redis_class.return_value = mock_redis_instance
 
+# Import after mocking setup
 from nova.api.app import app
 
 
@@ -438,10 +437,10 @@ def pytest_collection_modifyitems(config, items):
             item.add_marker(pytest.mark.integration)
         
         # Mark slow tests
-        if any(slow_keyword in item.nodeid.lower() for slow_keyword in 
+        if any(slow_keyword in item.nodeid.lower() for slow_keyword in
                ["slow", "heavy", "comprehensive", "full"]):
             item.add_marker(pytest.mark.slow)
-        
+
         # Mark external service tests
         if any(external_keyword in item.nodeid.lower() for external_keyword in
                ["api", "http", "external", "service"]):
