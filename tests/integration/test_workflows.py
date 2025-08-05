@@ -49,14 +49,17 @@ class TestIntegrationWorkflows:
             
             # Generate analytics
             test_metrics = [
-                {"engagement": 150, "content": "Fitness post"},
-                {"engagement": 200, "content": "Nutrition post"}
+                {"rpm": 150, "views": 1000, "content": "Fitness post"},
+                {"rpm": 200, "views": 1500, "content": "Nutrition post"}
             ]
             
             report = aggregate_metrics(test_metrics)
             
-            assert "total_engagement" in report
-            assert report["total_engagement"] == 350
+            assert "count" in report
+            assert "total_views" in report
+            assert "average_rpm" in report
+            assert report["count"] == 2
+            assert report["total_views"] == 2500
 
     @pytest.mark.asyncio
     async def test_research_to_posting_workflow(self, mock_redis, mock_openai, authenticated_client):
