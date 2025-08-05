@@ -41,13 +41,16 @@ class TestIntegrationWorkflows:
                         # Run governance loop
                         config = {
                             "output_dir": temp_dir,
-                            "trends": {"use_gwi": True, "rpm_multiplier": 1}
+                            "trends": {"use_gwi": True, "rpm_multiplier": 1},
+                            "niche": {},
+                            "tools": {}
                         }
                         
+                        from nova.governance.governance_loop import run as governance_run
                         report = await governance_run(
                             config, 
-                            channels=[], 
-                            seeds=["fitness"], 
+                            channel_metrics=[], 
+                            trend_seeds=["fitness"], 
                             tools_cfg=[]
                         )
                         
