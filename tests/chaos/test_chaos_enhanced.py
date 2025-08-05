@@ -101,7 +101,7 @@ class TestChaosEnhanced:
             # Should have some successful operations
             assert success_count > 0
 
-        @pytest.mark.asyncio
+    @pytest.mark.asyncio
     async def test_chaos_with_api_calls(self, mock_openai):
         """Test chaos injection with API calls."""
         from utils.summarizer import summarize_text
