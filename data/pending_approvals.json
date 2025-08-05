@@ -15,5 +15,22 @@
       "type": "publer_post"
     },
     "created_at": "2025-08-04T18:37:02.432088"
+  },
+  {
+    "id": "eefd50b2-7343-490c-b0f5-2f8ceba5ae92",
+    "provider": "publer",
+    "function": "schedule_post",
+    "args": [],
+    "kwargs": {
+      "content": "Test content",
+      "media_url": null,
+      "platforms": null,
+      "scheduled_time": null,
+      "extras": null
+    },
+    "metadata": {
+      "type": "publer_post"
+    },
+    "created_at": "2025-08-05T03:47:14.758258"
   }
 ]

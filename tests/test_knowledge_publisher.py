@@ -1,129 +1,81 @@
 import pytest
 import tempfile
 import os
-from utils.knowledge_publisher import KnowledgePublisher
+from utils.knowledge_publisher import publish_reflection
 
 class TestKnowledgePublisher:
-    def test_initialization(self):
-        """Test KnowledgePublisher class initialization."""
-        publisher = KnowledgePublisher()
-        assert publisher is not None
+    def test_publish_reflection_with_client(self):
+        """Test publishing reflection when weaviate client is available."""
+        with patch('utils.knowledge_publisher.client') as mock_client:
+            mock_client.data_object.create = Mock()
+            
+            publish_reflection("test_session", "Test reflection content", ["test", "reflection"])
+            
+            mock_client.data_object.create.assert_called_once()
+            call_args = mock_client.data_object.create.call_args
+            assert call_args[1]["class_name"] == "GlobalReflection"
 
-    def test_publish_knowledge_valid(self):
-        """Test publishing valid knowledge."""
-        publisher = KnowledgePublisher()
-        knowledge = {
-            "title": "Test Knowledge",
-            "content": "This is test content",
-            "tags": ["test", "knowledge"],
-            "source": "test_source"
-        }
-        result = publisher.publish(knowledge)
-        assert result.success is True
-        assert result.knowledge_id is not None
+    def test_publish_reflection_without_client(self):
+        """Test publishing reflection when weaviate client is not available."""
+        with patch('utils.knowledge_publisher.client', None):
+            # Should not raise any exception
+            publish_reflection("test_session", "Test reflection content")
 
-    def test_publish_knowledge_invalid(self):
-        """Test publishing invalid knowledge."""
-        publisher = KnowledgePublisher()
-        # Missing required fields
-        knowledge = {"title": "Test"}
-        result = publisher.publish(knowledge)
-        assert result.success is False
-        assert "content" in result.error_message
+    def test_publish_reflection_with_tags(self):
+        """Test publishing reflection with tags."""
+        with patch('utils.knowledge_publisher.client') as mock_client:
+            mock_client.data_object.create = Mock()
+            
+            tags = ["important", "urgent"]
+            publish_reflection("test_session", "Test content", tags)
+            
+            call_args = mock_client.data_object.create.call_args
+            obj_data = call_args[0][0]  # First positional argument
+            assert obj_data["tags"] == tags
 
-    def test_validate_knowledge_structure(self):
-        """Test knowledge structure validation."""
-        publisher = KnowledgePublisher()
-        valid_knowledge = {
-            "title": "Test",
-            "content": "Content",
-            "tags": ["tag1"],
-            "source": "source1"
-        }
-        assert publisher.validate_structure(valid_knowledge) is True
+    def test_publish_reflection_without_tags(self):
+        """Test publishing reflection without tags."""
+        with patch('utils.knowledge_publisher.client') as mock_client:
+            mock_client.data_object.create = Mock()
+            
+            publish_reflection("test_session", "Test content")
+            
+            call_args = mock_client.data_object.create.call_args
+            obj_data = call_args[0][0]  # First positional argument
+            assert obj_data["tags"] == []
 
-    def test_validate_knowledge_structure_invalid(self):
-        """Test knowledge structure validation with invalid data."""
-        publisher = KnowledgePublisher()
-        invalid_knowledge = {"title": "Test"}  # Missing required fields
-        assert publisher.validate_structure(invalid_knowledge) is False
+    def test_publish_reflection_session_id(self):
+        """Test that session_id is correctly set."""
+        with patch('utils.knowledge_publisher.client') as mock_client:
+            mock_client.data_object.create = Mock()
+            
+            session_id = "unique_session_123"
+            publish_reflection(session_id, "Test content")
+            
+            call_args = mock_client.data_object.create.call_args
+            obj_data = call_args[0][0]  # First positional argument
+            assert obj_data["session_id"] == session_id
 
-    def test_search_knowledge(self):
-        """Test knowledge search functionality."""
-        publisher = KnowledgePublisher()
-        # First publish some knowledge
-        knowledge = {
-            "title": "Search Test",
-            "content": "This is searchable content",
-            "tags": ["search", "test"],
-            "source": "test_source"
-        }
-        publisher.publish(knowledge)
-        
-        # Search for the knowledge
-        results = publisher.search("searchable")
-        assert len(results) > 0
-        assert any("Search Test" in result.title for result in results)
+    def test_publish_reflection_content(self):
+        """Test that content is correctly set."""
+        with patch('utils.knowledge_publisher.client') as mock_client:
+            mock_client.data_object.create = Mock()
+            
+            content = "This is test reflection content"
+            publish_reflection("test_session", content)
+            
+            call_args = mock_client.data_object.create.call_args
+            obj_data = call_args[0][0]  # First positional argument
+            assert obj_data["content"] == content
 
-    def test_get_knowledge_by_id(self):
-        """Test retrieving knowledge by ID."""
-        publisher = KnowledgePublisher()
-        knowledge = {
-            "title": "ID Test",
-            "content": "Content for ID test",
-            "tags": ["id", "test"],
-            "source": "test_source"
-        }
-        result = publisher.publish(knowledge)
-        knowledge_id = result.knowledge_id
-        
-        retrieved = publisher.get_by_id(knowledge_id)
-        assert retrieved is not None
-        assert retrieved.title == "ID Test"
-
-    def test_update_knowledge(self):
-        """Test updating existing knowledge."""
-        publisher = KnowledgePublisher()
-        knowledge = {
-            "title": "Update Test",
-            "content": "Original content",
-            "tags": ["update", "test"],
-            "source": "test_source"
-        }
-        result = publisher.publish(knowledge)
-        knowledge_id = result.knowledge_id
-        
-        # Update the knowledge
-        updated_knowledge = {
-            "title": "Updated Test",
-            "content": "Updated content",
-            "tags": ["updated", "test"],
-            "source": "test_source"
-        }
-        update_result = publisher.update(knowledge_id, updated_knowledge)
-        assert update_result.success is True
-        
-        # Verify the update
-        retrieved = publisher.get_by_id(knowledge_id)
-        assert retrieved.title == "Updated Test"
-        assert retrieved.content == "Updated content"
-
-    def test_delete_knowledge(self):
-        """Test deleting knowledge."""
-        publisher = KnowledgePublisher()
-        knowledge = {
-            "title": "Delete Test",
-            "content": "Content to delete",
-            "tags": ["delete", "test"],
-            "source": "test_source"
-        }
-        result = publisher.publish(knowledge)
-        knowledge_id = result.knowledge_id
-        
-        # Delete the knowledge
-        delete_result = publisher.delete(knowledge_id)
-        assert delete_result.success is True
-        
-        # Verify deletion
-        retrieved = publisher.get_by_id(knowledge_id)
-        assert retrieved is None 
+    def test_publish_reflection_timestamp(self):
+        """Test that timestamp is set."""
+        with patch('utils.knowledge_publisher.client') as mock_client:
+            mock_client.data_object.create = Mock()
+            
+            publish_reflection("test_session", "Test content")
+            
+            call_args = mock_client.data_object.create.call_args
+            obj_data = call_args[0][0]  # First positional argument
+            assert "timestamp" in obj_data
+            assert isinstance(obj_data["timestamp"], (int, float)) 

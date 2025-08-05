@@ -238,5 +238,11 @@
     "content": "Hello",
     "timestamp": 1754344313.475069,
     "metadata": {}
+  },
+  {
+    "role": "user",
+    "content": "Hello",
+    "timestamp": 1754365603.0370271,
+    "metadata": {}
   }
 ]

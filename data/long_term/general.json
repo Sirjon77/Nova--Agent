@@ -388,5 +388,47 @@
     "content": "Content",
     "timestamp": 1754344313.321363,
     "metadata": {}
+  },
+  {
+    "key": "test_session_1754365603",
+    "content": "Content",
+    "timestamp": 1754365603.0393841,
+    "metadata": {}
+  },
+  {
+    "key": "governance_1754365611",
+    "content": "niche_scoring",
+    "timestamp": 1754365611.7259252,
+    "metadata": "{\"niche_scores\": {\"tech\": 85, \"health\": 72}, \"recommendations\": [\"Focus on tech niche\"]}"
+  },
+  {
+    "key": "governance_1754365611",
+    "content": "tool_health",
+    "timestamp": 1754365611.7399611,
+    "metadata": "{\"timestamp\": \"2025-08-04T23:46:51.732139\", \"tools\": {\"openai\": {\"status\": \"unhealthy\", \"error\": \"object str can't be used in 'await' expression\"}, \"memory\": {\"status\": \"healthy\", \"details\": {\"redis_available\": true, \"weaviate_available\": false, \"fully_available\": true, \"short_term_count\": 0, \"long_term_count\": 150, \"summary_count\": 0, \"log_count\": 0}}, \"notion\": {\"status\": \"available\"}, \"sheets\": {\"status\": \"not_installed\"}, \"metricool\": {\"status\": \"available\"}, \"convertkit\": {\"status\": \"available\"}, \"gumroad\": {\"status\": \"available\"}}, \"overall_health\": \"degraded\", \"issues\": [\"OpenAI API: object str can't be used in 'await' expression\"]}"
+  },
+  {
+    "key": "audit_1754365611",
+    "content": "log",
+    "timestamp": 1754365611.7502432,
+    "metadata": "{\"type\": \"request\", \"method\": \"GET\", \"endpoint\": \"/test\", \"status\": 200, \"duration\": 0.5, \"timestamp\": \"2025-08-04T23:46:51.749689\"}"
+  },
+  {
+    "key": "audit_1754365611",
+    "content": "log",
+    "timestamp": 1754365611.756532,
+    "metadata": "{\"type\": \"error\", \"error_type\": \"api_error\", \"module\": \"test_module\", \"message\": \"Test error message\", \"timestamp\": \"2025-08-04T23:46:51.756056\"}"
+  },
+  {
+    "key": "autonomous_research_1754365613",
+    "content": "research_cycle",
+    "timestamp": 1754365613.802528,
+    "metadata": "{\"cycle_timestamp\": \"2025-08-04T23:46:53.801959\", \"hypotheses_generated\": 0, \"experiments_created\": 0, \"experiments_completed\": 0, \"total_hypotheses\": 0, \"total_experiments\": 0, \"total_results\": 0, \"insights\": [\"No research results available yet\"]}"
+  },
+  {
+    "key": "autonomous_research_1754365613",
+    "content": "research_cycle",
+    "timestamp": 1754365613.8180869,
+    "metadata": "{\"cycle_timestamp\": \"2025-08-04T23:46:53.817763\", \"hypotheses_generated\": 0, \"experiments_created\": 0, \"experiments_completed\": 0, \"total_hypotheses\": 0, \"total_experiments\": 0, \"total_results\": 0, \"insights\": [\"No research results available yet\"]}"
   }
 ]

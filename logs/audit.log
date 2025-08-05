@@ -2325,3 +2325,273 @@
 2025-08-04 17:54:41,097 | INFO | utils.memory_manager | MemoryManager initialized successfully
 2025-08-04 17:54:47,549 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
 2025-08-04 17:54:47,549 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 23:38:15,067 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 23:38:16,786 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 23:38:16,786 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 23:38:27,916 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 23:38:27,917 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 23:38:32,012 | INFO | utils.summarizer | EnhancedSummarizer initialized with model: gpt-4o
+2025-08-04 23:38:32,059 | INFO | utils.code_validator | CodeValidator initialized with sandbox: /var/folders/0s/nzh4stkn2td_vrwh3k6z35qw0000gn/T/nova_code_t1_v53wb
+2025-08-04 23:38:32,110 | INFO | utils.memory_router | Using global memory manager
+2025-08-04 23:38:32,110 | WARNING | utils.memory_router | Using deprecated memory_router.py - migrate to utils.memory_manager
+2025-08-04 23:40:21,912 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 23:40:23,712 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 23:40:23,712 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 23:40:35,654 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 23:40:35,654 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 23:40:39,844 | INFO | utils.code_validator | CodeValidator initialized with sandbox: /var/folders/0s/nzh4stkn2td_vrwh3k6z35qw0000gn/T/nova_code_rrli86oq
+2025-08-04 23:40:39,868 | INFO | utils.summarizer | EnhancedSummarizer initialized with model: gpt-4o
+2025-08-04 23:40:39,880 | INFO | utils.code_validator | CodeValidator initialized with sandbox: /var/folders/0s/nzh4stkn2td_vrwh3k6z35qw0000gn/T/nova_code_ldfy5jqn
+2025-08-04 23:40:39,883 | INFO | utils.code_validator | CodeValidator initialized with sandbox: /var/folders/0s/nzh4stkn2td_vrwh3k6z35qw0000gn/T/nova_code_ua7rvnp8
+2025-08-04 23:40:40,045 | INFO | utils.code_validator | CodeValidator initialized with sandbox: /var/folders/0s/nzh4stkn2td_vrwh3k6z35qw0000gn/T/nova_code_rycy7462
+2025-08-04 23:40:40,053 | INFO | utils.code_validator | CodeValidator initialized with sandbox: /var/folders/0s/nzh4stkn2td_vrwh3k6z35qw0000gn/T/nova_code_bnurayu4
+2025-08-04 23:40:40,060 | INFO | utils.code_validator | CodeValidator initialized with sandbox: /var/folders/0s/nzh4stkn2td_vrwh3k6z35qw0000gn/T/nova_code_txhs9_r2
+2025-08-04 23:40:40,066 | INFO | utils.code_validator | CodeValidator initialized with sandbox: /var/folders/0s/nzh4stkn2td_vrwh3k6z35qw0000gn/T/nova_code_tmutgrtl
+2025-08-04 23:40:40,072 | INFO | utils.code_validator | CodeValidator initialized with sandbox: /var/folders/0s/nzh4stkn2td_vrwh3k6z35qw0000gn/T/nova_code_4tb0y29e
+2025-08-04 23:40:40,077 | INFO | utils.code_validator | CodeValidator initialized with sandbox: /var/folders/0s/nzh4stkn2td_vrwh3k6z35qw0000gn/T/nova_code_e6att_b0
+2025-08-04 23:40:40,084 | INFO | utils.code_validator | CodeValidator initialized with sandbox: /var/folders/0s/nzh4stkn2td_vrwh3k6z35qw0000gn/T/nova_code_nckc444m
+2025-08-04 23:40:44,678 | INFO | utils.memory_manager | Redis connected for short-term memory
+2025-08-04 23:40:44,678 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 23:40:44,679 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 23:40:44,687 | INFO | utils.memory_manager | Redis connected for short-term memory
+2025-08-04 23:40:44,687 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 23:40:44,687 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 23:40:44,695 | INFO | utils.memory_manager | Redis connected for short-term memory
+2025-08-04 23:40:44,695 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 23:40:44,695 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 23:40:44,703 | INFO | utils.memory_manager | Redis connected for short-term memory
+2025-08-04 23:40:44,703 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 23:40:44,703 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 23:40:44,710 | INFO | utils.memory_manager | Redis connected for short-term memory
+2025-08-04 23:40:44,711 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 23:40:44,711 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 23:40:44,718 | INFO | utils.memory_manager | Redis connected for short-term memory
+2025-08-04 23:40:44,719 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 23:40:44,719 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 23:40:44,726 | INFO | utils.memory_manager | Redis connected for short-term memory
+2025-08-04 23:40:44,726 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 23:40:44,726 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 23:40:44,733 | INFO | utils.memory_manager | Redis connected for short-term memory
+2025-08-04 23:40:44,734 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 23:40:44,734 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 23:40:44,755 | INFO | utils.summarizer | EnhancedSummarizer initialized with model: gpt-4o
+2025-08-04 23:40:44,765 | INFO | utils.summarizer | EnhancedSummarizer initialized with model: gpt-4o
+2025-08-04 23:40:44,765 | ERROR | utils.summarizer | Single summarization failed: OpenAI client not initialized - API key required
+2025-08-04 23:40:44,771 | INFO | utils.summarizer | EnhancedSummarizer initialized with model: gpt-4o
+2025-08-04 23:40:44,771 | ERROR | utils.summarizer | Single summarization failed: OpenAI client not initialized - API key required
+2025-08-04 23:40:44,773 | INFO | utils.summarizer | EnhancedSummarizer initialized with model: gpt-4o
+2025-08-04 23:40:44,773 | ERROR | utils.summarizer | Single summarization failed: OpenAI client not initialized - API key required
+2025-08-04 23:40:45,040 | INFO | utils.summarizer | EnhancedSummarizer initialized with model: gpt-4o
+2025-08-04 23:40:45,040 | ERROR | utils.summarizer | Single summarization failed: OpenAI client not initialized - API key required
+2025-08-04 23:40:45,046 | INFO | utils.summarizer | EnhancedSummarizer initialized with model: gpt-4o
+2025-08-04 23:40:45,047 | ERROR | utils.summarizer | Single summarization failed: OpenAI client not initialized - API key required
+2025-08-04 23:40:45,053 | INFO | utils.summarizer | EnhancedSummarizer initialized with model: gpt-4o
+2025-08-04 23:40:45,053 | ERROR | utils.summarizer | Single summarization failed: OpenAI client not initialized - API key required
+2025-08-04 23:40:45,059 | INFO | utils.summarizer | EnhancedSummarizer initialized with model: gpt-4o
+2025-08-04 23:40:45,061 | INFO | utils.summarizer | EnhancedSummarizer initialized with model: gpt-4o
+2025-08-04 23:40:45,152 | INFO | utils.summarizer | EnhancedSummarizer initialized with model: gpt-4o
+2025-08-04 23:40:45,152 | ERROR | utils.summarizer | Single summarization failed: OpenAI client not initialized - API key required
+2025-08-04 23:40:45,158 | INFO | utils.summarizer | EnhancedSummarizer initialized with model: gpt-4o
+2025-08-04 23:40:45,159 | ERROR | utils.summarizer | Single summarization failed: OpenAI client not initialized - API key required
+2025-08-04 23:40:45,164 | INFO | utils.summarizer | EnhancedSummarizer initialized with model: gpt-4o
+2025-08-04 23:40:45,165 | ERROR | utils.summarizer | Single summarization failed: OpenAI client not initialized - API key required
+2025-08-04 23:40:45,166 | INFO | utils.summarizer | EnhancedSummarizer initialized with model: gpt-4o
+2025-08-04 23:40:45,166 | ERROR | utils.summarizer | Summarization failed: expected string or bytes-like object
+2025-08-04 23:40:45,172 | INFO | utils.summarizer | EnhancedSummarizer initialized with model: gpt-4o
+2025-08-04 23:40:45,175 | INFO | utils.summarizer | Split text into 8 chunks for recursive summarization
+2025-08-04 23:40:45,175 | ERROR | utils.summarizer | Single summarization failed: OpenAI client not initialized - API key required
+2025-08-04 23:40:45,175 | ERROR | utils.summarizer | Single summarization failed: OpenAI client not initialized - API key required
+2025-08-04 23:40:45,175 | ERROR | utils.summarizer | Single summarization failed: OpenAI client not initialized - API key required
+2025-08-04 23:40:45,175 | ERROR | utils.summarizer | Single summarization failed: OpenAI client not initialized - API key required
+2025-08-04 23:40:45,175 | ERROR | utils.summarizer | Single summarization failed: OpenAI client not initialized - API key required
+2025-08-04 23:40:45,175 | ERROR | utils.summarizer | Single summarization failed: OpenAI client not initialized - API key required
+2025-08-04 23:40:45,176 | ERROR | utils.summarizer | Single summarization failed: OpenAI client not initialized - API key required
+2025-08-04 23:40:45,176 | ERROR | utils.summarizer | Single summarization failed: OpenAI client not initialized - API key required
+2025-08-04 23:40:45,176 | ERROR | utils.summarizer | Single summarization failed: OpenAI client not initialized - API key required
+2025-08-04 23:46:23,496 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-04 23:46:25,481 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 23:46:25,481 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 23:46:38,269 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 23:46:38,269 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 23:46:42,601 | INFO | utils.summarizer | EnhancedSummarizer initialized with model: gpt-4o
+2025-08-04 23:46:42,604 | INFO | utils.memory_router | Using global memory manager
+2025-08-04 23:46:42,604 | WARNING | utils.memory_router | Using deprecated memory_router.py - migrate to utils.memory_manager
+2025-08-04 23:46:43,004 | INFO | utils.memory_manager | Redis connected for short-term memory
+2025-08-04 23:46:43,005 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 23:46:43,005 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 23:46:43,028 | INFO | utils.memory_manager | Redis connected for short-term memory
+2025-08-04 23:46:43,028 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 23:46:43,028 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 23:46:43,029 | INFO | utils.memory_manager | Added summary for: http://test.com
+2025-08-04 23:46:43,032 | INFO | utils.memory_manager | Redis connected for short-term memory
+2025-08-04 23:46:43,033 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 23:46:43,033 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 23:46:43,033 | INFO | utils.memory_manager | Global MemoryManager singleton initialized
+2025-08-04 23:46:43,126 | INFO | utils.summarizer | EnhancedSummarizer initialized with model: gpt-4o
+2025-08-04 23:46:43,126 | ERROR | utils.summarizer | Single summarization failed: OpenAI client not initialized - API key required
+2025-08-04 23:46:43,127 | INFO | utils.summarizer | EnhancedSummarizer initialized with model: gpt-4o
+2025-08-04 23:46:43,127 | ERROR | utils.summarizer | Single summarization failed: OpenAI client not initialized - API key required
+2025-08-04 23:46:43,240 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 23:46:43,240 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 23:46:45,280 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 23:46:45,281 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 23:46:47,441 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 23:46:47,442 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 23:46:49,344 | INFO | nova.nlp.context_manager | Added conversation turn: greeting (confidence: 0.9)
+2025-08-04 23:46:49,353 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 23:46:49,353 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 23:46:51,359 | INFO | nova.nlp.training_data | Added training example for intent: get_rpm
+2025-08-04 23:46:51,361 | INFO | utils.memory_manager | Redis connected for short-term memory
+2025-08-04 23:46:51,361 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 23:46:51,362 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 23:46:51,363 | INFO | utils.memory_manager | Redis connected for short-term memory
+2025-08-04 23:46:51,363 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 23:46:51,363 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 23:46:51,701 | INFO | utils.memory_manager | Redis connected for short-term memory
+2025-08-04 23:46:51,701 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 23:46:51,701 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 23:46:51,705 | INFO | utils.memory_manager | Redis connected for short-term memory
+2025-08-04 23:46:51,706 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 23:46:51,706 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 23:46:51,713 | ERROR | nova.autonomous_research | Failed to save research data: [Errno 2] No such file or directory: '/var/folders/0s/nzh4stkn2td_vrwh3k6z35qw0000gn/T/tmpyixch_9z/hypotheses.json'
+2025-08-04 23:46:51,713 | INFO | nova.autonomous_research | Generated 1 new hypotheses
+2025-08-04 23:46:51,717 | ERROR | nova.autonomous_research | Failed to save research data: [Errno 2] No such file or directory: '/var/folders/0s/nzh4stkn2td_vrwh3k6z35qw0000gn/T/tmpah14jdpw/hypotheses.json'
+2025-08-04 23:46:51,717 | INFO | nova.autonomous_research | Designed experiment: Test Experiment
+2025-08-04 23:46:51,725 | INFO | nova.governance_scheduler | Starting niche scoring cycle
+2025-08-04 23:46:51,728 | INFO | nova.governance_scheduler | Niche scoring completed
+2025-08-04 23:46:51,731 | INFO | nova.governance_scheduler | Starting tool health check
+2025-08-04 23:46:51,742 | INFO | nova.governance_scheduler | Tool health check completed: degraded
+2025-08-04 23:46:53,801 | INFO | nova.autonomous_research | Starting autonomous research cycle
+2025-08-04 23:46:53,801 | ERROR | nova.autonomous_research | Failed to generate hypotheses: object str can't be used in 'await' expression
+2025-08-04 23:46:53,805 | INFO | nova.autonomous_research | Completed research cycle: 0 experiments completed
+2025-08-04 23:46:53,810 | INFO | utils.memory_manager | Redis connected for short-term memory
+2025-08-04 23:46:53,810 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 23:46:53,810 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 23:46:53,817 | INFO | nova.autonomous_research | Starting autonomous research cycle
+2025-08-04 23:46:53,817 | ERROR | nova.autonomous_research | Failed to generate hypotheses: API Error
+2025-08-04 23:46:53,820 | INFO | nova.autonomous_research | Completed research cycle: 0 experiments completed
+2025-08-04 23:46:53,830 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 23:46:53,831 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 23:46:56,734 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:46:56,878 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:46:57,025 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:46:57,160 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:46:57,299 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:46:57,442 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:46:57,592 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:46:57,731 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:46:57,864 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:46:58,009 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:46:58,165 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:46:58,307 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:46:58,462 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:46:58,603 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:46:58,744 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:46:58,899 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:46:59,047 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:46:59,194 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:46:59,332 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:46:59,485 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:46:59,641 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:46:59,791 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:46:59,943 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:00,238 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:00,498 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:00,659 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:00,816 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:00,975 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:01,126 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:01,283 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:01,435 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:01,583 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:01,731 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:01,878 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:02,031 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:02,183 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:02,334 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:02,480 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:02,627 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:02,777 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:02,927 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:03,082 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:03,237 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:03,395 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:03,610 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:03,768 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:03,911 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:04,075 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:04,227 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:04,375 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:04,516 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:04,661 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:04,818 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:04,966 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:05,114 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:05,254 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:05,399 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:05,548 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:05,700 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:05,854 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:06,026 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:06,182 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:06,331 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:06,477 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:06,625 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:06,769 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:06,918 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:07,071 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:07,216 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:07,369 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:07,514 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:07,665 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:07,809 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:07,961 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:08,111 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:08,260 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:08,409 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:08,550 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:08,695 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:08,843 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:08,993 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:09,142 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:09,294 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:09,444 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:09,599 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:09,761 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:09,908 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:10,058 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:10,210 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:10,358 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:10,510 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:10,661 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:10,808 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:10,961 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:11,109 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:11,260 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:11,411 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:11,560 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:11,709 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:11,858 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:11,950 | INFO | utils.memory_manager | Redis connected for short-term memory
+2025-08-04 23:47:11,951 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 23:47:11,951 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 23:47:11,969 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-04 23:47:11,970 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-04 23:47:14,498 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:14,742 | ERROR | nova.nlp.intent_classifier | AI classification failed: 'Could not automatically map gpt-4o to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+2025-08-04 23:47:14,742 | INFO | utils.memory_manager | Redis connected for short-term memory
+2025-08-04 23:47:14,743 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-04 23:47:14,743 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-04 23:47:14,842 | INFO | httpx | HTTP Request: GET http://testserver/health "HTTP/1.1 200 OK"
+2025-08-04 23:47:14,850 | INFO | httpx | HTTP Request: GET http://testserver/metrics "HTTP/1.1 200 OK"
+2025-08-04 23:47:14,984 | INFO | httpx | HTTP Request: GET http://testserver/openapi.json "HTTP/1.1 200 OK"
+2025-08-04 23:47:14,989 | INFO | httpx | HTTP Request: GET http://testserver/docs "HTTP/1.1 200 OK"
+2025-08-04 23:47:14,999 | INFO | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 500 Internal Server Error"
+2025-08-04 23:47:15,042 | INFO | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 500 Internal Server Error"
+2025-08-04 23:47:15,085 | INFO | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 401 Unauthorized"
+2025-08-04 23:47:15,092 | INFO | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 422 Unprocessable Entity"
+2025-08-04 23:47:15,095 | INFO | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 422 Unprocessable Entity"
+2025-08-04 23:47:15,100 | INFO | httpx | HTTP Request: GET http://testserver/api/channels "HTTP/1.1 403 Forbidden"
+2025-08-04 23:47:15,108 | INFO | httpx | HTTP Request: GET http://testserver/api/channels "HTTP/1.1 403 Forbidden"
+2025-08-04 23:47:15,597 | INFO | httpx | HTTP Request: GET http://testserver/api/nonexistent "HTTP/1.1 404 Not Found"
+2025-08-04 23:47:15,616 | INFO | httpx | HTTP Request: GET http://testserver/api/auth/login "HTTP/1.1 404 Not Found"
