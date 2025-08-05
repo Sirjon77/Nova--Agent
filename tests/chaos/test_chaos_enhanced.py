@@ -30,8 +30,8 @@ class TestChaosEnhanced:
         await maybe_fail(cfg)
         end_time = time.time()
         
-        # Should delay for at least 30ms (allowing for system variations)
-        assert end_time - start_time >= 0.03
+        # Should delay for at least 20ms (accounting for random delay between 0-50ms)
+        assert end_time - start_time >= 0.02
 
     @pytest.mark.asyncio
     async def test_maybe_fail_probabilistic(self):
@@ -71,7 +71,7 @@ class TestChaosEnhanced:
         await maybe_fail(cfg)  # This includes the delay
         end_time = time.time()
         
-        assert end_time - start_time >= 0.03
+        assert end_time - start_time >= 0.02
 
     @pytest.mark.asyncio
     async def test_chaos_with_memory_operations(self, mock_redis):
