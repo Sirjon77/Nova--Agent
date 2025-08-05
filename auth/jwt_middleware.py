@@ -105,9 +105,17 @@ def get_jwt_secret():
     
     return secret
 
-SECRET = get_jwt_secret()
+# Lazy loading of SECRET to prevent import-time security validation
+_SECRET = None
 ALGO = 'HS256'
 TTL_MIN = 30
+
+def _get_secret():
+    """Lazy load the JWT secret to prevent import-time validation."""
+    global _SECRET
+    if _SECRET is None:
+        _SECRET = get_jwt_secret()
+    return _SECRET
 
 def issue_token(username: str, role: str) -> str:
     """Generate a signed JWT for the given user and role.
@@ -131,7 +139,7 @@ def issue_token(username: str, role: str) -> str:
         'role': role,
         'exp': int(exp_dt.timestamp()),
     }
-    return jwt.encode(payload, SECRET, algorithm=ALGO)
+    return jwt.encode(payload, _get_secret(), algorithm=ALGO)
 
 class JWTAuthMiddleware(BaseHTTPMiddleware):
     async def dispatch(self, request: Request, call_next):
@@ -159,7 +167,7 @@ class JWTAuthMiddleware(BaseHTTPMiddleware):
             raise HTTPException(status_code=401, detail='Missing token')
         token = hdr.split()[1]
         try:
-            payload = jwt.decode(token, SECRET, algorithms=[ALGO])
+            payload = jwt.decode(token, _get_secret(), algorithms=[ALGO])
         except (JWTError, KeyError):
             raise HTTPException(status_code=401, detail='Invalid token')
         # Attach role to request state for RBAC checks

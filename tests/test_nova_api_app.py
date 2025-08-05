@@ -10,12 +10,25 @@ import pytest
 from fastapi.testclient import TestClient
 from unittest.mock import patch, MagicMock
 
-# Import the FastAPI app and dependencies
+# Set test environment variables BEFORE importing the app
+os.environ["JWT_SECRET_KEY"] = "Test-Secret-Key-32-Chars-Long-For-Testing-Only-12345!@#"
+os.environ["NOVA_ADMIN_USERNAME"] = "admin"
+os.environ["NOVA_ADMIN_PASSWORD"] = "admin"
+os.environ["NOVA_USER_USERNAME"] = "user"
+os.environ["NOVA_USER_PASSWORD"] = "user"
+
+# Import the FastAPI app and dependencies AFTER setting environment variables
 try:
     from nova.api import app as nova_app
 except ImportError:
     # Fallback for testing without full nova setup
     nova_app = None
+
+# Import JWT functions
+try:
+    from auth.jwt_middleware import issue_token
+except ImportError:
+    issue_token = None
 
 # Skip all tests if nova_app is not available
 pytestmark = pytest.mark.skipif(nova_app is None, reason="nova.api.app not available")
@@ -36,7 +49,10 @@ client = TestClient(nova_app.app)
 
 def _auth_header(username: str, role: str) -> dict:
     """Helper to generate Authorization header with a valid JWT for given user/role."""
-    token = nova_app.issue_token(username, role)
+    if issue_token is None:
+        # Fallback if JWT middleware is not available
+        return {"Authorization": "Bearer test.jwt.token"}
+    token = issue_token(username, role)
     return {"Authorization": f"Bearer {token}"}
 
 # ------------------------- Public Endpoints -------------------------
