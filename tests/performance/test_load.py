@@ -30,7 +30,7 @@ class TestPerformanceLoad:
             
             # Read all memories
             for i in range(1000):
-                mm.get_short(f"key_{i}")
+                mm.get_short_term(f"session_{i}")
             
             read_time = time.time() - start_time
             
