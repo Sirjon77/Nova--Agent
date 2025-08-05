@@ -120,18 +120,15 @@ class TestIntegrationWorkflows:
         """Test workflow for posting to multiple platforms."""
         from integrations.publer import schedule_post
         
-        content = {
-            "title": "Test Post",
-            "content": "This is a test post for multiple platforms",
-            "media_url": "https://example.com/image.jpg"
-        }
-        
         # Mock platform-specific posting
         with patch('integrations.publer.schedule_post') as mock_publer:
             mock_publer.return_value = {"status": "scheduled", "platform": "publer"}
             
             # Post to platform
-            result = schedule_post(**content)
+            result = schedule_post(
+                content="This is a test post for multiple platforms",
+                media_url="https://example.com/image.jpg"
+            )
             
             # Verify platform received the post
             assert result["status"] == "scheduled"
