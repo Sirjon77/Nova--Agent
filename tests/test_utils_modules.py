@@ -263,7 +263,7 @@ class TestMemoryRanker:
 class TestMemoryVault:
     """Test memory vault functionality."""
     
-    def test_memory_vault_operations(self):
+    def test_memory_vault_operations(self, mock_redis):
         """Test MemoryVault operations."""
         # Test save_summary function
         save_summary("test_workflow", "test_id", {"data": "test_value"})
