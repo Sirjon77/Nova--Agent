@@ -235,6 +235,8 @@ class LoginResponse(BaseModel):
     refresh_token: str
     token_type: str
     role: str
+    # Backward-compat field for older clients/tests expecting 'token'
+    token: Union[str, None] = None
 
 
 def _get_user_role(username: str) -> Union[str, None]:
@@ -286,7 +288,7 @@ async def login(req: LoginRequest):
         claims = {"sub": username, "role": role}
         access = create_access_token(claims)
         refresh = create_refresh_token(claims)
-        return LoginResponse(access_token=access, refresh_token=refresh, token_type="bearer", role=role)
+        return LoginResponse(access_token=access, refresh_token=refresh, token_type="bearer", role=role, token=access)
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"JWT token generation failed: {e}")
 
