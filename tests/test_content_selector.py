@@ -2,6 +2,7 @@
 Unit tests for the content selector module, particularly silent video ratio enforcement.
 """
 
+import math
 import pytest
 import tempfile
 import yaml
@@ -282,6 +283,70 @@ class TestContentSelector:
         assert compliance["silent_count"] == 0
         assert compliance["total_eligible"] == 10
 
+    def test_explicit_flags_force_silent(self):
+        """Test that explicit force_silent flags are respected."""
+        selector = ContentSelector()
+        posts = [
+            ContentPost(f"{i}", "short_form", 30, "Finance", "WealthWise", "youtube")
+            for i in range(6)
+        ]
+        
+        # Explicitly mark one post as force_silent
+        posts[1].metadata["force_silent"] = True
+        
+        selector.enforce_silent_video_ratio(posts)
+        
+        # Should have target ~2 posts silent, including the explicit one
+        silent_count = sum(1 for p in posts if p.silent_mode)
+        assert silent_count == 2
+        assert posts[1].silent_mode is True  # Explicit flag honored
+
+    def test_explicit_flags_force_spoken(self):
+        """Test that explicit force_spoken flags are respected.""" 
+        selector = ContentSelector()
+        posts = [
+            ContentPost(f"{i}", "short_form", 30, "Finance", "WealthWise", "youtube")
+            for i in range(6)
+        ]
+        
+        # Mark several posts as force_spoken (should be excluded from selection)
+        posts[0].metadata["force_spoken"] = True
+        posts[2].metadata["force_spoken"] = True
+        
+        selector.enforce_silent_video_ratio(posts)
+        
+        # Those marked force_spoken should never be silent
+        assert posts[0].silent_mode is False
+        assert posts[2].silent_mode is False
+        
+        # Should still try to hit ratio on remaining eligible posts
+        eligible_posts = [p for p in posts if not p.metadata.get("force_spoken", False)]
+        silent_count = sum(1 for p in eligible_posts if p.silent_mode)
+        expected = int(math.floor(len(eligible_posts) * 0.33 + 0.5))
+        assert silent_count == expected
+
+    def test_idempotent_with_pre_existing_silent(self):
+        """Test that repeated runs don't change results when posts are pre-marked."""
+        selector = ContentSelector()
+        posts = [
+            ContentPost(f"{i}", "short_form", 30, "Finance", "WealthWise", "youtube")
+            for i in range(6)
+        ]
+        
+        # Pre-mark one as silent
+        posts[1].silent_mode = True
+        
+        # First run
+        selector.enforce_silent_video_ratio(posts)
+        first_result = [p.silent_mode for p in posts]
+        
+        # Second run should be identical
+        selector.enforce_silent_video_ratio(posts)
+        second_result = [p.silent_mode for p in posts]
+        
+        assert first_result == second_result
+        assert posts[1].silent_mode is True  # Pre-existing flag preserved
+
 
 class TestSamplePosts:
     """Test the sample post generation."""
@@ -344,9 +409,9 @@ class TestIntegration:
         distributed = selector.distribute_silent_posts(processed)
         compliance = selector.validate_ratio_compliance(distributed)
         
-        # With 1 post and 33% ratio, ceil(1 * 0.33) = 1, so it should be silent
-        assert compliance["silent_count"] == 1
-        assert processed[0].silent_mode is True
+        # With 1 post and 33% ratio, floor(1 * 0.33 + 0.5) = floor(0.83) = 0, so it should not be silent
+        assert compliance["silent_count"] == 0
+        assert processed[0].silent_mode is False
     
     def test_edge_case_no_posts(self):
         """Test edge case with no posts."""

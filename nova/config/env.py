@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import os
 import sys
+from typing import Optional, List
 from pydantic import BaseModel, Field
 
 
@@ -10,7 +11,7 @@ FORBIDDEN = {"change-me", "default", "secret", "key", "password"}
 
 class JWTSettings(BaseModel):
     algorithm: str = Field(default=os.getenv("JWT_ALG", "HS256"))
-    secret_key: str | None = Field(default=os.getenv("JWT_SECRET_KEY"))
+    secret_key: Optional[str] = Field(default=os.getenv("JWT_SECRET_KEY"))
     token_version: int = Field(default=int(os.getenv("JWT_TOKEN_VERSION", "1")))
 
     def validate_keys(self) -> None:
@@ -28,7 +29,7 @@ class JWTSettings(BaseModel):
 
 class AppEnv(BaseModel):
     jwt: JWTSettings = Field(default_factory=JWTSettings)
-    slack_webhook_url: str | None = Field(default=os.getenv("SLACK_WEBHOOK_URL"))
+    slack_webhook_url: Optional[str] = Field(default=os.getenv("SLACK_WEBHOOK_URL"))
 
 
 def validate_env_or_exit() -> None:

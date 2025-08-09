@@ -95,9 +95,10 @@ class ContentSelector:
             logger.info("No eligible posts for silent video ratio enforcement")
             return posts
         
-        # Calculate target number of silent videos
+        # Calculate target number of silent videos (round half up)
         N = len(eligible_posts)
-        target_silent_count = math.ceil(N * self.config.silent_video_ratio)
+        ratio = max(0.0, min(1.0, float(self.config.silent_video_ratio)))
+        target_silent_count = int(math.floor(N * ratio + 0.5))
         
         logger.info(f"Enforcing silent ratio: {target_silent_count}/{N} posts will be silent "
                    f"(ratio: {self.config.silent_video_ratio})")
@@ -105,23 +106,47 @@ class ContentSelector:
         # Deterministically select posts using stride pattern for fair distribution
         if target_silent_count > 0:
             # Calculate stride: for 33% ratio -> stride of 3 (every 3rd post)
-            stride = max(1, int(round(1.0 / self.config.silent_video_ratio))) if self.config.silent_video_ratio > 0 else N
+            stride = max(1, int(round(1.0 / ratio))) if ratio > 0 else N
             
             assigned = 0
-            # First pass: assign every stride-th eligible post
-            for ordinal, post in enumerate(eligible_posts, 1):
+            
+            # First pass: honor explicit flags and count pre-existing silent posts
+            for post in eligible_posts:
                 if assigned >= target_silent_count:
                     break
-                if (ordinal % stride) == 0:
-                    self._configure_silent_post(post)
+                    
+                # Respect explicit force_silent flag
+                if post.metadata.get("force_silent", False):
+                    if not post.silent_mode:
+                        self._configure_silent_post(post)
                     assigned += 1
+                    continue
+                    
+                # Count pre-existing silent posts
+                if post.silent_mode:
+                    assigned += 1
+                    continue
             
-            # Second pass: fill any remaining slots deterministically
+            # Second pass: apply stride pattern to remaining posts
+            if assigned < target_silent_count:
+                for ordinal, post in enumerate(eligible_posts, 1):
+                    if assigned >= target_silent_count:
+                        break
+                        
+                    # Skip posts already handled or with explicit flags
+                    if post.silent_mode or post.metadata.get("force_silent", False):
+                        continue
+                        
+                    if (ordinal % stride) == 0:
+                        self._configure_silent_post(post)
+                        assigned += 1
+            
+            # Third pass: fill any remaining slots deterministically
             if assigned < target_silent_count:
                 for post in eligible_posts:
                     if assigned >= target_silent_count:
                         break
-                    if not post.silent_mode:
+                    if not post.silent_mode and not post.metadata.get("force_silent", False):
                         self._configure_silent_post(post)
                         assigned += 1
         
@@ -156,6 +181,11 @@ class ContentSelector:
             # Skip exempt categories
             if post.category in self.config.exempt_categories:
                 logger.debug(f"Post {post.post_id} category '{post.category}' is exempt")
+                continue
+                
+            # Respect explicit creator flags
+            if post.metadata.get("force_spoken", False):
+                logger.debug(f"Post {post.post_id} explicitly marked as force_spoken")
                 continue
                 
             eligible.append(post)
