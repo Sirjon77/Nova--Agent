@@ -2675,3 +2675,94 @@
 2025-08-05 00:25:24,291 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
 2025-08-05 00:25:24,292 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
 2025-08-05 00:25:28,974 | INFO | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+2025-08-07 17:49:27,763 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-07 17:49:29,305 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-07 17:49:29,305 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-07 17:49:40,939 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-07 17:49:40,939 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-07 17:49:44,733 | INFO | nova.planner | Logged decision: trend_response_20250807_174944
+2025-08-07 17:49:44,737 | INFO | nova.task_scheduler | Creating content with parameters: {'format': 'video', 'duration': '5min'}
+2025-08-07 17:49:46,739 | INFO | nova.task_scheduler | Task test_content_1 completed successfully
+2025-08-07 17:49:46,739 | INFO | nova.task_scheduler | Analyzing metrics with parameters: {'channels': ['test_channel']}
+2025-08-07 17:49:47,741 | INFO | nova.task_scheduler | Task test_analysis_1 completed successfully
+2025-08-07 17:49:47,746 | INFO | nova.task_scheduler | Scheduled task task_e925f618: Test Task
+2025-08-07 17:49:47,748 | INFO | nova.task_scheduler | Cancelled task task_e925f618
+2025-08-07 17:49:47,866 | INFO | nova.task_scheduler | Scheduled task task_940ac47c: Dependency Task
+2025-08-07 17:49:47,866 | INFO | nova.task_scheduler | Scheduled task task_6af5137b: Dependent Task
+2025-08-07 17:49:47,867 | INFO | nova.task_scheduler | Scheduled task task_4678429c: Create content for trending topic
+2025-08-07 17:49:47,868 | INFO | nova.task_scheduler | Scheduled task task_a4fc9810: send_alert
+2025-08-07 17:49:47,868 | INFO | nova.task_scheduler | Scheduled 2 tasks from plan
+2025-08-07 17:49:47,870 | INFO | nova.task_scheduler | Scheduled task task_a31579d3: Monitor key metrics for 24 hours
+2025-08-07 17:49:47,870 | INFO | nova.task_scheduler | Scheduled 1 tasks from plan
+2025-08-07 17:50:10,724 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-07 17:50:11,440 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-07 17:50:11,440 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-07 17:50:16,206 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-07 17:50:16,206 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-07 17:50:19,262 | INFO | nova.planner | Logged decision: trend_response_20250807_175019
+2025-08-07 17:50:19,418 | INFO | nova.task_scheduler | Creating content with parameters: {'format': 'video', 'duration': '5min'}
+2025-08-07 17:50:21,420 | INFO | nova.task_scheduler | Task test_content_1 completed successfully
+2025-08-07 17:50:21,420 | INFO | nova.task_scheduler | Analyzing metrics with parameters: {'channels': ['test_channel']}
+2025-08-07 17:50:22,422 | INFO | nova.task_scheduler | Task test_analysis_1 completed successfully
+2025-08-07 17:50:22,429 | INFO | nova.task_scheduler | Scheduled task task_612f2f34: Test Task
+2025-08-07 17:50:22,429 | INFO | nova.task_scheduler | Cancelled task task_612f2f34
+2025-08-07 17:50:22,433 | INFO | nova.task_scheduler | Scheduled task task_e553e369: Dependency Task
+2025-08-07 17:50:22,434 | INFO | nova.task_scheduler | Scheduled task task_7fc0485b: Dependent Task
+2025-08-07 17:50:22,436 | INFO | nova.task_scheduler | Scheduled task task_83c858e3: Create content for trending topic
+2025-08-07 17:50:22,437 | INFO | nova.task_scheduler | Scheduled task task_d357c11b: send_alert
+2025-08-07 17:50:22,437 | INFO | nova.task_scheduler | Scheduled 2 tasks from plan
+2025-08-07 17:50:22,440 | INFO | nova.task_scheduler | Scheduled task task_f50096c3: Monitor key metrics for 24 hours
+2025-08-07 17:50:22,440 | INFO | nova.task_scheduler | Scheduled 1 tasks from plan
+2025-08-07 17:50:44,192 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-07 17:50:44,878 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-07 17:50:44,878 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-07 17:50:49,350 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-07 17:50:49,350 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-07 17:50:52,496 | INFO | nova.planner | Logged decision: trend_response_20250807_175052
+2025-08-07 17:50:52,499 | INFO | nova.planner | Logged decision: test_decision_1
+2025-08-07 17:50:52,567 | INFO | nova.task_scheduler | Creating content with parameters: {'format': 'video', 'duration': '5min'}
+2025-08-07 17:50:54,568 | INFO | nova.task_scheduler | Task test_content_1 completed successfully
+2025-08-07 17:50:54,569 | INFO | nova.task_scheduler | Analyzing metrics with parameters: {'channels': ['test_channel']}
+2025-08-07 17:50:55,570 | INFO | nova.task_scheduler | Task test_analysis_1 completed successfully
+2025-08-07 17:50:55,574 | INFO | nova.task_scheduler | Scheduled task task_693f50da: Test Task
+2025-08-07 17:50:55,575 | INFO | nova.task_scheduler | Cancelled task task_693f50da
+2025-08-07 17:50:55,578 | INFO | nova.task_scheduler | Scheduled task task_589ee5f2: Dependency Task
+2025-08-07 17:50:55,579 | INFO | nova.task_scheduler | Scheduled task task_9758d2a8: Dependent Task
+2025-08-07 17:50:55,584 | INFO | nova.task_scheduler | Scheduled task task_cdafbd64: Create content for trending topic
+2025-08-07 17:50:55,585 | INFO | nova.task_scheduler | Scheduled task task_03066dbf: send_alert
+2025-08-07 17:50:55,585 | INFO | nova.task_scheduler | Scheduled 2 tasks from plan
+2025-08-07 17:50:55,589 | INFO | nova.task_scheduler | Scheduled task task_e7845da4: Monitor key metrics for 24 hours
+2025-08-07 17:50:55,589 | INFO | nova.task_scheduler | Scheduled 1 tasks from plan
+2025-08-07 17:51:15,101 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-07 17:51:15,781 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-07 17:51:15,781 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-07 17:51:20,257 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-07 17:51:20,257 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-07 17:51:23,400 | INFO | nova.planner | Logged decision: trend_response_20250807_175123
+2025-08-07 17:51:23,403 | INFO | nova.planner | Logged decision: test_decision_1
+2025-08-07 17:51:23,404 | INFO | nova.task_scheduler | Creating content with parameters: {'format': 'video', 'duration': '5min'}
+2025-08-07 17:51:25,406 | INFO | nova.task_scheduler | Task test_content_1 completed successfully
+2025-08-07 17:51:25,406 | INFO | nova.task_scheduler | Analyzing metrics with parameters: {'channels': ['test_channel']}
+2025-08-07 17:51:26,407 | INFO | nova.task_scheduler | Task test_analysis_1 completed successfully
+2025-08-07 17:51:26,412 | INFO | nova.task_scheduler | Scheduled task task_00bc055d: Test Task
+2025-08-07 17:51:26,413 | INFO | nova.task_scheduler | Cancelled task task_00bc055d
+2025-08-07 17:51:26,416 | INFO | nova.task_scheduler | Scheduled task task_9a58144f: Dependency Task
+2025-08-07 17:51:26,417 | INFO | nova.task_scheduler | Scheduled task task_832b5e70: Dependent Task
+2025-08-07 17:51:26,420 | INFO | nova.task_scheduler | Scheduled task task_05d2c462: Create content for trending topic
+2025-08-07 17:51:26,420 | INFO | nova.task_scheduler | Scheduled task task_36d34893: send_alert
+2025-08-07 17:51:26,420 | INFO | nova.task_scheduler | Scheduled 2 tasks from plan
+2025-08-07 17:51:26,423 | INFO | nova.task_scheduler | Scheduled task task_6d77d6d9: Monitor key metrics for 24 hours
+2025-08-07 17:51:26,423 | INFO | nova.task_scheduler | Scheduled 1 tasks from plan
+2025-08-07 18:59:45,577 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-07 18:59:46,586 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-07 18:59:46,586 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-07 18:59:53,074 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-07 18:59:53,074 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-07 18:59:57,601 | INFO | nova.trend_intelligence | Starting unified trend intelligence analysis
+2025-08-07 18:59:57,602 | INFO | nova.trend_intelligence | Fetching trends from all sources
+2025-08-07 18:59:57,602 | INFO | nova.trend_intelligence | Filtering and clustering trends
+2025-08-07 18:59:57,602 | INFO | nova.trend_intelligence | Analyzing and enriching trends
+2025-08-07 18:59:57,602 | INFO | nova.trend_intelligence | Predicting viral formats and generating content ideas
+2025-08-07 18:59:57,602 | INFO | nova.trend_intelligence | Ranking trends and generating final recommendations
+2025-08-07 18:59:57,602 | INFO | nova.trend_intelligence | Unified trend intelligence analysis completed successfully
+2025-08-07 18:59:57,606 | INFO | nova.trend_intelligence | Analysis results saved to /private/var/folders/0s/nzh4stkn2td_vrwh3k6z35qw0000gn/T/pytest-of-jonathanstuart/pytest-0/test_save_analysis_results0/test_results.json

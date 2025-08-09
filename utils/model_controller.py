@@ -1,5 +1,5 @@
 """
-Adaptive Model Controller for Nova Agent v3.8 – Collaborative Superagent.
+Adaptive Model Controller for Nova Agent v7.0 – Collaborative Superagent.
 
 Routes tasks to the most cost‑effective OpenAI model according to:
     • task metadata flags
@@ -45,16 +45,8 @@ def _load_config() -> Dict:
             pass
     return _DEFAULT_TIERS
 
-MODEL_TIERS = {
-    "ultra_light":   {"model": "gpt-3.5-turbo",       "routes": ["micro_summary", "caption_fix"]},
-    "light":         {"model": "gpt-3.5-turbo",       "routes": ["summary", "caption"]},
-    "multimodal_core": {"model": "gpt-4o",            "routes": ["multimodal"]},
-    "core":          {"model": "gpt-4o",              "routes": ["general", "analysis"]},
-    "retrieval":     {"model": "gpt-4o",              "routes": ["retrieval"]},
-    "heavy":         {"model": "gpt-4o",              "routes": ["complex_analysis"]},
-    "tts_asr":       {"model": "gpt-4o",              "routes": ["voice"]},
-    "ultra":         {"model": "gpt-4o",              "routes": ["research", "governance"]}
-}
+# Load model tiers from config file, fallback to defaults
+MODEL_TIERS = _load_config()
 
 # Map model name to ENV var suffix (using resolved model names)
 _ENV_MAP = {

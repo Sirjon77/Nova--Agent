@@ -1,0 +1,14 @@
+# Ignored files
+.venv/
+__pycache__/
+*.pyc
+.env
+.env.*
+.coverage
+coverage.xml
+.pytest_cache/
+reports/*.tmp
+.DS_Store
+node_modules/
+webapp/.next/
+webapp/node_modules/

@@ -36,6 +36,8 @@ interface GovernanceReport {
   trends: Trend[];
   tools: ToolHealth[];
   changelogs: any[];
+  insight_summaries?: string[];
+  new_niche_suggestions?: { niche: string; source: string; rationale: string }[];
 }
 
 /**
@@ -192,6 +194,28 @@ export default function ReportsPage() {
               <p>No trends available.</p>
             )}
           </section>
+          {report.insight_summaries && report.insight_summaries.length > 0 && (
+            <section>
+              <h2 className="text-xl font-semibold mb-2">Insight Summaries</h2>
+              <ul className="list-disc ml-6 space-y-1">
+                {report.insight_summaries.map((s, idx) => (
+                  <li key={idx}>{s}</li>
+                ))}
+              </ul>
+            </section>
+          )}
+          {report.new_niche_suggestions && report.new_niche_suggestions.length > 0 && (
+            <section>
+              <h2 className="text-xl font-semibold mb-2">New Niche Suggestions</h2>
+              <ul className="list-disc ml-6 space-y-1">
+                {report.new_niche_suggestions.map((n, idx) => (
+                  <li key={idx}>
+                    <span className="font-medium">{n.niche}</span> ({n.source}) — {n.rationale}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
           <section>
             <h2 className="text-xl font-semibold mb-2">Tool Health</h2>
             {report.tools && report.tools.length > 0 ? (

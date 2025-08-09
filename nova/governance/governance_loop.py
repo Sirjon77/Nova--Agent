@@ -6,7 +6,12 @@ from nova.governance.trend_scanner import TrendScanner
 from nova.governance.tool_checker import ToolChecker
 from nova.governance.changelog_watcher import ChangelogWatcher
 from nova.policy import PolicyEnforcer
-from nova.metrics import governance_runs_total
+from nova.metrics import (
+    governance_runs_total,
+    channels_scored,
+    actions_flagged,
+    governance_loop_duration,
+)
 from nova.audit_logger import audit
 
 async def run(cfg, channel_metrics, trend_seeds, tools_cfg):
@@ -44,6 +49,10 @@ async def run(cfg, channel_metrics, trend_seeds, tools_cfg):
 
     # score channels and determine flags
     scored_channels = nm.score_channels(channel_metrics)
+    try:
+        channels_scored.inc(len(channel_metrics) if channel_metrics else 0)
+    except Exception:
+        pass
 
     # Apply channel overrides. Overrides allow operators to force
     # retirement or promotion of specific channels, or to ignore
@@ -115,12 +124,38 @@ async def run(cfg, channel_metrics, trend_seeds, tools_cfg):
             entry['action'] = None
         channels_report.append(entry)
 
+    # derive high-level insight summaries
+    promote_list = [c['channel_id'] for c in channels_report if c.get('flag') == 'promote']
+    retire_list = [c['channel_id'] for c in channels_report if c.get('flag') == 'retire']
+    insights = []
+    if promote_list:
+        insights.append(f"Channels poised for growth: {', '.join(promote_list)} – recommend doubling down.")
+    if retire_list:
+        insights.append(f"Underperforming channels: {', '.join(retire_list)} – consider pausing or pivoting.")
+    if not insights:
+        insights.append("Most channels are stable; continue monitoring.")
+
+    # basic new niche suggestions from trends
+    new_niche_suggestions = []
+    try:
+        for t in trends or []:
+            # include a lightweight suggestion payload
+            new_niche_suggestions.append({
+                'niche': t.get('keyword') or t.get('term') or 'unknown',
+                'source': t.get('source', 'unknown'),
+                'rationale': f"Projected RPM {t.get('projected_rpm', 'n/a')} with interest {t.get('interest', t.get('interest_score', 'n/a'))}"
+            })
+    except Exception:
+        pass
+
     report = {
         'timestamp': datetime.utcnow().isoformat(timespec='seconds'),
         'channels': channels_report,
         'trends': trends,
         'tools': tool_health,
         'changelogs': changelogs,
+        'insight_summaries': insights,
+        'new_niche_suggestions': new_niche_suggestions,
     }
 
     # -------------------------------------------------------------------------
@@ -150,33 +185,39 @@ async def run(cfg, channel_metrics, trend_seeds, tools_cfg):
         # Do not fail governance if metrics update fails
         pass
 
-    # Automatically queue tasks based on channel flags. If a channel is
-    # promoted, schedule an extra content generation task; if retired,
-    # schedule a maintenance/pause task. This uses the TaskManager to
-    # offload work asynchronously without blocking the governance loop.
+    # Count actions flagged for observability
     try:
-        # Import lazily to avoid circular dependencies at module load time
-        from nova.task_manager import task_manager, TaskType, dummy_task
-        for ch in scored_channels:
-            if ch.flag == 'promote':
-                # Queue a generate_content task (placeholder duration)
-                await task_manager.enqueue(TaskType.GENERATE_CONTENT, dummy_task, duration=0)
-            elif ch.flag == 'retire':
-                # Queue a custom task to represent pausing content (placeholder)
-                await task_manager.enqueue(TaskType.CUSTOM, dummy_task, duration=0)
-    except Exception as exc:
-        # Log but do not disrupt governance if task scheduling fails
-        import logging
-        logging.getLogger('governance').warning('Failed to enqueue follow-up tasks: %s', exc)
+        actions_flagged.inc(len([c for c in channels_report if c.get('action')]))
+    except Exception:
+        pass
+
+    # Conditionally queue safe actions if auto_actions enabled; destructive actions require approval
+    auto_actions = bool(cfg.get('auto_actions') or cfg.get('governance', {}).get('auto_actions')) if cfg else False
+    if auto_actions:
+        try:
+            from nova.task_manager import task_manager, TaskType, dummy_task
+            for ch in scored_channels:
+                if ch.flag == 'promote':
+                    await task_manager.enqueue(TaskType.GENERATE_CONTENT, dummy_task, duration=0)
+                # do not auto-enqueue retire tasks; require human-in-the-loop
+        except Exception as exc:
+            import logging
+            logging.getLogger('governance').warning('Failed to enqueue follow-up tasks: %s', exc)
 
     # write report to configured output directory
     out_dir = pathlib.Path(cfg['output_dir'])
     out_dir.mkdir(parents=True, exist_ok=True)
     out_file = out_dir / f'governance_report_{datetime.utcnow().date()}.json'
-    out_file.write_text(json.dumps(report, indent=2))
-
-    # Send notifications to operators via Slack and email if configured
-    await _dispatch_notifications(cfg, report)
+    # time writing/notifications with governance_loop_duration
+    try:
+        with governance_loop_duration.time():
+            out_file.write_text(json.dumps(report, indent=2))
+            # Send notifications to operators via Slack and email if configured
+            await _dispatch_notifications(cfg, report)
+    except Exception:
+        # Fallback if prometheus Summary context manager fails
+        out_file.write_text(json.dumps(report, indent=2))
+        await _dispatch_notifications(cfg, report)
 
     return report
 

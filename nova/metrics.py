@@ -5,7 +5,7 @@ Nova Agent to track task execution and governance cycles. Duplicate
 definitions and stray newline markers have been removed for clarity.
 """
 
-from prometheus_client import Counter, Histogram, Gauge
+from prometheus_client import Counter, Histogram, Gauge, Summary
 
 # Task execution metrics
 tasks_executed = Counter(
@@ -25,6 +25,24 @@ memory_items = Gauge(
 governance_runs_total = Counter(
     "nova_governance_runs_total",
     "Governance cycles"
+)
+
+# Number of channels scored per governance cycle
+channels_scored = Counter(
+    "nova_governance_channels_scored_total",
+    "Channels scored in governance loop"
+)
+
+# Number of recommendations (actions) flagged per governance cycle
+actions_flagged = Counter(
+    "nova_governance_actions_flagged_total",
+    "Recommendations (actions) flagged in governance loop"
+)
+
+# Duration of governance loop execution
+governance_loop_duration = Summary(
+    "nova_governance_loop_duration_seconds",
+    "Duration of governance loop execution"
 )
 
 # Channel flag metrics

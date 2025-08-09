@@ -3,10 +3,43 @@ governance:
   notify:
     email: "ops@example.com"
     slack_channel: "#nova-governance"
+  # Control whether the agent executes safe, non-destructive actions automatically.
+  # Destructive actions (e.g., retire) always require human approval.
+  auto_actions: false
   niche:
     weights:  { rpm: 2.0, watch: 1.5, ctr: 1.0, subs: 1.0 }
     consistency_bonus: 5
     thresholds: { retire: 25, watch: 40, promote: 65 }
+    # Channel-specific configurations for 7 official channels
+    channels:
+      WealthWise:
+        rpm_target: 20.0
+        content_ratio: 0.15
+        avatar: "professional_finance"
+      TechPulse:
+        rpm_target: 18.0
+        content_ratio: 0.15
+        avatar: "tech_savvy"
+      "Living Luxe":
+        rpm_target: 25.0
+        content_ratio: 0.14
+        avatar: "luxury_lifestyle"
+      GlamLab:
+        rpm_target: 16.0
+        content_ratio: 0.14
+        avatar: "fashion_beauty"
+      "Viral Vortex":
+        rpm_target: 12.0
+        content_ratio: 0.14
+        avatar: "trendy_viral"
+      "Twinkle Tales & Tunes":
+        rpm_target: 8.0
+        content_ratio: 0.14
+        avatar: "friendly_kids"
+      HypeHub:
+        rpm_target: 10.0
+        content_ratio: 0.14
+        avatar: "energetic_promo"
   trends:
     rpm_multiplier: 0.8
     top_n: 25

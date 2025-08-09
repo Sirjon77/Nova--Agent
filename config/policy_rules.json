@@ -1,0 +1,84 @@
+[
+  {
+    "rule_id": "rpm_drop_alert",
+    "name": "RPM Drop Alert",
+    "description": "Alert when RPM drops below threshold",
+    "conditions": {
+      "rpm_threshold": 5.0,
+      "time_window": "7d",
+      "drop_percentage": 20
+    },
+    "actions": [
+      {
+        "type": "alert",
+        "message": "RPM has dropped significantly"
+      },
+      {
+        "type": "schedule_analysis",
+        "task": "analyze_rpm_causes"
+      }
+    ],
+    "priority": 1,
+    "enabled": true,
+    "auto_approve": true,
+    "created_at": "2025-08-07 17:49:27.122802",
+    "last_triggered": null,
+    "trigger_count": 0
+  },
+  {
+    "rule_id": "trend_response",
+    "name": "Trend Response",
+    "description": "Automatically respond to trending topics",
+    "conditions": {
+      "trend_score": 0.8,
+      "rpm_potential": 10.0,
+      "competition_level": "low"
+    },
+    "actions": [
+      {
+        "type": "create_content",
+        "format": "video",
+        "timeline": "4h"
+      },
+      {
+        "type": "schedule_post",
+        "platforms": [
+          "youtube",
+          "tiktok"
+        ]
+      }
+    ],
+    "priority": 2,
+    "enabled": true,
+    "auto_approve": true,
+    "created_at": "2025-08-07 17:49:27.122811",
+    "last_triggered": null,
+    "trigger_count": 0
+  },
+  {
+    "rule_id": "channel_retirement",
+    "name": "Channel Retirement",
+    "description": "Retire underperforming channels",
+    "conditions": {
+      "score_threshold": 25,
+      "time_window": "30d",
+      "improvement_attempts": 3
+    },
+    "actions": [
+      {
+        "type": "flag_channel",
+        "action": "retire"
+      },
+      {
+        "type": "notify_admin",
+        "message": "Channel recommended for retirement"
+      }
+    ],
+    "priority": 3,
+    "enabled": true,
+    "auto_approve": false,
+    "created_at": "2025-08-07 17:49:27.122814",
+    "last_triggered": null,
+    "trigger_count": 0
+  }
+]
