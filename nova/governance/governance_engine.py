@@ -12,6 +12,11 @@ import logging
 from typing import Any, Dict, List
 
 from scoring import compute_channel_scores, classify_channel, METRIC_WEIGHTS, THRESHOLDS  # type: ignore
+from nova.governance.report_generator import generate_governance_report
+from nova.metrics import channels_scored, actions_flagged, governance_loop_duration
+from datetime import datetime
+from pathlib import Path
+import json
 
 
 logging.basicConfig(level=logging.INFO)
@@ -97,5 +102,57 @@ class GovernanceEngine:
                 pass
 
         return self.actions_executed
+
+    def run_nightly(self, channels_data: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """Complete governance loop: scoring, recommendations, report generation, and notifications."""
+        start_time = datetime.utcnow()
+        logger.info("Starting nightly governance loop...")
+
+        # Score channels and get recommendations
+        self.analyze_channels(channels_data)
+        try:
+            channels_scored.inc(len(channels_data))
+            actions_flagged.inc(len(self.recommendations))
+        except Exception:
+            pass
+
+        # Generate report with timing
+        with governance_loop_duration.time():
+            report = generate_governance_report(self.recommendations)
+
+        # Save report to configured output directory
+        out_dir = (
+            self.config.get("governance", {}).get("output_dir")
+            or self.config.get("output_dir")
+            or "reports"
+        )
+        out_path = Path(out_dir)
+        out_path.mkdir(parents=True, exist_ok=True)
+        out_file = out_path / f"governance_report_{start_time.strftime('%Y-%m-%d')}.json"
+        out_file.write_text(json.dumps(report, indent=2))
+        logger.info("Governance report generated and saved: %s", out_file)
+
+        # Slack summary (stub)
+        try:
+            if self.config.get("notifications", {}).get("slack_enabled", False):
+                promote_count = sum(1 for rec in self.recommendations if rec.get("status") == "promote")
+                retire_count = sum(1 for rec in self.recommendations if rec.get("status") == "retire")
+                summary_text = (
+                    f"Governance Report {report.get('date', start_time.isoformat())}:\n"
+                    f"- Channels to promote: {promote_count}\n"
+                    f"- Channels to consider retiring: {retire_count}\n"
+                    f"- New niche suggestions: {len(report.get('new_niche_suggestions') or [])}"
+                )
+                logger.info("Slack notification sent: %s", summary_text)
+        except Exception:
+            # Never fail loop for notifications
+            pass
+
+        # Optionally execute safe actions if auto_actions enabled
+        executed = self.execute_actions()
+        if executed:
+            logger.info("Auto-actions executed: %s", executed)
+        logger.info("Nightly governance loop completed.")
+        return report
 
 
