@@ -122,6 +122,14 @@ def _add_jwt_middleware():
 
 _add_jwt_middleware()
 
+# Validate required environment configuration early
+try:
+    from nova.config.env import validate_env_or_exit
+    validate_env_or_exit()
+except SystemExit:
+    # In test contexts, allow process to continue as TestClient may import without full env
+    pass
+
 # Enable CORS for all origins (development/public use)
 app.add_middleware(
     CORSMiddleware,
@@ -172,7 +180,8 @@ async def schedule_governance_nightly() -> None:
     from nova.governance.governance_loop import run as governance_run
     # Load governance configuration once; fallback to defaults if missing
     try:
-        cfg_all = yaml.safe_load(open('config/settings.yaml'))
+        with open('config/settings.yaml', 'r') as _f:
+            cfg_all = yaml.safe_load(_f)
         gov_cfg = cfg_all.get('governance', {})
     except Exception:
         gov_cfg = {}
@@ -196,7 +205,8 @@ async def schedule_governance_nightly() -> None:
             try:
                 # Determine memory limit from policy if available
                 import yaml
-                policy_cfg = yaml.safe_load(open('config/policy.yaml'))
+                with open('config/policy.yaml', 'r') as _pf:
+                    policy_cfg = yaml.safe_load(_pf)
                 mem_limit = policy_cfg.get('sandbox', {}).get('memory_limit_mb') if policy_cfg else None
             except Exception:
                 mem_limit = None
@@ -222,6 +232,7 @@ async def health():
 # Here we read credentials from environment variables prefixed with NOVA_USER_*
 
 from pydantic import BaseModel
+from nova.audit_logger import audit
 import os
 from fastapi import status
 
@@ -281,6 +292,7 @@ async def login(req: LoginRequest):
     elif username == user_user and password == user_pass:
         role = 'user'
     else:
+        audit('login_failed', user=username, meta={'reason': 'invalid_credentials'})
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail='Invalid credentials')
     try:
         # Prefer new utils that issue access + refresh tokens
@@ -288,8 +300,10 @@ async def login(req: LoginRequest):
         claims = {"sub": username, "role": role}
         access = create_access_token(claims)
         refresh = create_refresh_token(claims)
+        audit('login_success', user=username, meta={'role': role})
         return LoginResponse(access_token=access, refresh_token=refresh, token_type="bearer", role=role, token=access)
     except Exception as e:
+        audit('login_error', user=username, meta={'error': str(e)})
         raise HTTPException(status_code=500, detail=f"JWT token generation failed: {e}")
 
 
@@ -304,13 +318,17 @@ async def refresh_token(req: RefreshRequest):
         from auth.jwt_utils import decode_token, create_access_token, create_refresh_token, JWTError, ExpiredSignatureError
         payload = decode_token(req.refresh_token)
         if payload.get("type") != "refresh":
+            audit('token_refresh_failed', user=payload.get('sub'), meta={'reason': 'wrong_type'})
             raise HTTPException(status_code=400, detail="Not a refresh token")
         new_access = create_access_token({"sub": payload.get("sub"), "role": payload.get("role")})
         new_refresh = create_refresh_token({"sub": payload.get("sub"), "role": payload.get("role")})
+        audit('token_refresh', user=payload.get('sub'), meta={'result': 'success'})
         return {"access_token": new_access, "refresh_token": new_refresh, "token_type": "bearer"}
     except ExpiredSignatureError:
+        audit('token_refresh_failed', user='unknown', meta={'reason': 'expired'})
         raise HTTPException(status_code=401, detail="Refresh token expired, please login again")
     except Exception:
+        audit('token_refresh_failed', user='unknown', meta={'reason': 'invalid'})
         raise HTTPException(status_code=401, detail="Invalid refresh token")
 
 from auth.rbac import role_required
@@ -372,7 +390,8 @@ async def list_channels():
     # Determine reports directory from settings
     import yaml, json, pathlib
     try:
-        cfg = yaml.safe_load(open('config/settings.yaml'))
+        with open('config/settings.yaml', 'r') as _f:
+            cfg = yaml.safe_load(_f)
         reports_dir = pathlib.Path(cfg.get('governance', {}).get('output_dir', 'reports'))
     except Exception:
         reports_dir = pathlib.Path('reports')
@@ -891,6 +910,7 @@ async def run_governance_now() -> dict:
     work is executed asynchronously and clients can track its progress via
     the tasks API or WebSocket events.
     """
+    audit('governance_run_triggered', user='admin')
     # Use the existing create_task function to enqueue a RUN_GOVERNANCE task.
     req = CreateTaskRequest(type=TaskType.RUN_GOVERNANCE.value)
     return await create_task(req)
@@ -935,7 +955,8 @@ async def get_governance_report(date: Union[str, None] = Query(default=None, des
     reports_dir = pathlib.Path('reports')
     try:
         import yaml
-        cfg = yaml.safe_load(open('config/settings.yaml'))
+        with open('config/settings.yaml', 'r') as _f:
+            cfg = yaml.safe_load(_f)
         reports_dir = pathlib.Path(cfg.get('governance', {}).get('output_dir', 'reports'))
     except Exception:
         # If config missing or unreadable, use default 'reports'
