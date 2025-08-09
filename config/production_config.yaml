@@ -3,8 +3,8 @@
 
 security:
   admin_username: "admin"
-  admin_password: "secure_password_change_me"
-  jwt_secret: "your_jwt_secret_key_here"
+  admin_password: "${NOVA_ADMIN_PASSWORD:?Must set NOVA_ADMIN_PASSWORD}"
+  jwt_secret: "${JWT_SECRET_KEY:?Must set JWT_SECRET_KEY}"
   session_timeout: 3600
   max_login_attempts: 5
 
@@ -17,15 +17,15 @@ api:
   rate_limit_window: 60
 
 memory:
-  redis_url: "redis://localhost:6379"
-  weaviate_url: "http://localhost:8080"
+  redis_url: "${REDIS_URL:?Must set REDIS_URL}"
+  weaviate_url: "${WEAVIATE_URL:?Must set WEAVIATE_URL}"
   max_short_term_size: 1000
   max_long_term_size: 10000
   cleanup_interval: 3600
   retention_days: 90
 
 openai:
-  api_key: "${OPENAI_API_KEY}"
+  api_key: "${OPENAI_API_KEY:?Must set OPENAI_API_KEY}"
   model: "gpt-4o"
   max_tokens: 4000
   temperature: 0.7

@@ -3088,3 +3088,8 @@
 2025-08-09 07:33:34,198 | INFO | utils.memory_manager | Redis connected for short-term memory
 2025-08-09 07:33:34,198 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
 2025-08-09 07:33:34,198 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-09 09:01:46,079 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-09 09:01:46,919 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-09 09:01:46,919 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-09 09:01:52,869 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-09 09:01:52,870 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
