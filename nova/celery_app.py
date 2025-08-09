@@ -46,9 +46,9 @@ celery_app.conf.beat_schedule = {
         'options': {'queue': 'maintenance'}
     },
     
-    # Daily analytics processing - runs at 3:00 AM UTC (after governance)
-    'daily-analytics-processing': {
-        'task': 'nova.analytics.process_daily_metrics_task',
+    # Run daily metrics processing at 3am (renamed from daily-analytics-processing)
+    'daily-metrics-processing': {
+        'task': 'nova.analytics_tasks.process_daily_metrics_task',
         'schedule': crontab(hour=3, minute=0),
         'args': [],
         'options': {'queue': 'analytics'}
