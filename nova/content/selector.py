@@ -6,7 +6,6 @@ including the silent video ratio requirement (1 in 3 posts silent).
 """
 
 import math
-import random
 import yaml
 from typing import List, Dict, Any, Optional
 from dataclasses import dataclass, field
@@ -103,12 +102,28 @@ class ContentSelector:
         logger.info(f"Enforcing silent ratio: {target_silent_count}/{N} posts will be silent "
                    f"(ratio: {self.config.silent_video_ratio})")
         
-        # Randomly select posts to be silent (for distribution)
+        # Deterministically select posts using stride pattern for fair distribution
         if target_silent_count > 0:
-            silent_posts = random.sample(eligible_posts, k=min(target_silent_count, N))
+            # Calculate stride: for 33% ratio -> stride of 3 (every 3rd post)
+            stride = max(1, int(round(1.0 / self.config.silent_video_ratio))) if self.config.silent_video_ratio > 0 else N
             
-            for post in silent_posts:
-                self._configure_silent_post(post)
+            assigned = 0
+            # First pass: assign every stride-th eligible post
+            for ordinal, post in enumerate(eligible_posts, 1):
+                if assigned >= target_silent_count:
+                    break
+                if (ordinal % stride) == 0:
+                    self._configure_silent_post(post)
+                    assigned += 1
+            
+            # Second pass: fill any remaining slots deterministically
+            if assigned < target_silent_count:
+                for post in eligible_posts:
+                    if assigned >= target_silent_count:
+                        break
+                    if not post.silent_mode:
+                        self._configure_silent_post(post)
+                        assigned += 1
         
         # Ensure non-silent posts have narration
         non_silent_posts = [p for p in eligible_posts if not p.silent_mode]
