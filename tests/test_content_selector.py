@@ -266,9 +266,10 @@ class TestContentSelector:
         """Test compliance validation when ratio is violated."""
         selector = ContentSelector()
         
+        # Create posts that are all under 60s duration to ensure they're all eligible
         posts = [
-            ContentPost(f"{i}", "short_form", 30+i*5, "Finance", "WealthWise", "youtube")
-            for i in range(1, 11)  # 10 posts
+            ContentPost(f"{i}", "short_form", 30, "Finance", "WealthWise", "youtube")
+            for i in range(1, 11)  # 10 posts, all 30s duration
         ]
         
         # Mark none as silent (0% ratio, should violate 33% target)
