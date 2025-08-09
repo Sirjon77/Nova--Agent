@@ -27,6 +27,14 @@ ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", "15")
 REFRESH_TOKEN_EXPIRE_DAYS = int(os.getenv("REFRESH_TOKEN_EXPIRE_DAYS", "7"))
 
 
+def _required_token_version() -> int:
+    """Return required token version for validation; bump to invalidate all tokens."""
+    try:
+        return int(os.getenv("JWT_TOKEN_VERSION", "1"))
+    except Exception:
+        return 1
+
+
 def _jwt_impl():
     # Prefer python-jose if available, else reuse fallback from middleware
     if _jose_jwt is not None:
@@ -43,23 +51,29 @@ def _now_utc() -> _dt.datetime:
 def create_access_token(claims: Dict[str, Any]) -> str:
     payload = dict(claims)
     exp = _now_utc() + _dt.timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
-    payload.update({"exp": int(exp.timestamp()), "type": "access"})
+    payload.update({"exp": int(exp.timestamp()), "type": "access", "ver": _required_token_version()})
     return _jwt_impl().encode(payload, get_jwt_secret(), algorithm=_ALGO)
 
 
 def create_refresh_token(claims: Dict[str, Any]) -> str:
     payload = dict(claims)
     exp = _now_utc() + _dt.timedelta(days=REFRESH_TOKEN_EXPIRE_DAYS)
-    payload.update({"exp": int(exp.timestamp()), "type": "refresh"})
+    payload.update({"exp": int(exp.timestamp()), "type": "refresh", "ver": _required_token_version()})
     return _jwt_impl().encode(payload, get_jwt_secret(), algorithm=_ALGO)
 
 
 def decode_token(token: str) -> Dict[str, Any]:
-    return _jwt_impl().decode(token, get_jwt_secret(), algorithms=[_ALGO])
+    payload = _jwt_impl().decode(token, get_jwt_secret(), algorithms=[_ALGO])
+    req_ver = _required_token_version()
+    tok_ver = payload.get("ver", 1)
+    if int(tok_ver) != req_ver:
+        raise _JWTError("Token version invalid")
+    return payload
 
 
 # Re-export common exceptions for callers to catch when python-jose is present
 ExpiredSignatureError = _Expired
 JWTError = _JWTError
+
 
 
