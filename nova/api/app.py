@@ -167,58 +167,53 @@ else:
 # -----------------------------------------------------------------------------
 # Startup events
 #
-# When the FastAPI application starts, schedule the nightly governance run. In
-# the absence of Celery or APScheduler, we implement a simple loop that
-# waits for 24 hours between executions. If the governance task fails it
-# will log the exception but the loop will continue on the next cycle. The
-# scheduling uses asyncio to avoid blocking the event loop.
+# NOTE: Legacy manual scheduling has been replaced with Celery Beat.
+# The governance loop, memory cleanup, and other periodic tasks are now
+# handled by Celery workers with proper scheduling, retry logic, and scaling.
+#
+# To run the scheduler: celery -A nova.celery_app beat --loglevel=info
+# To run workers: celery -A nova.celery_app worker --loglevel=info
 
 @app.on_event("startup")
-async def schedule_governance_nightly() -> None:
-    """Launch the periodic governance runner in the background."""
-    import yaml
-    from nova.governance.governance_loop import run as governance_run
-    # Load governance configuration once; fallback to defaults if missing
+async def initialize_celery_integration() -> None:
+    """Initialize Celery integration and verify connectivity."""
+    import logging
+    logger = logging.getLogger("celery_startup")
+    
     try:
-        with open('config/settings.yaml', 'r') as _f:
-            cfg_all = yaml.safe_load(_f)
-        gov_cfg = cfg_all.get('governance', {})
-    except Exception:
-        gov_cfg = {}
-
-    async def _runner() -> None:
-        """Background task that runs governance nightly and memory cleanup hourly."""
-        import logging
-        from nova.memory_guard import cleanup as memory_cleanup
-        gov_logger = logging.getLogger("governance_scheduler")
-        # Timestamps to track when last memory cleanup occurred
-        last_cleanup = None
-        while True:
-            now = datetime.utcnow()
-            # Run governance once every 24 hours (or on first run)
-            try:
-                await governance_run(gov_cfg, [], [], [])
-                gov_logger.info("Governance cycle completed")
-            except Exception as exc:
-                gov_logger.warning("Governance run failed: %s", exc)
-            # Perform memory cleanup hourly
-            try:
-                # Determine memory limit from policy if available
-                import yaml
-                with open('config/policy.yaml', 'r') as _pf:
-                    policy_cfg = yaml.safe_load(_pf)
-                mem_limit = policy_cfg.get('sandbox', {}).get('memory_limit_mb') if policy_cfg else None
-            except Exception:
-                mem_limit = None
-            try:
-                await memory_cleanup(max_age_hours=24, memory_limit_mb=mem_limit)
-            except Exception as exc:
-                gov_logger.warning("Memory cleanup failed: %s", exc)
-            # Sleep for 24 hours before next governance run
-            await asyncio.sleep(24 * 60 * 60)
-
-    # Start the runner without awaiting it so that startup can complete
-    asyncio.create_task(_runner())
+        # Import Celery app to ensure it's available
+        from nova.celery_app import celery_app
+        
+        # Verify Redis connectivity (Celery broker)
+        try:
+            # Test broker connectivity
+            inspect = celery_app.control.inspect()
+            active_workers = inspect.active()
+            
+            if active_workers:
+                logger.info(f"Celery workers detected: {list(active_workers.keys())}")
+            else:
+                logger.warning("No active Celery workers detected. Tasks will queue until workers start.")
+                
+        except Exception as broker_exc:
+            logger.warning(f"Celery broker connectivity check failed: {broker_exc}")
+            logger.info("Continuing startup - Celery tasks will queue when broker becomes available")
+        
+        # Log scheduled tasks for reference
+        beat_schedule = celery_app.conf.beat_schedule
+        logger.info(f"Celery Beat schedule loaded with {len(beat_schedule)} tasks:")
+        for task_name, task_config in beat_schedule.items():
+            schedule = task_config['schedule']
+            logger.info(f"  - {task_name}: {schedule}")
+        
+        logger.info("Celery integration initialized successfully")
+        
+    except ImportError as e:
+        logger.error(f"Failed to import Celery app: {e}")
+        logger.warning("Proceeding without Celery integration")
+    except Exception as e:
+        logger.error(f"Celery integration setup failed: {e}")
+        logger.warning("Proceeding without Celery integration")
 
 @app.get("/health", tags=["meta"])
 async def health():
@@ -2569,6 +2564,138 @@ async def start_scheduler() -> Dict[str, Any]:
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to start scheduler: {str(e)}")
 
+# -----------------------------------------------------------------------------
+# Celery Management API Endpoints (Admin Only)
+# -----------------------------------------------------------------------------
+
+@app.get("/api/celery/status", tags=["celery"], dependencies=[role_required(Role.admin,)])
+async def celery_status():
+    """Get Celery cluster status including workers and scheduled tasks."""
+    try:
+        from nova.celery_app import celery_app
+        
+        # Get worker information
+        inspect = celery_app.control.inspect()
+        
+        # Get active workers
+        active_workers = inspect.active() or {}
+        
+        # Get scheduled tasks
+        scheduled_tasks = inspect.scheduled() or {}
+        
+        # Get worker stats
+        stats = inspect.stats() or {}
+        
+        # Get beat schedule
+        beat_schedule = celery_app.conf.beat_schedule
+        
+        return {
+            "status": "connected" if active_workers else "no_workers",
+            "active_workers": list(active_workers.keys()),
+            "worker_count": len(active_workers),
+            "scheduled_tasks_count": sum(len(tasks) for tasks in scheduled_tasks.values()),
+            "beat_schedule": {
+                name: {
+                    "task": config["task"],
+                    "schedule": str(config["schedule"]),
+                    "queue": config.get("options", {}).get("queue", "celery")
+                }
+                for name, config in beat_schedule.items()
+            },
+            "worker_stats": stats
+        }
+        
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to get Celery status: {str(e)}")
+
+
+@app.post("/api/celery/governance/run", tags=["celery"], dependencies=[role_required(Role.admin,)])
+async def trigger_governance_task(config_overrides: Dict[str, Any] = None):
+    """Manually trigger the governance task."""
+    try:
+        from nova.governance.tasks import run_manual_governance_task
+        
+        # Trigger the task asynchronously
+        task = run_manual_governance_task.delay(config_overrides)
+        
+        return {
+            "task_id": task.id,
+            "status": "queued",
+            "message": "Governance task queued for execution",
+            "config_overrides": config_overrides
+        }
+        
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to trigger governance task: {str(e)}")
+
+
+@app.post("/api/celery/maintenance/cleanup", tags=["celery"], dependencies=[role_required(Role.admin,)])
+async def trigger_cleanup_task(max_age_hours: int = 24):
+    """Manually trigger the memory cleanup task."""
+    try:
+        from nova.maintenance.tasks import memory_cleanup_task
+        
+        # Trigger the task asynchronously
+        task = memory_cleanup_task.delay(max_age_hours)
+        
+        return {
+            "task_id": task.id,
+            "status": "queued", 
+            "message": "Memory cleanup task queued for execution",
+            "max_age_hours": max_age_hours
+        }
+        
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to trigger cleanup task: {str(e)}")
+
+
+@app.get("/api/celery/task/{task_id}", tags=["celery"], dependencies=[role_required(Role.admin,)])
+async def get_celery_task_status(task_id: str):
+    """Get the status of a specific Celery task."""
+    try:
+        from nova.celery_app import celery_app
+        
+        # Get task result
+        result = celery_app.AsyncResult(task_id)
+        
+        response = {
+            "task_id": task_id,
+            "status": result.status,
+            "ready": result.ready(),
+        }
+        
+        if result.ready():
+            if result.successful():
+                response["result"] = result.result
+            else:
+                response["error"] = str(result.result)
+                response["traceback"] = result.traceback
+        
+        return response
+        
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to get task status: {str(e)}")
+
+
+@app.post("/api/celery/health-check", tags=["celery"], dependencies=[role_required(Role.admin,)])
+async def trigger_health_check():
+    """Trigger a Celery health check task."""
+    try:
+        from nova.celery_app import health_check
+        
+        # Trigger the health check task
+        task = health_check.delay()
+        
+        return {
+            "task_id": task.id,
+            "status": "queued",
+            "message": "Health check task queued for execution"
+        }
+        
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to trigger health check: {str(e)}")
+
+
 # Update the status endpoint to reflect v7.0
 @app.get("/status", tags=["meta"])
 def read_status():
@@ -2582,7 +2709,8 @@ def read_status():
             "memory_management",
             "planning_engine",
             "task_scheduler",
-            "enhanced_governance"
+            "enhanced_governance",
+            "celery_integration"
         ]
     }
 
