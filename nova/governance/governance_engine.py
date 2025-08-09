@@ -33,9 +33,11 @@ class GovernanceEngine:
 
     def analyze_channels(self, channels_data: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         """Run scoring and policy evaluation on given channels data."""
+        # Reset state to avoid stale carry-over between runs
+        self.recommendations = []
+        self.actions_executed = []
         scores = compute_channel_scores(channels_data)
         logger.info("Computed scores for %d channels.", len(scores))
-        self.recommendations = []
 
         for channel in channels_data:
             name = channel.get("name")
@@ -107,6 +109,10 @@ class GovernanceEngine:
         """Complete governance loop: scoring, recommendations, report generation, and notifications."""
         start_time = datetime.utcnow()
         logger.info("Starting nightly governance loop...")
+
+        # Ensure clean state for a new run
+        self.recommendations = []
+        self.actions_executed = []
 
         # Score channels and get recommendations
         self.analyze_channels(channels_data)
