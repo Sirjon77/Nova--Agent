@@ -1,0 +1,11 @@
+metrics:
+  RPM: 0.4
+  growth: 0.3
+  engagement: 0.3
+thresholds:
+  promote: 1.0
+  retire: -1.0
+governance:
+  auto_actions: false
+
+
