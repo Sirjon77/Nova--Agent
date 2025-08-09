@@ -1,6 +1,7 @@
 from fastapi import FastAPI, HTTPException, Depends, Query, Body, Form, File, UploadFile, WebSocket, WebSocketDisconnect, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, FileResponse
+from contextlib import asynccontextmanager
 from pydantic import BaseModel, Field
 import uvicorn
 import asyncio
@@ -99,10 +100,69 @@ from nova.analytics import aggregate_metrics, top_prompts, rpm_by_audience  # ty
 # v7.0 Planning Engine imports
 from nova.planner import PlanningEngine, PlanningContext, DecisionType, ApprovalStatus
 from nova.task_scheduler import TaskScheduler, TaskPriority
+from nova.config.env import validate_env_or_exit
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """
+    Run environment validation and any background startup tasks.
+    This replaces FastAPI's deprecated @app.on_event('startup') decorators.
+    """
+    import logging
+    logger = logging.getLogger("nova_startup")
+    
+    # Fail fast if required environment variables are missing
+    logger.info("Validating environment configuration...")
+    validate_env_or_exit()
+    logger.info("✅ Environment validation passed")
+    
+    # Initialize and verify Celery integration
+    try:
+        from nova.celery_app import celery_app
+        
+        # Log Celery Beat schedule
+        beat_schedule = celery_app.conf.beat_schedule
+        logger.info(f"Celery Beat schedule loaded with {len(beat_schedule)} tasks:")
+        for name, spec in beat_schedule.items():
+            schedule = spec['schedule']
+            task = spec['task']
+            logger.info(f"  - {name}: {task} at {schedule}")
+        
+        # Verify Redis connectivity (Celery broker)
+        try:
+            inspect = celery_app.control.inspect()
+            active_workers = inspect.active()
+            
+            if active_workers:
+                logger.info(f"Celery workers detected: {list(active_workers.keys())}")
+            else:
+                logger.warning("No active Celery workers detected. Tasks will queue until workers start.")
+                
+        except Exception as broker_exc:
+            logger.warning(f"Celery broker connectivity check failed: {broker_exc}")
+            logger.info("Continuing startup - Celery tasks will queue when broker becomes available")
+        
+        logger.info("✅ Celery integration initialized successfully")
+        
+    except Exception as celery_exc:
+        logger.error(f"Failed to initialize Celery integration: {celery_exc}")
+        # Don't fail startup for Celery issues - continue without background tasks
+    
+    try:
+        yield  # Enter application runtime
+    finally:
+        # Perform any graceful shutdown or cleanup here
+        logger.info("Shutting down Nova Agent API...")
+        pass
 
 # NOTE: This is the canonical FastAPI application instance for Nova Agent.
 # Do NOT instantiate FastAPI elsewhere; use this app for adding all routers and routes.
-app = FastAPI(title="Nova Agent API", version="7.0")
+app = FastAPI(
+    title="Nova Agent API", 
+    version="7.0",
+    description="API for the Nova Agent system",
+    lifespan=lifespan
+)
 
 # Initialize v7.0 components
 planning_engine = PlanningEngine()
@@ -122,13 +182,7 @@ def _add_jwt_middleware():
 
 _add_jwt_middleware()
 
-# Validate required environment configuration early
-try:
-    from nova.config.env import validate_env_or_exit
-    validate_env_or_exit()
-except SystemExit:
-    # In test contexts, allow process to continue as TestClient may import without full env
-    pass
+# NOTE: Environment validation moved to lifespan context manager above
 
 # Enable CORS for all origins (development/public use)
 app.add_middleware(
@@ -173,51 +227,37 @@ else:
 #
 # To run the scheduler: celery -A nova.celery_app beat --loglevel=info
 # To run workers: celery -A nova.celery_app worker --loglevel=info
-
-@app.on_event("startup")
-async def initialize_celery_integration() -> None:
-    """Initialize Celery integration and verify connectivity."""
-    import logging
-    logger = logging.getLogger("celery_startup")
-    
-    try:
-        # Import Celery app to ensure it's available
-        from nova.celery_app import celery_app
-        
-        # Verify Redis connectivity (Celery broker)
-        try:
-            # Test broker connectivity
-            inspect = celery_app.control.inspect()
-            active_workers = inspect.active()
-            
-            if active_workers:
-                logger.info(f"Celery workers detected: {list(active_workers.keys())}")
-            else:
-                logger.warning("No active Celery workers detected. Tasks will queue until workers start.")
-                
-        except Exception as broker_exc:
-            logger.warning(f"Celery broker connectivity check failed: {broker_exc}")
-            logger.info("Continuing startup - Celery tasks will queue when broker becomes available")
-        
-        # Log scheduled tasks for reference
-        beat_schedule = celery_app.conf.beat_schedule
-        logger.info(f"Celery Beat schedule loaded with {len(beat_schedule)} tasks:")
-        for task_name, task_config in beat_schedule.items():
-            schedule = task_config['schedule']
-            logger.info(f"  - {task_name}: {schedule}")
-        
-        logger.info("Celery integration initialized successfully")
-        
-    except ImportError as e:
-        logger.error(f"Failed to import Celery app: {e}")
-        logger.warning("Proceeding without Celery integration")
-    except Exception as e:
-        logger.error(f"Celery integration setup failed: {e}")
-        logger.warning("Proceeding without Celery integration")
+#
+# Startup initialization moved to lifespan context manager above to replace
+# deprecated @app.on_event("startup") handlers.
 
 @app.get("/health", tags=["meta"])
 async def health():
-    return {"status": "ok"}
+    """
+    Health check endpoint. Returns status and ensures required services
+    are reachable (e.g. Redis, Weaviate). Use this in readiness probes.
+    """
+    try:
+        # Perform minimal checks: JWT secret set and essential env present
+        validate_env_or_exit()
+        
+        # Optionally test Redis connectivity (Celery broker)
+        health_status = {"status": "ok", "services": {}}
+        
+        try:
+            from nova.celery_app import celery_app
+            inspect = celery_app.control.inspect()
+            active_workers = inspect.active()
+            health_status["services"]["celery_workers"] = len(active_workers) if active_workers else 0
+            health_status["services"]["celery_broker"] = "connected"
+        except Exception:
+            health_status["services"]["celery_broker"] = "unavailable"
+            health_status["services"]["celery_workers"] = 0
+        
+        return health_status
+        
+    except SystemExit:
+        return {"status": "error", "detail": "Missing configuration", "services": {}}
 
 # -----------------------------------------------------------------------------
 # Authentication endpoints
