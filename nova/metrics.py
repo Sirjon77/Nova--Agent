@@ -64,3 +64,28 @@ tool_latency_ms = Gauge(
     "Tool latency in milliseconds",
     labelnames=["tool"]
 )
+
+# Content policy compliance metrics
+silent_video_ratio_compliance = Gauge(
+    "nova_silent_video_ratio_compliance",
+    "Silent video ratio compliance status (1 compliant, 0 non-compliant)",
+    labelnames=["channel"]
+)
+
+silent_video_ratio_actual = Gauge(
+    "nova_silent_video_ratio_actual",
+    "Actual silent video ratio for channel",
+    labelnames=["channel"]
+)
+
+content_posts_processed = Counter(
+    "nova_content_posts_processed_total",
+    "Total content posts processed by policy engine",
+    labelnames=["content_type", "channel"]
+)
+
+silent_posts_generated = Counter(
+    "nova_silent_posts_generated_total",
+    "Total silent posts generated",
+    labelnames=["channel", "avatar_included"]
+)

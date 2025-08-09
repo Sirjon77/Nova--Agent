@@ -110,6 +110,23 @@ accounts:
   youtube: []
   facebook: []
 
+# Content policy configuration
+content:
+  short_form:
+    # Ratio of short videos that should be silent (no spoken dialogue)
+    # 0.33 means ~33% (1 in 3) of short videos should be silent
+    silent_video_ratio: 0.33
+    # Maximum duration in seconds for a video to be considered "short-form"
+    max_duration: 60
+    # Categories exempt from silent video enforcement
+    exempt_categories:
+      - "Twinkle Tales & Tunes"
+    # Avatar inclusion for silent videos (data-driven decision)
+    avatar_for_silent:
+      enabled: true
+      # Minimum engagement improvement threshold to include avatar
+      engagement_threshold: 0.05
+
 auth:
   jwt_secret_env: JWT_SECRET_KEY
 
