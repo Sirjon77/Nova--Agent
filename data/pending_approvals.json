@@ -32,5 +32,22 @@
       "type": "publer_post"
     },
     "created_at": "2025-08-05T03:47:14.758258"
+  },
+  {
+    "id": "774c3c2d-b8b1-4b18-9576-556d46a4f71d",
+    "provider": "publer",
+    "function": "schedule_post",
+    "args": [],
+    "kwargs": {
+      "content": "This is a test post for multiple platforms",
+      "media_url": "https://example.com/image.jpg",
+      "platforms": null,
+      "scheduled_time": null,
+      "extras": null
+    },
+    "metadata": {
+      "type": "publer_post"
+    },
+    "created_at": "2025-08-09T11:33:34.136883"
   }
 ]
