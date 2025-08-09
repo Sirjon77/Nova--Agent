@@ -157,7 +157,7 @@ class JWTAuthMiddleware(BaseHTTPMiddleware):
         # whitelisted endpoints. Additional paths can be added here if
         # required (e.g. documentation or public resources).
         allow_unauthenticated = {
-            '/api/auth/login', '/health', '/metrics', '/docs', '/openapi.json'
+            '/api/auth/login', '/api/auth/refresh', '/health', '/metrics', '/docs', '/openapi.json'
         }
         if not path.startswith('/api') or path in allow_unauthenticated:
             return await call_next(request)

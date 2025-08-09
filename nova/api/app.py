@@ -231,7 +231,9 @@ class LoginRequest(BaseModel):
     password: str
 
 class LoginResponse(BaseModel):
-    token: str
+    access_token: str
+    refresh_token: str
+    token_type: str
     role: str
 
 
@@ -279,14 +281,35 @@ async def login(req: LoginRequest):
     else:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail='Invalid credentials')
     try:
-        from auth.jwt_middleware import issue_token
-        token = issue_token(username, role)
-    except RuntimeError as e:
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=f"JWT token generation failed: {e}"
-        )
-    return LoginResponse(token=token, role=role)
+        # Prefer new utils that issue access + refresh tokens
+        from auth.jwt_utils import create_access_token, create_refresh_token
+        claims = {"sub": username, "role": role}
+        access = create_access_token(claims)
+        refresh = create_refresh_token(claims)
+        return LoginResponse(access_token=access, refresh_token=refresh, token_type="bearer", role=role)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"JWT token generation failed: {e}")
+
+
+class RefreshRequest(BaseModel):
+    refresh_token: str
+
+
+@app.post("/api/auth/refresh", tags=["auth"], status_code=status.HTTP_200_OK)
+async def refresh_token(req: RefreshRequest):
+    """Exchange a refresh token for a new access token (and rotated refresh)."""
+    try:
+        from auth.jwt_utils import decode_token, create_access_token, create_refresh_token, JWTError, ExpiredSignatureError
+        payload = decode_token(req.refresh_token)
+        if payload.get("type") != "refresh":
+            raise HTTPException(status_code=400, detail="Not a refresh token")
+        new_access = create_access_token({"sub": payload.get("sub"), "role": payload.get("role")})
+        new_refresh = create_refresh_token({"sub": payload.get("sub"), "role": payload.get("role")})
+        return {"access_token": new_access, "refresh_token": new_refresh, "token_type": "bearer"}
+    except ExpiredSignatureError:
+        raise HTTPException(status_code=401, detail="Refresh token expired, please login again")
+    except Exception:
+        raise HTTPException(status_code=401, detail="Invalid refresh token")
 
 from auth.rbac import role_required
 from auth.roles import Role
