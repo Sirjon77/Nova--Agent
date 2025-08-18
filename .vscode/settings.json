@@ -1,0 +1,35 @@
+{
+  "files.watcherExclude": {
+    "**/target": true,
+    "**/.git": true,
+    "**/node_modules": true,
+    "**/.venv": true,
+    "**/venv": true,
+    "**/__pycache__": true,
+    "**/docs/flattened-codebase.xml": true
+  },
+  "emeraldwalk.runonsave": {
+    "commands": [
+      {
+        "match": "\\.(py|js|jsx|ts|tsx|json|yaml|yml)$",
+        "cmd": "npm run bmad:flatten",
+        "isAsync": true,
+        "silent": true
+      }
+    ]
+  },
+  "task.autoDetect": "on",
+  "[python]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+  "[javascript]": {
+    "editor.formatOnSave": true
+  },
+  "[typescript]": {
+    "editor.formatOnSave": true
+  },
+  "[json]": {
+    "editor.formatOnSave": true
+  }
+}
