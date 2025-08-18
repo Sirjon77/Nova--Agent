@@ -3103,3 +3103,653 @@
 2025-08-17 20:17:24,619 | INFO | utils.memory_manager | MemoryManager initialized successfully
 2025-08-17 20:17:29,230 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
 2025-08-17 20:17:29,231 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-17 20:50:10,423 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-17 20:50:11,286 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-17 20:50:11,286 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-17 20:50:17,717 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-17 20:50:17,717 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-17 20:50:31,296 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-17 20:50:32,071 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-17 20:50:32,071 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-17 20:50:35,954 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-17 20:50:35,954 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-17 20:50:39,224 | INFO | httpx | HTTP Request: GET http://testserver/health "HTTP/1.1 200 OK"
+2025-08-17 20:50:39,283 | INFO | httpx | HTTP Request: GET http://testserver/metrics "HTTP/1.1 200 OK"
+2025-08-17 20:50:39,342 | INFO | httpx | HTTP Request: GET http://testserver/openapi.json "HTTP/1.1 200 OK"
+2025-08-17 20:50:39,344 | INFO | httpx | HTTP Request: GET http://testserver/docs "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:50:39", "user": "admin", "event": "login_success", "meta": {"role": "admin"}}
+2025-08-17 20:50:39,350 | INFO | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:50:39", "user": "user", "event": "login_success", "meta": {"role": "user"}}
+2025-08-17 20:50:39,354 | INFO | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:50:39", "user": "wrong", "event": "login_failed", "meta": {"reason": "invalid_credentials"}}
+2025-08-17 20:50:39,357 | INFO | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 401 Unauthorized"
+2025-08-17 20:50:39,360 | INFO | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 422 Unprocessable Entity"
+2025-08-17 20:50:39,362 | INFO | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 422 Unprocessable Entity"
+{"ts": "2025-08-18T00:50:39", "user": "userX", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,398 | INFO | httpx | HTTP Request: GET http://testserver/api/channels "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:50:39", "user": "alice", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,401 | INFO | httpx | HTTP Request: GET http://testserver/api/channels "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:50:39", "user": "bob", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,404 | INFO | httpx | HTTP Request: POST http://testserver/api/analytics/summary "HTTP/1.1 403 Forbidden"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,407 | INFO | httpx | HTTP Request: POST http://testserver/api/analytics/summary "HTTP/1.1 200 OK"
+2025-08-17 20:50:39,416 | INFO | httpx | HTTP Request: GET http://testserver/api/auth/login "HTTP/1.1 404 Not Found"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,437 | INFO | httpx | HTTP Request: GET http://testserver/api/tasks "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,440 | INFO | httpx | HTTP Request: POST http://testserver/api/tasks "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,442 | INFO | httpx | HTTP Request: GET http://testserver/api/tasks "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-18T00:50:39", "user": "admin", "event": "governance_run_triggered", "meta": {}}
+2025-08-17 20:50:39,449 | INFO | httpx | HTTP Request: POST http://testserver/api/governance/run "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,478 | INFO | httpx | HTTP Request: GET http://testserver/api/approvals "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,486 | INFO | httpx | HTTP Request: POST http://testserver/api/approvals/invalid/approve "HTTP/1.1 404 Not Found"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,494 | INFO | httpx | HTTP Request: POST http://testserver/api/approvals/xyz/reject "HTTP/1.1 404 Not Found"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,497 | INFO | httpx | HTTP Request: POST http://testserver/api/approvals/abc/reject "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,500 | INFO | httpx | HTTP Request: GET http://testserver/api/automation/flags "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,504 | INFO | httpx | HTTP Request: POST http://testserver/api/automation/flags "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,508 | INFO | httpx | HTTP Request: POST http://testserver/api/automation/flags "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,511 | INFO | httpx | HTTP Request: GET http://testserver/api/channels/chan1/override "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,513 | INFO | httpx | HTTP Request: GET http://testserver/api/channels/chan2/override "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,516 | INFO | httpx | HTTP Request: POST http://testserver/api/channels/chan/override "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,519 | INFO | httpx | HTTP Request: POST http://testserver/api/channels/chan/override "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,521 | INFO | httpx | HTTP Request: POST http://testserver/api/channels/chan2/override "HTTP/1.1 500 Internal Server Error"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,524 | INFO | httpx | HTTP Request: DELETE http://testserver/api/channels/chan/override "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,526 | INFO | httpx | HTTP Request: DELETE http://testserver/api/channels/chan/override "HTTP/1.1 500 Internal Server Error"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,529 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/gumroad/link "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,532 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/convertkit/subscribe "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,535 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/convertkit/subscribe "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,538 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/convertkit/tags "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,540 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/convertkit/tags "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,543 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/beacons/link "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,546 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/beacons/update-links "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,549 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/beacons/update-links "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,553 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/hubspot/contact "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,555 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/hubspot/contact "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,558 | INFO | httpx | HTTP Request: GET http://testserver/api/integrations/metricool/profile/test/metrics "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,560 | INFO | httpx | HTTP Request: GET http://testserver/api/integrations/metricool/overview "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,562 | INFO | httpx | HTTP Request: GET http://testserver/api/integrations/metricool/profile/test/metrics "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,569 | INFO | httpx | HTTP Request: GET http://testserver/api/integrations/tubebuddy/keywords?q=test "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,576 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/socialpilot/post "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,578 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/socialpilot/post "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,582 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/publer/post "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,584 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/publer/post "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,587 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/translate "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,590 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/translate "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,593 | INFO | httpx | HTTP Request: GET http://testserver/api/integrations/vidiq/trending?max_items=2 "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,595 | INFO | httpx | HTTP Request: GET http://testserver/api/integrations/vidiq/trending "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,599 | INFO | httpx | HTTP Request: POST http://testserver/api/ab-tests/exp1 "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,602 | INFO | httpx | HTTP Request: GET http://testserver/api/ab-tests/exp1 "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,605 | INFO | httpx | HTTP Request: POST http://testserver/api/ab-tests/test2 "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,608 | INFO | httpx | HTTP Request: POST http://testserver/api/ab-tests/test2 "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,610 | INFO | httpx | HTTP Request: POST http://testserver/api/ab-tests/test2 "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,614 | INFO | httpx | HTTP Request: POST http://testserver/api/ab-tests/todel "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,618 | INFO | httpx | HTTP Request: DELETE http://testserver/api/ab-tests/todel "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,620 | INFO | httpx | HTTP Request: DELETE http://testserver/api/ab-tests/notfound "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,622 | INFO | httpx | HTTP Request: DELETE http://testserver/api/ab-tests/fail "HTTP/1.1 404 Not Found"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,626 | INFO | httpx | HTTP Request: POST http://testserver/api/ab-tests/testvar "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,629 | INFO | httpx | HTTP Request: GET http://testserver/api/ab-tests/testvar/variant "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,631 | INFO | httpx | HTTP Request: POST http://testserver/api/ab-tests/testvar/result "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,634 | INFO | httpx | HTTP Request: GET http://testserver/api/ab-tests/testvar/best "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,637 | INFO | httpx | HTTP Request: POST http://testserver/api/ab-tests/testbest "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,638 | INFO | httpx | HTTP Request: GET http://testserver/api/ab-tests/testbest/best "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,640 | INFO | httpx | HTTP Request: GET http://testserver/api/ab-tests/unknown/variant "HTTP/1.1 404 Not Found"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,643 | INFO | httpx | HTTP Request: POST http://testserver/api/ab-tests/unknown/result "HTTP/1.1 404 Not Found"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,644 | INFO | httpx | HTTP Request: GET http://testserver/api/ab-tests/unknown "HTTP/1.1 404 Not Found"
+{"ts": "2025-08-18T00:50:39", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:50:39,646 | INFO | httpx | HTTP Request: GET http://testserver/api/ab-tests/unknown/best "HTTP/1.1 404 Not Found"
+2025-08-17 20:51:49,204 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-17 20:51:49,993 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-17 20:51:49,993 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-17 20:51:54,726 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-17 20:51:54,726 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-17 20:51:57,967 | INFO | httpx | HTTP Request: GET http://testserver/health "HTTP/1.1 200 OK"
+2025-08-17 20:52:27,231 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-17 20:52:28,031 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-17 20:52:28,031 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-17 20:52:32,823 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-17 20:52:32,824 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-17 20:52:35,891 | INFO | httpx | HTTP Request: GET http://testserver/health "HTTP/1.1 200 OK"
+2025-08-17 20:52:49,481 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-17 20:52:50,261 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-17 20:52:50,261 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-17 20:52:54,772 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-17 20:52:54,772 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-17 20:52:57,586 | INFO | httpx | HTTP Request: GET http://testserver/health "HTTP/1.1 200 OK"
+2025-08-17 20:52:57,591 | INFO | httpx | HTTP Request: GET http://testserver/metrics "HTTP/1.1 200 OK"
+2025-08-17 20:52:57,650 | INFO | httpx | HTTP Request: GET http://testserver/openapi.json "HTTP/1.1 200 OK"
+2025-08-17 20:52:57,653 | INFO | httpx | HTTP Request: GET http://testserver/docs "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin", "event": "login_error", "meta": {"error": "name 'timezone' is not defined"}}
+2025-08-17 20:52:57,658 | INFO | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 500 Internal Server Error"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "user", "event": "login_error", "meta": {"error": "name 'timezone' is not defined"}}
+2025-08-17 20:52:57,662 | INFO | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 500 Internal Server Error"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "wrong", "event": "login_failed", "meta": {"reason": "invalid_credentials"}}
+2025-08-17 20:52:57,666 | INFO | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 401 Unauthorized"
+2025-08-17 20:52:57,669 | INFO | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 422 Unprocessable Entity"
+2025-08-17 20:52:57,671 | INFO | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 422 Unprocessable Entity"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "alice", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,707 | INFO | httpx | HTTP Request: GET http://testserver/api/channels "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "bob", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,711 | INFO | httpx | HTTP Request: POST http://testserver/api/analytics/summary "HTTP/1.1 403 Forbidden"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,714 | INFO | httpx | HTTP Request: POST http://testserver/api/analytics/summary "HTTP/1.1 200 OK"
+2025-08-17 20:52:57,723 | INFO | httpx | HTTP Request: GET http://testserver/api/auth/login "HTTP/1.1 404 Not Found"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,727 | INFO | httpx | HTTP Request: GET http://testserver/api/tasks "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,730 | INFO | httpx | HTTP Request: POST http://testserver/api/tasks "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,732 | INFO | httpx | HTTP Request: GET http://testserver/api/tasks "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin", "event": "governance_run_triggered", "meta": {}}
+2025-08-17 20:52:57,737 | INFO | httpx | HTTP Request: POST http://testserver/api/governance/run "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,762 | INFO | httpx | HTTP Request: GET http://testserver/api/approvals "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,766 | INFO | httpx | HTTP Request: POST http://testserver/api/approvals/invalid/approve "HTTP/1.1 404 Not Found"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,774 | INFO | httpx | HTTP Request: POST http://testserver/api/approvals/xyz/reject "HTTP/1.1 404 Not Found"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,776 | INFO | httpx | HTTP Request: POST http://testserver/api/approvals/abc/reject "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,779 | INFO | httpx | HTTP Request: GET http://testserver/api/automation/flags "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,783 | INFO | httpx | HTTP Request: POST http://testserver/api/automation/flags "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,787 | INFO | httpx | HTTP Request: POST http://testserver/api/automation/flags "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,790 | INFO | httpx | HTTP Request: GET http://testserver/api/channels/chan1/override "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,792 | INFO | httpx | HTTP Request: GET http://testserver/api/channels/chan2/override "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,795 | INFO | httpx | HTTP Request: POST http://testserver/api/channels/chan/override "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,797 | INFO | httpx | HTTP Request: POST http://testserver/api/channels/chan/override "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,799 | INFO | httpx | HTTP Request: POST http://testserver/api/channels/chan2/override "HTTP/1.1 500 Internal Server Error"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,803 | INFO | httpx | HTTP Request: DELETE http://testserver/api/channels/chan/override "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,806 | INFO | httpx | HTTP Request: DELETE http://testserver/api/channels/chan/override "HTTP/1.1 500 Internal Server Error"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,809 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/gumroad/link "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,812 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/convertkit/subscribe "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,814 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/convertkit/subscribe "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,818 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/convertkit/tags "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,820 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/convertkit/tags "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,823 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/beacons/link "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,826 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/beacons/update-links "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,829 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/beacons/update-links "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,832 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/hubspot/contact "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,835 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/hubspot/contact "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,838 | INFO | httpx | HTTP Request: GET http://testserver/api/integrations/metricool/profile/test/metrics "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,840 | INFO | httpx | HTTP Request: GET http://testserver/api/integrations/metricool/overview "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,842 | INFO | httpx | HTTP Request: GET http://testserver/api/integrations/metricool/profile/test/metrics "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,848 | INFO | httpx | HTTP Request: GET http://testserver/api/integrations/tubebuddy/keywords?q=test "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,856 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/socialpilot/post "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,858 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/socialpilot/post "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,861 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/publer/post "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,863 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/publer/post "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,867 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/translate "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,869 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/translate "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,872 | INFO | httpx | HTTP Request: GET http://testserver/api/integrations/vidiq/trending?max_items=2 "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,874 | INFO | httpx | HTTP Request: GET http://testserver/api/integrations/vidiq/trending "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,879 | INFO | httpx | HTTP Request: POST http://testserver/api/ab-tests/exp1 "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,881 | INFO | httpx | HTTP Request: GET http://testserver/api/ab-tests/exp1 "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,885 | INFO | httpx | HTTP Request: POST http://testserver/api/ab-tests/test2 "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,887 | INFO | httpx | HTTP Request: POST http://testserver/api/ab-tests/test2 "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,889 | INFO | httpx | HTTP Request: POST http://testserver/api/ab-tests/test2 "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,893 | INFO | httpx | HTTP Request: POST http://testserver/api/ab-tests/todel "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,895 | INFO | httpx | HTTP Request: DELETE http://testserver/api/ab-tests/todel "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,897 | INFO | httpx | HTTP Request: DELETE http://testserver/api/ab-tests/notfound "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,899 | INFO | httpx | HTTP Request: DELETE http://testserver/api/ab-tests/fail "HTTP/1.1 404 Not Found"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,903 | INFO | httpx | HTTP Request: POST http://testserver/api/ab-tests/testvar "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,905 | INFO | httpx | HTTP Request: GET http://testserver/api/ab-tests/testvar/variant "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,908 | INFO | httpx | HTTP Request: POST http://testserver/api/ab-tests/testvar/result "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,910 | INFO | httpx | HTTP Request: GET http://testserver/api/ab-tests/testvar/best "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,912 | INFO | httpx | HTTP Request: POST http://testserver/api/ab-tests/testbest "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,914 | INFO | httpx | HTTP Request: GET http://testserver/api/ab-tests/testbest/best "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,917 | INFO | httpx | HTTP Request: GET http://testserver/api/ab-tests/unknown/variant "HTTP/1.1 404 Not Found"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,919 | INFO | httpx | HTTP Request: POST http://testserver/api/ab-tests/unknown/result "HTTP/1.1 404 Not Found"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,921 | INFO | httpx | HTTP Request: GET http://testserver/api/ab-tests/unknown "HTTP/1.1 404 Not Found"
+{"ts": "2025-08-18T00:52:57+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:52:57,923 | INFO | httpx | HTTP Request: GET http://testserver/api/ab-tests/unknown/best "HTTP/1.1 404 Not Found"
+2025-08-17 20:53:09,032 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-17 20:53:09,818 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-17 20:53:09,818 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-17 20:53:14,590 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-17 20:53:14,590 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-17 20:53:17,520 | INFO | httpx | HTTP Request: GET http://testserver/health "HTTP/1.1 200 OK"
+2025-08-17 20:53:17,525 | INFO | httpx | HTTP Request: GET http://testserver/metrics "HTTP/1.1 200 OK"
+2025-08-17 20:53:17,594 | INFO | httpx | HTTP Request: GET http://testserver/openapi.json "HTTP/1.1 200 OK"
+2025-08-17 20:53:17,596 | INFO | httpx | HTTP Request: GET http://testserver/docs "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:53:17+00:00", "user": "admin", "event": "login_error", "meta": {"error": "name 'timezone' is not defined"}}
+2025-08-17 20:53:17,603 | INFO | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 500 Internal Server Error"
+2025-08-17 20:53:27,581 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-17 20:53:28,326 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-17 20:53:28,326 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-17 20:53:32,312 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-17 20:53:32,313 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+{"ts": "2025-08-18T00:53:34+00:00", "user": "admin", "event": "login_error", "meta": {"error": "name 'timezone' is not defined"}}
+2025-08-17 20:53:34,946 | INFO | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 500 Internal Server Error"
+2025-08-17 20:54:19,945 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-17 20:54:20,712 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-17 20:54:20,712 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-17 20:54:25,198 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-17 20:54:25,198 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+{"ts": "2025-08-18T00:54:28+00:00", "user": "admin", "event": "login_success", "meta": {"role": "admin"}}
+2025-08-17 20:54:28,115 | INFO | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+2025-08-17 20:54:42,381 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-17 20:54:43,145 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-17 20:54:43,145 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-17 20:54:47,251 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-17 20:54:47,252 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-17 20:54:50,534 | INFO | httpx | HTTP Request: GET http://testserver/health "HTTP/1.1 200 OK"
+2025-08-17 20:54:50,538 | INFO | httpx | HTTP Request: GET http://testserver/metrics "HTTP/1.1 200 OK"
+2025-08-17 20:54:50,598 | INFO | httpx | HTTP Request: GET http://testserver/openapi.json "HTTP/1.1 200 OK"
+2025-08-17 20:54:50,600 | INFO | httpx | HTTP Request: GET http://testserver/docs "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin", "event": "login_success", "meta": {"role": "admin"}}
+2025-08-17 20:54:50,605 | INFO | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "user", "event": "login_success", "meta": {"role": "user"}}
+2025-08-17 20:54:50,608 | INFO | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "wrong", "event": "login_failed", "meta": {"reason": "invalid_credentials"}}
+2025-08-17 20:54:50,611 | INFO | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 401 Unauthorized"
+2025-08-17 20:54:50,614 | INFO | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 422 Unprocessable Entity"
+2025-08-17 20:54:50,616 | INFO | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 422 Unprocessable Entity"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "alice", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,653 | INFO | httpx | HTTP Request: GET http://testserver/api/channels "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "bob", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,656 | INFO | httpx | HTTP Request: POST http://testserver/api/analytics/summary "HTTP/1.1 403 Forbidden"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,659 | INFO | httpx | HTTP Request: POST http://testserver/api/analytics/summary "HTTP/1.1 200 OK"
+2025-08-17 20:54:50,669 | INFO | httpx | HTTP Request: GET http://testserver/api/auth/login "HTTP/1.1 404 Not Found"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,673 | INFO | httpx | HTTP Request: GET http://testserver/api/tasks "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,676 | INFO | httpx | HTTP Request: POST http://testserver/api/tasks "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,678 | INFO | httpx | HTTP Request: GET http://testserver/api/tasks "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin", "event": "governance_run_triggered", "meta": {}}
+2025-08-17 20:54:50,683 | INFO | httpx | HTTP Request: POST http://testserver/api/governance/run "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,709 | INFO | httpx | HTTP Request: GET http://testserver/api/approvals "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,712 | INFO | httpx | HTTP Request: POST http://testserver/api/approvals/invalid/approve "HTTP/1.1 404 Not Found"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,720 | INFO | httpx | HTTP Request: POST http://testserver/api/approvals/xyz/reject "HTTP/1.1 404 Not Found"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,722 | INFO | httpx | HTTP Request: POST http://testserver/api/approvals/abc/reject "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,725 | INFO | httpx | HTTP Request: GET http://testserver/api/automation/flags "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,728 | INFO | httpx | HTTP Request: POST http://testserver/api/automation/flags "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,733 | INFO | httpx | HTTP Request: POST http://testserver/api/automation/flags "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,736 | INFO | httpx | HTTP Request: GET http://testserver/api/channels/chan1/override "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,738 | INFO | httpx | HTTP Request: GET http://testserver/api/channels/chan2/override "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,741 | INFO | httpx | HTTP Request: POST http://testserver/api/channels/chan/override "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,743 | INFO | httpx | HTTP Request: POST http://testserver/api/channels/chan/override "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,745 | INFO | httpx | HTTP Request: POST http://testserver/api/channels/chan2/override "HTTP/1.1 500 Internal Server Error"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,749 | INFO | httpx | HTTP Request: DELETE http://testserver/api/channels/chan/override "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,752 | INFO | httpx | HTTP Request: DELETE http://testserver/api/channels/chan/override "HTTP/1.1 500 Internal Server Error"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,756 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/gumroad/link "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,759 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/convertkit/subscribe "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,761 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/convertkit/subscribe "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,764 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/convertkit/tags "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,767 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/convertkit/tags "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,770 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/beacons/link "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,773 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/beacons/update-links "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,776 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/beacons/update-links "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,779 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/hubspot/contact "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,781 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/hubspot/contact "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,785 | INFO | httpx | HTTP Request: GET http://testserver/api/integrations/metricool/profile/test/metrics "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,787 | INFO | httpx | HTTP Request: GET http://testserver/api/integrations/metricool/overview "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,789 | INFO | httpx | HTTP Request: GET http://testserver/api/integrations/metricool/profile/test/metrics "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,795 | INFO | httpx | HTTP Request: GET http://testserver/api/integrations/tubebuddy/keywords?q=test "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,803 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/socialpilot/post "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,805 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/socialpilot/post "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,808 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/publer/post "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,811 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/publer/post "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,814 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/translate "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,816 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/translate "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,820 | INFO | httpx | HTTP Request: GET http://testserver/api/integrations/vidiq/trending?max_items=2 "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,822 | INFO | httpx | HTTP Request: GET http://testserver/api/integrations/vidiq/trending "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,826 | INFO | httpx | HTTP Request: POST http://testserver/api/ab-tests/exp1 "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,828 | INFO | httpx | HTTP Request: GET http://testserver/api/ab-tests/exp1 "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,831 | INFO | httpx | HTTP Request: POST http://testserver/api/ab-tests/test2 "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,834 | INFO | httpx | HTTP Request: POST http://testserver/api/ab-tests/test2 "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,836 | INFO | httpx | HTTP Request: POST http://testserver/api/ab-tests/test2 "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,840 | INFO | httpx | HTTP Request: POST http://testserver/api/ab-tests/todel "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,842 | INFO | httpx | HTTP Request: DELETE http://testserver/api/ab-tests/todel "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,844 | INFO | httpx | HTTP Request: DELETE http://testserver/api/ab-tests/notfound "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,846 | INFO | httpx | HTTP Request: DELETE http://testserver/api/ab-tests/fail "HTTP/1.1 404 Not Found"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,850 | INFO | httpx | HTTP Request: POST http://testserver/api/ab-tests/testvar "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,852 | INFO | httpx | HTTP Request: GET http://testserver/api/ab-tests/testvar/variant "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,855 | INFO | httpx | HTTP Request: POST http://testserver/api/ab-tests/testvar/result "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,857 | INFO | httpx | HTTP Request: GET http://testserver/api/ab-tests/testvar/best "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,859 | INFO | httpx | HTTP Request: POST http://testserver/api/ab-tests/testbest "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,861 | INFO | httpx | HTTP Request: GET http://testserver/api/ab-tests/testbest/best "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,863 | INFO | httpx | HTTP Request: GET http://testserver/api/ab-tests/unknown/variant "HTTP/1.1 404 Not Found"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,866 | INFO | httpx | HTTP Request: POST http://testserver/api/ab-tests/unknown/result "HTTP/1.1 404 Not Found"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,868 | INFO | httpx | HTTP Request: GET http://testserver/api/ab-tests/unknown "HTTP/1.1 404 Not Found"
+{"ts": "2025-08-18T00:54:50+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:54:50,870 | INFO | httpx | HTTP Request: GET http://testserver/api/ab-tests/unknown/best "HTTP/1.1 404 Not Found"
+2025-08-17 20:55:02,272 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-17 20:55:03,026 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-17 20:55:03,026 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-17 20:55:07,237 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-17 20:55:07,237 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-17 20:55:10,162 | INFO | httpx | HTTP Request: GET http://testserver/api/auth/login "HTTP/1.1 404 Not Found"
+2025-08-17 20:55:37,468 | WARNING | utils.memory_manager | Redis not available for short-term memory: Error 61 connecting to localhost:6379. Connection refused.
+2025-08-17 20:55:38,383 | WARNING | utils.memory_manager | Weaviate not available - missing environment variables
+2025-08-17 20:55:38,384 | INFO | utils.memory_manager | MemoryManager initialized successfully
+2025-08-17 20:55:43,225 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: mps
+2025-08-17 20:55:43,225 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-17 20:55:46,089 | INFO | httpx | HTTP Request: GET http://testserver/health "HTTP/1.1 200 OK"
+2025-08-17 20:55:46,094 | INFO | httpx | HTTP Request: GET http://testserver/metrics "HTTP/1.1 200 OK"
+2025-08-17 20:55:46,294 | INFO | httpx | HTTP Request: GET http://testserver/openapi.json "HTTP/1.1 200 OK"
+2025-08-17 20:55:46,296 | INFO | httpx | HTTP Request: GET http://testserver/docs "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin", "event": "login_success", "meta": {"role": "admin"}}
+2025-08-17 20:55:46,301 | INFO | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "user", "event": "login_success", "meta": {"role": "user"}}
+2025-08-17 20:55:46,304 | INFO | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "wrong", "event": "login_failed", "meta": {"reason": "invalid_credentials"}}
+2025-08-17 20:55:46,307 | INFO | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 401 Unauthorized"
+2025-08-17 20:55:46,310 | INFO | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 422 Unprocessable Entity"
+2025-08-17 20:55:46,312 | INFO | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 422 Unprocessable Entity"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "alice", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,347 | INFO | httpx | HTTP Request: GET http://testserver/api/channels "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "bob", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,350 | INFO | httpx | HTTP Request: POST http://testserver/api/analytics/summary "HTTP/1.1 403 Forbidden"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,353 | INFO | httpx | HTTP Request: POST http://testserver/api/analytics/summary "HTTP/1.1 200 OK"
+2025-08-17 20:55:46,362 | INFO | httpx | HTTP Request: GET http://testserver/api/auth/login "HTTP/1.1 404 Not Found"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,366 | INFO | httpx | HTTP Request: GET http://testserver/api/tasks "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,369 | INFO | httpx | HTTP Request: POST http://testserver/api/tasks "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,371 | INFO | httpx | HTTP Request: GET http://testserver/api/tasks "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin", "event": "governance_run_triggered", "meta": {}}
+2025-08-17 20:55:46,375 | INFO | httpx | HTTP Request: POST http://testserver/api/governance/run "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,401 | INFO | httpx | HTTP Request: GET http://testserver/api/approvals "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,404 | INFO | httpx | HTTP Request: POST http://testserver/api/approvals/invalid/approve "HTTP/1.1 404 Not Found"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,411 | INFO | httpx | HTTP Request: POST http://testserver/api/approvals/xyz/reject "HTTP/1.1 404 Not Found"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,414 | INFO | httpx | HTTP Request: POST http://testserver/api/approvals/abc/reject "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,418 | INFO | httpx | HTTP Request: GET http://testserver/api/automation/flags "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,421 | INFO | httpx | HTTP Request: POST http://testserver/api/automation/flags "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,425 | INFO | httpx | HTTP Request: POST http://testserver/api/automation/flags "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,428 | INFO | httpx | HTTP Request: GET http://testserver/api/channels/chan1/override "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,430 | INFO | httpx | HTTP Request: GET http://testserver/api/channels/chan2/override "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,433 | INFO | httpx | HTTP Request: POST http://testserver/api/channels/chan/override "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,435 | INFO | httpx | HTTP Request: POST http://testserver/api/channels/chan/override "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,438 | INFO | httpx | HTTP Request: POST http://testserver/api/channels/chan2/override "HTTP/1.1 500 Internal Server Error"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,440 | INFO | httpx | HTTP Request: DELETE http://testserver/api/channels/chan/override "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,442 | INFO | httpx | HTTP Request: DELETE http://testserver/api/channels/chan/override "HTTP/1.1 500 Internal Server Error"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,445 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/gumroad/link "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,449 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/convertkit/subscribe "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,451 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/convertkit/subscribe "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,455 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/convertkit/tags "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,457 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/convertkit/tags "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,460 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/beacons/link "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,463 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/beacons/update-links "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,466 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/beacons/update-links "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,469 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/hubspot/contact "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,471 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/hubspot/contact "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,474 | INFO | httpx | HTTP Request: GET http://testserver/api/integrations/metricool/profile/test/metrics "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,476 | INFO | httpx | HTTP Request: GET http://testserver/api/integrations/metricool/overview "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,478 | INFO | httpx | HTTP Request: GET http://testserver/api/integrations/metricool/profile/test/metrics "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,485 | INFO | httpx | HTTP Request: GET http://testserver/api/integrations/tubebuddy/keywords?q=test "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,492 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/socialpilot/post "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,494 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/socialpilot/post "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,498 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/publer/post "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,500 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/publer/post "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,504 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/translate "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,506 | INFO | httpx | HTTP Request: POST http://testserver/api/integrations/translate "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,509 | INFO | httpx | HTTP Request: GET http://testserver/api/integrations/vidiq/trending?max_items=2 "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,511 | INFO | httpx | HTTP Request: GET http://testserver/api/integrations/vidiq/trending "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,515 | INFO | httpx | HTTP Request: POST http://testserver/api/ab-tests/exp1 "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,518 | INFO | httpx | HTTP Request: GET http://testserver/api/ab-tests/exp1 "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,521 | INFO | httpx | HTTP Request: POST http://testserver/api/ab-tests/test2 "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,524 | INFO | httpx | HTTP Request: POST http://testserver/api/ab-tests/test2 "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,526 | INFO | httpx | HTTP Request: POST http://testserver/api/ab-tests/test2 "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,529 | INFO | httpx | HTTP Request: POST http://testserver/api/ab-tests/todel "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,532 | INFO | httpx | HTTP Request: DELETE http://testserver/api/ab-tests/todel "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,534 | INFO | httpx | HTTP Request: DELETE http://testserver/api/ab-tests/notfound "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,535 | INFO | httpx | HTTP Request: DELETE http://testserver/api/ab-tests/fail "HTTP/1.1 404 Not Found"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,539 | INFO | httpx | HTTP Request: POST http://testserver/api/ab-tests/testvar "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,541 | INFO | httpx | HTTP Request: GET http://testserver/api/ab-tests/testvar/variant "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,544 | INFO | httpx | HTTP Request: POST http://testserver/api/ab-tests/testvar/result "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,546 | INFO | httpx | HTTP Request: GET http://testserver/api/ab-tests/testvar/best "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,549 | INFO | httpx | HTTP Request: POST http://testserver/api/ab-tests/testbest "HTTP/1.1 400 Bad Request"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,551 | INFO | httpx | HTTP Request: GET http://testserver/api/ab-tests/testbest/best "HTTP/1.1 200 OK"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,553 | INFO | httpx | HTTP Request: GET http://testserver/api/ab-tests/unknown/variant "HTTP/1.1 404 Not Found"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,555 | INFO | httpx | HTTP Request: POST http://testserver/api/ab-tests/unknown/result "HTTP/1.1 404 Not Found"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,557 | INFO | httpx | HTTP Request: GET http://testserver/api/ab-tests/unknown "HTTP/1.1 404 Not Found"
+{"ts": "2025-08-18T00:55:46+00:00", "user": "admin_user", "event": "jwt_auth_success", "meta": {}}
+2025-08-17 20:55:46,559 | INFO | httpx | HTTP Request: GET http://testserver/api/ab-tests/unknown/best "HTTP/1.1 404 Not Found"

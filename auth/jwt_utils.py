@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import os
 import datetime as _dt
+from datetime import timezone
 from typing import Dict, Any
 
 try:
@@ -45,7 +46,7 @@ def _jwt_impl():
 
 
 def _now_utc() -> _dt.datetime:
-    return _dt.datetime.utcnow()
+    return _dt.datetime.now(timezone.utc)
 
 
 def create_access_token(claims: Dict[str, Any]) -> str:

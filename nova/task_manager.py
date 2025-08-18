@@ -31,7 +31,7 @@ from __future__ import annotations
 
 import asyncio
 import uuid
-from datetime import datetime
+from datetime import timezone,  datetime
 from enum import Enum
 from typing import Callable, Any, Awaitable, Dict, Optional
 
@@ -89,7 +89,7 @@ class Task:
         self.type: TaskType = task_type
         self.params: Dict[str, Any] = params
         self.status: TaskStatus = TaskStatus.QUEUED
-        self.created_at: datetime = datetime.utcnow()
+        self.created_at: datetime = datetime.now(timezone.utc)
         self.started_at: Optional[datetime] = None
         self.completed_at: Optional[datetime] = None
         self.result: Optional[Any] = None
@@ -146,7 +146,7 @@ class TaskManager:
         # Import broadcast helper lazily to avoid circular imports
         from nova.api.app import broadcast_event
         task.status = TaskStatus.RUNNING
-        task.started_at = datetime.utcnow()
+        task.started_at = datetime.now(timezone.utc)
         # Notify clients of status change
         await broadcast_event({"event": "task_update", "task": task.to_dict()})
         # Track duration
@@ -170,7 +170,7 @@ class TaskManager:
                 # If alerting fails, we silently ignore to avoid masking the original error
                 pass
         finally:
-            task.completed_at = datetime.utcnow()
+            task.completed_at = datetime.now(timezone.utc)
             elapsed = asyncio.get_event_loop().time() - start_time
             # Update Prometheus metrics
             tasks_executed.inc()

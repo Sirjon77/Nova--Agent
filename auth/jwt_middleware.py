@@ -70,6 +70,7 @@ from starlette.middleware.base import BaseHTTPMiddleware
 import os
 import datetime
 
+from datetime import timezone
 # Enhanced JWT secret management with security validation
 def get_jwt_secret():
     """Get JWT secret with enhanced security validation."""
@@ -133,7 +134,7 @@ def issue_token(username: str, role: str) -> str:
     # numeric date (number of seconds since the epoch) to be compatible with
     # both python-jose and our minimal JWT implementation. Python datetime
     # objects are not JSON serialisable, so we convert to an int.
-    exp_dt = datetime.datetime.utcnow() + datetime.timedelta(minutes=TTL_MIN)
+    exp_dt = datetime.datetime.now(timezone.utc) + datetime.timedelta(minutes=TTL_MIN)
     payload = {
         'sub': username,
         'role': role,
