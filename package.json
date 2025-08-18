@@ -8,13 +8,13 @@
     "test": "tests"
   },
   "devDependencies": {
-    "bmad-method": "4.36.2"
+    "bmad-method": "^4.39.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "bmad:status": "npx bmad-method status",
-    "bmad:install": "npx bmad-method install --directory . --ide cursor --full",
-    "bmad:flatten": "npx bmad-method flatten -i \"$PWD\" -o \"$PWD/docs/flattened-codebase.xml\""
+    "bmad:install": "npx bmad-method install",
+    "bmad:flatten": "npx bmad-method flatten -i . -o docs/flattened-codebase.xml"
   },
   "repository": {
     "type": "git",
