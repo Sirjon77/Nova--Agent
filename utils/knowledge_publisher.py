@@ -1,6 +1,7 @@
 """Publish high-quality reflections into shared Weaviate KB."""
-import os, uuid, time
-from utils.memory_router import retrieve_relevant, store_long
+import os
+import time
+from utils.memory_router import store_long
 
 try:
     import weaviate

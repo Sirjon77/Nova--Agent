@@ -13,10 +13,7 @@ from agents.promptgen import generate_prompt_variants
 from agents.rpmwatcher import check_rpm_drops
 from agents.avatarops import adjust_avatars
 
-from monetization_router import route_monetization
 from rpm_heatmap import generate_rpm_heatmap
-from funnel_tracker import track_funnel
-from tag_score_engine import tag_and_score
 from retargeting_optimizer import optimize_cta
 
 # Autonomous Research System
@@ -198,7 +195,6 @@ except Exception as e:
 # === End Auto-sync ===
 
 
-import os
 from agent_spawner import AgentSpawner
 
 def simulate_agent_spawn_if_enabled():
@@ -228,7 +224,6 @@ def handle_loop():
 
 # Autonomous Crawler Trigger Logic (Nova Activated)
 import re
-from prompt_web_hook import process_prompt_for_crawl
 
 AUTO_CRAWL_ENABLED = True  # Can be overridden by .env in real deployment
 
@@ -328,7 +323,7 @@ def end_of_loop_hook():
 
 
 # === Cron Trigger: Daily Memory Export to S3 or GDrive ===
-import datetime, os
+import datetime
 from memory_export_to_s3 import export_logs_to_s3
 
 def try_export_memory():
@@ -381,7 +376,7 @@ if __name__ == "__main__":
 
 
 # === Nova Diagnostic Logger Hook ===
-import json, os
+import json
 from datetime import datetime
 
 def log_diagnostic(message):

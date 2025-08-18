@@ -8,7 +8,7 @@ and manage task workflows with proper scheduling and monitoring.
 import asyncio
 import json
 from datetime import datetime, timedelta
-from typing import Dict, List, Any, Optional, Callable
+from typing import Dict, List, Any, Optional
 from dataclasses import dataclass, asdict
 from enum import Enum
 import logging
@@ -408,7 +408,7 @@ class TaskScheduler:
         
         try:
             # Execute the task
-            result = await self.executor.execute_task(task)
+            await self.executor.execute_task(task)
             
             # Move task to completed
             del self.running_tasks[task.task_id]

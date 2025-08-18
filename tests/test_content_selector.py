@@ -6,7 +6,6 @@ import math
 import pytest
 import tempfile
 import yaml
-from unittest.mock import patch
 from nova.content.selector import ContentSelector, ContentPost, SelectionConfig, create_sample_posts
 
 

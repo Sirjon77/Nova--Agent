@@ -98,7 +98,6 @@ if Celery is not None:
         """
         import os
         import asyncio
-        from typing import List as _List  # avoid name clash
         try:
             from nova.competitor_analyzer import CompetitorAnalyzer  # type: ignore
         except Exception:

@@ -12,21 +12,20 @@ This test suite covers all major components:
 """
 
 import pytest
-import asyncio
 import json
 import tempfile
 import os
 import time
-from unittest.mock import Mock, patch, MagicMock
-from datetime import datetime, timedelta
+from unittest.mock import patch
+from datetime import datetime
 
 # Import Nova components
 from nova.nlp.intent_classifier import IntentClassifier, IntentType
 from nova.nlp.context_manager import ContextManager
-from nova.autonomous_research import AutonomousResearcher, ResearchHypothesis, Experiment
+from nova.autonomous_research import AutonomousResearcher, ResearchHypothesis
 from nova.governance_scheduler import GovernanceScheduler
 from nova.observability import NovaObservability
-from utils.memory_manager import MemoryManager, get_global_memory_manager
+from utils.memory_manager import MemoryManager
 from memory.legacy_adapter import get_memory_status
 
 class TestNLPIntentClassification:

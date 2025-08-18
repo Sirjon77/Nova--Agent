@@ -1,6 +1,3 @@
-import pytest
-import tempfile
-import os
 from utils.knowledge_publisher import publish_reflection
 
 class TestKnowledgePublisher:

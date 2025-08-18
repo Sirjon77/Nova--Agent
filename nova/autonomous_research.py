@@ -16,16 +16,14 @@ import time
 import logging
 import random
 import statistics
-from typing import Dict, List, Any, Optional, Tuple
+from typing import Dict, List, Any, Optional
 from dataclasses import dataclass, asdict
-from datetime import datetime, timedelta
+from datetime import datetime
 from pathlib import Path
-import asyncio
 from concurrent.futures import ThreadPoolExecutor
 
 from utils.openai_wrapper import chat_completion
 from utils.memory_manager import store_long, get_relevant_memories
-from nova.nlp.intent_classifier import IntentType
 
 logger = logging.getLogger(__name__)
 

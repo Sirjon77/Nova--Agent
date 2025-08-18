@@ -10,7 +10,7 @@ This module orchestrates the complete processing pipeline:
 
 import time
 import logging
-from typing import Dict, Any, List, Optional, Tuple, Generator, Union
+from typing import Dict, Any, Tuple, Generator, Union
 from .analyze_phase import analyze
 from .plan_phase import plan
 from .execute_phase import execute
@@ -131,7 +131,7 @@ def _run_phases_non_stream(message: str) -> str:
         execution_time = time.time() - execution_start
         
         # Phase 4: Response
-        response_start = time.time()
+        time.time()
         
         # Prepare metadata for response formatting
         metadata = {

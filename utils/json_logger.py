@@ -1,4 +1,6 @@
-import json, sys, datetime
+import json
+import sys
+import datetime
 
 def log(event: str, **kwargs):
     entry = {"ts": datetime.datetime.utcnow().isoformat(), "event": event}

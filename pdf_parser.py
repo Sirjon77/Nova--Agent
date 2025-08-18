@@ -1,5 +1,4 @@
 
-import os
 import PyPDF2
 
 class PDFExtractor:

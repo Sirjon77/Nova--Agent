@@ -14,8 +14,8 @@ Runs automatically on a schedule to ensure Nova maintains optimal performance.
 import asyncio
 import logging
 import time
-from datetime import datetime, timedelta
-from typing import Dict, List, Any, Optional
+from datetime import datetime
+from typing import Dict, Any
 from pathlib import Path
 import json
 import schedule
@@ -128,7 +128,7 @@ class GovernanceScheduler:
             
             # Check OpenAI API
             try:
-                test_response = await chat_completion("Health check", temperature=0)
+                await chat_completion("Health check", temperature=0)
                 health_status["tools"]["openai"] = {
                     "status": "healthy",
                     "response_time": "normal"

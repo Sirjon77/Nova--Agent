@@ -1,4 +1,5 @@
-import logging, pathlib
+import logging
+import pathlib
 pathlib.Path('logs').mkdir(exist_ok=True)
 logging.basicConfig(
     level=logging.INFO,

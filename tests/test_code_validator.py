@@ -1,6 +1,3 @@
-import pytest
-import tempfile
-import os
 from utils.code_validator import CodeValidator
 
 class TestCodeValidator:

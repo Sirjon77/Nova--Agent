@@ -1,9 +1,6 @@
-import importlib
 import sys
 import types
-import asyncio
 import pytest
-import os
 
 class DummyCelery:
     """Dummy Celery class to simulate Celery decorator behavior for tests."""

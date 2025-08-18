@@ -1,4 +1,6 @@
-import os, requests, json
+import os
+import requests
+import json
 
 NOTION_TOKEN = os.getenv("NOTION_API_TOKEN")
 NOTION_PARENT = os.getenv("NOTION_PARENT_PAGE_ID")  # page or database ID

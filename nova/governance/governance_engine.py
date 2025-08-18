@@ -11,7 +11,7 @@ from __future__ import annotations
 import logging
 from typing import Any, Dict, List
 
-from scoring import compute_channel_scores, classify_channel, METRIC_WEIGHTS, THRESHOLDS  # type: ignore
+from scoring import compute_channel_scores, classify_channel  # type: ignore
 from nova.governance.report_generator import generate_governance_report
 from nova.metrics import channels_scored, actions_flagged, governance_loop_duration
 from datetime import datetime

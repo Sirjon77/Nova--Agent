@@ -6,7 +6,7 @@ def sync_to_notion(database_id, data, notion_token):
         "Content-Type": "application/json",
         "Notion-Version": "2022-06-28"
     }
-    url = f"https://api.notion.com/v1/pages"
+    url = "https://api.notion.com/v1/pages"
     payload = {
         "parent": {"database_id": database_id},
         "properties": data

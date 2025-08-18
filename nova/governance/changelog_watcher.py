@@ -1,5 +1,7 @@
 """Watch tool changelogs for new versions (stub implementation)."""
-import datetime, httpx, logging
+import datetime
+import httpx
+import logging
 from typing import Dict, List
 
 log = logging.getLogger("ChangelogWatcher")

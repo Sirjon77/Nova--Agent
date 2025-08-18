@@ -1,5 +1,4 @@
-import pytest
-from unittest.mock import Mock, patch
+from unittest.mock import patch
 from utils.summarizer import summarize_text, EnhancedSummarizer
 
 class TestSummarizerEnhanced:

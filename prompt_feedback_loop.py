@@ -13,8 +13,6 @@ winning prompts for publication.
 
 from __future__ import annotations
 
-import random
-from typing import Iterable
 
 from prompt_metrics import get_leaderboard, retire_underperforming
 

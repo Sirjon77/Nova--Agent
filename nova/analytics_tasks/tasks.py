@@ -5,7 +5,6 @@ This module handles scheduled analytics processing, reporting, and analysis task
 Note: Renamed from metrics.tasks to avoid conflict with nova/metrics.py
 """
 
-import asyncio
 import logging
 from datetime import datetime, timedelta
 from typing import Dict, Any, List
@@ -139,8 +138,6 @@ def generate_weekly_report_task(self) -> Dict[str, Any]:
         start_date = end_date - timedelta(days=7)
         
         # Import required modules
-        from nova.analytics import aggregate_metrics, top_prompts
-        from nova.rpm_leaderboard import PromptLeaderboard
         
         # Generate report sections
         report = {

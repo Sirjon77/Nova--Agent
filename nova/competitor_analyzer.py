@@ -22,7 +22,6 @@ Example usage::
 
 from __future__ import annotations
 
-import asyncio
 from typing import Iterable, List, Dict, Any
 
 from nova.governance.trend_scanner import TrendScanner

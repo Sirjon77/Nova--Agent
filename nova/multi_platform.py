@@ -17,7 +17,6 @@ testing to fine-tune performance by country or demographic.
 
 from __future__ import annotations
 
-from typing import Dict
 
 
 class PostAdapter:

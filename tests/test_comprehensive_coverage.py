@@ -1,39 +1,40 @@
 """Comprehensive tests to achieve 90% coverage."""
 
 import pytest
-from unittest.mock import patch, MagicMock, mock_open
-import os
+from unittest.mock import patch, MagicMock
 import tempfile
-import json
 from pathlib import Path
-import time
 
 # Import all modules to test
 from nova.metrics import tasks_executed, task_duration, memory_items
 from nova_core.model_registry import to_official, Model, _ALIAS_TO_OFFICIAL
-from nova.services.openai_client import chat_completion, completion
+from nova.services.openai_client import chat_completion
 from utils.memory_manager import MemoryManager, get_global_memory_manager
 from utils.model_controller import select_model, MODEL_TIERS
 # Import utils modules with error handling to avoid circular imports
 try:
     from utils.confidence import calculate_confidence
 except ImportError:
-    calculate_confidence = lambda x, y: (x + y) / 2
+    def calculate_confidence(x, y):
+        return (x + y) / 2
 
 try:
     from utils.json_logger import log_json
 except ImportError:
-    log_json = lambda x: str(x)
+    def log_json(x):
+        return str(x)
 
 try:
     from utils.logger import setup_logger
 except ImportError:
-    setup_logger = lambda x: MagicMock()
+    def setup_logger(x):
+        return MagicMock()
 
 try:
     from utils.memory_ranker import rank_memories
 except ImportError:
-    rank_memories = lambda x, y: x
+    def rank_memories(x, y):
+        return x
 
 try:
     from utils.memory_vault import MemoryVault
@@ -52,7 +53,8 @@ except ImportError:
 try:
     from utils.retry import retry_with_backoff
 except ImportError:
-    retry_with_backoff = lambda func, **kwargs: func()
+    def retry_with_backoff(func, **kwargs):
+        return func()
 
 try:
     from utils.self_repair import SelfRepair
@@ -63,7 +65,8 @@ except ImportError:
 try:
     from utils.summarizer import summarize_text
 except ImportError:
-    summarize_text = lambda text, max_length: text[:max_length]
+    def summarize_text(text, max_length):
+        return text[:max_length]
 
 try:
     from utils.telemetry import Telemetry

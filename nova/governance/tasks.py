@@ -8,7 +8,7 @@ replacing the manual scheduling loops with robust, scalable background jobs.
 import asyncio
 import logging
 import yaml
-from typing import Dict, Any, List, Optional
+from typing import Dict, Any, Optional
 
 from nova.celery_app import celery_app
 

@@ -2,8 +2,7 @@ import pytest
 import time
 import asyncio
 import threading
-from concurrent.futures import ThreadPoolExecutor
-from unittest.mock import Mock, patch
+from unittest.mock import Mock
 from utils.memory_manager import MemoryManager
 from utils.summarizer import summarize_text
 
@@ -71,7 +70,6 @@ class TestPerformanceLoad:
             
             def worker(worker_id):
                 for i in range(100):
-                    key = f"worker_{worker_id}_key_{i}"
                     mm.add_short_term(f"session_{worker_id}", "user", f"data_{i}", {"data": f"value_{i}", "worker": worker_id})
                     mm.get_short_term(f"session_{worker_id}")
             
@@ -204,14 +202,14 @@ class TestPerformanceLoad:
         process = psutil.Process(os.getpid())
         
         start_time = time.time()
-        start_cpu = process.cpu_percent()
+        process.cpu_percent()
         
         # Perform CPU-intensive operations
         for i in range(100000):
             _ = i * i + i  # Simple computation
         
         end_time = time.time()
-        end_cpu = process.cpu_percent()
+        process.cpu_percent()
         
         # CPU usage assertions
         execution_time = end_time - start_time

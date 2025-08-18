@@ -10,11 +10,6 @@ touching the real metrics store in the repository.
 
 from __future__ import annotations
 
-import os
-import json
-import types
-import importlib
-from typing import Any, Dict, List
 
 import pytest
 
@@ -30,8 +25,6 @@ def isolate_metrics(tmp_path, monkeypatch):
     """
     import prompt_metrics as pm
     # Save original values
-    orig_records = pm._RECORDS_PATH
-    orig_data = pm._DATA_PATH
     # Point to temporary files
     records_file = tmp_path / "records.json"
     data_file = tmp_path / "aggregated.json"

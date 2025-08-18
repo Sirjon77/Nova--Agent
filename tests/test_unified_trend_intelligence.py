@@ -5,8 +5,7 @@ Tests the consolidation of trend scanning functionality and advanced features.
 """
 
 import pytest
-import asyncio
-from unittest.mock import Mock, patch
+from unittest.mock import patch
 from datetime import datetime
 
 from nova.trend_intelligence import (

@@ -10,7 +10,7 @@ This module provides sophisticated message analysis using:
 
 import logging
 from typing import Dict, Any
-from nova.nlp import classify_intent, get_context_for_intent, update_system_state, ConversationTurn
+from nova.nlp import classify_intent, get_context_for_intent, update_system_state
 from nova.nlp.intent_classifier import IntentType
 import time
 

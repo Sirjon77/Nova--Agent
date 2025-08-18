@@ -1,6 +1,5 @@
 import pytest
 import os
-import tempfile
 from unittest.mock import Mock, patch
 from integrations.murf import synthesize_speech, MurfError
 

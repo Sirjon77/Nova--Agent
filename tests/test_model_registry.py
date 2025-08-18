@@ -1,6 +1,5 @@
 """Tests for the model registry system."""
 import pytest
-from unittest.mock import patch
 from nova_core.model_registry import to_official, Model, resolve, get_default_model, get_available_aliases, get_official_models, is_valid_alias
 
 

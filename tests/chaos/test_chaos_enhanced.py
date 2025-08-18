@@ -2,7 +2,7 @@ import pytest
 import time
 import asyncio
 import tempfile
-from unittest.mock import Mock, patch
+from unittest.mock import patch
 from nova.chaos.injector import ChaosConfig, maybe_fail
 
 class TestChaosEnhanced:
@@ -56,9 +56,9 @@ class TestChaosEnhanced:
         """Test synchronous delay injection via maybe_fail."""
         cfg = ChaosConfig(fail_rate=0.0, delay_ms=100)
         
-        start_time = time.time()
+        time.time()
         # Note: This is async, but we're testing the delay concept
-        end_time = time.time()
+        time.time()
         
         # Just verify the config is set correctly
         assert cfg.delay_ms == 100
@@ -85,7 +85,7 @@ class TestChaosEnhanced:
                 long_term_dir=temp_dir
             )
             
-            cfg = ChaosConfig(fail_rate=0.3, delay_ms=10)
+            ChaosConfig(fail_rate=0.3, delay_ms=10)
             
             # Test memory operations with chaos
             success_count = 0
@@ -120,7 +120,7 @@ class TestChaosEnhanced:
         import tempfile
         import os
         
-        cfg = ChaosConfig(fail_rate=0.1, delay_ms=5)
+        ChaosConfig(fail_rate=0.1, delay_ms=5)
         
         with tempfile.NamedTemporaryFile(delete=False) as temp_file:
             temp_path = temp_file.name

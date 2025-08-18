@@ -1,4 +1,4 @@
-import pytest, asyncio
+import pytest
 from nova.chaos.injector import ChaosConfig, maybe_fail
 
 @pytest.mark.asyncio

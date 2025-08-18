@@ -49,7 +49,7 @@ def test_send_message_with_title(monkeypatch):
     # Verify the Teams webhook URL was called
     assert captured.get("url") == "https://example.com/webhook"
     # The payload text should contain the title in bold and the message text
-    expected_text = f"**ALERT**\n\nThis is a test message"
+    expected_text = "**ALERT**\n\nThis is a test message"
     assert captured["payload"].get("text") == expected_text
 
 def test_send_message_no_title(monkeypatch):

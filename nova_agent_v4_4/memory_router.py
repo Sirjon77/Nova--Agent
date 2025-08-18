@@ -1,8 +1,6 @@
 """Glue code for short‑term (Redis) and long‑term (Weaviate/Chroma) memory."""
-import os
 from .chat_buffer import get_short, store_short
-from .vector_store import store_long, retrieve_relevant
-from .should_remember import should_remember
+from .vector_store import retrieve_relevant
 
 def assemble_prompt(session_id: str, user_msg: str) -> str:
     snippets = retrieve_relevant(session_id, user_msg)

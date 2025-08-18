@@ -11,7 +11,7 @@ The routing table is also persisted to `config/model_tiers.json` for runtime ove
 import os
 import json
 from pathlib import Path
-from typing import Dict, Tuple, Union
+from typing import Dict, Tuple
 
 CONFIG_PATH = Path(__file__).resolve().parent.parent / "config" / "model_tiers.json"
 

@@ -76,7 +76,7 @@ def memory_cleanup_task(self, max_age_hours: int = 24) -> Dict[str, Any]:
         logger.error(f"Memory cleanup task {task_id} failed: {exc}", exc_info=True)
         # Don't retry extensively for cleanup tasks
         if self.request.retries >= 1:
-            logger.warning(f"Memory cleanup failed after retries, continuing")
+            logger.warning("Memory cleanup failed after retries, continuing")
             return {
                 'task_id': task_id,
                 'status': 'failed',

@@ -1,15 +1,12 @@
 """Comprehensive tests for utils modules."""
 
 import pytest
-from unittest.mock import patch, MagicMock, mock_open
-import os
+from unittest.mock import patch, MagicMock
 import tempfile
-import json
 from pathlib import Path
-import time
 
 # Import modules to test
-from utils.memory_manager import MemoryManager, get_global_memory_manager
+from utils.memory_manager import MemoryManager
 from utils.openai_wrapper import nova_chat_completion
 from utils.model_controller import select_model, MODEL_TIERS
 from utils.confidence import rate_confidence

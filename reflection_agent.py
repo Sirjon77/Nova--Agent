@@ -1,5 +1,6 @@
 """Reflection Agent - Stores high-quality reflections in Weaviate."""
-import os, uuid, time
+import os
+import time
 import weaviate
 
 # Fix for Weaviate v4: use WeaviateClient instead of Client

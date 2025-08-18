@@ -12,7 +12,7 @@ engagement data.
 from __future__ import annotations
 
 from datetime import datetime, timedelta, time
-from typing import Dict, List
+from typing import List
 
 
 class PostingScheduler:

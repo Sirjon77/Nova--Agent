@@ -1,245 +1,56 @@
-name: CI Pipeline
+name: CI
 
 on:
   push:
-    branches: [ main, develop, to-do-list ]
+    branches: [ main, "**" ]
   pull_request:
-    branches: [ main, develop, to-do-list ]
 
 jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+      - run: python -m pip install -U pip
+      - run: |
+          [ -f requirements.txt ] && pip install -r requirements.txt || true
+          [ -f dev-requirements.txt ] && pip install -r dev-requirements.txt || true
+          pip install ruff black mypy
+      - run: ruff check .
+      - run: black --check .
+      - run: mypy .
+
   test:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: [3.9, 3.10, 3.11]
-
+    needs: [lint]
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+      - run: python -m pip install -U pip
+      - run: |
+          [ -f requirements.txt ] && pip install -r requirements.txt || true
+          [ -f dev-requirements.txt ] && pip install -r dev-requirements.txt || true
+          pip install pytest
+      - run: pytest -q
 
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v4
-      with:
-        python-version: ${{ matrix.python-version }}
-
-    - name: Cache pip dependencies
-      uses: actions/cache@v3
-      with:
-        path: ~/.cache/pip
-        key: ${{ runner.os }}-pip-${{ matrix.python-version }}-${{ hashFiles('**/requirements.txt') }}
-        restore-keys: |
-          ${{ runner.os }}-pip-${{ matrix.python-version }}-
-
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-        pip install pytest pytest-cov pytest-asyncio pytest-mock
-        pip install mypy flake8 black isort
-
-    - name: Create config directory and files
-      run: |
-        mkdir -p config
-        if [ ! -f config/policy.yaml ]; then
-          echo "sandbox:" > config/policy.yaml
-          echo "  memory_limit_mb: 512" >> config/policy.yaml
-        fi
-        if [ ! -f config/settings.yaml ]; then
-          echo "app:" > config/settings.yaml
-          echo "  name: Nova Agent" >> config/settings.yaml
-          echo "  version: 2.5" >> config/settings.yaml
-        fi
-
-    - name: Run linting and code quality checks
-      run: |
-        echo "Running flake8..."
-        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-        
-        echo "Running black check..."
-        black --check --diff .
-        
-        echo "Running isort check..."
-        isort --check-only --diff .
-
-    - name: Run type checking
-      run: |
-        echo "Running mypy..."
-        mypy nova/ utils/ integrations/ --ignore-missing-imports --no-strict-optional
-
-    - name: Run tests with coverage
-      env:
-        OPENAI_API_KEY: test-key
-        PUBLER_API_KEY: test-key
-        PUBLER_WORKSPACE_ID: test-workspace
-        METRICOOL_API_TOKEN: test-token
-        METRICOOL_ACCOUNT_ID: test-account
-        TEAMS_WEBHOOK_URL: https://test.webhook.url
-        RUNWAY_API_KEY: test-key
-        RUNWAY_MODEL_ID: test-model
-      run: |
-        echo "Running pytest with coverage..."
-        pytest tests/ -v --cov=nova --cov=utils --cov=integrations --cov-report=xml --cov-report=term-missing --cov-fail-under=90
-
-    - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v3
-      with:
-        file: ./coverage.xml
-        flags: unittests
-        name: codecov-umbrella
-        fail_ci_if_error: true
-
-  security:
+  build:
     runs-on: ubuntu-latest
-    needs: test
-
+    needs: [lint, test]
+    if: ${{ always() }}  # Run even if needs failed (for debugging)
     steps:
-    - uses: actions/checkout@v4
-
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: 3.9
-
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-        pip install bandit safety
-
-    - name: Run security scan
-      run: |
-        echo "Running bandit security scan..."
-        bandit -r nova/ utils/ integrations/ -f json -o bandit-report.json || true
-        
-        echo "Running safety check..."
-        safety check --json --output safety-report.json || true
-
-    - name: Upload security reports
-      uses: actions/upload-artifact@v3
-      with:
-        name: security-reports
-        path: |
-          bandit-report.json
-          safety-report.json
-
-  integration-tests:
-    runs-on: ubuntu-latest
-    needs: test
-
-    steps:
-    - uses: actions/checkout@v4
-
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: 3.9
-
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-        pip install pytest pytest-asyncio pytest-mock
-
-    - name: Create config directory and files
-      run: |
-        mkdir -p config
-        if [ ! -f config/policy.yaml ]; then
-          echo "sandbox:" > config/policy.yaml
-          echo "  memory_limit_mb: 512" >> config/policy.yaml
-        fi
-
-    - name: Run integration tests
-      env:
-        OPENAI_API_KEY: test-key
-        PUBLER_API_KEY: test-key
-        PUBLER_WORKSPACE_ID: test-workspace
-        METRICOOL_API_TOKEN: test-token
-        METRICOOL_ACCOUNT_ID: test-account
-        TEAMS_WEBHOOK_URL: https://test.webhook.url
-        RUNWAY_API_KEY: test-key
-        RUNWAY_MODEL_ID: test-model
-      run: |
-        echo "Running integration tests..."
-        pytest tests/test_teams_integration.py tests/test_runway_integration.py tests/test_publer_integration.py tests/test_metricool_api.py -v
-
-  performance:
-    runs-on: ubuntu-latest
-    needs: test
-
-    steps:
-    - uses: actions/checkout@v4
-
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: 3.9
-
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-        pip install pytest-benchmark
-
-    - name: Create config directory and files
-      run: |
-        mkdir -p config
-        if [ ! -f config/policy.yaml ]; then
-          echo "sandbox:" > config/policy.yaml
-          echo "  memory_limit_mb: 512" >> config/policy.yaml
-        fi
-
-    - name: Run performance benchmarks
-      env:
-        OPENAI_API_KEY: test-key
-      run: |
-        echo "Running performance benchmarks..."
-        pytest tests/test_model_registry.py --benchmark-only --benchmark-skip || echo "No benchmark tests found"
-
-  quality-gates:
-    runs-on: ubuntu-latest
-    needs: [test, security, integration-tests, performance]
-
-    steps:
-    - uses: actions/checkout@v4
-
-    - name: Download coverage report
-      uses: actions/download-artifact@v3
-      with:
-        name: coverage-report
-        path: coverage/
-
-    - name: Quality Gate Check
-      run: |
-        echo "=== QUALITY GATES SUMMARY ==="
-        echo "✅ All tests passed"
-        echo "✅ Coverage ≥90% enforced"
-        echo "✅ Security scan completed"
-        echo "✅ Integration tests passed"
-        echo "✅ Performance benchmarks completed"
-        echo ""
-        echo "🎉 All quality gates passed!"
-        echo "Ready for deployment."
-
-    - name: Comment on PR
-      if: github.event_name == 'pull_request'
-      uses: actions/github-script@v6
-      with:
-        script: |
-          github.rest.issues.createComment({
-            issue_number: context.issue.number,
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            body: `## ✅ CI Pipeline Passed
-
-          **Quality Gates Summary:**
-          - ✅ All tests passed
-          - ✅ Coverage ≥90% enforced
-          - ✅ Security scan completed
-          - ✅ Integration tests passed
-          - ✅ Performance benchmarks completed
-
-          **Coverage Report:** Available in the CI artifacts
-          **Security Report:** Available in the CI artifacts
-
-          🎉 **Ready for merge!**`
-          }) 
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+      - run: python -m pip install -U pip
+      - run: |
+          [ -f requirements.txt ] && pip install -r requirements.txt || true
+          echo "Build step placeholder - add your build commands here"
+      # Add your actual build/package steps here

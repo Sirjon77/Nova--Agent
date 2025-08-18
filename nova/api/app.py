@@ -1,9 +1,7 @@
-from fastapi import FastAPI, HTTPException, Depends, Query, Body, Form, File, UploadFile, WebSocket, WebSocketDisconnect, status
+from fastapi import FastAPI, HTTPException, Query, WebSocket, WebSocketDisconnect, status
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse, FileResponse
 from contextlib import asynccontextmanager
-from pydantic import BaseModel, Field
-import uvicorn
+from pydantic import BaseModel
 import asyncio
 from datetime import datetime
 from pathlib import Path
@@ -16,7 +14,6 @@ try:
 except Exception:
     Instrumentator = None  # type: ignore
     _instrumentation_available = False
-from nova.metrics import tasks_executed, task_duration, memory_items, governance_runs_total
 # JWT middleware import moved to function level to avoid security validation during import
 # from auth.jwt_middleware import JWTAuthMiddleware, issue_token
 
@@ -98,7 +95,7 @@ from nova.prompt_vault import PromptVault
 from nova.analytics import aggregate_metrics, top_prompts, rpm_by_audience  # type: ignore
 
 # v7.0 Planning Engine imports
-from nova.planner import PlanningEngine, PlanningContext, DecisionType, ApprovalStatus
+from nova.planner import PlanningEngine, PlanningContext, DecisionType
 from nova.task_scheduler import TaskScheduler, TaskPriority
 from nova.config.env import validate_env_or_exit
 
@@ -266,10 +263,8 @@ async def health():
 # deployment credentials would be stored securely (e.g. hashed in a database).
 # Here we read credentials from environment variables prefixed with NOVA_USER_*
 
-from pydantic import BaseModel
 from nova.audit_logger import audit
 import os
-from fastapi import status
 
 
 class LoginRequest(BaseModel):
@@ -350,7 +345,7 @@ class RefreshRequest(BaseModel):
 async def refresh_token(req: RefreshRequest):
     """Exchange a refresh token for a new access token (and rotated refresh)."""
     try:
-        from auth.jwt_utils import decode_token, create_access_token, create_refresh_token, JWTError, ExpiredSignatureError
+        from auth.jwt_utils import decode_token, create_access_token, create_refresh_token, ExpiredSignatureError
         payload = decode_token(req.refresh_token)
         if payload.get("type") != "refresh":
             audit('token_refresh_failed', user=payload.get('sub'), meta={'reason': 'wrong_type'})
@@ -423,7 +418,9 @@ async def list_channels():
     if _channels_cache is not None:
         return _channels_cache
     # Determine reports directory from settings
-    import yaml, json, pathlib
+    import yaml
+    import json
+    import pathlib
     try:
         with open('config/settings.yaml', 'r') as _f:
             cfg = yaml.safe_load(_f)
@@ -968,7 +965,8 @@ async def list_governance_reports() -> list[str]:
     Returns:
         A list of file names sorted by date descending.
     """
-    import yaml, pathlib
+    import yaml
+    import pathlib
     try:
         cfg = yaml.safe_load(open('config/settings.yaml'))
         reports_dir = pathlib.Path(cfg.get('governance', {}).get('output_dir', 'reports'))
@@ -1046,7 +1044,6 @@ async def get_logs(level: Union[str, None] = None) -> dict:
         return {"entries": filtered}
     return {"entries": lines}
 
-from fastapi import WebSocket, WebSocketDisconnect
 connections = set()
 
 # -----------------------------------------------------------------------------
@@ -1160,7 +1157,6 @@ async def reject_content(draft_id: str) -> dict:
 from nova.automation_flags import (
     get_flags,
     set_flags,
-    DEFAULTS as _AUTOMATION_DEFAULTS,
 )
 from pydantic import BaseModel as _BaseModel
 
@@ -1226,7 +1222,6 @@ async def update_automation_flags(req: AutomationUpdateRequest) -> dict:
 
 from pydantic import BaseModel
 from nova.overrides import (
-    load_overrides,
     get_override,
     set_override,
     clear_override,
@@ -1653,7 +1648,6 @@ async def metricool_overview() -> dict:
 # may access these endpoints.
 
 from typing import Optional, List
-from fastapi import HTTPException  # Imported here to handle API errors in integration endpoints
 
 
 @app.get(

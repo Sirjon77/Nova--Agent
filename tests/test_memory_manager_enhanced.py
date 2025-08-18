@@ -1,7 +1,4 @@
-import pytest
 import tempfile
-import os
-from unittest.mock import Mock, patch
 from utils.memory_manager import MemoryManager
 
 class TestMemoryManagerEnhanced:

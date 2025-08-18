@@ -9,7 +9,7 @@ import sys
 import json
 import re
 from pathlib import Path
-from typing import Dict, List, Tuple, Optional
+from typing import Dict, List
 
 def get_python_version() -> str:
     """Get current Python version"""
@@ -246,7 +246,7 @@ def main():
             if result['python_support']:
                 print(f"    Supported versions: {', '.join(result['python_support'])}")
             else:
-                print(f"    No Python version info available")
+                print("    No Python version info available")
         print()
     
     if errors:
@@ -303,7 +303,7 @@ def main():
     with open('python310_support_report_v2.json', 'w') as f:
         json.dump(report_data, f, indent=2)
     
-    print(f"\n📄 Detailed report saved to: python310_support_report_v2.json")
+    print("\n📄 Detailed report saved to: python310_support_report_v2.json")
 
 if __name__ == "__main__":
     main() 

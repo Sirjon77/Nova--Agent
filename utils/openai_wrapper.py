@@ -1,6 +1,9 @@
 """Unified OpenAI call with retry, back‑off and token watchdog."""
-import os, time, openai, tiktoken, logging
-from typing import List, Dict
+import os
+import time
+import openai
+import tiktoken
+import logging
 
 logger = logging.getLogger("openai_wrapper")
 

@@ -1,4 +1,6 @@
-import os, requests, json
+import os
+import requests
+import json
 
 SLACK_WEBHOOK = os.getenv("SLACK_WEBHOOK_URL")
 

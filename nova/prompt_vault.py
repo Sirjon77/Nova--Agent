@@ -20,7 +20,7 @@ remove a percentage of prompts based on performance.
 from __future__ import annotations
 
 import json
-from typing import List, Dict, Optional
+from typing import List, Dict
 
 from .rpm_leaderboard import PromptLeaderboard
 

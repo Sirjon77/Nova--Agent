@@ -1,4 +1,4 @@
-import pytest, asyncio
+import pytest
 from nova.governance.changelog_watcher import ChangelogWatcher
 
 @pytest.mark.asyncio

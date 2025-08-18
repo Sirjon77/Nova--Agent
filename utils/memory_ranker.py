@@ -7,7 +7,6 @@ For speed we stub the similarity with length‑based heuristic; swap in
 + `OpenAIEmbeddings` for production.
 """
 import time
-from datetime import datetime, timezone
 from typing import List, Dict
 
 RECENCY_WEIGHT = 0.6

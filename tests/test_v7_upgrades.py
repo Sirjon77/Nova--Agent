@@ -6,22 +6,15 @@ that were implemented as part of the v7.0 upgrade.
 """
 
 import pytest
-import asyncio
 from datetime import datetime, timedelta
-from unittest.mock import Mock, patch, AsyncMock
-import json
-import os
-import tempfile
-import shutil
 
 # Import the modules to test
 from nova.governance.niche_manager import (
-    NicheManager, ChannelMetrics, ScoredChannel,
-    ScoreWeightTuner, VelocityCalculator, ExternalContextAdjuster, PredictiveAnalytics
+    NicheManager, ChannelMetrics, VelocityCalculator, ExternalContextAdjuster, PredictiveAnalytics
 )
 from nova.planner import (
     PlanningEngine, PlanningContext, DecisionType, ApprovalStatus,
-    PolicyRule, Decision, LLMPlanner, PolicyEngine, DecisionLogger
+    Decision
 )
 from nova.task_scheduler import (
     TaskScheduler, TaskExecutor, ScheduledTask, TaskStatus, TaskPriority

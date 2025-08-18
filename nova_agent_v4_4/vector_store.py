@@ -1,6 +1,5 @@
 """Wrap calls to Weaviate or fallback Chroma for long‑term memory."""
 import os
-import uuid
 import weaviate
 from openai import OpenAI
 

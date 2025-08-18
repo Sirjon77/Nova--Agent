@@ -7,8 +7,7 @@ for the Nova Agent system.
 """
 
 import os
-import sys
-from typing import Dict, Any, List
+from typing import Dict, Any
 
 
 def startup_message():
@@ -31,7 +30,7 @@ def launch_setup() -> Dict[str, Any]:
     # Import security validator
     try:
         from security_validator import SecurityValidator, launch_setup as security_launch
-        validator = SecurityValidator()
+        SecurityValidator()
         
         # Run comprehensive security validation
         security_launch()

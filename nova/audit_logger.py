@@ -1,5 +1,7 @@
 
-import json, pathlib, datetime, os
+import json
+import pathlib
+import datetime
 LOGFILE = pathlib.Path('logs/audit.log')
 LOGFILE.parent.mkdir(exist_ok=True)
 def audit(event, user='system', meta=None):

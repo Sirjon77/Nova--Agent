@@ -1,5 +1,6 @@
 from nova.policy import PolicyEnforcer
-import yaml, tempfile, pathlib
+import yaml
+import tempfile
 
 def _tmp_policy(data):
     p = tempfile.NamedTemporaryFile(delete=False, suffix='.yaml')

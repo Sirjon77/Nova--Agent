@@ -2,10 +2,6 @@
 
 import pytest
 from unittest.mock import patch, MagicMock
-import os
-import tempfile
-import json
-from pathlib import Path
 
 # Import modules to test
 from nova_core.model_registry import to_official, Model, _ALIAS_TO_OFFICIAL

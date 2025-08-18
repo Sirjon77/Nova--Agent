@@ -9,7 +9,7 @@ This module provides sophisticated action execution based on:
 """
 
 import logging
-from typing import Dict, Any, Optional
+from typing import Dict, Any
 import time
 
 logger = logging.getLogger(__name__)
@@ -222,7 +222,7 @@ def _execute_switch_avatar(parameters: Dict[str, Any], strategy: Dict[str, Any])
     try:
         target_avatar = parameters.get("target_avatar", "next")
         validate_availability = parameters.get("validate_availability", True)
-        update_config = parameters.get("update_config", True)
+        parameters.get("update_config", True)
         
         # Validate avatar availability if required
         if validate_availability:
@@ -245,7 +245,7 @@ def _execute_query_memory(parameters: Dict[str, Any], strategy: Dict[str, Any]) 
     try:
         query = parameters.get("query", "recent")
         depth = parameters.get("depth", 10)
-        include_context = parameters.get("include_context", True)
+        parameters.get("include_context", True)
         
         # Use the new memory manager
         from utils.memory_manager import get_global_memory_manager
@@ -271,7 +271,7 @@ def _execute_query_memory(parameters: Dict[str, Any], strategy: Dict[str, Any]) 
 def _execute_help(parameters: Dict[str, Any], strategy: Dict[str, Any]) -> str:
     """Execute help action"""
     try:
-        topic = parameters.get("topic", "general")
+        parameters.get("topic", "general")
         include_examples = parameters.get("include_examples", True)
         show_capabilities = parameters.get("show_capabilities", True)
         

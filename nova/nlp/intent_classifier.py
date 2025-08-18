@@ -12,7 +12,7 @@ This module provides sophisticated intent detection using multiple approaches:
 import re
 import json
 import logging
-from typing import Dict, List, Tuple, Optional, Any
+from typing import Dict, List, Any
 from dataclasses import dataclass
 from enum import Enum
 import numpy as np

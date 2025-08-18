@@ -11,13 +11,6 @@ def embed_memory_to_weaviate(json_path, class_name="NovaMemory"):
         )
     )
 
-    schema = {
-        "class": class_name,
-        "properties": [
-            {"name": "content", "dataType": ["text"]},
-            {"name": "tag", "dataType": ["text"]},
-        ],
-    }
 
     # Fix for Weaviate v4: use new API
     try:

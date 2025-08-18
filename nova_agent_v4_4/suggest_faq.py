@@ -1,4 +1,5 @@
-import os, json, smtplib
+import os
+import smtplib
 from redis_client import r
 
 def run_daily():

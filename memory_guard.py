@@ -1,6 +1,7 @@
 
 """Utility to deduplicate and clean up Weaviate memory entries."""
-import os, datetime, uuid, math
+import os
+import datetime
 import weaviate
 from sentence_transformers import SentenceTransformer
 import numpy as np

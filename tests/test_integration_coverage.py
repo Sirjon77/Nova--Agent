@@ -6,7 +6,6 @@ These tests focus on edge cases and error conditions to achieve ≥90% coverage.
 import os
 import sys
 import pytest
-import requests
 from unittest.mock import patch, MagicMock
 
 # Add current directory to Python path
@@ -14,7 +13,6 @@ sys.path.insert(0, os.path.abspath('.'))
 
 import integrations.metricool as metricool
 import integrations.publer as publer
-import nova.ab_testing as ab_testing
 import nova.approvals as approvals
 import nova.automation_flags as automation_flags
 

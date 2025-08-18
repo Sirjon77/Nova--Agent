@@ -1,11 +1,7 @@
 """Comprehensive tests for Nova modules."""
 
 import pytest
-from unittest.mock import patch, MagicMock, mock_open
-import os
-import tempfile
-import json
-from pathlib import Path
+from unittest.mock import patch
 import time
 
 # Import modules to test

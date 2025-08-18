@@ -10,7 +10,6 @@ This module provides sophisticated action planning based on:
 
 import logging
 from typing import Dict, Any, List
-from nova.nlp.intent_classifier import IntentType
 
 logger = logging.getLogger(__name__)
 

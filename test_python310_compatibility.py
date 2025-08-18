@@ -4,10 +4,8 @@ Python 3.10+ Compatibility Test Script
 Tests specific packages for Python 3.10+ compatibility
 """
 
-import subprocess
 import sys
 import json
-from pathlib import Path
 
 def test_package_import(package_name: str) -> dict:
     """Test if a package can be imported successfully"""
@@ -37,18 +35,15 @@ def test_python310_features():
     
     # Test pattern matching (Python 3.10+)
     try:
-        match_result = None
         match 1:
             case 1:
-                match_result = "Pattern matching works"
+                pass
         features['pattern_matching'] = True
     except SyntaxError:
         features['pattern_matching'] = False
     
     # Test union types (Python 3.10+)
     try:
-        from typing import Union
-        x: Union[int, str] = 1
         features['union_types'] = True
     except:
         features['union_types'] = False
@@ -146,7 +141,7 @@ def main():
     with open('python310_compatibility_test.json', 'w') as f:
         json.dump(report, f, indent=2)
     
-    print(f"\n📄 Test report saved to: python310_compatibility_test.json")
+    print("\n📄 Test report saved to: python310_compatibility_test.json")
 
 if __name__ == "__main__":
     main() 

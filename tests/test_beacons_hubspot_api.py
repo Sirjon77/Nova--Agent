@@ -11,7 +11,6 @@ are surfaced as HTTP 400 responses.
 
 import os
 import unittest
-from unittest.mock import patch
 
 from fastapi.testclient import TestClient
 

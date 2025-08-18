@@ -1,4 +1,3 @@
-import os
 from redis_client import r
 
 # Use the new OpenAI client wrapper that forces model translation

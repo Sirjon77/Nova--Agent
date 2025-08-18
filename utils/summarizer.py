@@ -11,7 +11,6 @@ This module provides advanced text summarization capabilities:
 import re
 import logging
 from typing import Optional, Dict, Any, List
-import time
 
 # Use model registry for model resolution
 try:
@@ -308,7 +307,7 @@ Summary:"""
         summary = summary.strip()
         
         # Ensure it ends with proper punctuation
-        if summary and not summary[-1] in '.!?':
+        if summary and summary[-1] not in '.!?':
             summary += '.'
         
         return summary

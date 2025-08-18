@@ -8,7 +8,6 @@ import pathlib
 import random
 import pytest
 from fastapi.testclient import TestClient
-from unittest.mock import patch, MagicMock
 
 # Set test environment variables BEFORE importing the app
 os.environ["JWT_SECRET_KEY"] = "Test-Secret-Key-32-Chars-Long-For-Testing-Only-12345!@#"

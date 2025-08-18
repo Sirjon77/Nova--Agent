@@ -213,7 +213,6 @@ def performance_analytics_task(self, days_back: int = 30) -> Dict[str, Any]:
         start_date = end_date - timedelta(days=days_back)
         
         # Import analytics modules
-        from nova.analytics import aggregate_metrics, top_prompts, rpm_by_audience
         
         # Gather performance data
         performance_data = {

@@ -1,4 +1,6 @@
-import logging, random, asyncio
+import logging
+import random
+import asyncio
 log = logging.getLogger("ChaosInjector")
 
 class ChaosConfig:

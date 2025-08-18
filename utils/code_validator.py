@@ -14,7 +14,6 @@ import tempfile
 import os
 import logging
 from typing import Dict, Any, List, Optional, Tuple
-from utils.user_feedback import feedback_manager
 
 logger = logging.getLogger(__name__)
 

@@ -6,7 +6,6 @@ Expects JSON:
 Returns:
     { "session_id": "<same‑uuid>", "response": "<assistant_text>" }
 """
-import os
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 from typing import Optional

@@ -38,7 +38,7 @@ import json
 import os
 import random
 from datetime import datetime
-from typing import Any, Dict, List, Optional, Union
+from typing import Any, Dict, List
 
 
 class ABTestManager:

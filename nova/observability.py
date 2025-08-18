@@ -12,18 +12,16 @@ Provides comprehensive monitoring, metrics, and health checks:
 import time
 import logging
 import json
-from datetime import datetime, timedelta
+from datetime import datetime
 from typing import Dict, List, Any, Optional
 from pathlib import Path
-import asyncio
 from collections import defaultdict, deque
 import threading
 
-from prometheus_client import Counter, Histogram, Gauge, Summary, generate_latest, CONTENT_TYPE_LATEST
-from fastapi import HTTPException
+from prometheus_client import Counter, Histogram, Gauge, Summary, generate_latest
 import psutil
 
-from utils.memory_manager import store_long, get_relevant_memories
+from utils.memory_manager import store_long
 
 logger = logging.getLogger(__name__)
 

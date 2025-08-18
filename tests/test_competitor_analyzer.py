@@ -11,7 +11,6 @@ These tests ensure:
 - Edge cases like empty input lists yield no prompt templates.
 - External dependencies (TrendScanner, PromptDiscoverer) are monkeypatched to avoid real API calls or heavy processing.
 """
-import asyncio
 import os
 import sys
 import pytest
@@ -201,7 +200,7 @@ class TestDiscoverHiddenPrompts:
             # The tags should exactly match the input seeds
             assert item["tags"] == ["RoleX", "DomainY", "OutcomeZ", "NicheW"]
             # The description is expected to follow the known format incorporating the seeds
-            expected_desc = f"Prompt for a RoleX in DomainY to deliver a OutcomeZ for NicheW."
+            expected_desc = "Prompt for a RoleX in DomainY to deliver a OutcomeZ for NicheW."
             assert item["description"] == expected_desc
             # The structure should be a non-empty string containing the seed values (RoleX, DomainY, OutcomeZ, NicheW)
             struct = item["structure"]
@@ -222,7 +221,7 @@ class TestDiscoverHiddenPrompts:
         # All results should still contain the correct tags and description for the given seeds
         for item in results:
             assert item["tags"] == ["A", "B", "C", "D"]
-            assert item["description"] == f"Prompt for a A in B to deliver a C for D."
+            assert item["description"] == "Prompt for a A in B to deliver a C for D."
 
     def test_empty_input_lists_produce_no_results(self):
         """If any of the input lists (roles, domains, outcomes, niches) is empty, the result should be an empty list."""

@@ -1,4 +1,7 @@
-import os, datetime, jwt, bcrypt
+import os
+import datetime
+import jwt
+import bcrypt
 
 SECRET = os.getenv('JWT_SECRET', 'nova-secret')
 ALG = 'HS256'

@@ -15,15 +15,13 @@ Design Goals:
 
 from __future__ import annotations
 
-import asyncio
 import json
 import logging
 from datetime import datetime, timedelta
-from typing import Dict, List, Optional, Tuple, Any
-from dataclasses import dataclass, asdict
+from typing import Dict, List, Optional, Any
+from dataclasses import dataclass
 from enum import Enum
 
-import httpx
 from nova.governance.trend_scanner import TrendScanner
 from nova.policy import PolicyEnforcer
 
@@ -543,7 +541,6 @@ class ViralFormatPredictorContentIdeation:
     
     def _suggest_hook_type(self, cluster: TrendCluster) -> str:
         """Suggest hook type for trend cluster."""
-        hook_types = ['shock', 'story', 'tip', 'cta']
         # Simple heuristic based on cluster characteristics
         if cluster.cluster_score > 0.8:
             return 'shock'
@@ -666,7 +663,7 @@ class TrendRankingRecommendationOutput:
         
         for data in ranked_clusters[:15]:  # Top 15 trends
             cluster = data['cluster']
-            analysis = data['analysis']
+            data['analysis']
             
             # Assign to appropriate channels based on characteristics
             if cluster.rpm_potential > 15 and 'finance' in cluster.primary_keyword.lower():

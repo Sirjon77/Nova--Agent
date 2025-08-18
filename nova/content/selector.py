@@ -10,7 +10,6 @@ import yaml
 from typing import List, Dict, Any, Optional
 from dataclasses import dataclass, field
 from datetime import datetime
-from pathlib import Path
 import logging
 
 # Import Prometheus metrics for monitoring
@@ -264,7 +263,7 @@ class ContentSelector:
             return posts
             
         silent_posts = [p for p in posts if p.silent_mode]
-        non_silent_posts = [p for p in posts if not p.silent_mode]
+        [p for p in posts if not p.silent_mode]
         
         if not silent_posts:
             return posts

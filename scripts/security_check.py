@@ -13,13 +13,10 @@ Usage:
     python scripts/security_check.py --fix-deps  # Attempt to upgrade vulnerable dependencies
 """
 
-import os
 import sys
 import subprocess
-import yaml
 import json
 from pathlib import Path
-from typing import List, Dict, Any
 
 # Add project root to Python path
 PROJECT_ROOT = Path(__file__).parent.parent
@@ -100,7 +97,7 @@ class SecurityChecker:
                         issues_found = True
                 
                 # Check for email/password patterns
-                if 'password' in content.lower() and not '${' in content:
+                if 'password' in content.lower() and '${' not in content:
                     lines_with_password = [line.strip() for line in content.split('\n') 
                                          if 'password' in line.lower() and not line.strip().startswith('#')]
                     if lines_with_password:
@@ -182,12 +179,6 @@ class SecurityChecker:
         print("🔍 Scanning code for potential secrets...")
         
         # Patterns that might indicate secrets
-        secret_patterns = [
-            'password.*=.*["\'][^$]',  # password = "literal"
-            'api_key.*=.*["\'][^$]',   # api_key = "literal"
-            'secret.*=.*["\'][^$]',    # secret = "literal"
-            'token.*=.*["\'][^$]',     # token = "literal"
-        ]
         
         issues_found = False
         

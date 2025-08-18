@@ -8,7 +8,6 @@ integration when approval is required, then exercise the REST
 endpoints exposed by nova.api.app.
 """
 
-import os
 import importlib
 from starlette.testclient import TestClient
 

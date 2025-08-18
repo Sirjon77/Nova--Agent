@@ -1,5 +1,6 @@
 
-import json, pathlib, asyncio
+import json
+import pathlib
 from datetime import datetime
 from nova.governance.niche_manager import NicheManager
 from nova.governance.trend_scanner import TrendScanner
@@ -59,7 +60,7 @@ async def run(cfg, channel_metrics, trend_seeds, tools_cfg):
     # automated retire/promote flags. Load overrides from disk and
     # adjust the flag for each scored channel accordingly.
     try:
-        from nova.overrides import load_overrides, VALID_OVERRIDES
+        from nova.overrides import load_overrides
         overrides = load_overrides()
     except Exception:
         overrides = {}

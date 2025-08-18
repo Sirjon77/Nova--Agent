@@ -14,7 +14,7 @@ import json
 import os
 import time
 import logging
-from typing import Dict, Any, List, Optional, Union
+from typing import Dict, Any, List, Optional
 from datetime import datetime
 from pathlib import Path
 

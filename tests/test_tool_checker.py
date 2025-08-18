@@ -1,4 +1,4 @@
-import pytest, asyncio
+import pytest
 from nova.governance.tool_checker import ToolChecker, ToolConfig
 
 @pytest.mark.asyncio

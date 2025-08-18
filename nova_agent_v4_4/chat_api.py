@@ -1,6 +1,8 @@
 """FastAPI chat endpoint with short‑ and long‑term memory wiring."""
-import os, uuid, json
-from fastapi import APIRouter, Request, Response, Cookie
+import os
+import uuid
+import json
+from fastapi import APIRouter, Response, Cookie
 from pydantic import BaseModel
 from .memory_router import assemble_prompt, store_short
 from typing import Union

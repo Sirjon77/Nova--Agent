@@ -6,7 +6,7 @@ This module handles scheduled trend scanning, analysis, and content opportunity 
 
 import asyncio
 import logging
-from datetime import datetime, timedelta
+from datetime import datetime
 from typing import Dict, Any, List, Optional
 
 from nova.celery_app import celery_app

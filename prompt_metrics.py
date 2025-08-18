@@ -35,7 +35,7 @@ from __future__ import annotations
 import json
 import os
 import time
-from typing import Dict, Any, List, Tuple, Optional, Iterable, Union
+from typing import Dict, Any, List, Tuple, Optional, Union
 
 # Define the path to the JSON file used for persisting prompt metrics.
 _DATA_DIR = os.path.join(os.path.dirname(__file__), 'data')

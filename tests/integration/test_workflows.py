@@ -1,8 +1,6 @@
 import pytest
-import json
 import tempfile
-from unittest.mock import Mock, patch
-from nova.governance.governance_loop import run as governance_run
+from unittest.mock import patch
 from nova.autonomous_research import AutonomousResearcher
 
 class TestIntegrationWorkflows:
@@ -64,10 +62,8 @@ class TestIntegrationWorkflows:
     @pytest.mark.asyncio
     async def test_research_to_posting_workflow(self, mock_redis, mock_openai, authenticated_client):
         """Test workflow from research to automated posting."""
-        from nova.autonomous_research import AutonomousResearcher
-        from integrations.publer import schedule_post
         
-        with tempfile.TemporaryDirectory() as temp_dir:
+        with tempfile.TemporaryDirectory():
             # Mock research results
             research_results = {
                 "hypotheses_generated": 2,
@@ -102,7 +98,6 @@ class TestIntegrationWorkflows:
     async def test_error_recovery_workflow(self, mock_redis, mock_openai):
         """Test workflow error recovery and fallback mechanisms."""
         from utils.memory_manager import MemoryManager
-        from nova.autonomous_research import AutonomousResearcher
         
         with tempfile.TemporaryDirectory() as temp_dir:
             mm = MemoryManager(

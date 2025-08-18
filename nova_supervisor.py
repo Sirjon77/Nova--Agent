@@ -17,7 +17,8 @@ try:
     from diagnostic_repair_agent import run_diagnostic_repair
     from prompt_feedback_loop import adapt_prompts
     from agent_delegator import delegator_loop
-    import threading, time
+    import threading
+    import time
 
     def _bg(target, interval):
         def loop():

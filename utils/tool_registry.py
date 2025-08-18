@@ -1,5 +1,4 @@
 """Registry of tools with JSON Schema for GPT function calling."""
-import os, json
 REGISTRY = {}
 
 def register(tool_name: str, schema: dict, handler):
