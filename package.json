@@ -14,7 +14,14 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "bmad:status": "npx bmad-method status",
     "bmad:install": "npx bmad-method install",
-    "bmad:flatten": "npx bmad-method flatten -i . -o docs/flattened-codebase.xml"
+    "bmad:flatten": "npx bmad-method flatten -i . -o docs/flattened-codebase.xml",
+    "bmad:plan-feature": "./scripts/bmad-planning.sh",
+    "bmad:quick-plan": "./scripts/bmad-planning.sh",
+    "bmad:full-plan": "./scripts/bmad-planning.sh --full",
+    "bmad:arch-review": "cat docs/flattened-codebase.xml | npx bmad-method orchestrator --task architecture-review",
+    "bmad:implement": "npx bmad-method orchestrator --task implement",
+    "plan": "./scripts/bmad-planning.sh",
+    "new-feature": "npm run bmad:full-plan"
   },
   "repository": {
     "type": "git",
