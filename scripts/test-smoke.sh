@@ -24,8 +24,8 @@ done
 
 if [ "$FOUND" = "1" ]; then
   echo "[smoke] Running targeted smoke tests..."
-  python -m pytest -q -c /dev/null "${PATTERNS[@]}"
+  python -m pytest -q -c /dev/null -p no:cacheprovider "${PATTERNS[@]}"
 else
   echo "[smoke] Patterns not found; running quick default test run."
-  python -m pytest -q -c /dev/null -k "not jwt"
+  python -m pytest -q -c /dev/null -p no:cacheprovider -k "not jwt"
 fi
