@@ -2294,20 +2294,41 @@ async def ws_events(ws: WebSocket):
         connections.discard(ws)
 
 # Mount all legacy routers and the Flask model API via WSGIMiddleware
-from realtime import router as realtime_router
-from routes.research import router as research_router
-from routes.observability import router as observability_router
-from agents.decision_matrix_agent import router as decision_router
-from interface_handler import router as interface_router
-from nova_agent_v4_4.chat_api import router as chat_v4_router
+try:
+    from realtime import router as realtime_router
+    app.include_router(realtime_router)
+except Exception as e:
+    print(f"⚠️ Skipping realtime router: {e}")
 
-# Include all routers on the single FastAPI app
-app.include_router(realtime_router)
-app.include_router(research_router)
-app.include_router(observability_router)
-app.include_router(decision_router)
-app.include_router(interface_router)
-app.include_router(chat_v4_router)
+try:
+    from routes.research import router as research_router
+    app.include_router(research_router)
+except Exception as e:
+    print(f"⚠️ Skipping research router: {e}")
+
+try:
+    from routes.observability import router as observability_router
+    app.include_router(observability_router)
+except Exception as e:
+    print(f"⚠️ Skipping observability router: {e}")
+
+try:
+    from agents.decision_matrix_agent import router as decision_router
+    app.include_router(decision_router)
+except Exception as e:
+    print(f"⚠️ Skipping decision router: {e}")
+
+try:
+    from interface_handler import router as interface_router
+    app.include_router(interface_router)
+except Exception as e:
+    print(f"⚠️ Skipping interface router: {e}")
+
+try:
+    from nova_agent_v4_4.chat_api import router as chat_v4_router
+    app.include_router(chat_v4_router)
+except Exception as e:
+    print(f"⚠️ Skipping chat_v4 router: {e}")
 
 # Add missing endpoints from main.py
 @app.get("/status", tags=["meta"])

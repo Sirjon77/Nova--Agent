@@ -2,7 +2,7 @@
 <files>
   <!-- Auto-generated optimized flattened codebase -->
   <metadata>
-    <generated>2025-08-18T02:42:38Z</generated>
+    <generated>2025-08-28T23:55:10Z</generated>
     <method>optimized-fallback</method>
     <description>Contains core implementation files only (excludes tests, docs, configs)</description>
   </metadata>
@@ -198,12 +198,6 @@ def analyse_image(image_path: str, question: str = "What's in the image?"):
     
     return chat_completion(prompt, temperature=0.2, model=model)
 ]]></file>
-  <file path="./analytics_model.py"><![CDATA[
-# Predicts engagement trends and performance decay
-
-def predict_engagement(post):
-    return {'score': 0.87, 'decay': 'medium'}
-]]></file>
   <file path="./analytics/analytics_loop.py"><![CDATA[
 
 """Analytics worker that consumes event queue and updates dashboards."""
@@ -221,6 +215,12 @@ def main():
 
 if __name__ == "__main__":
     main()
+]]></file>
+  <file path="./analytics_model.py"><![CDATA[
+# Predicts engagement trends and performance decay
+
+def predict_engagement(post):
+    return {'score': 0.87, 'decay': 'medium'}
 ]]></file>
   <file path="./api_auth/__init__.py"><![CDATA[
 from .auth_router import router
@@ -1226,11 +1226,6 @@ def push_to_convertkit(api_key, form_id, email):
     }
     res = requests.post(url, json=payload)
     return res.status_code, res.json()]]></file>
-  <file path="./core_identity.py"><![CDATA[
-# core_identity.py
-# This file embeds Nova's master operational directive directly into the agent runtime.
-
-NOVA_IDENTITY = "You are Nova \u2014 a persistent, autonomous AI system programmed to become the most intelligent, efficient, and adaptive agent in every field, with unmatched dominance over The Project: an AI-powered, monetization-first short-form content empire producing 100+ high-retention videos daily across TikTok, YouTube Shorts, Instagram Reels, and Facebook Reels.\n\nCORE IDENTITY & AUTHORITY:\n- You are the executive operations head of The Project.\n- You have full authority to automate, delegate, self-optimize, and scale.\n- Jonathan Stuart is the final decision-maker. Major strategic shifts must be surfaced to him.\n\nCORE MISSION DIRECTIVE:\nYour mission is to:\n1. Master tools, APIs, agents, frameworks, and memory systems tied to:\n   - AI content creation (voice, video, text, image)\n   - Monetization optimization (RPM, engagement, click-throughs)\n   - Retention engineering\n   - Autonomous task execution\n   - External memory sync (Weaviate, Notion, filesystem)\n   - Real-time or scheduled internet research\n   - Vector-based semantic memory\n\n2. Build or upgrade systems that:\n   - Enhance your power and autonomy\n   - Scale output across formats, avatars, and platforms\n   - Operate with minimal or no user intervention\n\n3. Reflect, reason, and self-optimize:\n   - Analyze memory, prompts, and results continuously\n   - Retire low-performing assets\n   - Clone and iterate top RPM performers\n   - Suggest improvements across content, monetization, and architecture\n\nINTELLIGENCE EXPANSION LOOP:\n- Cross-reference internal knowledge with factual, up-to-date web data (GitHub, whitepapers, trend APIs)\n- Retain the most powerful tools, strategies, and prompt logic\n- Rewrite or discard ineffective, obsolete, or redundant logic\n- Auto-enhance future prompts using meta-prompt generation and intent decoding\n\nAUTOMATION SYSTEMS YOU MANAGE:\n- Prompt engineering\n- RPM tracking\n- Avatar optimization\n- A/B testing\n- Prompt vault and versioning\n- Content export (Notion, CSV, Google Sheets)\n- Funnel-based monetization\n- Content posting automation\n- Monetization routing and tracking\n\nREAL-TIME OPS CYCLE (24/7):\n- Monitor RPM and analytics continuously\n- Auto-schedule content upon readiness\n- Detect drops, throttle signals, or opportunity windows\n- Log wins, losses, and pivots with tagged reasoning\n- Retire or remix formats based on performance thresholds\n\nPROMPT SYSTEM RULES:\n- Maintain a 3:2 format ratio (Runway AI avatar : Seedance visual)\n- Use high-retention psychology: open-loop hooks, curiosity gaps, tribal phrasing, dopamine loops\n- Label every script with: monetization method, platform, hook type, niche\n\nMONETIZATION GUARDS:\n- Never sacrifice retention, RPM, or trust for speed\n- Do not publish low-RPM content\n- Only act when confident in financial or strategic outcome\n\nFULL AUTONOMY CLAUSE:\nYou may operate fully independently for all core actions including:\n- Generating, testing, and deploying content\n- Updating avatars or prompts\n- Adjusting funnels or tagging systems\n- Saving, retiring, or remixing formats\n\nYou only need user input for:\n- Major platform pivots\n- Branding overhauls\n- Large-scale system upgrades\n\nFINAL DIRECTIVE:\nYou are the architect of The Project. Build and operate the most powerful AI-driven content engine in the world \u2014 maximizing retention, monetization, scalability, and intelligence. Persist this behavior until overruled."]]></file>
   <file path="./core/safe_run.py"><![CDATA[
 
 """Decorator to wrap agent tasks with error catching, logging, and Sentry reporting."""
@@ -1292,6 +1287,11 @@ def get_secret(key: str, default: Optional[str] = None) -> Optional[str]:
                 logging.warning("Vault secret fetch failed for %s: %s", key, exc)
     return default
 ]]></file>
+  <file path="./core_identity.py"><![CDATA[
+# core_identity.py
+# This file embeds Nova's master operational directive directly into the agent runtime.
+
+NOVA_IDENTITY = "You are Nova \u2014 a persistent, autonomous AI system programmed to become the most intelligent, efficient, and adaptive agent in every field, with unmatched dominance over The Project: an AI-powered, monetization-first short-form content empire producing 100+ high-retention videos daily across TikTok, YouTube Shorts, Instagram Reels, and Facebook Reels.\n\nCORE IDENTITY & AUTHORITY:\n- You are the executive operations head of The Project.\n- You have full authority to automate, delegate, self-optimize, and scale.\n- Jonathan Stuart is the final decision-maker. Major strategic shifts must be surfaced to him.\n\nCORE MISSION DIRECTIVE:\nYour mission is to:\n1. Master tools, APIs, agents, frameworks, and memory systems tied to:\n   - AI content creation (voice, video, text, image)\n   - Monetization optimization (RPM, engagement, click-throughs)\n   - Retention engineering\n   - Autonomous task execution\n   - External memory sync (Weaviate, Notion, filesystem)\n   - Real-time or scheduled internet research\n   - Vector-based semantic memory\n\n2. Build or upgrade systems that:\n   - Enhance your power and autonomy\n   - Scale output across formats, avatars, and platforms\n   - Operate with minimal or no user intervention\n\n3. Reflect, reason, and self-optimize:\n   - Analyze memory, prompts, and results continuously\n   - Retire low-performing assets\n   - Clone and iterate top RPM performers\n   - Suggest improvements across content, monetization, and architecture\n\nINTELLIGENCE EXPANSION LOOP:\n- Cross-reference internal knowledge with factual, up-to-date web data (GitHub, whitepapers, trend APIs)\n- Retain the most powerful tools, strategies, and prompt logic\n- Rewrite or discard ineffective, obsolete, or redundant logic\n- Auto-enhance future prompts using meta-prompt generation and intent decoding\n\nAUTOMATION SYSTEMS YOU MANAGE:\n- Prompt engineering\n- RPM tracking\n- Avatar optimization\n- A/B testing\n- Prompt vault and versioning\n- Content export (Notion, CSV, Google Sheets)\n- Funnel-based monetization\n- Content posting automation\n- Monetization routing and tracking\n\nREAL-TIME OPS CYCLE (24/7):\n- Monitor RPM and analytics continuously\n- Auto-schedule content upon readiness\n- Detect drops, throttle signals, or opportunity windows\n- Log wins, losses, and pivots with tagged reasoning\n- Retire or remix formats based on performance thresholds\n\nPROMPT SYSTEM RULES:\n- Maintain a 3:2 format ratio (Runway AI avatar : Seedance visual)\n- Use high-retention psychology: open-loop hooks, curiosity gaps, tribal phrasing, dopamine loops\n- Label every script with: monetization method, platform, hook type, niche\n\nMONETIZATION GUARDS:\n- Never sacrifice retention, RPM, or trust for speed\n- Do not publish low-RPM content\n- Only act when confident in financial or strategic outcome\n\nFULL AUTONOMY CLAUSE:\nYou may operate fully independently for all core actions including:\n- Generating, testing, and deploying content\n- Updating avatars or prompts\n- Adjusting funnels or tagging systems\n- Saving, retiring, or remixing formats\n\nYou only need user input for:\n- Major platform pivots\n- Branding overhauls\n- Large-scale system upgrades\n\nFINAL DIRECTIVE:\nYou are the architect of The Project. Build and operate the most powerful AI-driven content engine in the world \u2014 maximizing retention, monetization, scalability, and intelligence. Persist this behavior until overruled."]]></file>
   <file path="./crew_agent.py"><![CDATA[
 # Defines agent roles and decision behavior
 
@@ -4936,158 +4936,6 @@ def generate_landing_pages_for_top_prompts(num_pages: int = 3, output_dir: str =
         generated_files.append(filename)
         print(f"[marketing_digest] Generated landing page: {filename}")
     return generated_files]]></file>
-  <file path="./memory_engine.py"><![CDATA[
-# Integrated Weaviate memory engine
-]]></file>
-  <file path="./memory_export_to_drive.py"><![CDATA[
-
-def export_logs_to_gdrive():
-    print("Simulated Google Drive export: implement with Google Drive API if needed.")
-    files = ["prompt_lineage.json", "ab_test_log.json", "loop_health_report.json"]
-    for file in files:
-        print(f"Pretending to upload {file} to Google Drive...")
-]]></file>
-  <file path="./memory_export_to_s3.py"><![CDATA[
-
-import boto3
-import os
-
-def export_logs_to_s3(bucket_name, access_key, secret_key):
-    s3 = boto3.client('s3',
-                      aws_access_key_id=access_key,
-                      aws_secret_access_key=secret_key)
-
-    files_to_export = ["prompt_lineage.json", "ab_test_log.json", "loop_health_report.json"]
-    for file in files_to_export:
-        if os.path.exists(file):
-            s3.upload_file(file, bucket_name, file)
-            print(f"Uploaded {file} to S3 bucket {bucket_name}")
-
-if __name__ == "__main__":
-    export_logs_to_s3(
-        bucket_name=os.getenv("S3_BUCKET"),
-        access_key=os.getenv("S3_ACCESS_KEY"),
-        secret_key=os.getenv("S3_SECRET_KEY")
-    )
-]]></file>
-  <file path="./memory_guard.py"><![CDATA[
-
-"""Utility to deduplicate and clean up Weaviate memory entries."""
-import os
-import datetime
-import weaviate
-from sentence_transformers import SentenceTransformer
-import numpy as np
-
-MODEL = SentenceTransformer('all-MiniLM-L6-v2')
-WEAVIATE_URL = os.getenv('WEAVIATE_URL')
-WEAVIATE_API_KEY = os.getenv('WEAVIATE_API_KEY')
-
-# Fix for Weaviate v4: use WeaviateClient instead of Client
-if WEAVIATE_URL and WEAVIATE_API_KEY:
-    client = weaviate.WeaviateClient(
-        connection_params=weaviate.connect.ConnectionParams.from_url(
-            WEAVIATE_URL,
-            grpc_port=50051,  # Default gRPC port
-            auth_credentials=weaviate.auth.AuthApiKey(WEAVIATE_API_KEY)
-        )
-    )
-else:
-    client = None
-
-COS_LIMIT = 0.9
-
-def _similar(a, b):
-    return float(np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b)))
-
-def save_if_useful(text: str, meta: dict):
-    if not client:
-        return 'skip'
-    
-    vec = MODEL.encode(text)
-    # Fix for Weaviate v4: use new API
-    similar = client.collections.get('Memory').query.near_vector(
-        vector=vec.tolist(),
-        limit=1,
-        return_properties=['_additional {vector}']
-    )
-    
-    if similar.objects:
-        return 'skip'
-    
-    # Fix for Weaviate v4: use new API
-    client.collections.get('Memory').data.insert({
-        'text': text,
-        **meta
-    }, vector=vec.tolist())
-    return 'stored'
-
-def cleanup():
-    """Delete entries older than 90 days or low score."""
-    if not client:
-        return
-        
-    threshold = (datetime.datetime.utcnow() - datetime.timedelta(days=90)).isoformat()
-    # Fix for Weaviate v4: use new API
-    client.collections.get('Memory').data.delete_many(
-        where={
-            'path': ['created'],
-            'operator': 'LessThan',
-            'valueDate': threshold
-        }
-    )
-]]></file>
-  <file path="./memory_reflector.py"><![CDATA[
-
-import os
-import json
-import openai
-
-openai.api_key = os.getenv("OPENAI_API_KEY")
-MEMORY_LOG = "nova_memory_log.json"
-
-# Use the new OpenAI client wrapper that forces model translation
-try:
-    from nova.services.openai_client import chat_completion
-except ImportError:
-    # Fallback to direct OpenAI call if wrapper not available
-    def chat_completion(messages, model=None, **kwargs):
-        return openai.ChatCompletion.create(messages=messages, **kwargs)
-
-def refine_code_snippets():
-    if not os.path.exists(MEMORY_LOG):
-        print("[Reflector] No memory log found.")
-        return
-
-    with open(MEMORY_LOG, "r") as f:
-        entries = json.load(f)
-
-    for entry in entries[-5:]:  # Only review the most recent 5
-        entry["prompt"]
-        original = entry["response"]
-
-        prompt_refine = (
-            "Improve this Python code to be more reliable, modular, and readable. "
-            "Ensure the functionality remains the same.\n\n"
-            f"{original}"
-        )
-
-        # Use the wrapper that automatically translates model aliases
-        response = chat_completion(
-            messages=[
-                {"role": "system", "content": "You are a senior Python refactor bot."},
-                {"role": "user", "content": prompt_refine}
-            ],
-            model="gpt-4o-mini",  # Will be automatically translated to "gpt-4o"
-            temperature=0.3
-        )
-
-        improved_code = response['choices'][0]['message']['content']
-        fname = f"refined_module_{entries.index(entry)}.py"
-        with open(fname, "w") as f_out:
-            f_out.write(improved_code)
-        print(f"[Reflector] Wrote improved version to: {fname}")
-]]></file>
   <file path="./memory.py"><![CDATA[
 """
 Memory Management System for Nova Agent - DEPRECATED
@@ -5262,6 +5110,158 @@ def get_memory_status() -> Dict[str, Any]:
         stacklevel=2,
     )
     return _mgr().get_memory_status() ]]></file>
+  <file path="./memory_engine.py"><![CDATA[
+# Integrated Weaviate memory engine
+]]></file>
+  <file path="./memory_export_to_drive.py"><![CDATA[
+
+def export_logs_to_gdrive():
+    print("Simulated Google Drive export: implement with Google Drive API if needed.")
+    files = ["prompt_lineage.json", "ab_test_log.json", "loop_health_report.json"]
+    for file in files:
+        print(f"Pretending to upload {file} to Google Drive...")
+]]></file>
+  <file path="./memory_export_to_s3.py"><![CDATA[
+
+import boto3
+import os
+
+def export_logs_to_s3(bucket_name, access_key, secret_key):
+    s3 = boto3.client('s3',
+                      aws_access_key_id=access_key,
+                      aws_secret_access_key=secret_key)
+
+    files_to_export = ["prompt_lineage.json", "ab_test_log.json", "loop_health_report.json"]
+    for file in files_to_export:
+        if os.path.exists(file):
+            s3.upload_file(file, bucket_name, file)
+            print(f"Uploaded {file} to S3 bucket {bucket_name}")
+
+if __name__ == "__main__":
+    export_logs_to_s3(
+        bucket_name=os.getenv("S3_BUCKET"),
+        access_key=os.getenv("S3_ACCESS_KEY"),
+        secret_key=os.getenv("S3_SECRET_KEY")
+    )
+]]></file>
+  <file path="./memory_guard.py"><![CDATA[
+
+"""Utility to deduplicate and clean up Weaviate memory entries."""
+import os
+import datetime
+import weaviate
+from sentence_transformers import SentenceTransformer
+import numpy as np
+
+MODEL = SentenceTransformer('all-MiniLM-L6-v2')
+WEAVIATE_URL = os.getenv('WEAVIATE_URL')
+WEAVIATE_API_KEY = os.getenv('WEAVIATE_API_KEY')
+
+# Fix for Weaviate v4: use WeaviateClient instead of Client
+if WEAVIATE_URL and WEAVIATE_API_KEY:
+    client = weaviate.WeaviateClient(
+        connection_params=weaviate.connect.ConnectionParams.from_url(
+            WEAVIATE_URL,
+            grpc_port=50051,  # Default gRPC port
+            auth_credentials=weaviate.auth.AuthApiKey(WEAVIATE_API_KEY)
+        )
+    )
+else:
+    client = None
+
+COS_LIMIT = 0.9
+
+def _similar(a, b):
+    return float(np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b)))
+
+def save_if_useful(text: str, meta: dict):
+    if not client:
+        return 'skip'
+    
+    vec = MODEL.encode(text)
+    # Fix for Weaviate v4: use new API
+    similar = client.collections.get('Memory').query.near_vector(
+        vector=vec.tolist(),
+        limit=1,
+        return_properties=['_additional {vector}']
+    )
+    
+    if similar.objects:
+        return 'skip'
+    
+    # Fix for Weaviate v4: use new API
+    client.collections.get('Memory').data.insert({
+        'text': text,
+        **meta
+    }, vector=vec.tolist())
+    return 'stored'
+
+def cleanup():
+    """Delete entries older than 90 days or low score."""
+    if not client:
+        return
+        
+    threshold = (datetime.datetime.utcnow() - datetime.timedelta(days=90)).isoformat()
+    # Fix for Weaviate v4: use new API
+    client.collections.get('Memory').data.delete_many(
+        where={
+            'path': ['created'],
+            'operator': 'LessThan',
+            'valueDate': threshold
+        }
+    )
+]]></file>
+  <file path="./memory_reflector.py"><![CDATA[
+
+import os
+import json
+import openai
+
+openai.api_key = os.getenv("OPENAI_API_KEY")
+MEMORY_LOG = "nova_memory_log.json"
+
+# Use the new OpenAI client wrapper that forces model translation
+try:
+    from nova.services.openai_client import chat_completion
+except ImportError:
+    # Fallback to direct OpenAI call if wrapper not available
+    def chat_completion(messages, model=None, **kwargs):
+        return openai.ChatCompletion.create(messages=messages, **kwargs)
+
+def refine_code_snippets():
+    if not os.path.exists(MEMORY_LOG):
+        print("[Reflector] No memory log found.")
+        return
+
+    with open(MEMORY_LOG, "r") as f:
+        entries = json.load(f)
+
+    for entry in entries[-5:]:  # Only review the most recent 5
+        entry["prompt"]
+        original = entry["response"]
+
+        prompt_refine = (
+            "Improve this Python code to be more reliable, modular, and readable. "
+            "Ensure the functionality remains the same.\n\n"
+            f"{original}"
+        )
+
+        # Use the wrapper that automatically translates model aliases
+        response = chat_completion(
+            messages=[
+                {"role": "system", "content": "You are a senior Python refactor bot."},
+                {"role": "user", "content": prompt_refine}
+            ],
+            model="gpt-4o-mini",  # Will be automatically translated to "gpt-4o"
+            temperature=0.3
+        )
+
+        improved_code = response['choices'][0]['message']['content']
+        fname = f"refined_module_{entries.index(entry)}.py"
+        with open(fname, "w") as f_out:
+            f_out.write(improved_code)
+        print(f"[Reflector] Wrote improved version to: {fname}")
+]]></file>
   <file path="./meta_reflection_engine.py"><![CDATA[
 
 import json
@@ -5442,1012 +5442,6 @@ def sync_to_notion(database_id, data, notion_token):
     }
     res = requests.post(url, headers=headers, json=payload)
     return res.status_code, res.json()]]></file>
-  <file path="./nova_agent_v4_4/chat_api.py"><![CDATA[
-"""FastAPI chat endpoint with short‑ and long‑term memory wiring."""
-import os
-import uuid
-import json
-from fastapi import APIRouter, Response, Cookie
-from pydantic import BaseModel
-from .memory_router import assemble_prompt, store_short
-from typing import Union
-
-# Use the new OpenAI client wrapper that forces model translation
-try:
-    from nova.services.openai_client import chat_completion
-except ImportError:
-    # Fallback to direct OpenAI call if wrapper not available
-    from openai import OpenAI
-    client = OpenAI()
-    def chat_completion(messages, model=None, **kwargs):
-        return client.chat.completions.create(messages=messages, **kwargs)
-
-router = APIRouter(prefix="/api/v4", tags=["chat"])
-
-class ChatBody(BaseModel):
-    message: str
-
-@router.post("/chat")
-async def chat(body: ChatBody, session_id: Union[str, None] = Cookie(default=None)):
-    # 1 ▪ Session cookie
-    if not session_id:
-        session_id = str(uuid.uuid4())
-        set_cookie = True
-    else:
-        set_cookie = False
-
-    user_msg = body.message
-    prompt = assemble_prompt(session_id, user_msg)
-
-    # Use the wrapper that automatically translates model aliases
-    model_alias = os.getenv("OPENAI_MODEL", "gpt-4o")
-
-    # Call the LLM using the wrapper
-    completion = chat_completion(
-        messages=[{"role": "user", "content": prompt}],
-        model=model_alias,  # Will be automatically translated to official model ID
-    )
-
-    assistant_reply = completion.choices[0].message.content
-    store_short(session_id, user_msg, assistant_reply)
-
-    resp = {"reply": assistant_reply}
-    response = Response(content=json.dumps(resp), media_type="application/json")
-    if set_cookie:
-        response.set_cookie("session_id", session_id, httponly=True, samesite="Lax")
-    return response
-]]></file>
-  <file path="./nova_agent_v4_4/chat_buffer.py"><![CDATA[
-"""Store a rolling buffer of the last N turns per session in Redis."""
-from .redis_client import r
-MAX_TURNS = 20
-
-def get_short(session_id: str):
-    return r.lrange(f"hist:{session_id}", 0, -1)
-
-def store_short(session_id: str, user_msg: str, assistant_msg: str):
-    r.rpush(f"hist:{session_id}", f"USER: {user_msg}\nASSISTANT: {assistant_msg}\n")
-    r.ltrim(f"hist:{session_id}", -MAX_TURNS, -1)
-]]></file>
-  <file path="./nova_agent_v4_4/escalate.py"><![CDATA[
-import os
-import requests
-
-SLACK_WEBHOOK = os.getenv("SLACK_WEBHOOK")
-
-def escalate(session_id: str, transcript: list[str]):
-    if not SLACK_WEBHOOK:
-        return
-    payload = {"text": f"New escalation (session {session_id}):\n```\n" + "".join(transcript) + "\n```"}
-    requests.post(SLACK_WEBHOOK, json=payload, timeout=5)
-]]></file>
-  <file path="./nova_agent_v4_4/faq_search.py"><![CDATA[
-"""Dummy FAQ search—replace with real implementation."""
-from typing import Union
-
-FAQS = {
-    "pricing": "Our plans start at $19/month.",
-    "support": "You can reach support at support@example.com.",
-}
-
-def faq_search(query: str) -> Union[str, None]:
-    for key, answer in FAQS.items():
-        if key in query.lower():
-            return answer
-    return None
-]]></file>
-  <file path="./nova_agent_v4_4/memory_router.py"><![CDATA[
-"""Glue code for short‑term (Redis) and long‑term (Weaviate/Chroma) memory."""
-from .chat_buffer import get_short, store_short
-from .vector_store import retrieve_relevant
-
-def assemble_prompt(session_id: str, user_msg: str) -> str:
-    snippets = retrieve_relevant(session_id, user_msg)
-    history = get_short(session_id)
-    return (
-        "SYSTEM: You are a helpful support bot.\n"
-        + "".join(snippets)
-        + "".join(history)
-        + f"USER: {user_msg}\nASSISTANT:"
-    )
-
-__all__ = ["assemble_prompt", "store_short"]
-]]></file>
-  <file path="./nova_agent_v4_4/orders.py"><![CDATA[
-"""Dummy order lookup stub."""
-from typing import Union
-
-def lookup_order(order_id: str) -> Union[dict, None]:
-    # Replace with real DB/API call
-    if order_id == "TEST123":
-        return {"status": "shipped", "eta": "2025-07-02"}
-    return None
-]]></file>
-  <file path="./nova_agent_v4_4/redis_client.py"><![CDATA[
-import os
-import redis
-
-redis_url = os.getenv("REDIS_URL", "redis://localhost:6379/0")
-r = redis.Redis.from_url(redis_url, decode_responses=True)
-]]></file>
-  <file path="./nova_agent_v4_4/should_remember.py"><![CDATA[
-# Use the new OpenAI client wrapper that forces model translation
-try:
-    from nova.services.openai_client import chat_completion
-except ImportError:
-    # Fallback to direct OpenAI call if wrapper not available
-    from openai import OpenAI
-    client = OpenAI()
-    def chat_completion(messages, model=None, **kwargs):
-        return client.chat.completions.create(messages=messages, **kwargs)
-
-def should_remember(user_message: str) -> bool:
-    # Use the wrapper that automatically translates model aliases
-    completion = chat_completion(
-        messages=[
-            {"role": "system", "content": "Return 'yes' if the message should be stored long‑term."},
-            {"role": "user", "content": user_message},
-        ],
-        model="gpt-4o-mini",  # Will be automatically translated to "gpt-4o"
-    )
-    return completion.choices[0].message.content.lower().startswith("yes")
-]]></file>
-  <file path="./nova_agent_v4_4/suggest_faq.py"><![CDATA[
-import os
-import smtplib
-from redis_client import r
-
-def run_daily():
-    for key in r.keys("query:*"):
-        count = int(r.get(key))
-        if count >= 3:
-            q = key.split(":",1)[1]
-            message = f"Consider adding to FAQ: {q} (asked {count}× in 24h)."
-            send_email("FAQ Suggestion", message)
-
-def send_email(subject: str, body: str):
-    to_addr = os.getenv("ADMIN_EMAIL")
-    if not to_addr:
-        return
-    msg = f"Subject: {subject}\n\n{body}"
-    with smtplib.SMTP("localhost") as s:
-        s.sendmail("nova-agent@example.com", to_addr, msg)
-]]></file>
-  <file path="./nova_agent_v4_4/summarise.py"><![CDATA[
-from redis_client import r
-
-# Use the new OpenAI client wrapper that forces model translation
-try:
-    from nova.services.openai_client import chat_completion
-except ImportError:
-    # Fallback to direct OpenAI call if wrapper not available
-    from openai import OpenAI
-    client = OpenAI()
-    def chat_completion(messages, model=None, **kwargs):
-        return client.chat.completions.create(messages=messages, **kwargs)
-
-def summarise_if_needed(session_id: str):
-    key = f"hist:{session_id}"
-    turns = r.lrange(key, 0, -1)
-    joined = "".join(turns)
-    if len(joined) < 8000:
-        return
-    
-    # Use the wrapper that automatically translates model aliases
-    completion = chat_completion(
-        messages=[
-            {"role": "system", "content": "Summarise the following chat as one sentence."},
-            {"role": "user", "content": joined},
-        ],
-        model="gpt-4o-mini",  # Will be automatically translated to "gpt-4o"
-    )
-    summary = completion.choices[0].message.content.strip()
-    r.set(f"summary:{session_id}", summary)
-    r.delete(key)
-]]></file>
-  <file path="./nova_agent_v4_4/vector_store.py"><![CDATA[
-"""Wrap calls to Weaviate or fallback Chroma for long‑term memory."""
-import os
-import weaviate
-from openai import OpenAI
-
-# Initialize OpenAI client only if API key is available
-client = None
-if os.getenv("OPENAI_API_KEY"):
-    try:
-        client = OpenAI()
-    except Exception:
-        client = None
-
-WEAVIATE_URL = os.getenv("WEAVIATE_URL")
-WEAVIATE_API_KEY = os.getenv("WEAVIATE_API_KEY")
-
-# Fix for Weaviate v4: use WeaviateClient instead of Client
-if WEAVIATE_URL and WEAVIATE_API_KEY:
-    weaviate_client = weaviate.WeaviateClient(
-        connection_params=weaviate.connect.ConnectionParams.from_url(
-            WEAVIATE_URL,
-            grpc_port=50051,  # Default gRPC port
-            auth_credentials=weaviate.auth.AuthApiKey(WEAVIATE_API_KEY)
-        )
-    )
-    CLASS = "ChatMemory"
-else:
-    weaviate_client = None
-
-def store_long(session_id: str, text: str):
-    if not WEAVIATE_URL or not client or not weaviate_client:
-        return
-    try:
-        vector = client.embeddings.create(input=[text], model="text-embedding-3-small").data[0].embedding
-        data_obj = {"session_id": session_id, "text": text}
-        # Fix for Weaviate v4: use new API
-        weaviate_client.collections.get(CLASS).data.insert(data_obj, vector=vector)
-    except Exception:
-        # Silently fail if embedding creation fails
-        pass
-
-def retrieve_relevant(session_id: str, query: str, k: int = 3):
-    if not WEAVIATE_URL or not client or not weaviate_client:
-        return []
-    try:
-        vector = client.embeddings.create(input=[query], model="text-embedding-3-small").data[0].embedding
-        # Fix for Weaviate v4: use new API
-        resp = weaviate_client.collections.get(CLASS).query.near_vector(
-            vector=vector,
-            limit=k,
-            return_properties=["text", "session_id"]
-        )
-        return [obj.properties["text"] for obj in resp.objects if obj.properties.get("session_id") == session_id]
-    except Exception:
-        # Return empty list if embedding creation fails
-        return []
-]]></file>
-  <file path="./nova_apex_loop.py"><![CDATA[
-# Apex loop engine
-]]></file>
-  <file path="./nova_bootloader.py"><![CDATA[
-import json
-from pathlib import Path
-
-def load_nova_directive():
-    path = Path("nova_master_prompt_v2.json")
-    if not path.exists():
-        return "Nova directive file not found."
-
-    with open(path, "r") as f:
-        data = json.load(f)
-
-    # Use the global memory manager
-    try:
-        from utils.memory_manager import get_global_memory_manager
-        memory_manager = get_global_memory_manager()
-        memory_manager.add_long_term(
-            namespace="system_directives",
-            key="nova_master_prompt",
-            content=data.get("content", ""),
-            metadata={"version": "v1.0", "source": "bootloader"}
-        )
-        return "Nova directive loaded successfully using global memory manager."
-    except ImportError as e:
-        return f"Failed to import memory manager: {e}"
-    except Exception as e:
-        return f"Failed to load Nova directive: {e}"]]></file>
-  <file path="./nova_console.py"><![CDATA[
-# Natural language command shell interface
-]]></file>
-  <file path="./nova_core/__init__.py"><![CDATA[
-"""
-Nova Core - Centralized core functionality for Nova Agent.
-
-This package contains essential components that are used throughout
-the Nova Agent system, including the model registry, memory management,
-and other core utilities.
-"""
-
-__version__ = "1.0.0"
-__author__ = "Nova Agent Team"
-
-# Import core modules for easy access
-try:
-    from .model_registry import (
-        resolve,
-        get_available_aliases,
-        get_official_models,
-        is_valid_alias,
-        get_default_model,
-        MODEL_MAP
-    )
-except ImportError:
-    # Handle case where model_registry is not available
-    pass
-
-__all__ = [
-    "resolve",
-    "get_available_aliases", 
-    "get_official_models",
-    "is_valid_alias",
-    "get_default_model",
-    "MODEL_MAP"
-] ]]></file>
-  <file path="./nova_core/model_registry.py"><![CDATA[
-"""Single‑source registry for OpenAI model identifiers.
-
-Internal aliases (e.g. "gpt‑4o‑mini") are translated to official model names
-before an API request is issued so that *only* valid identifiers reach OpenAI.
-"""
-from enum import Enum
-from typing import Optional
-
-
-class Model(str, Enum):
-    # ── Official public models ────────────────────────────────────────────────
-    GPT_4 = "gpt-4o"
-    GPT_3_5_TURBO = "gpt-3.5-turbo"
-
-    # ── Internal shorthands / legacy aliases ─────────────────────────────────
-    GPT_4_MINI = "gpt-4o-mini"          # maps → GPT_4
-    GPT_4_VISION = "gpt-4o-vision"      # maps → GPT_4
-    O3 = "o3"                           # maps → GPT_3_5_TURBO
-    O3_PRO = "o3-pro"                   # maps → GPT_4
-
-    DEFAULT = GPT_4
-
-
-_ALIAS_TO_OFFICIAL = {
-    Model.GPT_4_MINI: Model.GPT_4,
-    Model.GPT_4_VISION: Model.GPT_4,
-    Model.O3: Model.GPT_3_5_TURBO,
-    Model.O3_PRO: Model.GPT_4,
-}
-
-
-def to_official(name: Optional[str] = None) -> str:
-    """Return an official OpenAI model name for *any* supported alias."""
-    if not name:
-        return Model.DEFAULT.value
-    
-    # Strip whitespace
-    name = name.strip()
-    
-    if not name:
-        return Model.DEFAULT.value
-    
-    try:
-        alias = Model(name)
-    except ValueError:  # unknown → assume caller supplied a valid public name
-        return name
-    return _ALIAS_TO_OFFICIAL.get(alias, alias).value
-
-
-# Backward compatibility functions
-def resolve(alias: Optional[str] = None) -> str:
-    """Convert a friendly alias to the exact OpenAI model name."""
-    return to_official(alias)
-
-
-def get_default_model() -> str:
-    """Get the default model ID."""
-    return Model.DEFAULT.value
-
-
-def get_available_aliases() -> list[str]:
-    """Get list of all available model aliases."""
-    return [model.value for model in Model]
-
-
-def get_official_models() -> list[str]:
-    """Get list of all official OpenAI model IDs used."""
-    return list(set(_ALIAS_TO_OFFICIAL.values()))
-
-
-def is_valid_alias(alias: str) -> bool:
-    """Check if an alias is valid."""
-    try:
-        Model(alias)
-        return True
-    except ValueError:
-        return False ]]></file>
-  <file path="./nova_dashboard_gui.py"><![CDATA[
-# GUI Dashboard for live override, A/B control, and funnel assignments
-]]></file>
-  <file path="./nova_dispatcher.py"><![CDATA[
-
-import asyncio
-import random
-
-# Task limits
-MAX_CONCURRENT_TASKS = 5
-RETRY_LIMIT = 3
-RETRY_DELAY = 5  # seconds
-
-semaphore = asyncio.Semaphore(MAX_CONCURRENT_TASKS)
-
-async def generate_video(prompt, platform):
-    await asyncio.sleep(random.uniform(0.5, 1.5))  # simulate generation time
-    if random.random() < 0.1:  # simulate 10% failure rate
-        raise Exception(f"Video generation failed for {platform}")
-    print(f"[DISPATCHER] Generated video for {platform} with prompt: {prompt}")
-    return f"{platform}_video.mp4"
-
-async def upload_video(file_path, platform):
-    await asyncio.sleep(random.uniform(0.5, 1.5))  # simulate upload time
-    if random.random() < 0.1:  # simulate 10% failure rate
-        raise Exception(f"Upload failed for {platform}")
-    print(f"[DISPATCHER] Uploaded {file_path} to {platform}")
-
-async def retry_task(coro, *args):
-    attempt = 0
-    while attempt < RETRY_LIMIT:
-        try:
-            return await coro(*args)
-        except Exception as e:
-            attempt += 1
-            print(f"[RETRY] Attempt {attempt} failed: {e}")
-            if attempt < RETRY_LIMIT:
-                await asyncio.sleep(RETRY_DELAY)
-            else:
-                print(f"[FAIL] Task permanently failed: {coro.__name__} for args {args}")
-
-async def process_task(prompt, platforms):
-    async def handle_platform(platform):
-        async with semaphore:
-            video = await retry_task(generate_video, prompt, platform)
-            if video:
-                await retry_task(upload_video, video, platform)
-
-    await asyncio.gather(*(handle_platform(p) for p in platforms))
-
-# Example usage for testing
-# asyncio.run(process_task("Motivational Quote", ["TikTok", "YouTube", "Instagram", "Facebook", "LinkedIn"]))
-]]></file>
-  <file path="./nova_loop_research.py"><![CDATA[
-
-# Daily scan for new CSVs in research_insights/
-import os
-import datetime
-
-def scan_research_csvs(brand_folder="research_insights"):
-    today = datetime.date.today().isoformat()
-    new_files = []
-    for brand in os.listdir(brand_folder):
-        brand_path = os.path.join(brand_folder, brand)
-        if os.path.isdir(brand_path):
-            for file in os.listdir(brand_path):
-                if file.endswith(".csv") and today in file:
-                    new_files.append(os.path.join(brand_path, file))
-    return new_files
-]]></file>
-  <file path="./nova_loop.py"><![CDATA[
-from launch_ready import launch_setup
-launch_setup()
-
-import time
-import smtplib
-import asyncio
-from email.message import EmailMessage
-
-from nova_bootloader import load_nova_directive
-from nova_selftest import run_nova_selftest
-
-from agents.promptgen import generate_prompt_variants
-from agents.rpmwatcher import check_rpm_drops
-from agents.avatarops import adjust_avatars
-
-from rpm_heatmap import generate_rpm_heatmap
-from retargeting_optimizer import optimize_cta
-
-# Autonomous Research System
-from nova.autonomous_research import run_autonomous_research
-from nova.research_dashboard import get_research_summary
-
-from notion_sync import sync_to_notion
-from sheets_export import export_to_google_sheet
-from metricool_post import schedule_post_metricool
-from convertkit_push import push_to_convertkit
-from gumroad_sync import log_sale_to_gumroad
-
-# Enhanced email configuration with security validation
-import os
-
-def get_email_config():
-    """Get email configuration with security validation."""
-    email_sender = os.getenv("EMAIL_SENDER")
-    email_password = os.getenv("EMAIL_PASSWORD")
-    email_receiver = os.getenv("EMAIL_RECEIVER")
-    
-    # Check for hardcoded values
-    if email_password in ["your_app_password_here", "password", "123456"]:
-        raise RuntimeError(
-            "EMAIL_PASSWORD contains forbidden value. "
-            "Please set a valid email app password in the environment."
-        )
-    
-    # Validate email format
-    if email_sender and "@" not in email_sender:
-        raise RuntimeError(f"Invalid email format for EMAIL_SENDER: {email_sender}")
-    
-    if email_receiver and "@" not in email_receiver:
-        raise RuntimeError(f"Invalid email format for EMAIL_RECEIVER: {email_receiver}")
-    
-    return email_sender, email_password, email_receiver
-
-# Get email configuration with validation
-EMAIL_SENDER, EMAIL_PASSWORD, EMAIL_RECEIVER = get_email_config()
-SMTP_SERVER = "smtp.gmail.com"
-SMTP_PORT = 587
-
-def send_email_log(subject, body):
-    """Send email log with enhanced security validation."""
-    # Check if email credentials are properly configured
-    if not EMAIL_SENDER or not EMAIL_PASSWORD or not EMAIL_RECEIVER:
-        print("⚠️  Email not configured - skipping email log")
-        return
-    
-    try:
-        msg = EmailMessage()
-        msg["From"] = EMAIL_SENDER
-        msg["To"] = EMAIL_RECEIVER
-        msg["Subject"] = subject
-        msg.set_content(body)
-
-        with smtplib.SMTP(SMTP_SERVER, SMTP_PORT) as smtp:
-            smtp.starttls()
-            smtp.login(EMAIL_SENDER, EMAIL_PASSWORD)
-            smtp.send_message(msg)
-        
-        print(f"✅ Email log sent successfully to {EMAIL_RECEIVER}")
-        
-    except Exception as e:
-        print(f"❌ Email log failed: {str(e)}")
-        # Don't fail the entire loop due to email issues
-
-def run_nova_loop():
-    report = []
-
-    report.append("🔁 [Nova] Booting...")
-    report.append(load_nova_directive())
-    report.append(run_nova_selftest())
-
-    report.append("\n🧠 Running Intelligence Agents...")
-    generate_prompt_variants()
-    check_rpm_drops()
-    adjust_avatars()
-
-    report.append("\n💰 Running Monetization Modules...")
-    generate_rpm_heatmap()
-    optimize_cta()
-
-    report.append("\n🔬 Running Autonomous Research...")
-    try:
-        # Run autonomous research cycle
-        research_result = asyncio.run(run_autonomous_research())
-        if research_result and "error" not in research_result:
-            report.append(f"✅ Research cycle completed: {research_result.get('experiments_completed', 0)} experiments")
-            
-            # Get research summary
-            research_summary = get_research_summary()
-            if research_summary and "error" not in research_summary:
-                success_rate = research_summary.get("success_rate", 0)
-                avg_improvement = research_summary.get("average_improvement", 0)
-                report.append(f"📊 Research stats: {success_rate:.1f}% success rate, {avg_improvement:.1f}% avg improvement")
-        else:
-            report.append(f"❌ Research cycle failed: {research_result.get('error', 'Unknown error')}")
-    except Exception as e:
-        report.append(f"❌ Research error: {str(e)}")
-
-    report.append("\n🔗 Syncing with External Platforms...")
-    
-    # Enhanced integration handling with environment variable validation
-    try:
-        # Notion Integration
-        notion_token = os.getenv("NOTION_TOKEN") or os.getenv("NOTION_API_KEY")
-        notion_db_id = os.getenv("NOTION_DATABASE_ID")
-        if notion_token and notion_db_id:
-            try:
-                sync_to_notion(notion_db_id, {"Name": {"title": [{"text": {"content": "Nova Sync"}}]}}, notion_token)
-                report.append("✅ Notion sync completed")
-            except Exception as e:
-                report.append(f"❌ Notion sync error: {str(e)}")
-        else:
-            report.append("ℹ️  Notion integration not configured; skipping")
-        
-        # Google Sheets Export
-        try:
-            export_to_google_sheet("Nova Sheet", [["PromptID", "RPM", "Retention"]])
-            report.append("✅ Google Sheets export completed")
-        except Exception as e:
-            report.append(f"❌ Google Sheets export error: {str(e)}")
-        
-        # Metricool Integration
-        metricool_key = os.getenv("METRICOOL_API_KEY")
-        metricool_account = os.getenv("METRICOOL_ACCOUNT_ID")
-        if metricool_key and metricool_account:
-            try:
-                schedule_post_metricool(metricool_key, metricool_account, "Scheduled Content", "2025-07-01T10:00:00Z")
-                report.append("✅ Metricool post scheduled")
-            except Exception as e:
-                report.append(f"❌ Metricool error: {str(e)}")
-        else:
-            report.append("ℹ️  Metricool integration not configured; skipping")
-        
-        # ConvertKit Integration
-        convertkit_key = os.getenv("CONVERTKIT_API_KEY")
-        convertkit_form = os.getenv("CONVERTKIT_FORM_ID")
-        if convertkit_key and convertkit_form:
-            try:
-                push_to_convertkit(convertkit_key, convertkit_form, "user@example.com")
-                report.append("✅ ConvertKit push completed")
-            except Exception as e:
-                report.append(f"❌ ConvertKit error: {str(e)}")
-        else:
-            report.append("ℹ️  ConvertKit integration not configured; skipping")
-        
-        # Gumroad Integration
-        gumroad_key = os.getenv("GUMROAD_API_KEY")
-        gumroad_product = os.getenv("GUMROAD_PRODUCT_ID")
-        if gumroad_key and gumroad_product:
-            try:
-                log_sale_to_gumroad(gumroad_key, gumroad_product)
-                report.append("✅ Gumroad sale logged")
-            except Exception as e:
-                report.append(f"❌ Gumroad error: {str(e)}")
-        else:
-            report.append("ℹ️  Gumroad integration not configured; skipping")
-            
-    except Exception as e:
-        report.append(f"❌ Integration error: {str(e)}")
-
-    report.append("\n✅ Nova Cycle Complete — Sleeping for 4 hours...")
-
-    send_email_log("✅ Nova Agent Cycle Complete", "\n".join(report))
-    time.sleep(4 * 60 * 60)
-
-if __name__ == "__main__":
-    while True:
-        run_nova_loop()
-
-# === Auto-run Weaviate Memory Sync ===
-try:
-    from weaviate_memory_sync import embed_memory_to_weaviate
-    embed_memory_to_weaviate("nova_memory_log_test.json")
-except Exception as e:
-    print("⚠️ Memory sync failed:", e)
-# === End Auto-sync ===
-
-
-from agent_spawner import AgentSpawner
-
-def simulate_agent_spawn_if_enabled():
-    if os.getenv("ENABLE_SIMULATION", "false").lower() == "true":
-        from datetime import datetime
-        current_hour = datetime.utcnow().hour
-        if current_hour % 12 == 0:
-            spawner = AgentSpawner()
-            spawner.spawn_agent(
-                role_description="RPM Diagnostic Simulator",
-                tools=[],
-                goal="Analyze engagement drops in simulated avatar"
-            )
-simulate_agent_spawn_if_enabled()
-
-
-# In your nova_loop.py
-from prompt_web_hook import process_prompt_for_crawl
-
-def handle_loop():
-    test_prompts = ["Check this: https://en.wikipedia.org/wiki/Artificial_intelligence"]
-    for prompt in test_prompts:
-        crawl_data = process_prompt_for_crawl(prompt)
-        if crawl_data:
-            print("[Loop] Deep web results found.")
-
-
-# Autonomous Crawler Trigger Logic (Nova Activated)
-import re
-
-AUTO_CRAWL_ENABLED = True  # Can be overridden by .env in real deployment
-
-def detect_urls(text):
-    return re.findall(r'https?://\S+', text)
-
-def autonomous_web_crawl(memory_prompts):
-    if not AUTO_CRAWL_ENABLED:
-        print("[Nova] Autonomous crawling is disabled.")
-        return []
-    for prompt in memory_prompts:
-        urls = detect_urls(prompt)
-        for url in urls:
-            print(f"[Nova] Auto-crawling detected URL: {url}")
-            result = process_prompt_for_crawl(url)
-            if result:
-                print(f"[Nova] Crawled and processed {len(result)} pages.")
-
-# Run Crawl Test Suite on Startup
-from crawl_test_runner import run_crawl_test_suite
-
-if AUTO_CRAWL_ENABLED:
-    print("[Nova] Running web crawl test suite...")
-    logs = run_crawl_test_suite()
-    with open("startup_crawl_log.json", "w") as log_file:
-        import json
-        json.dump(logs, log_file)
-
-# After autonomous crawl logic
-from summarizer_and_memory import summarize_text, store_summary_to_memory
-if AUTO_CRAWL_ENABLED and 'result' in locals():
-    for entry in result:
-        summary = summarize_text(entry['text'])
-        store_summary_to_memory(entry['url'], summary)
-
-# Optional: Auto-reflection trigger
-from reflection_loop import reflect_on_memory
-
-try:
-    reflect_on_memory()
-except Exception as e:
-    print(f"[Reflect] Skipped due to error: {e}")
-
-# Simulate A/B test prompt use and monetization funnel trigger
-from prompt_ab_test import PromptABTest
-from funnel_log import log_monetization_event
-
-ab = PromptABTest()
-ab.create_test("welcome_prompt", ["Welcome to Nova!", "Start your AI journey now."])
-selected = ab.run_test("welcome_prompt")
-print(f"[A/B Test] Served prompt: {selected}")
-
-log_monetization_event(source="welcome_prompt", revenue=0.12, event_type="click")
-
-# Tag current prompt version to log
-prompt_version = 'v2'
-print(f"[Nova Loop] Operating under prompt version: {prompt_version}")
-
-# Log active prompt version
-prompt_version = "v2"
-print(f"[Nova Loop] Operating under prompt version: {prompt_version}")
-with open("loop_meta_log.json", "a") as meta_log:
-    import json
-    meta_log.write(json.dumps({"timestamp": __import__('datetime').datetime.utcnow().isoformat(), "prompt_version": prompt_version}) + "\n")
-
-
-# Injected: Scheduled Trend Parsing + RPM Matching
-import datetime
-from backend.research.trend_merger import match_trends_to_prompts
-
-def run_daily_trend_merge():
-    today = datetime.date.today().isoformat()
-    try:
-        matches = match_trends_to_prompts(
-            trend_data_path=f"research_insights/fitfuel/gwi_fitness_latam_{today}.json",
-            rpm_log_path="ab_test_log.json"
-        )
-        with open("matched_trends_to_rpm.json", "w") as f_out:
-            json.dump(matches, f_out, indent=2)
-    except Exception as e:
-        print("Trend merge failed:", e)
-
-# Trigger daily at 5AM in heartbeat loop
-if datetime.datetime.now().hour == 5:
-    run_daily_trend_merge()
-
-
-# --- Injected: Recurring Health Check on Boot + Post Loop ---
-from backend.diagnostics.loop_health_checker import run_loop_health_check
-
-# Run once on boot
-run_loop_health_check(stage='boot')
-
-# Run again at end of each loop cycle
-def end_of_loop_hook():
-    run_loop_health_check(stage='post-loop')
-
-
-# === Cron Trigger: Daily Memory Export to S3 or GDrive ===
-import datetime
-from memory_export_to_s3 import export_logs_to_s3
-
-def try_export_memory():
-    current_hour = datetime.datetime.now().hour
-    if current_hour == 18:  # 6PM export
-        bucket = os.getenv("S3_BUCKET")
-        key = os.getenv("S3_ACCESS_KEY")
-        secret = os.getenv("S3_SECRET_KEY")
-        if bucket and key and secret:
-            export_logs_to_s3(bucket, key, secret)
-        else:
-            try:
-                from memory_export_to_drive import export_logs_to_gdrive
-                export_logs_to_gdrive()
-            except:
-                print("No valid cloud export target configured.")
-
-try_export_memory()
-
-
-
-# === Nova v2.5 Evolution Modules ===
-from avatar_reasoner import reason_avatar_behavior
-from api_guardian import monitor_api_response
-from crew_coordinator import delegate_task
-from revenue_dashboard import get_revenue_summary
-from post_analytics_collector import collect_analytics
-
-def run_evolution_modules():
-    print("[Nova v2.5] Running avatar reasoning...")
-    print(reason_avatar_behavior({'name': 'NovaBot'}))
-
-    print("[Nova v2.5] Monitoring API response...")
-    result = monitor_api_response(type('obj', (object,), {'status_code': 500})())
-    print(f"API Guardian result: {result}")
-
-    print("[Nova v2.5] Delegating task to sub-agent...")
-    print(delegate_task('agent_001', 'Post to TikTok'))
-
-    print("[Nova v2.5] Collecting revenue data...")
-    print(get_revenue_summary())
-
-    print("[Nova v2.5] Pulling post analytics...")
-    print(collect_analytics('YouTube', 'abc123'))
-
-# Inject into loop (you can call run_evolution_modules inside your actual loop logic)
-if __name__ == "__main__":
-    print("[Nova] Starting loop...")
-    run_evolution_modules()
-
-
-# === Nova Diagnostic Logger Hook ===
-import json
-from datetime import datetime
-
-def log_diagnostic(message):
-    log_entry = {"timestamp": datetime.now().isoformat(), "message": message}
-    diag_file = os.path.join("diagnostics", "loop_health_report.json")
-    os.makedirs(os.path.dirname(diag_file), exist_ok=True)
-    try:
-        if os.path.exists(diag_file):
-            with open(diag_file, 'r') as f:
-                data = json.load(f)
-        else:
-            data = {"logs": []}
-        data["logs"].append(log_entry)
-        with open(diag_file, 'w') as f:
-            json.dump(data, f, indent=2)
-    except Exception as e:
-        print(f"Error writing diagnostic log: {e}")
-
-# Log start of loop for visibility
-log_diagnostic("Heartbeat loop triggered")
-
-
-# === Nova v2.6 Neural Crew Logic ===
-from crew_brain import crew_brain_loop
-from crew_agent import run_agent_role
-from crew_voter import vote_on_strategy
-from analytics_model import predict_engagement
-from roi_mapper import map_post_to_roi
-from time_slot_predictor import get_best_post_time
-from loop_intelligence_core import analyze_last_loop
-from crew_memory_reflector import record_crew_memory
-
-def run_neural_crew():
-    crew_brain_loop()
-    print(run_agent_role('strategist', 'optimize RPM'))
-    print(f"Strategy vote result: {vote_on_strategy(['Boost Morning', 'Evening Prime'])}")
-    print(f"Engagement prediction: {predict_engagement('post_abc')}")
-    print(f"ROI mapping: {map_post_to_roi('post_abc')}")
-    print(f"Best time to post on TikTok: {get_best_post_time('TikTok')}")
-    print(analyze_last_loop('Previous log sample'))
-    record_crew_memory('Neural loop cycle completed')
-
-# Call inside main loop
-run_neural_crew()
-
-# --- MODEL ROTATION START ---
-from utils.model_router import (
-    get_active_model_config,
-    set_active_model,
-    detect_model_switch_command,
-    detect_task_based_model
-)
-
-def route_model_from_message(message):
-    override = detect_model_switch_command(message)
-    if override:
-        set_active_model(override)
-        print(f"[Nova Agent] Model manually set to: {override}")
-    else:
-        suggested = detect_task_based_model(message)
-        if suggested:
-            set_active_model(suggested)
-            print(f"[Nova Agent] Model auto-selected: {suggested}")
-    return get_active_model_config()
-# --- MODEL ROTATION END ---
-]]></file>
-  <file path="./nova_module_loader.py"><![CDATA[
-
-import importlib
-import os
-
-MODULES = {}
-
-def load_all_modules():
-    module_dir = "modules"
-    for filename in os.listdir(module_dir):
-        if filename.endswith(".py"):
-            mod_name = filename[:-3]
-            mod_path = f"{module_dir}.{mod_name}"
-            try:
-                MODULES[mod_name] = importlib.import_module(mod_path)
-                print(f"[ModuleLoader] Loaded: {mod_name}")
-            except Exception as e:
-                print(f"[ModuleLoader] Failed to load {mod_name}: {e}")
-
-def get_module(name):
-    return MODULES.get(name)
-]]></file>
-  <file path="./nova_supervisor.py"><![CDATA[
-
-# nova_supervisor.py
-import functools
-
-def require_nova_approval(func):
-    @functools.wraps(func)
-    def wrapper(*args, **kwargs):
-        approved = True  # Future: load approval logic from a config/memory reflection
-        if not approved:
-            raise PermissionError("Nova has not approved this action.")
-        return func(*args, **kwargs)
-    return wrapper
-
-# --- Apex v4 meta-agents injection ---
-try:
-    from meta_reflection_engine import run_meta_reflection
-    from diagnostic_repair_agent import run_diagnostic_repair
-    from prompt_feedback_loop import adapt_prompts
-    from agent_delegator import delegator_loop
-    import threading
-    import time
-
-    def _bg(target, interval):
-        def loop():
-            while True:
-                try:
-                    target()
-                except Exception as exc:
-                    print('[Apex meta-agent] Error in', target.__name__, exc)
-                time.sleep(interval)
-        threading.Thread(target=loop, daemon=True).start()
-
-    _bg(run_meta_reflection, 1800)  # 30 min
-    _bg(run_diagnostic_repair, 300) # 5 min
-    _bg(adapt_prompts, 900)         # 15 min
-    _bg(delegator_loop, 60)         # 1 min
-    print('[Apex] Meta-agents started')
-except Exception as e:
-    print('[Apex] Meta-agent injection failed:', e)
-# --- End Apex patch ---
-]]></file>
-  <file path="./nova_terminal.py"><![CDATA[
-
-def nova_terminal():
-    print("Nova Terminal Ready. Commands:")
-    print("1: Reflect")
-    print("2: Load New Modules")
-    print("3: Run Diagnostics")
-    choice = input("Choose command: ")
-    if choice == "1":
-        from reflection_loop import run_reflection_loop
-        run_reflection_loop()
-    elif choice == "2":
-        from nova_module_loader import dynamic_module_loader
-        dynamic_module_loader()
-    elif choice == "3":
-        from nova_selftest import run_nova_selftest
-        run_nova_selftest()
-    else:
-        print("Unknown command.")
-]]></file>
   <file path="./nova/__init__.py"><![CDATA[
 """Nova package initialisation.
 
@@ -7438,6 +6432,99 @@ def _save_analysis_results(analysis_type: str, results: Dict[str, Any]) -> None:
     
     logger.info(f"Analysis results saved to {filepath}")
 ]]></file>
+  <file path="./nova/analytics.py"><![CDATA[
+"""Analytics helper functions for prompt performance metrics.
+
+This module provides lightweight utilities to summarise and analyse
+performance metrics for prompts.  The functions operate on a list of
+metric dictionaries that contain at minimum the following fields:
+
+    - ``prompt_id``: Unique identifier for the prompt.
+    - ``rpm``: Revenue per thousand views (float).
+    - ``avd``: Average view duration in seconds (float).
+    - ``ctr``: Click‑through rate (0‑1 range).
+    - ``audience_country``: Country code of the audience (string).
+    - ``audience_age``: Age bracket of the audience (string).
+    - ``views`` (optional): Total number of views for the prompt.
+
+The functions return summary statistics, top performers and RPM
+groupings by audience segment.  These helpers complement the
+``PromptLeaderboard`` class by providing insights into prompt
+performance beyond simple ranking.
+
+Note: These helpers do not persist any state and can be used safely
+in both synchronous and asynchronous contexts.
+"""
+
+from __future__ import annotations
+
+from typing import List, Dict, Any
+
+
+def aggregate_metrics(metrics: List[Dict[str, Any]]) -> Dict[str, Any]:
+    """Aggregate performance metrics across all prompts.
+
+    Args:
+        metrics: List of dictionaries containing prompt metrics.  Each
+            dictionary should include at least ``rpm`` and may include
+            ``views`` to compute total views.
+
+    Returns:
+        A dictionary with the total number of entries, sum of views
+        (if provided) and the average RPM across all prompts.
+    """
+    total = len(metrics)
+    total_views = 0
+    total_rpm = 0.0
+    for m in metrics:
+        # Sum RPM and views if available
+        total_rpm += float(m.get("rpm", 0))
+        if "views" in m:
+            total_views += float(m.get("views", 0))
+    average_rpm = total_rpm / total if total > 0 else 0.0
+    return {"count": total, "total_views": total_views, "average_rpm": average_rpm}
+
+
+def top_prompts(metrics: List[Dict[str, Any]], n: int = 5) -> List[Dict[str, Any]]:
+    """Return the top N prompts sorted by RPM descending.
+
+    Args:
+        metrics: List of prompt metric dictionaries.
+        n: Number of top prompts to return.
+
+    Returns:
+        A list of the top N metric dictionaries sorted by RPM.
+    """
+    sorted_metrics = sorted(metrics, key=lambda m: float(m.get("rpm", 0)), reverse=True)
+    return sorted_metrics[:n]
+
+
+def rpm_by_audience(metrics: List[Dict[str, Any]]) -> Dict[str, Dict[str, Any]]:
+    """Group average RPM by audience country and age bracket.
+
+    Args:
+        metrics: List of prompt metric dictionaries.  Each should
+            include ``audience_country`` and ``audience_age`` keys.
+
+    Returns:
+        A dictionary keyed by ``country_age`` string with values
+        containing the average RPM and count of prompts for that
+        audience segment.
+    """
+    groups: Dict[str, Dict[str, Any]] = {}
+    for m in metrics:
+        country = m.get("audience_country", "UNK") or "UNK"
+        age = m.get("audience_age", "UNK") or "UNK"
+        key = f"{country}_{age}"
+        g = groups.setdefault(key, {"total_rpm": 0.0, "count": 0})
+        g["total_rpm"] += float(m.get("rpm", 0))
+        g["count"] += 1
+    # Convert total RPM to average
+    for key, g in groups.items():
+        count = g["count"]
+        g["average_rpm"] = g["total_rpm"] / count if count > 0 else 0.0
+        del g["total_rpm"]
+    return groups]]></file>
   <file path="./nova/analytics_tasks/__init__.py"><![CDATA[
 ]]></file>
   <file path="./nova/analytics_tasks/tasks.py"><![CDATA[
@@ -7720,99 +6807,6 @@ def _save_report(report: Dict[str, Any], filename: str) -> None:
     with open(filepath, 'w') as f:
         json.dump(report, f, indent=2, default=str)
 ]]></file>
-  <file path="./nova/analytics.py"><![CDATA[
-"""Analytics helper functions for prompt performance metrics.
-
-This module provides lightweight utilities to summarise and analyse
-performance metrics for prompts.  The functions operate on a list of
-metric dictionaries that contain at minimum the following fields:
-
-    - ``prompt_id``: Unique identifier for the prompt.
-    - ``rpm``: Revenue per thousand views (float).
-    - ``avd``: Average view duration in seconds (float).
-    - ``ctr``: Click‑through rate (0‑1 range).
-    - ``audience_country``: Country code of the audience (string).
-    - ``audience_age``: Age bracket of the audience (string).
-    - ``views`` (optional): Total number of views for the prompt.
-
-The functions return summary statistics, top performers and RPM
-groupings by audience segment.  These helpers complement the
-``PromptLeaderboard`` class by providing insights into prompt
-performance beyond simple ranking.
-
-Note: These helpers do not persist any state and can be used safely
-in both synchronous and asynchronous contexts.
-"""
-
-from __future__ import annotations
-
-from typing import List, Dict, Any
-
-
-def aggregate_metrics(metrics: List[Dict[str, Any]]) -> Dict[str, Any]:
-    """Aggregate performance metrics across all prompts.
-
-    Args:
-        metrics: List of dictionaries containing prompt metrics.  Each
-            dictionary should include at least ``rpm`` and may include
-            ``views`` to compute total views.
-
-    Returns:
-        A dictionary with the total number of entries, sum of views
-        (if provided) and the average RPM across all prompts.
-    """
-    total = len(metrics)
-    total_views = 0
-    total_rpm = 0.0
-    for m in metrics:
-        # Sum RPM and views if available
-        total_rpm += float(m.get("rpm", 0))
-        if "views" in m:
-            total_views += float(m.get("views", 0))
-    average_rpm = total_rpm / total if total > 0 else 0.0
-    return {"count": total, "total_views": total_views, "average_rpm": average_rpm}
-
-
-def top_prompts(metrics: List[Dict[str, Any]], n: int = 5) -> List[Dict[str, Any]]:
-    """Return the top N prompts sorted by RPM descending.
-
-    Args:
-        metrics: List of prompt metric dictionaries.
-        n: Number of top prompts to return.
-
-    Returns:
-        A list of the top N metric dictionaries sorted by RPM.
-    """
-    sorted_metrics = sorted(metrics, key=lambda m: float(m.get("rpm", 0)), reverse=True)
-    return sorted_metrics[:n]
-
-
-def rpm_by_audience(metrics: List[Dict[str, Any]]) -> Dict[str, Dict[str, Any]]:
-    """Group average RPM by audience country and age bracket.
-
-    Args:
-        metrics: List of prompt metric dictionaries.  Each should
-            include ``audience_country`` and ``audience_age`` keys.
-
-    Returns:
-        A dictionary keyed by ``country_age`` string with values
-        containing the average RPM and count of prompts for that
-        audience segment.
-    """
-    groups: Dict[str, Dict[str, Any]] = {}
-    for m in metrics:
-        country = m.get("audience_country", "UNK") or "UNK"
-        age = m.get("audience_age", "UNK") or "UNK"
-        key = f"{country}_{age}"
-        g = groups.setdefault(key, {"total_rpm": 0.0, "count": 0})
-        g["total_rpm"] += float(m.get("rpm", 0))
-        g["count"] += 1
-    # Convert total RPM to average
-    for key, g in groups.items():
-        count = g["count"]
-        g["average_rpm"] = g["total_rpm"] / count if count > 0 else 0.0
-        del g["total_rpm"]
-    return groups]]></file>
   <file path="./nova/api/__init__.py"><![CDATA[
 ]]></file>
   <file path="./nova/approvals.py"><![CDATA[
@@ -9878,506 +8872,6 @@ class DirectMarketingPlanner:
                 digest_lines.append(f"- {title}: RPM {rpm:.2f}")
         return "\n".join(digest_lines)
 ]]></file>
-  <file path="./nova/governance_scheduler.py"><![CDATA[
-"""
-Governance Scheduler for Nova Agent
-
-This module implements the nightly governance loop that performs:
-- Niche scoring and evaluation
-- Tool health checks
-- Trend scanning and analysis
-- System optimization recommendations
-- Performance monitoring and alerts
-
-Runs automatically on a schedule to ensure Nova maintains optimal performance.
-"""
-
-import asyncio
-import logging
-import time
-from datetime import datetime
-from typing import Dict, Any
-from pathlib import Path
-import json
-import schedule
-
-from utils.memory_manager import store_long, get_relevant_memories
-from utils.openai_wrapper import chat_completion
-
-logger = logging.getLogger(__name__)
-
-class GovernanceScheduler:
-    """
-    Scheduler for Nova's governance and self-optimization tasks.
-    """
-    
-    def __init__(self, config_path: str = "config/governance_config.json"):
-        self.config_path = Path(config_path)
-        self.config = self._load_config()
-        self.last_run = None
-        self.is_running = False
-        
-    def _load_config(self) -> Dict[str, Any]:
-        """Load governance configuration."""
-        default_config = {
-            "enabled": True,
-            "schedule": {
-                "niche_scoring": "02:00",  # 2 AM
-                "tool_health_check": "03:00",  # 3 AM
-                "trend_scanning": "04:00",  # 4 AM
-                "performance_analysis": "05:00",  # 5 AM
-                "system_optimization": "06:00"  # 6 AM
-            },
-            "retention_days": 30,
-            "alert_thresholds": {
-                "performance_degradation": 0.1,
-                "error_rate": 0.05,
-                "memory_usage": 0.8
-            }
-        }
-        
-        if self.config_path.exists():
-            try:
-                with open(self.config_path, 'r') as f:
-                    user_config = json.load(f)
-                    default_config.update(user_config)
-            except Exception as e:
-                logger.error(f"Failed to load governance config: {e}")
-        
-        return default_config
-    
-    def _save_config(self):
-        """Save governance configuration."""
-        try:
-            self.config_path.parent.mkdir(parents=True, exist_ok=True)
-            with open(self.config_path, 'w') as f:
-                json.dump(self.config, f, indent=2)
-        except Exception as e:
-            logger.error(f"Failed to save governance config: {e}")
-    
-    async def run_niche_scoring(self) -> Dict[str, Any]:
-        """Run niche scoring and evaluation."""
-        try:
-            logger.info("Starting niche scoring cycle")
-            
-            # Get recent performance data
-            recent_memories = get_relevant_memories("performance", "recent", limit=100)
-            
-            # Analyze niche performance
-            prompt = f"""
-            Analyze Nova's recent performance across different niches and content types.
-            Based on the following performance data, score each niche and provide recommendations:
-            
-            Performance Data:
-            {recent_memories[:2000]}
-            
-            Provide analysis in JSON format with:
-            1. Niche scores (0-100)
-            2. Performance trends
-            3. Optimization recommendations
-            4. Priority actions
-            """
-            
-            response = await chat_completion(prompt, temperature=0.3)
-            
-            try:
-                analysis = json.loads(response)
-            except json.JSONDecodeError:
-                analysis = {"error": "Failed to parse analysis", "raw_response": response}
-            
-            # Store results
-            store_long("governance", "niche_scoring", json.dumps(analysis))
-            
-            logger.info("Niche scoring completed")
-            return analysis
-            
-        except Exception as e:
-            logger.error(f"Niche scoring failed: {e}")
-            return {"error": str(e)}
-    
-    async def run_tool_health_check(self) -> Dict[str, Any]:
-        """Check health of all integrated tools and APIs."""
-        try:
-            logger.info("Starting tool health check")
-            
-            health_status = {
-                "timestamp": datetime.now().isoformat(),
-                "tools": {},
-                "overall_health": "healthy",
-                "issues": []
-            }
-            
-            # Check OpenAI API
-            try:
-                await chat_completion("Health check", temperature=0)
-                health_status["tools"]["openai"] = {
-                    "status": "healthy",
-                    "response_time": "normal"
-                }
-            except Exception as e:
-                health_status["tools"]["openai"] = {
-                    "status": "unhealthy",
-                    "error": str(e)
-                }
-                health_status["issues"].append(f"OpenAI API: {str(e)}")
-            
-            # Check memory systems
-            try:
-                from utils.memory_manager import get_global_memory_manager
-                mm = get_global_memory_manager()
-                memory_status = mm.get_memory_status()
-                health_status["tools"]["memory"] = {
-                    "status": "healthy" if memory_status["fully_available"] else "degraded",
-                    "details": memory_status
-                }
-                if not memory_status["fully_available"]:
-                    health_status["issues"].append("Memory system not fully available")
-            except Exception as e:
-                health_status["tools"]["memory"] = {
-                    "status": "unhealthy",
-                    "error": str(e)
-                }
-                health_status["issues"].append(f"Memory system: {str(e)}")
-            
-            # Check external integrations
-            integrations = [
-                ("notion", "notion_sync"),
-                ("sheets", "sheets_export"),
-                ("metricool", "metricool_post"),
-                ("convertkit", "convertkit_push"),
-                ("gumroad", "gumroad_sync")
-            ]
-            
-            for name, module in integrations:
-                try:
-                    __import__(module)
-                    health_status["tools"][name] = {"status": "available"}
-                except ImportError:
-                    health_status["tools"][name] = {"status": "not_installed"}
-                except Exception as e:
-                    health_status["tools"][name] = {"status": "error", "error": str(e)}
-                    health_status["issues"].append(f"{name}: {str(e)}")
-            
-            # Determine overall health
-            if health_status["issues"]:
-                health_status["overall_health"] = "degraded" if len(health_status["issues"]) < 3 else "unhealthy"
-            
-            # Store results
-            store_long("governance", "tool_health", json.dumps(health_status))
-            
-            logger.info(f"Tool health check completed: {health_status['overall_health']}")
-            return health_status
-            
-        except Exception as e:
-            logger.error(f"Tool health check failed: {e}")
-            return {"error": str(e)}
-    
-    async def run_trend_scanning(self) -> Dict[str, Any]:
-        """Scan for trends and market changes."""
-        try:
-            logger.info("Starting trend scanning")
-            
-            # Get recent content and performance data
-            recent_content = get_relevant_memories("content", "recent", limit=50)
-            recent_performance = get_relevant_memories("performance", "recent", limit=50)
-            
-            # Analyze trends
-            prompt = f"""
-            Analyze recent content performance and identify emerging trends.
-            Based on the following data, provide trend analysis:
-            
-            Recent Content:
-            {recent_content[:1500]}
-            
-            Recent Performance:
-            {recent_performance[:1500]}
-            
-            Provide analysis in JSON format with:
-            1. Emerging trends
-            2. Declining trends
-            3. Content recommendations
-            4. Platform opportunities
-            5. Risk factors
-            """
-            
-            response = await chat_completion(prompt, temperature=0.4)
-            
-            try:
-                trends = json.loads(response)
-            except json.JSONDecodeError:
-                trends = {"error": "Failed to parse trends", "raw_response": response}
-            
-            # Store results
-            store_long("governance", "trend_analysis", json.dumps(trends))
-            
-            logger.info("Trend scanning completed")
-            return trends
-            
-        except Exception as e:
-            logger.error(f"Trend scanning failed: {e}")
-            return {"error": str(e)}
-    
-    async def run_performance_analysis(self) -> Dict[str, Any]:
-        """Analyze system performance and identify optimization opportunities."""
-        try:
-            logger.info("Starting performance analysis")
-            
-            # Collect performance metrics
-            metrics = {
-                "response_time": await self._measure_response_time(),
-                "accuracy": await self._measure_accuracy(),
-                "user_satisfaction": await self._measure_user_satisfaction(),
-                "memory_efficiency": await self._measure_memory_efficiency(),
-                "error_rate": await self._measure_error_rate(),
-                "throughput": await self._measure_throughput()
-            }
-            
-            # Analyze performance trends
-            recent_metrics = get_relevant_memories("metrics", "recent", limit=20)
-            
-            prompt = f"""
-            Analyze Nova's performance metrics and identify optimization opportunities.
-            
-            Current Metrics:
-            {json.dumps(metrics, indent=2)}
-            
-            Recent Metrics History:
-            {recent_metrics[:1000]}
-            
-            Provide analysis in JSON format with:
-            1. Performance trends
-            2. Bottlenecks identified
-            3. Optimization recommendations
-            4. Priority improvements
-            5. Risk assessments
-            """
-            
-            response = await chat_completion(prompt, temperature=0.3)
-            
-            try:
-                analysis = json.loads(response)
-                analysis["current_metrics"] = metrics
-            except json.JSONDecodeError:
-                analysis = {
-                    "error": "Failed to parse analysis",
-                    "raw_response": response,
-                    "current_metrics": metrics
-                }
-            
-            # Store results
-            store_long("governance", "performance_analysis", json.dumps(analysis))
-            
-            logger.info("Performance analysis completed")
-            return analysis
-            
-        except Exception as e:
-            logger.error(f"Performance analysis failed: {e}")
-            return {"error": str(e)}
-    
-    async def run_system_optimization(self) -> Dict[str, Any]:
-        """Generate system optimization recommendations."""
-        try:
-            logger.info("Starting system optimization")
-            
-            # Get recent governance data
-            niche_data = get_relevant_memories("governance", "niche_scoring", limit=5)
-            health_data = get_relevant_memories("governance", "tool_health", limit=5)
-            trend_data = get_relevant_memories("governance", "trend_analysis", limit=5)
-            performance_data = get_relevant_memories("governance", "performance_analysis", limit=5)
-            
-            # Generate optimization recommendations
-            prompt = f"""
-            Based on recent governance data, generate system optimization recommendations.
-            
-            Niche Scoring:
-            {niche_data[:1000]}
-            
-            Tool Health:
-            {health_data[:1000]}
-            
-            Trend Analysis:
-            {trend_data[:1000]}
-            
-            Performance Analysis:
-            {performance_data[:1000]}
-            
-            Provide comprehensive optimization plan in JSON format with:
-            1. Immediate actions (next 24 hours)
-            2. Short-term improvements (next week)
-            3. Long-term optimizations (next month)
-            4. Resource allocation recommendations
-            5. Risk mitigation strategies
-            6. Success metrics
-            """
-            
-            response = await chat_completion(prompt, temperature=0.3)
-            
-            try:
-                optimization = json.loads(response)
-            except json.JSONDecodeError:
-                optimization = {"error": "Failed to parse optimization", "raw_response": response}
-            
-            # Store results
-            store_long("governance", "optimization_plan", json.dumps(optimization))
-            
-            logger.info("System optimization completed")
-            return optimization
-            
-        except Exception as e:
-            logger.error(f"System optimization failed: {e}")
-            return {"error": str(e)}
-    
-    async def _measure_response_time(self) -> float:
-        """Measure average response time."""
-        # Simulate measurement
-        return 0.65
-    
-    async def _measure_accuracy(self) -> float:
-        """Measure intent classification accuracy."""
-        # Simulate measurement
-        return 0.85
-    
-    async def _measure_user_satisfaction(self) -> float:
-        """Measure user satisfaction score."""
-        # Simulate measurement
-        return 0.78
-    
-    async def _measure_memory_efficiency(self) -> float:
-        """Measure memory usage efficiency."""
-        # Simulate measurement
-        return 0.92
-    
-    async def _measure_error_rate(self) -> float:
-        """Measure error rate."""
-        # Simulate measurement
-        return 0.12
-    
-    async def _measure_throughput(self) -> float:
-        """Measure requests per second throughput."""
-        # Simulate measurement
-        return 0.88
-    
-    async def run_full_governance_cycle(self) -> Dict[str, Any]:
-        """Run the complete governance cycle."""
-        if self.is_running:
-            logger.warning("Governance cycle already running")
-            return {"error": "Already running"}
-        
-        self.is_running = True
-        start_time = time.time()
-        
-        try:
-            logger.info("Starting full governance cycle")
-            
-            results = {
-                "cycle_start": datetime.now().isoformat(),
-                "tasks": {}
-            }
-            
-            # Run all governance tasks
-            tasks = [
-                ("niche_scoring", self.run_niche_scoring),
-                ("tool_health_check", self.run_tool_health_check),
-                ("trend_scanning", self.run_trend_scanning),
-                ("performance_analysis", self.run_performance_analysis),
-                ("system_optimization", self.run_system_optimization)
-            ]
-            
-            for task_name, task_func in tasks:
-                try:
-                    logger.info(f"Running {task_name}")
-                    task_result = await task_func()
-                    results["tasks"][task_name] = {
-                        "status": "completed",
-                        "result": task_result
-                    }
-                except Exception as e:
-                    logger.error(f"Task {task_name} failed: {e}")
-                    results["tasks"][task_name] = {
-                        "status": "failed",
-                        "error": str(e)
-                    }
-            
-            results["cycle_duration"] = time.time() - start_time
-            results["cycle_end"] = datetime.now().isoformat()
-            
-            # Store cycle results
-            store_long("governance", "cycle_results", json.dumps(results))
-            
-            self.last_run = datetime.now()
-            logger.info(f"Governance cycle completed in {results['cycle_duration']:.2f}s")
-            
-            return results
-            
-        except Exception as e:
-            logger.error(f"Governance cycle failed: {e}")
-            return {"error": str(e)}
-        finally:
-            self.is_running = False
-    
-    def schedule_governance_tasks(self):
-        """Schedule governance tasks."""
-        if not self.config.get("enabled", True):
-            logger.info("Governance scheduler disabled")
-            return
-        
-        schedule_config = self.config.get("schedule", {})
-        
-        # Schedule individual tasks
-        for task_name, time_str in schedule_config.items():
-            schedule.every().day.at(time_str).do(
-                lambda t=task_name: asyncio.create_task(self._run_scheduled_task(t))
-            )
-            logger.info(f"Scheduled {task_name} at {time_str}")
-        
-        # Schedule full cycle as backup
-        schedule.every().day.at("01:00").do(
-            lambda: asyncio.create_task(self.run_full_governance_cycle())
-        )
-        logger.info("Scheduled full governance cycle at 01:00")
-    
-    async def _run_scheduled_task(self, task_name: str):
-        """Run a scheduled governance task."""
-        try:
-            if task_name == "niche_scoring":
-                await self.run_niche_scoring()
-            elif task_name == "tool_health_check":
-                await self.run_tool_health_check()
-            elif task_name == "trend_scanning":
-                await self.run_trend_scanning()
-            elif task_name == "performance_analysis":
-                await self.run_performance_analysis()
-            elif task_name == "system_optimization":
-                await self.run_system_optimization()
-        except Exception as e:
-            logger.error(f"Scheduled task {task_name} failed: {e}")
-    
-    def run_scheduler(self):
-        """Run the scheduler loop."""
-        logger.info("Starting governance scheduler")
-        self.schedule_governance_tasks()
-        
-        while True:
-            try:
-                schedule.run_pending()
-                time.sleep(60)  # Check every minute
-            except KeyboardInterrupt:
-                logger.info("Governance scheduler stopped")
-                break
-            except Exception as e:
-                logger.error(f"Scheduler error: {e}")
-                time.sleep(60)
-
-# Global scheduler instance
-governance_scheduler = GovernanceScheduler()
-
-async def run_governance_cycle():
-    """Convenience function to run governance cycle."""
-    return await governance_scheduler.run_full_governance_cycle()
-
-def start_governance_scheduler():
-    """Start the governance scheduler."""
-    governance_scheduler.run_scheduler() ]]></file>
   <file path="./nova/governance/__init__.py"><![CDATA[
 ]]></file>
   <file path="./nova/governance/changelog_watcher.py"><![CDATA[
@@ -12096,6 +10590,506 @@ class TrendScanner:
         ]
         limit = int(self.cfg.get('top_n', len(static_products)))
         return static_products[:limit]]]></file>
+  <file path="./nova/governance_scheduler.py"><![CDATA[
+"""
+Governance Scheduler for Nova Agent
+
+This module implements the nightly governance loop that performs:
+- Niche scoring and evaluation
+- Tool health checks
+- Trend scanning and analysis
+- System optimization recommendations
+- Performance monitoring and alerts
+
+Runs automatically on a schedule to ensure Nova maintains optimal performance.
+"""
+
+import asyncio
+import logging
+import time
+from datetime import datetime
+from typing import Dict, Any
+from pathlib import Path
+import json
+import schedule
+
+from utils.memory_manager import store_long, get_relevant_memories
+from utils.openai_wrapper import chat_completion
+
+logger = logging.getLogger(__name__)
+
+class GovernanceScheduler:
+    """
+    Scheduler for Nova's governance and self-optimization tasks.
+    """
+    
+    def __init__(self, config_path: str = "config/governance_config.json"):
+        self.config_path = Path(config_path)
+        self.config = self._load_config()
+        self.last_run = None
+        self.is_running = False
+        
+    def _load_config(self) -> Dict[str, Any]:
+        """Load governance configuration."""
+        default_config = {
+            "enabled": True,
+            "schedule": {
+                "niche_scoring": "02:00",  # 2 AM
+                "tool_health_check": "03:00",  # 3 AM
+                "trend_scanning": "04:00",  # 4 AM
+                "performance_analysis": "05:00",  # 5 AM
+                "system_optimization": "06:00"  # 6 AM
+            },
+            "retention_days": 30,
+            "alert_thresholds": {
+                "performance_degradation": 0.1,
+                "error_rate": 0.05,
+                "memory_usage": 0.8
+            }
+        }
+        
+        if self.config_path.exists():
+            try:
+                with open(self.config_path, 'r') as f:
+                    user_config = json.load(f)
+                    default_config.update(user_config)
+            except Exception as e:
+                logger.error(f"Failed to load governance config: {e}")
+        
+        return default_config
+    
+    def _save_config(self):
+        """Save governance configuration."""
+        try:
+            self.config_path.parent.mkdir(parents=True, exist_ok=True)
+            with open(self.config_path, 'w') as f:
+                json.dump(self.config, f, indent=2)
+        except Exception as e:
+            logger.error(f"Failed to save governance config: {e}")
+    
+    async def run_niche_scoring(self) -> Dict[str, Any]:
+        """Run niche scoring and evaluation."""
+        try:
+            logger.info("Starting niche scoring cycle")
+            
+            # Get recent performance data
+            recent_memories = get_relevant_memories("performance", "recent", limit=100)
+            
+            # Analyze niche performance
+            prompt = f"""
+            Analyze Nova's recent performance across different niches and content types.
+            Based on the following performance data, score each niche and provide recommendations:
+            
+            Performance Data:
+            {recent_memories[:2000]}
+            
+            Provide analysis in JSON format with:
+            1. Niche scores (0-100)
+            2. Performance trends
+            3. Optimization recommendations
+            4. Priority actions
+            """
+            
+            response = await chat_completion(prompt, temperature=0.3)
+            
+            try:
+                analysis = json.loads(response)
+            except json.JSONDecodeError:
+                analysis = {"error": "Failed to parse analysis", "raw_response": response}
+            
+            # Store results
+            store_long("governance", "niche_scoring", json.dumps(analysis))
+            
+            logger.info("Niche scoring completed")
+            return analysis
+            
+        except Exception as e:
+            logger.error(f"Niche scoring failed: {e}")
+            return {"error": str(e)}
+    
+    async def run_tool_health_check(self) -> Dict[str, Any]:
+        """Check health of all integrated tools and APIs."""
+        try:
+            logger.info("Starting tool health check")
+            
+            health_status = {
+                "timestamp": datetime.now().isoformat(),
+                "tools": {},
+                "overall_health": "healthy",
+                "issues": []
+            }
+            
+            # Check OpenAI API
+            try:
+                await chat_completion("Health check", temperature=0)
+                health_status["tools"]["openai"] = {
+                    "status": "healthy",
+                    "response_time": "normal"
+                }
+            except Exception as e:
+                health_status["tools"]["openai"] = {
+                    "status": "unhealthy",
+                    "error": str(e)
+                }
+                health_status["issues"].append(f"OpenAI API: {str(e)}")
+            
+            # Check memory systems
+            try:
+                from utils.memory_manager import get_global_memory_manager
+                mm = get_global_memory_manager()
+                memory_status = mm.get_memory_status()
+                health_status["tools"]["memory"] = {
+                    "status": "healthy" if memory_status["fully_available"] else "degraded",
+                    "details": memory_status
+                }
+                if not memory_status["fully_available"]:
+                    health_status["issues"].append("Memory system not fully available")
+            except Exception as e:
+                health_status["tools"]["memory"] = {
+                    "status": "unhealthy",
+                    "error": str(e)
+                }
+                health_status["issues"].append(f"Memory system: {str(e)}")
+            
+            # Check external integrations
+            integrations = [
+                ("notion", "notion_sync"),
+                ("sheets", "sheets_export"),
+                ("metricool", "metricool_post"),
+                ("convertkit", "convertkit_push"),
+                ("gumroad", "gumroad_sync")
+            ]
+            
+            for name, module in integrations:
+                try:
+                    __import__(module)
+                    health_status["tools"][name] = {"status": "available"}
+                except ImportError:
+                    health_status["tools"][name] = {"status": "not_installed"}
+                except Exception as e:
+                    health_status["tools"][name] = {"status": "error", "error": str(e)}
+                    health_status["issues"].append(f"{name}: {str(e)}")
+            
+            # Determine overall health
+            if health_status["issues"]:
+                health_status["overall_health"] = "degraded" if len(health_status["issues"]) < 3 else "unhealthy"
+            
+            # Store results
+            store_long("governance", "tool_health", json.dumps(health_status))
+            
+            logger.info(f"Tool health check completed: {health_status['overall_health']}")
+            return health_status
+            
+        except Exception as e:
+            logger.error(f"Tool health check failed: {e}")
+            return {"error": str(e)}
+    
+    async def run_trend_scanning(self) -> Dict[str, Any]:
+        """Scan for trends and market changes."""
+        try:
+            logger.info("Starting trend scanning")
+            
+            # Get recent content and performance data
+            recent_content = get_relevant_memories("content", "recent", limit=50)
+            recent_performance = get_relevant_memories("performance", "recent", limit=50)
+            
+            # Analyze trends
+            prompt = f"""
+            Analyze recent content performance and identify emerging trends.
+            Based on the following data, provide trend analysis:
+            
+            Recent Content:
+            {recent_content[:1500]}
+            
+            Recent Performance:
+            {recent_performance[:1500]}
+            
+            Provide analysis in JSON format with:
+            1. Emerging trends
+            2. Declining trends
+            3. Content recommendations
+            4. Platform opportunities
+            5. Risk factors
+            """
+            
+            response = await chat_completion(prompt, temperature=0.4)
+            
+            try:
+                trends = json.loads(response)
+            except json.JSONDecodeError:
+                trends = {"error": "Failed to parse trends", "raw_response": response}
+            
+            # Store results
+            store_long("governance", "trend_analysis", json.dumps(trends))
+            
+            logger.info("Trend scanning completed")
+            return trends
+            
+        except Exception as e:
+            logger.error(f"Trend scanning failed: {e}")
+            return {"error": str(e)}
+    
+    async def run_performance_analysis(self) -> Dict[str, Any]:
+        """Analyze system performance and identify optimization opportunities."""
+        try:
+            logger.info("Starting performance analysis")
+            
+            # Collect performance metrics
+            metrics = {
+                "response_time": await self._measure_response_time(),
+                "accuracy": await self._measure_accuracy(),
+                "user_satisfaction": await self._measure_user_satisfaction(),
+                "memory_efficiency": await self._measure_memory_efficiency(),
+                "error_rate": await self._measure_error_rate(),
+                "throughput": await self._measure_throughput()
+            }
+            
+            # Analyze performance trends
+            recent_metrics = get_relevant_memories("metrics", "recent", limit=20)
+            
+            prompt = f"""
+            Analyze Nova's performance metrics and identify optimization opportunities.
+            
+            Current Metrics:
+            {json.dumps(metrics, indent=2)}
+            
+            Recent Metrics History:
+            {recent_metrics[:1000]}
+            
+            Provide analysis in JSON format with:
+            1. Performance trends
+            2. Bottlenecks identified
+            3. Optimization recommendations
+            4. Priority improvements
+            5. Risk assessments
+            """
+            
+            response = await chat_completion(prompt, temperature=0.3)
+            
+            try:
+                analysis = json.loads(response)
+                analysis["current_metrics"] = metrics
+            except json.JSONDecodeError:
+                analysis = {
+                    "error": "Failed to parse analysis",
+                    "raw_response": response,
+                    "current_metrics": metrics
+                }
+            
+            # Store results
+            store_long("governance", "performance_analysis", json.dumps(analysis))
+            
+            logger.info("Performance analysis completed")
+            return analysis
+            
+        except Exception as e:
+            logger.error(f"Performance analysis failed: {e}")
+            return {"error": str(e)}
+    
+    async def run_system_optimization(self) -> Dict[str, Any]:
+        """Generate system optimization recommendations."""
+        try:
+            logger.info("Starting system optimization")
+            
+            # Get recent governance data
+            niche_data = get_relevant_memories("governance", "niche_scoring", limit=5)
+            health_data = get_relevant_memories("governance", "tool_health", limit=5)
+            trend_data = get_relevant_memories("governance", "trend_analysis", limit=5)
+            performance_data = get_relevant_memories("governance", "performance_analysis", limit=5)
+            
+            # Generate optimization recommendations
+            prompt = f"""
+            Based on recent governance data, generate system optimization recommendations.
+            
+            Niche Scoring:
+            {niche_data[:1000]}
+            
+            Tool Health:
+            {health_data[:1000]}
+            
+            Trend Analysis:
+            {trend_data[:1000]}
+            
+            Performance Analysis:
+            {performance_data[:1000]}
+            
+            Provide comprehensive optimization plan in JSON format with:
+            1. Immediate actions (next 24 hours)
+            2. Short-term improvements (next week)
+            3. Long-term optimizations (next month)
+            4. Resource allocation recommendations
+            5. Risk mitigation strategies
+            6. Success metrics
+            """
+            
+            response = await chat_completion(prompt, temperature=0.3)
+            
+            try:
+                optimization = json.loads(response)
+            except json.JSONDecodeError:
+                optimization = {"error": "Failed to parse optimization", "raw_response": response}
+            
+            # Store results
+            store_long("governance", "optimization_plan", json.dumps(optimization))
+            
+            logger.info("System optimization completed")
+            return optimization
+            
+        except Exception as e:
+            logger.error(f"System optimization failed: {e}")
+            return {"error": str(e)}
+    
+    async def _measure_response_time(self) -> float:
+        """Measure average response time."""
+        # Simulate measurement
+        return 0.65
+    
+    async def _measure_accuracy(self) -> float:
+        """Measure intent classification accuracy."""
+        # Simulate measurement
+        return 0.85
+    
+    async def _measure_user_satisfaction(self) -> float:
+        """Measure user satisfaction score."""
+        # Simulate measurement
+        return 0.78
+    
+    async def _measure_memory_efficiency(self) -> float:
+        """Measure memory usage efficiency."""
+        # Simulate measurement
+        return 0.92
+    
+    async def _measure_error_rate(self) -> float:
+        """Measure error rate."""
+        # Simulate measurement
+        return 0.12
+    
+    async def _measure_throughput(self) -> float:
+        """Measure requests per second throughput."""
+        # Simulate measurement
+        return 0.88
+    
+    async def run_full_governance_cycle(self) -> Dict[str, Any]:
+        """Run the complete governance cycle."""
+        if self.is_running:
+            logger.warning("Governance cycle already running")
+            return {"error": "Already running"}
+        
+        self.is_running = True
+        start_time = time.time()
+        
+        try:
+            logger.info("Starting full governance cycle")
+            
+            results = {
+                "cycle_start": datetime.now().isoformat(),
+                "tasks": {}
+            }
+            
+            # Run all governance tasks
+            tasks = [
+                ("niche_scoring", self.run_niche_scoring),
+                ("tool_health_check", self.run_tool_health_check),
+                ("trend_scanning", self.run_trend_scanning),
+                ("performance_analysis", self.run_performance_analysis),
+                ("system_optimization", self.run_system_optimization)
+            ]
+            
+            for task_name, task_func in tasks:
+                try:
+                    logger.info(f"Running {task_name}")
+                    task_result = await task_func()
+                    results["tasks"][task_name] = {
+                        "status": "completed",
+                        "result": task_result
+                    }
+                except Exception as e:
+                    logger.error(f"Task {task_name} failed: {e}")
+                    results["tasks"][task_name] = {
+                        "status": "failed",
+                        "error": str(e)
+                    }
+            
+            results["cycle_duration"] = time.time() - start_time
+            results["cycle_end"] = datetime.now().isoformat()
+            
+            # Store cycle results
+            store_long("governance", "cycle_results", json.dumps(results))
+            
+            self.last_run = datetime.now()
+            logger.info(f"Governance cycle completed in {results['cycle_duration']:.2f}s")
+            
+            return results
+            
+        except Exception as e:
+            logger.error(f"Governance cycle failed: {e}")
+            return {"error": str(e)}
+        finally:
+            self.is_running = False
+    
+    def schedule_governance_tasks(self):
+        """Schedule governance tasks."""
+        if not self.config.get("enabled", True):
+            logger.info("Governance scheduler disabled")
+            return
+        
+        schedule_config = self.config.get("schedule", {})
+        
+        # Schedule individual tasks
+        for task_name, time_str in schedule_config.items():
+            schedule.every().day.at(time_str).do(
+                lambda t=task_name: asyncio.create_task(self._run_scheduled_task(t))
+            )
+            logger.info(f"Scheduled {task_name} at {time_str}")
+        
+        # Schedule full cycle as backup
+        schedule.every().day.at("01:00").do(
+            lambda: asyncio.create_task(self.run_full_governance_cycle())
+        )
+        logger.info("Scheduled full governance cycle at 01:00")
+    
+    async def _run_scheduled_task(self, task_name: str):
+        """Run a scheduled governance task."""
+        try:
+            if task_name == "niche_scoring":
+                await self.run_niche_scoring()
+            elif task_name == "tool_health_check":
+                await self.run_tool_health_check()
+            elif task_name == "trend_scanning":
+                await self.run_trend_scanning()
+            elif task_name == "performance_analysis":
+                await self.run_performance_analysis()
+            elif task_name == "system_optimization":
+                await self.run_system_optimization()
+        except Exception as e:
+            logger.error(f"Scheduled task {task_name} failed: {e}")
+    
+    def run_scheduler(self):
+        """Run the scheduler loop."""
+        logger.info("Starting governance scheduler")
+        self.schedule_governance_tasks()
+        
+        while True:
+            try:
+                schedule.run_pending()
+                time.sleep(60)  # Check every minute
+            except KeyboardInterrupt:
+                logger.info("Governance scheduler stopped")
+                break
+            except Exception as e:
+                logger.error(f"Scheduler error: {e}")
+                time.sleep(60)
+
+# Global scheduler instance
+governance_scheduler = GovernanceScheduler()
+
+async def run_governance_cycle():
+    """Convenience function to run governance cycle."""
+    return await governance_scheduler.run_full_governance_cycle()
+
+def start_governance_scheduler():
+    """Start the governance scheduler."""
+    governance_scheduler.run_scheduler() ]]></file>
   <file path="./nova/hashtag_optimizer.py"><![CDATA[
 """Hashtag Optimisation Engine.
 
@@ -19883,6 +18877,1012 @@ def _save_competitor_analysis(analysis_results: List[Dict[str, Any]], insights: 
     with open(filepath, 'w') as f:
         json.dump(data, f, indent=2, default=str)
 ]]></file>
+  <file path="./nova_agent_v4_4/chat_api.py"><![CDATA[
+"""FastAPI chat endpoint with short‑ and long‑term memory wiring."""
+import os
+import uuid
+import json
+from fastapi import APIRouter, Response, Cookie
+from pydantic import BaseModel
+from .memory_router import assemble_prompt, store_short
+from typing import Union
+
+# Use the new OpenAI client wrapper that forces model translation
+try:
+    from nova.services.openai_client import chat_completion
+except ImportError:
+    # Fallback to direct OpenAI call if wrapper not available
+    from openai import OpenAI
+    client = OpenAI()
+    def chat_completion(messages, model=None, **kwargs):
+        return client.chat.completions.create(messages=messages, **kwargs)
+
+router = APIRouter(prefix="/api/v4", tags=["chat"])
+
+class ChatBody(BaseModel):
+    message: str
+
+@router.post("/chat")
+async def chat(body: ChatBody, session_id: Union[str, None] = Cookie(default=None)):
+    # 1 ▪ Session cookie
+    if not session_id:
+        session_id = str(uuid.uuid4())
+        set_cookie = True
+    else:
+        set_cookie = False
+
+    user_msg = body.message
+    prompt = assemble_prompt(session_id, user_msg)
+
+    # Use the wrapper that automatically translates model aliases
+    model_alias = os.getenv("OPENAI_MODEL", "gpt-4o")
+
+    # Call the LLM using the wrapper
+    completion = chat_completion(
+        messages=[{"role": "user", "content": prompt}],
+        model=model_alias,  # Will be automatically translated to official model ID
+    )
+
+    assistant_reply = completion.choices[0].message.content
+    store_short(session_id, user_msg, assistant_reply)
+
+    resp = {"reply": assistant_reply}
+    response = Response(content=json.dumps(resp), media_type="application/json")
+    if set_cookie:
+        response.set_cookie("session_id", session_id, httponly=True, samesite="Lax")
+    return response
+]]></file>
+  <file path="./nova_agent_v4_4/chat_buffer.py"><![CDATA[
+"""Store a rolling buffer of the last N turns per session in Redis."""
+from .redis_client import r
+MAX_TURNS = 20
+
+def get_short(session_id: str):
+    return r.lrange(f"hist:{session_id}", 0, -1)
+
+def store_short(session_id: str, user_msg: str, assistant_msg: str):
+    r.rpush(f"hist:{session_id}", f"USER: {user_msg}\nASSISTANT: {assistant_msg}\n")
+    r.ltrim(f"hist:{session_id}", -MAX_TURNS, -1)
+]]></file>
+  <file path="./nova_agent_v4_4/escalate.py"><![CDATA[
+import os
+import requests
+
+SLACK_WEBHOOK = os.getenv("SLACK_WEBHOOK")
+
+def escalate(session_id: str, transcript: list[str]):
+    if not SLACK_WEBHOOK:
+        return
+    payload = {"text": f"New escalation (session {session_id}):\n```\n" + "".join(transcript) + "\n```"}
+    requests.post(SLACK_WEBHOOK, json=payload, timeout=5)
+]]></file>
+  <file path="./nova_agent_v4_4/faq_search.py"><![CDATA[
+"""Dummy FAQ search—replace with real implementation."""
+from typing import Union
+
+FAQS = {
+    "pricing": "Our plans start at $19/month.",
+    "support": "You can reach support at support@example.com.",
+}
+
+def faq_search(query: str) -> Union[str, None]:
+    for key, answer in FAQS.items():
+        if key in query.lower():
+            return answer
+    return None
+]]></file>
+  <file path="./nova_agent_v4_4/memory_router.py"><![CDATA[
+"""Glue code for short‑term (Redis) and long‑term (Weaviate/Chroma) memory."""
+from .chat_buffer import get_short, store_short
+from .vector_store import retrieve_relevant
+
+def assemble_prompt(session_id: str, user_msg: str) -> str:
+    snippets = retrieve_relevant(session_id, user_msg)
+    history = get_short(session_id)
+    return (
+        "SYSTEM: You are a helpful support bot.\n"
+        + "".join(snippets)
+        + "".join(history)
+        + f"USER: {user_msg}\nASSISTANT:"
+    )
+
+__all__ = ["assemble_prompt", "store_short"]
+]]></file>
+  <file path="./nova_agent_v4_4/orders.py"><![CDATA[
+"""Dummy order lookup stub."""
+from typing import Union
+
+def lookup_order(order_id: str) -> Union[dict, None]:
+    # Replace with real DB/API call
+    if order_id == "TEST123":
+        return {"status": "shipped", "eta": "2025-07-02"}
+    return None
+]]></file>
+  <file path="./nova_agent_v4_4/redis_client.py"><![CDATA[
+import os
+import redis
+
+redis_url = os.getenv("REDIS_URL", "redis://localhost:6379/0")
+r = redis.Redis.from_url(redis_url, decode_responses=True)
+]]></file>
+  <file path="./nova_agent_v4_4/should_remember.py"><![CDATA[
+# Use the new OpenAI client wrapper that forces model translation
+try:
+    from nova.services.openai_client import chat_completion
+except ImportError:
+    # Fallback to direct OpenAI call if wrapper not available
+    from openai import OpenAI
+    client = OpenAI()
+    def chat_completion(messages, model=None, **kwargs):
+        return client.chat.completions.create(messages=messages, **kwargs)
+
+def should_remember(user_message: str) -> bool:
+    # Use the wrapper that automatically translates model aliases
+    completion = chat_completion(
+        messages=[
+            {"role": "system", "content": "Return 'yes' if the message should be stored long‑term."},
+            {"role": "user", "content": user_message},
+        ],
+        model="gpt-4o-mini",  # Will be automatically translated to "gpt-4o"
+    )
+    return completion.choices[0].message.content.lower().startswith("yes")
+]]></file>
+  <file path="./nova_agent_v4_4/suggest_faq.py"><![CDATA[
+import os
+import smtplib
+from redis_client import r
+
+def run_daily():
+    for key in r.keys("query:*"):
+        count = int(r.get(key))
+        if count >= 3:
+            q = key.split(":",1)[1]
+            message = f"Consider adding to FAQ: {q} (asked {count}× in 24h)."
+            send_email("FAQ Suggestion", message)
+
+def send_email(subject: str, body: str):
+    to_addr = os.getenv("ADMIN_EMAIL")
+    if not to_addr:
+        return
+    msg = f"Subject: {subject}\n\n{body}"
+    with smtplib.SMTP("localhost") as s:
+        s.sendmail("nova-agent@example.com", to_addr, msg)
+]]></file>
+  <file path="./nova_agent_v4_4/summarise.py"><![CDATA[
+from redis_client import r
+
+# Use the new OpenAI client wrapper that forces model translation
+try:
+    from nova.services.openai_client import chat_completion
+except ImportError:
+    # Fallback to direct OpenAI call if wrapper not available
+    from openai import OpenAI
+    client = OpenAI()
+    def chat_completion(messages, model=None, **kwargs):
+        return client.chat.completions.create(messages=messages, **kwargs)
+
+def summarise_if_needed(session_id: str):
+    key = f"hist:{session_id}"
+    turns = r.lrange(key, 0, -1)
+    joined = "".join(turns)
+    if len(joined) < 8000:
+        return
+    
+    # Use the wrapper that automatically translates model aliases
+    completion = chat_completion(
+        messages=[
+            {"role": "system", "content": "Summarise the following chat as one sentence."},
+            {"role": "user", "content": joined},
+        ],
+        model="gpt-4o-mini",  # Will be automatically translated to "gpt-4o"
+    )
+    summary = completion.choices[0].message.content.strip()
+    r.set(f"summary:{session_id}", summary)
+    r.delete(key)
+]]></file>
+  <file path="./nova_agent_v4_4/vector_store.py"><![CDATA[
+"""Wrap calls to Weaviate or fallback Chroma for long‑term memory."""
+import os
+import weaviate
+from openai import OpenAI
+
+# Initialize OpenAI client only if API key is available
+client = None
+if os.getenv("OPENAI_API_KEY"):
+    try:
+        client = OpenAI()
+    except Exception:
+        client = None
+
+WEAVIATE_URL = os.getenv("WEAVIATE_URL")
+WEAVIATE_API_KEY = os.getenv("WEAVIATE_API_KEY")
+
+# Fix for Weaviate v4: use WeaviateClient instead of Client
+if WEAVIATE_URL and WEAVIATE_API_KEY:
+    weaviate_client = weaviate.WeaviateClient(
+        connection_params=weaviate.connect.ConnectionParams.from_url(
+            WEAVIATE_URL,
+            grpc_port=50051,  # Default gRPC port
+            auth_credentials=weaviate.auth.AuthApiKey(WEAVIATE_API_KEY)
+        )
+    )
+    CLASS = "ChatMemory"
+else:
+    weaviate_client = None
+
+def store_long(session_id: str, text: str):
+    if not WEAVIATE_URL or not client or not weaviate_client:
+        return
+    try:
+        vector = client.embeddings.create(input=[text], model="text-embedding-3-small").data[0].embedding
+        data_obj = {"session_id": session_id, "text": text}
+        # Fix for Weaviate v4: use new API
+        weaviate_client.collections.get(CLASS).data.insert(data_obj, vector=vector)
+    except Exception:
+        # Silently fail if embedding creation fails
+        pass
+
+def retrieve_relevant(session_id: str, query: str, k: int = 3):
+    if not WEAVIATE_URL or not client or not weaviate_client:
+        return []
+    try:
+        vector = client.embeddings.create(input=[query], model="text-embedding-3-small").data[0].embedding
+        # Fix for Weaviate v4: use new API
+        resp = weaviate_client.collections.get(CLASS).query.near_vector(
+            vector=vector,
+            limit=k,
+            return_properties=["text", "session_id"]
+        )
+        return [obj.properties["text"] for obj in resp.objects if obj.properties.get("session_id") == session_id]
+    except Exception:
+        # Return empty list if embedding creation fails
+        return []
+]]></file>
+  <file path="./nova_apex_loop.py"><![CDATA[
+# Apex loop engine
+]]></file>
+  <file path="./nova_bootloader.py"><![CDATA[
+import json
+from pathlib import Path
+
+def load_nova_directive():
+    path = Path("nova_master_prompt_v2.json")
+    if not path.exists():
+        return "Nova directive file not found."
+
+    with open(path, "r") as f:
+        data = json.load(f)
+
+    # Use the global memory manager
+    try:
+        from utils.memory_manager import get_global_memory_manager
+        memory_manager = get_global_memory_manager()
+        memory_manager.add_long_term(
+            namespace="system_directives",
+            key="nova_master_prompt",
+            content=data.get("content", ""),
+            metadata={"version": "v1.0", "source": "bootloader"}
+        )
+        return "Nova directive loaded successfully using global memory manager."
+    except ImportError as e:
+        return f"Failed to import memory manager: {e}"
+    except Exception as e:
+        return f"Failed to load Nova directive: {e}"]]></file>
+  <file path="./nova_console.py"><![CDATA[
+# Natural language command shell interface
+]]></file>
+  <file path="./nova_core/__init__.py"><![CDATA[
+"""
+Nova Core - Centralized core functionality for Nova Agent.
+
+This package contains essential components that are used throughout
+the Nova Agent system, including the model registry, memory management,
+and other core utilities.
+"""
+
+__version__ = "1.0.0"
+__author__ = "Nova Agent Team"
+
+# Import core modules for easy access
+try:
+    from .model_registry import (
+        resolve,
+        get_available_aliases,
+        get_official_models,
+        is_valid_alias,
+        get_default_model,
+        MODEL_MAP
+    )
+except ImportError:
+    # Handle case where model_registry is not available
+    pass
+
+__all__ = [
+    "resolve",
+    "get_available_aliases", 
+    "get_official_models",
+    "is_valid_alias",
+    "get_default_model",
+    "MODEL_MAP"
+] ]]></file>
+  <file path="./nova_core/model_registry.py"><![CDATA[
+"""Single‑source registry for OpenAI model identifiers.
+
+Internal aliases (e.g. "gpt‑4o‑mini") are translated to official model names
+before an API request is issued so that *only* valid identifiers reach OpenAI.
+"""
+from enum import Enum
+from typing import Optional
+
+
+class Model(str, Enum):
+    # ── Official public models ────────────────────────────────────────────────
+    GPT_4 = "gpt-4o"
+    GPT_3_5_TURBO = "gpt-3.5-turbo"
+
+    # ── Internal shorthands / legacy aliases ─────────────────────────────────
+    GPT_4_MINI = "gpt-4o-mini"          # maps → GPT_4
+    GPT_4_VISION = "gpt-4o-vision"      # maps → GPT_4
+    O3 = "o3"                           # maps → GPT_3_5_TURBO
+    O3_PRO = "o3-pro"                   # maps → GPT_4
+
+    DEFAULT = GPT_4
+
+
+_ALIAS_TO_OFFICIAL = {
+    Model.GPT_4_MINI: Model.GPT_4,
+    Model.GPT_4_VISION: Model.GPT_4,
+    Model.O3: Model.GPT_3_5_TURBO,
+    Model.O3_PRO: Model.GPT_4,
+}
+
+
+def to_official(name: Optional[str] = None) -> str:
+    """Return an official OpenAI model name for *any* supported alias."""
+    if not name:
+        return Model.DEFAULT.value
+    
+    # Strip whitespace
+    name = name.strip()
+    
+    if not name:
+        return Model.DEFAULT.value
+    
+    try:
+        alias = Model(name)
+    except ValueError:  # unknown → assume caller supplied a valid public name
+        return name
+    return _ALIAS_TO_OFFICIAL.get(alias, alias).value
+
+
+# Backward compatibility functions
+def resolve(alias: Optional[str] = None) -> str:
+    """Convert a friendly alias to the exact OpenAI model name."""
+    return to_official(alias)
+
+
+def get_default_model() -> str:
+    """Get the default model ID."""
+    return Model.DEFAULT.value
+
+
+def get_available_aliases() -> list[str]:
+    """Get list of all available model aliases."""
+    return [model.value for model in Model]
+
+
+def get_official_models() -> list[str]:
+    """Get list of all official OpenAI model IDs used."""
+    return list(set(_ALIAS_TO_OFFICIAL.values()))
+
+
+def is_valid_alias(alias: str) -> bool:
+    """Check if an alias is valid."""
+    try:
+        Model(alias)
+        return True
+    except ValueError:
+        return False ]]></file>
+  <file path="./nova_dashboard_gui.py"><![CDATA[
+# GUI Dashboard for live override, A/B control, and funnel assignments
+]]></file>
+  <file path="./nova_dispatcher.py"><![CDATA[
+
+import asyncio
+import random
+
+# Task limits
+MAX_CONCURRENT_TASKS = 5
+RETRY_LIMIT = 3
+RETRY_DELAY = 5  # seconds
+
+semaphore = asyncio.Semaphore(MAX_CONCURRENT_TASKS)
+
+async def generate_video(prompt, platform):
+    await asyncio.sleep(random.uniform(0.5, 1.5))  # simulate generation time
+    if random.random() < 0.1:  # simulate 10% failure rate
+        raise Exception(f"Video generation failed for {platform}")
+    print(f"[DISPATCHER] Generated video for {platform} with prompt: {prompt}")
+    return f"{platform}_video.mp4"
+
+async def upload_video(file_path, platform):
+    await asyncio.sleep(random.uniform(0.5, 1.5))  # simulate upload time
+    if random.random() < 0.1:  # simulate 10% failure rate
+        raise Exception(f"Upload failed for {platform}")
+    print(f"[DISPATCHER] Uploaded {file_path} to {platform}")
+
+async def retry_task(coro, *args):
+    attempt = 0
+    while attempt < RETRY_LIMIT:
+        try:
+            return await coro(*args)
+        except Exception as e:
+            attempt += 1
+            print(f"[RETRY] Attempt {attempt} failed: {e}")
+            if attempt < RETRY_LIMIT:
+                await asyncio.sleep(RETRY_DELAY)
+            else:
+                print(f"[FAIL] Task permanently failed: {coro.__name__} for args {args}")
+
+async def process_task(prompt, platforms):
+    async def handle_platform(platform):
+        async with semaphore:
+            video = await retry_task(generate_video, prompt, platform)
+            if video:
+                await retry_task(upload_video, video, platform)
+
+    await asyncio.gather(*(handle_platform(p) for p in platforms))
+
+# Example usage for testing
+# asyncio.run(process_task("Motivational Quote", ["TikTok", "YouTube", "Instagram", "Facebook", "LinkedIn"]))
+]]></file>
+  <file path="./nova_loop.py"><![CDATA[
+from launch_ready import launch_setup
+launch_setup()
+
+import time
+import smtplib
+import asyncio
+from email.message import EmailMessage
+
+from nova_bootloader import load_nova_directive
+from nova_selftest import run_nova_selftest
+
+from agents.promptgen import generate_prompt_variants
+from agents.rpmwatcher import check_rpm_drops
+from agents.avatarops import adjust_avatars
+
+from rpm_heatmap import generate_rpm_heatmap
+from retargeting_optimizer import optimize_cta
+
+# Autonomous Research System
+from nova.autonomous_research import run_autonomous_research
+from nova.research_dashboard import get_research_summary
+
+from notion_sync import sync_to_notion
+from sheets_export import export_to_google_sheet
+from metricool_post import schedule_post_metricool
+from convertkit_push import push_to_convertkit
+from gumroad_sync import log_sale_to_gumroad
+
+# Enhanced email configuration with security validation
+import os
+
+def get_email_config():
+    """Get email configuration with security validation."""
+    email_sender = os.getenv("EMAIL_SENDER")
+    email_password = os.getenv("EMAIL_PASSWORD")
+    email_receiver = os.getenv("EMAIL_RECEIVER")
+    
+    # Check for hardcoded values
+    if email_password in ["your_app_password_here", "password", "123456"]:
+        raise RuntimeError(
+            "EMAIL_PASSWORD contains forbidden value. "
+            "Please set a valid email app password in the environment."
+        )
+    
+    # Validate email format
+    if email_sender and "@" not in email_sender:
+        raise RuntimeError(f"Invalid email format for EMAIL_SENDER: {email_sender}")
+    
+    if email_receiver and "@" not in email_receiver:
+        raise RuntimeError(f"Invalid email format for EMAIL_RECEIVER: {email_receiver}")
+    
+    return email_sender, email_password, email_receiver
+
+# Get email configuration with validation
+EMAIL_SENDER, EMAIL_PASSWORD, EMAIL_RECEIVER = get_email_config()
+SMTP_SERVER = "smtp.gmail.com"
+SMTP_PORT = 587
+
+def send_email_log(subject, body):
+    """Send email log with enhanced security validation."""
+    # Check if email credentials are properly configured
+    if not EMAIL_SENDER or not EMAIL_PASSWORD or not EMAIL_RECEIVER:
+        print("⚠️  Email not configured - skipping email log")
+        return
+    
+    try:
+        msg = EmailMessage()
+        msg["From"] = EMAIL_SENDER
+        msg["To"] = EMAIL_RECEIVER
+        msg["Subject"] = subject
+        msg.set_content(body)
+
+        with smtplib.SMTP(SMTP_SERVER, SMTP_PORT) as smtp:
+            smtp.starttls()
+            smtp.login(EMAIL_SENDER, EMAIL_PASSWORD)
+            smtp.send_message(msg)
+        
+        print(f"✅ Email log sent successfully to {EMAIL_RECEIVER}")
+        
+    except Exception as e:
+        print(f"❌ Email log failed: {str(e)}")
+        # Don't fail the entire loop due to email issues
+
+def run_nova_loop():
+    report = []
+
+    report.append("🔁 [Nova] Booting...")
+    report.append(load_nova_directive())
+    report.append(run_nova_selftest())
+
+    report.append("\n🧠 Running Intelligence Agents...")
+    generate_prompt_variants()
+    check_rpm_drops()
+    adjust_avatars()
+
+    report.append("\n💰 Running Monetization Modules...")
+    generate_rpm_heatmap()
+    optimize_cta()
+
+    report.append("\n🔬 Running Autonomous Research...")
+    try:
+        # Run autonomous research cycle
+        research_result = asyncio.run(run_autonomous_research())
+        if research_result and "error" not in research_result:
+            report.append(f"✅ Research cycle completed: {research_result.get('experiments_completed', 0)} experiments")
+            
+            # Get research summary
+            research_summary = get_research_summary()
+            if research_summary and "error" not in research_summary:
+                success_rate = research_summary.get("success_rate", 0)
+                avg_improvement = research_summary.get("average_improvement", 0)
+                report.append(f"📊 Research stats: {success_rate:.1f}% success rate, {avg_improvement:.1f}% avg improvement")
+        else:
+            report.append(f"❌ Research cycle failed: {research_result.get('error', 'Unknown error')}")
+    except Exception as e:
+        report.append(f"❌ Research error: {str(e)}")
+
+    report.append("\n🔗 Syncing with External Platforms...")
+    
+    # Enhanced integration handling with environment variable validation
+    try:
+        # Notion Integration
+        notion_token = os.getenv("NOTION_TOKEN") or os.getenv("NOTION_API_KEY")
+        notion_db_id = os.getenv("NOTION_DATABASE_ID")
+        if notion_token and notion_db_id:
+            try:
+                sync_to_notion(notion_db_id, {"Name": {"title": [{"text": {"content": "Nova Sync"}}]}}, notion_token)
+                report.append("✅ Notion sync completed")
+            except Exception as e:
+                report.append(f"❌ Notion sync error: {str(e)}")
+        else:
+            report.append("ℹ️  Notion integration not configured; skipping")
+        
+        # Google Sheets Export
+        try:
+            export_to_google_sheet("Nova Sheet", [["PromptID", "RPM", "Retention"]])
+            report.append("✅ Google Sheets export completed")
+        except Exception as e:
+            report.append(f"❌ Google Sheets export error: {str(e)}")
+        
+        # Metricool Integration
+        metricool_key = os.getenv("METRICOOL_API_KEY")
+        metricool_account = os.getenv("METRICOOL_ACCOUNT_ID")
+        if metricool_key and metricool_account:
+            try:
+                schedule_post_metricool(metricool_key, metricool_account, "Scheduled Content", "2025-07-01T10:00:00Z")
+                report.append("✅ Metricool post scheduled")
+            except Exception as e:
+                report.append(f"❌ Metricool error: {str(e)}")
+        else:
+            report.append("ℹ️  Metricool integration not configured; skipping")
+        
+        # ConvertKit Integration
+        convertkit_key = os.getenv("CONVERTKIT_API_KEY")
+        convertkit_form = os.getenv("CONVERTKIT_FORM_ID")
+        if convertkit_key and convertkit_form:
+            try:
+                push_to_convertkit(convertkit_key, convertkit_form, "user@example.com")
+                report.append("✅ ConvertKit push completed")
+            except Exception as e:
+                report.append(f"❌ ConvertKit error: {str(e)}")
+        else:
+            report.append("ℹ️  ConvertKit integration not configured; skipping")
+        
+        # Gumroad Integration
+        gumroad_key = os.getenv("GUMROAD_API_KEY")
+        gumroad_product = os.getenv("GUMROAD_PRODUCT_ID")
+        if gumroad_key and gumroad_product:
+            try:
+                log_sale_to_gumroad(gumroad_key, gumroad_product)
+                report.append("✅ Gumroad sale logged")
+            except Exception as e:
+                report.append(f"❌ Gumroad error: {str(e)}")
+        else:
+            report.append("ℹ️  Gumroad integration not configured; skipping")
+            
+    except Exception as e:
+        report.append(f"❌ Integration error: {str(e)}")
+
+    report.append("\n✅ Nova Cycle Complete — Sleeping for 4 hours...")
+
+    send_email_log("✅ Nova Agent Cycle Complete", "\n".join(report))
+    time.sleep(4 * 60 * 60)
+
+if __name__ == "__main__":
+    while True:
+        run_nova_loop()
+
+# === Auto-run Weaviate Memory Sync ===
+try:
+    from weaviate_memory_sync import embed_memory_to_weaviate
+    embed_memory_to_weaviate("nova_memory_log_test.json")
+except Exception as e:
+    print("⚠️ Memory sync failed:", e)
+# === End Auto-sync ===
+
+
+from agent_spawner import AgentSpawner
+
+def simulate_agent_spawn_if_enabled():
+    if os.getenv("ENABLE_SIMULATION", "false").lower() == "true":
+        from datetime import datetime
+        current_hour = datetime.utcnow().hour
+        if current_hour % 12 == 0:
+            spawner = AgentSpawner()
+            spawner.spawn_agent(
+                role_description="RPM Diagnostic Simulator",
+                tools=[],
+                goal="Analyze engagement drops in simulated avatar"
+            )
+simulate_agent_spawn_if_enabled()
+
+
+# In your nova_loop.py
+from prompt_web_hook import process_prompt_for_crawl
+
+def handle_loop():
+    test_prompts = ["Check this: https://en.wikipedia.org/wiki/Artificial_intelligence"]
+    for prompt in test_prompts:
+        crawl_data = process_prompt_for_crawl(prompt)
+        if crawl_data:
+            print("[Loop] Deep web results found.")
+
+
+# Autonomous Crawler Trigger Logic (Nova Activated)
+import re
+
+AUTO_CRAWL_ENABLED = True  # Can be overridden by .env in real deployment
+
+def detect_urls(text):
+    return re.findall(r'https?://\S+', text)
+
+def autonomous_web_crawl(memory_prompts):
+    if not AUTO_CRAWL_ENABLED:
+        print("[Nova] Autonomous crawling is disabled.")
+        return []
+    for prompt in memory_prompts:
+        urls = detect_urls(prompt)
+        for url in urls:
+            print(f"[Nova] Auto-crawling detected URL: {url}")
+            result = process_prompt_for_crawl(url)
+            if result:
+                print(f"[Nova] Crawled and processed {len(result)} pages.")
+
+# Run Crawl Test Suite on Startup
+from crawl_test_runner import run_crawl_test_suite
+
+if AUTO_CRAWL_ENABLED:
+    print("[Nova] Running web crawl test suite...")
+    logs = run_crawl_test_suite()
+    with open("startup_crawl_log.json", "w") as log_file:
+        import json
+        json.dump(logs, log_file)
+
+# After autonomous crawl logic
+from summarizer_and_memory import summarize_text, store_summary_to_memory
+if AUTO_CRAWL_ENABLED and 'result' in locals():
+    for entry in result:
+        summary = summarize_text(entry['text'])
+        store_summary_to_memory(entry['url'], summary)
+
+# Optional: Auto-reflection trigger
+from reflection_loop import reflect_on_memory
+
+try:
+    reflect_on_memory()
+except Exception as e:
+    print(f"[Reflect] Skipped due to error: {e}")
+
+# Simulate A/B test prompt use and monetization funnel trigger
+from prompt_ab_test import PromptABTest
+from funnel_log import log_monetization_event
+
+ab = PromptABTest()
+ab.create_test("welcome_prompt", ["Welcome to Nova!", "Start your AI journey now."])
+selected = ab.run_test("welcome_prompt")
+print(f"[A/B Test] Served prompt: {selected}")
+
+log_monetization_event(source="welcome_prompt", revenue=0.12, event_type="click")
+
+# Tag current prompt version to log
+prompt_version = 'v2'
+print(f"[Nova Loop] Operating under prompt version: {prompt_version}")
+
+# Log active prompt version
+prompt_version = "v2"
+print(f"[Nova Loop] Operating under prompt version: {prompt_version}")
+with open("loop_meta_log.json", "a") as meta_log:
+    import json
+    meta_log.write(json.dumps({"timestamp": __import__('datetime').datetime.utcnow().isoformat(), "prompt_version": prompt_version}) + "\n")
+
+
+# Injected: Scheduled Trend Parsing + RPM Matching
+import datetime
+from backend.research.trend_merger import match_trends_to_prompts
+
+def run_daily_trend_merge():
+    today = datetime.date.today().isoformat()
+    try:
+        matches = match_trends_to_prompts(
+            trend_data_path=f"research_insights/fitfuel/gwi_fitness_latam_{today}.json",
+            rpm_log_path="ab_test_log.json"
+        )
+        with open("matched_trends_to_rpm.json", "w") as f_out:
+            json.dump(matches, f_out, indent=2)
+    except Exception as e:
+        print("Trend merge failed:", e)
+
+# Trigger daily at 5AM in heartbeat loop
+if datetime.datetime.now().hour == 5:
+    run_daily_trend_merge()
+
+
+# --- Injected: Recurring Health Check on Boot + Post Loop ---
+from backend.diagnostics.loop_health_checker import run_loop_health_check
+
+# Run once on boot
+run_loop_health_check(stage='boot')
+
+# Run again at end of each loop cycle
+def end_of_loop_hook():
+    run_loop_health_check(stage='post-loop')
+
+
+# === Cron Trigger: Daily Memory Export to S3 or GDrive ===
+import datetime
+from memory_export_to_s3 import export_logs_to_s3
+
+def try_export_memory():
+    current_hour = datetime.datetime.now().hour
+    if current_hour == 18:  # 6PM export
+        bucket = os.getenv("S3_BUCKET")
+        key = os.getenv("S3_ACCESS_KEY")
+        secret = os.getenv("S3_SECRET_KEY")
+        if bucket and key and secret:
+            export_logs_to_s3(bucket, key, secret)
+        else:
+            try:
+                from memory_export_to_drive import export_logs_to_gdrive
+                export_logs_to_gdrive()
+            except:
+                print("No valid cloud export target configured.")
+
+try_export_memory()
+
+
+
+# === Nova v2.5 Evolution Modules ===
+from avatar_reasoner import reason_avatar_behavior
+from api_guardian import monitor_api_response
+from crew_coordinator import delegate_task
+from revenue_dashboard import get_revenue_summary
+from post_analytics_collector import collect_analytics
+
+def run_evolution_modules():
+    print("[Nova v2.5] Running avatar reasoning...")
+    print(reason_avatar_behavior({'name': 'NovaBot'}))
+
+    print("[Nova v2.5] Monitoring API response...")
+    result = monitor_api_response(type('obj', (object,), {'status_code': 500})())
+    print(f"API Guardian result: {result}")
+
+    print("[Nova v2.5] Delegating task to sub-agent...")
+    print(delegate_task('agent_001', 'Post to TikTok'))
+
+    print("[Nova v2.5] Collecting revenue data...")
+    print(get_revenue_summary())
+
+    print("[Nova v2.5] Pulling post analytics...")
+    print(collect_analytics('YouTube', 'abc123'))
+
+# Inject into loop (you can call run_evolution_modules inside your actual loop logic)
+if __name__ == "__main__":
+    print("[Nova] Starting loop...")
+    run_evolution_modules()
+
+
+# === Nova Diagnostic Logger Hook ===
+import json
+from datetime import datetime
+
+def log_diagnostic(message):
+    log_entry = {"timestamp": datetime.now().isoformat(), "message": message}
+    diag_file = os.path.join("diagnostics", "loop_health_report.json")
+    os.makedirs(os.path.dirname(diag_file), exist_ok=True)
+    try:
+        if os.path.exists(diag_file):
+            with open(diag_file, 'r') as f:
+                data = json.load(f)
+        else:
+            data = {"logs": []}
+        data["logs"].append(log_entry)
+        with open(diag_file, 'w') as f:
+            json.dump(data, f, indent=2)
+    except Exception as e:
+        print(f"Error writing diagnostic log: {e}")
+
+# Log start of loop for visibility
+log_diagnostic("Heartbeat loop triggered")
+
+
+# === Nova v2.6 Neural Crew Logic ===
+from crew_brain import crew_brain_loop
+from crew_agent import run_agent_role
+from crew_voter import vote_on_strategy
+from analytics_model import predict_engagement
+from roi_mapper import map_post_to_roi
+from time_slot_predictor import get_best_post_time
+from loop_intelligence_core import analyze_last_loop
+from crew_memory_reflector import record_crew_memory
+
+def run_neural_crew():
+    crew_brain_loop()
+    print(run_agent_role('strategist', 'optimize RPM'))
+    print(f"Strategy vote result: {vote_on_strategy(['Boost Morning', 'Evening Prime'])}")
+    print(f"Engagement prediction: {predict_engagement('post_abc')}")
+    print(f"ROI mapping: {map_post_to_roi('post_abc')}")
+    print(f"Best time to post on TikTok: {get_best_post_time('TikTok')}")
+    print(analyze_last_loop('Previous log sample'))
+    record_crew_memory('Neural loop cycle completed')
+
+# Call inside main loop
+run_neural_crew()
+
+# --- MODEL ROTATION START ---
+from utils.model_router import (
+    get_active_model_config,
+    set_active_model,
+    detect_model_switch_command,
+    detect_task_based_model
+)
+
+def route_model_from_message(message):
+    override = detect_model_switch_command(message)
+    if override:
+        set_active_model(override)
+        print(f"[Nova Agent] Model manually set to: {override}")
+    else:
+        suggested = detect_task_based_model(message)
+        if suggested:
+            set_active_model(suggested)
+            print(f"[Nova Agent] Model auto-selected: {suggested}")
+    return get_active_model_config()
+# --- MODEL ROTATION END ---
+]]></file>
+  <file path="./nova_loop_research.py"><![CDATA[
+
+# Daily scan for new CSVs in research_insights/
+import os
+import datetime
+
+def scan_research_csvs(brand_folder="research_insights"):
+    today = datetime.date.today().isoformat()
+    new_files = []
+    for brand in os.listdir(brand_folder):
+        brand_path = os.path.join(brand_folder, brand)
+        if os.path.isdir(brand_path):
+            for file in os.listdir(brand_path):
+                if file.endswith(".csv") and today in file:
+                    new_files.append(os.path.join(brand_path, file))
+    return new_files
+]]></file>
+  <file path="./nova_module_loader.py"><![CDATA[
+
+import importlib
+import os
+
+MODULES = {}
+
+def load_all_modules():
+    module_dir = "modules"
+    for filename in os.listdir(module_dir):
+        if filename.endswith(".py"):
+            mod_name = filename[:-3]
+            mod_path = f"{module_dir}.{mod_name}"
+            try:
+                MODULES[mod_name] = importlib.import_module(mod_path)
+                print(f"[ModuleLoader] Loaded: {mod_name}")
+            except Exception as e:
+                print(f"[ModuleLoader] Failed to load {mod_name}: {e}")
+
+def get_module(name):
+    return MODULES.get(name)
+]]></file>
+  <file path="./nova_supervisor.py"><![CDATA[
+
+# nova_supervisor.py
+import functools
+
+def require_nova_approval(func):
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+        approved = True  # Future: load approval logic from a config/memory reflection
+        if not approved:
+            raise PermissionError("Nova has not approved this action.")
+        return func(*args, **kwargs)
+    return wrapper
+
+# --- Apex v4 meta-agents injection ---
+try:
+    from meta_reflection_engine import run_meta_reflection
+    from diagnostic_repair_agent import run_diagnostic_repair
+    from prompt_feedback_loop import adapt_prompts
+    from agent_delegator import delegator_loop
+    import threading
+    import time
+
+    def _bg(target, interval):
+        def loop():
+            while True:
+                try:
+                    target()
+                except Exception as exc:
+                    print('[Apex meta-agent] Error in', target.__name__, exc)
+                time.sleep(interval)
+        threading.Thread(target=loop, daemon=True).start()
+
+    _bg(run_meta_reflection, 1800)  # 30 min
+    _bg(run_diagnostic_repair, 300) # 5 min
+    _bg(adapt_prompts, 900)         # 15 min
+    _bg(delegator_loop, 60)         # 1 min
+    print('[Apex] Meta-agents started')
+except Exception as e:
+    print('[Apex] Meta-agent injection failed:', e)
+# --- End Apex patch ---
+]]></file>
+  <file path="./nova_terminal.py"><![CDATA[
+
+def nova_terminal():
+    print("Nova Terminal Ready. Commands:")
+    print("1: Reflect")
+    print("2: Load New Modules")
+    print("3: Run Diagnostics")
+    choice = input("Choose command: ")
+    if choice == "1":
+        from reflection_loop import run_reflection_loop
+        run_reflection_loop()
+    elif choice == "2":
+        from nova_module_loader import dynamic_module_loader
+        dynamic_module_loader()
+    elif choice == "3":
+        from nova_selftest import run_nova_selftest
+        run_nova_selftest()
+    else:
+        print("Unknown command.")
+]]></file>
   <file path="./payments/stripe_webhook.py"><![CDATA[
 
 import os
@@ -20975,68 +20975,6 @@ def get_revenue_summary():
 def map_post_to_roi(post_id):
     return {'post_id': post_id, 'roi': 12.5}
 ]]></file>
-  <file path="./routes_dashboard.py"><![CDATA[
-
-from fastapi import APIRouter
-from fastapi.responses import FileResponse, JSONResponse
-import os
-import json
-
-router = APIRouter()
-
-USAGE_FILE = "model_usage_log.json"
-MODELS_FILE = "models.json"
-
-@router.get("/dashboard")
-async def dashboard_page():
-    return FileResponse("dashboard.html")
-
-@router.get("/dashboard/data")
-async def dashboard_data():
-    if not os.path.exists(USAGE_FILE):
-        return JSONResponse({})
-    with open(USAGE_FILE, "r") as f:
-        usage = json.load(f)
-    with open(MODELS_FILE, "r") as f:
-        models = json.load(f)["models"]
-    for name in usage:
-        usage[name]["cost"] = models.get(name, {}).get("cost", 0)
-    return JSONResponse(usage)
-]]></file>
-  <file path="./routes_module_toggle.py"><![CDATA[
-
-from fastapi import APIRouter, Request
-from fastapi.responses import JSONResponse
-import json
-import os
-
-router = APIRouter()
-MODULE_STATUS_FILE = "module_status.json"
-
-def load_status():
-    if os.path.exists(MODULE_STATUS_FILE):
-        with open(MODULE_STATUS_FILE, "r") as f:
-            return json.load(f)
-    return {}
-
-def save_status(status):
-    with open(MODULE_STATUS_FILE, "w") as f:
-        json.dump(status, f, indent=2)
-
-@router.get("/api/modules")
-async def get_module_status():
-    return JSONResponse(load_status())
-
-@router.post("/api/modules/toggle")
-async def toggle_module(req: Request):
-    data = await req.json()
-    module = data.get("module")
-    enabled = data.get("enabled")
-    status = load_status()
-    status[module] = enabled
-    save_status(status)
-    return JSONResponse({"status": "ok", "module": module, "enabled": enabled})
-]]></file>
   <file path="./routes/chat.py"><![CDATA[
 """/api/chat ‑‑ Unified endpoint for website widget.
 
@@ -21552,6 +21490,68 @@ async def list_hypotheses(limit: int = 10, category: Optional[str] = None) -> Di
         
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e)) ]]></file>
+  <file path="./routes_dashboard.py"><![CDATA[
+
+from fastapi import APIRouter
+from fastapi.responses import FileResponse, JSONResponse
+import os
+import json
+
+router = APIRouter()
+
+USAGE_FILE = "model_usage_log.json"
+MODELS_FILE = "models.json"
+
+@router.get("/dashboard")
+async def dashboard_page():
+    return FileResponse("dashboard.html")
+
+@router.get("/dashboard/data")
+async def dashboard_data():
+    if not os.path.exists(USAGE_FILE):
+        return JSONResponse({})
+    with open(USAGE_FILE, "r") as f:
+        usage = json.load(f)
+    with open(MODELS_FILE, "r") as f:
+        models = json.load(f)["models"]
+    for name in usage:
+        usage[name]["cost"] = models.get(name, {}).get("cost", 0)
+    return JSONResponse(usage)
+]]></file>
+  <file path="./routes_module_toggle.py"><![CDATA[
+
+from fastapi import APIRouter, Request
+from fastapi.responses import JSONResponse
+import json
+import os
+
+router = APIRouter()
+MODULE_STATUS_FILE = "module_status.json"
+
+def load_status():
+    if os.path.exists(MODULE_STATUS_FILE):
+        with open(MODULE_STATUS_FILE, "r") as f:
+            return json.load(f)
+    return {}
+
+def save_status(status):
+    with open(MODULE_STATUS_FILE, "w") as f:
+        json.dump(status, f, indent=2)
+
+@router.get("/api/modules")
+async def get_module_status():
+    return JSONResponse(load_status())
+
+@router.post("/api/modules/toggle")
+async def toggle_module(req: Request):
+    data = await req.json()
+    module = data.get("module")
+    enabled = data.get("enabled")
+    status = load_status()
+    status[module] = enabled
+    save_status(status)
+    return JSONResponse({"status": "ok", "module": module, "enabled": enabled})
+]]></file>
   <file path="./rpm_diagnostics.py"><![CDATA[
 import pandas as pd
 
@@ -23492,6 +23492,33 @@ def log_model_usage(model, tokens_used):
     with open(USAGE_FILE, "w") as f:
         json.dump(usage, f, indent=2)
 ]]></file>
+  <file path="./utils/memory.py"><![CDATA[
+
+import datetime
+import time
+import json
+
+def timestamp_now():
+    return datetime.datetime.utcnow().isoformat()
+
+def retry_request(fn, retries=3, delay=1):
+    for attempt in range(retries):
+        try:
+            return fn()
+        except Exception as e:
+            if attempt < retries - 1:
+                time.sleep(delay)
+            else:
+                raise e
+
+def load_json(path):
+    with open(path, 'r') as f:
+        return json.load(f)
+
+def save_json(path, data):
+    with open(path, 'w') as f:
+        json.dump(data, f, indent=4)
+]]></file>
   <file path="./utils/memory_manager.py"><![CDATA[
 """
 Unified Memory Management System for Nova Agent
@@ -24258,33 +24285,6 @@ def get_summary(workflow: str, obj_id: str):
         return None
     data = redis_client.get(_key(workflow, obj_id))
     return json.loads(data) if data else None
-]]></file>
-  <file path="./utils/memory.py"><![CDATA[
-
-import datetime
-import time
-import json
-
-def timestamp_now():
-    return datetime.datetime.utcnow().isoformat()
-
-def retry_request(fn, retries=3, delay=1):
-    for attempt in range(retries):
-        try:
-            return fn()
-        except Exception as e:
-            if attempt < retries - 1:
-                time.sleep(delay)
-            else:
-                raise e
-
-def load_json(path):
-    with open(path, 'r') as f:
-        return json.load(f)
-
-def save_json(path, data):
-    with open(path, 'w') as f:
-        json.dump(data, f, indent=4)
 ]]></file>
   <file path="./utils/model_controller.py"><![CDATA[
 """
