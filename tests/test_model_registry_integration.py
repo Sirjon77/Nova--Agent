@@ -4,9 +4,7 @@ This ensures no invalid model names can reach the OpenAI API.
 """
 
 import pytest
-import ast
 import os
-from pathlib import Path
 from typing import List, Tuple
 
 def find_openai_calls_in_file(file_path: str) -> List[Tuple[int, str]]:

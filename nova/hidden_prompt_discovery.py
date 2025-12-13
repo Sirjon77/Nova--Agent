@@ -18,7 +18,7 @@ from __future__ import annotations
 
 import itertools
 from dataclasses import dataclass
-from typing import List, Dict, Tuple
+from typing import List
 
 
 @dataclass

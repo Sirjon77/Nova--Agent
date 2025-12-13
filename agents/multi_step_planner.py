@@ -1,5 +1,4 @@
 """Simple Plan → Execute chain using reflection prompts."""
-import openai, os
 from utils.model_router import chat_completion
 
 SYSTEM = """You are a planning sub-agent. 

@@ -1,6 +1,9 @@
 from fastapi import APIRouter, WebSocket, WebSocketDisconnect
 from fastapi.responses import StreamingResponse
-import json, asyncio, os, time, uuid, pathlib
+import json
+import asyncio
+import time
+import pathlib
 
 router = APIRouter()
 active_connections = set()

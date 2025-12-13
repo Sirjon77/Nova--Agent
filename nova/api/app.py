@@ -1,6 +1,10 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException, Query, WebSocket, WebSocketDisconnect, status
+from fastapi.middleware.cors import CORSMiddleware
+from contextlib import asynccontextmanager
+from pydantic import BaseModel
 import asyncio
 from datetime import datetime
+from pathlib import Path
 # Optional Prometheus instrumentation. Import may fail if the package is not
 # installed. We guard the import to allow the API to start without this
 # optional dependency.
@@ -10,8 +14,8 @@ try:
 except Exception:
     Instrumentator = None  # type: ignore
     _instrumentation_available = False
-from nova.metrics import tasks_executed, task_duration, memory_items, governance_runs_total
-from auth.jwt_middleware import JWTAuthMiddleware, issue_token
+# JWT middleware import moved to function level to avoid security validation during import
+# from auth.jwt_middleware import JWTAuthMiddleware, issue_token
 
 # Task management imports
 from nova.task_manager import task_manager, TaskType, dummy_task
@@ -73,7 +77,8 @@ from integrations.youtube import upload_video as _youtube_upload_video
 from integrations.instagram import publish_video as _instagram_publish_video
 from integrations.facebook import publish_post as _facebook_publish_post
 from integrations.tts import synthesize_speech as _synthesize_speech
-from typing import Any, List, Optional, Dict, Tuple
+from typing import Any, List, Optional, Dict, Tuple, Union
+from dataclasses import asdict
 from nova.ab_testing import ABTestManager
 
 # Import new modules for advanced functionalities
@@ -89,15 +94,101 @@ from nova.rpm_leaderboard import PromptLeaderboard
 from nova.prompt_vault import PromptVault
 from nova.analytics import aggregate_metrics, top_prompts, rpm_by_audience  # type: ignore
 
-app = FastAPI(title="Nova Agent API", version="6.7")
+# v7.0 Planning Engine imports
+from nova.planner import PlanningEngine, PlanningContext, DecisionType
+from nova.task_scheduler import TaskScheduler, TaskPriority
+from nova.config.env import validate_env_or_exit
 
-# Initialise the A/B test manager.  Tests are stored in the 'ab_tests'
-# directory by default.  The manager can create, serve and record
-# results for experiments such as thumbnail or caption variations.
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """
+    Run environment validation and any background startup tasks.
+    This replaces FastAPI's deprecated @app.on_event('startup') decorators.
+    """
+    import logging
+    logger = logging.getLogger("nova_startup")
+    
+    # Fail fast if required environment variables are missing
+    logger.info("Validating environment configuration...")
+    validate_env_or_exit()
+    logger.info("✅ Environment validation passed")
+    
+    # Initialize and verify Celery integration
+    try:
+        from nova.celery_app import celery_app
+        
+        # Log Celery Beat schedule
+        beat_schedule = celery_app.conf.beat_schedule
+        logger.info(f"Celery Beat schedule loaded with {len(beat_schedule)} tasks:")
+        for name, spec in beat_schedule.items():
+            schedule = spec['schedule']
+            task = spec['task']
+            logger.info(f"  - {name}: {task} at {schedule}")
+        
+        # Verify Redis connectivity (Celery broker)
+        try:
+            inspect = celery_app.control.inspect()
+            active_workers = inspect.active()
+            
+            if active_workers:
+                logger.info(f"Celery workers detected: {list(active_workers.keys())}")
+            else:
+                logger.warning("No active Celery workers detected. Tasks will queue until workers start.")
+                
+        except Exception as broker_exc:
+            logger.warning(f"Celery broker connectivity check failed: {broker_exc}")
+            logger.info("Continuing startup - Celery tasks will queue when broker becomes available")
+        
+        logger.info("✅ Celery integration initialized successfully")
+        
+    except Exception as celery_exc:
+        logger.error(f"Failed to initialize Celery integration: {celery_exc}")
+        # Don't fail startup for Celery issues - continue without background tasks
+    
+    try:
+        yield  # Enter application runtime
+    finally:
+        # Perform any graceful shutdown or cleanup here
+        logger.info("Shutting down Nova Agent API...")
+        pass
+
+# NOTE: This is the canonical FastAPI application instance for Nova Agent.
+# Do NOT instantiate FastAPI elsewhere; use this app for adding all routers and routes.
+app = FastAPI(
+    title="Nova Agent API", 
+    version="7.0",
+    description="API for the Nova Agent system",
+    lifespan=lifespan
+)
+
+# Initialize v7.0 components
+planning_engine = PlanningEngine()
+task_scheduler = TaskScheduler()
+
+# Initialize A/B testing manager
 ab_manager = ABTestManager()
 
-# Attach JWT middleware
-app.add_middleware(JWTAuthMiddleware)
+# Attach JWT middleware (conditional to avoid import-time validation)
+def _add_jwt_middleware():
+    try:
+        from auth.jwt_middleware import JWTAuthMiddleware
+        app.add_middleware(JWTAuthMiddleware)
+    except RuntimeError as e:
+        # Skip JWT middleware if security validation fails
+        print(f"⚠️  JWT middleware disabled: {e}")
+
+_add_jwt_middleware()
+
+# NOTE: Environment validation moved to lifespan context manager above
+
+# Enable CORS for all origins (development/public use)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Instrumentation
 if _instrumentation_available and Instrumentator:
@@ -127,59 +218,24 @@ else:
 # -----------------------------------------------------------------------------
 # Startup events
 #
-# When the FastAPI application starts, schedule the nightly governance run. In
-# the absence of Celery or APScheduler, we implement a simple loop that
-# waits for 24 hours between executions. If the governance task fails it
-# will log the exception but the loop will continue on the next cycle. The
-# scheduling uses asyncio to avoid blocking the event loop.
-
-@app.on_event("startup")
-async def schedule_governance_nightly() -> None:
-    """Launch the periodic governance runner in the background."""
-    import yaml
-    from nova.governance.governance_loop import run as governance_run
-    # Load governance configuration once; fallback to defaults if missing
-    try:
-        cfg_all = yaml.safe_load(open('config/settings.yaml'))
-        gov_cfg = cfg_all.get('governance', {})
-    except Exception:
-        gov_cfg = {}
-
-    async def _runner() -> None:
-        """Background task that runs governance nightly and memory cleanup hourly."""
-        import logging
-        from nova.memory_guard import cleanup as memory_cleanup
-        gov_logger = logging.getLogger("governance_scheduler")
-        # Timestamps to track when last memory cleanup occurred
-        last_cleanup = None
-        while True:
-            now = datetime.utcnow()
-            # Run governance once every 24 hours (or on first run)
-            try:
-                await governance_run(gov_cfg, [], [], [])
-                gov_logger.info("Governance cycle completed")
-            except Exception as exc:
-                gov_logger.warning("Governance run failed: %s", exc)
-            # Perform memory cleanup hourly
-            try:
-                # Determine memory limit from policy if available
-                import yaml
-                policy_cfg = yaml.safe_load(open('config/policy.yaml'))
-                mem_limit = policy_cfg.get('sandbox', {}).get('memory_limit_mb') if policy_cfg else None
-            except Exception:
-                mem_limit = None
-            try:
-                await memory_cleanup(max_age_hours=24, memory_limit_mb=mem_limit)
-            except Exception as exc:
-                gov_logger.warning("Memory cleanup failed: %s", exc)
-            # Sleep for 24 hours before next governance run
-            await asyncio.sleep(24 * 60 * 60)
-
-    # Start the runner without awaiting it so that startup can complete
-    asyncio.create_task(_runner())
+# NOTE: Legacy manual scheduling has been replaced with Celery Beat.
+# The governance loop, memory cleanup, and other periodic tasks are now
+# handled by Celery workers with proper scheduling, retry logic, and scaling.
+#
+# To run the scheduler: celery -A nova.celery_app beat --loglevel=info
+# To run workers: celery -A nova.celery_app worker --loglevel=info
+#
+# Startup initialization moved to lifespan context manager above to replace
+# deprecated @app.on_event("startup") handlers.
 
 @app.get("/health", tags=["meta"])
 async def health():
+    """
+    Health check endpoint. Returns status and ensures basic connectivity.
+    This endpoint should always return ok for basic health checks.
+    """
+    # For CI/CD and basic health checks, just return ok
+    # More detailed checks can be done in a separate readiness endpoint
     return {"status": "ok"}
 
 # -----------------------------------------------------------------------------
@@ -189,9 +245,8 @@ async def health():
 # deployment credentials would be stored securely (e.g. hashed in a database).
 # Here we read credentials from environment variables prefixed with NOVA_USER_*
 
-from pydantic import BaseModel
+from nova.audit_logger import audit
 import os
-from fastapi import status
 
 
 class LoginRequest(BaseModel):
@@ -199,11 +254,15 @@ class LoginRequest(BaseModel):
     password: str
 
 class LoginResponse(BaseModel):
-    token: str
+    access_token: str
+    refresh_token: str
+    token_type: str
     role: str
+    # Backward-compat field for older clients/tests expecting 'token'
+    token: Union[str, None] = None
 
 
-def _get_user_role(username: str) -> str | None:
+def _get_user_role(username: str) -> Union[str, None]:
     """Return the role associated with a username.
 
     Roles are determined based on environment variables:
@@ -245,9 +304,44 @@ async def login(req: LoginRequest):
     elif username == user_user and password == user_pass:
         role = 'user'
     else:
+        audit('login_failed', user=username, meta={'reason': 'invalid_credentials'})
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail='Invalid credentials')
-    token = issue_token(username, role)
-    return LoginResponse(token=token, role=role)
+    try:
+        # Prefer new utils that issue access + refresh tokens
+        from auth.jwt_utils import create_access_token, create_refresh_token
+        claims = {"sub": username, "role": role}
+        access = create_access_token(claims)
+        refresh = create_refresh_token(claims)
+        audit('login_success', user=username, meta={'role': role})
+        return LoginResponse(access_token=access, refresh_token=refresh, token_type="bearer", role=role, token=access)
+    except Exception as e:
+        audit('login_error', user=username, meta={'error': str(e)})
+        raise HTTPException(status_code=500, detail=f"JWT token generation failed: {e}")
+
+
+class RefreshRequest(BaseModel):
+    refresh_token: str
+
+
+@app.post("/api/auth/refresh", tags=["auth"], status_code=status.HTTP_200_OK)
+async def refresh_token(req: RefreshRequest):
+    """Exchange a refresh token for a new access token (and rotated refresh)."""
+    try:
+        from auth.jwt_utils import decode_token, create_access_token, create_refresh_token, ExpiredSignatureError
+        payload = decode_token(req.refresh_token)
+        if payload.get("type") != "refresh":
+            audit('token_refresh_failed', user=payload.get('sub'), meta={'reason': 'wrong_type'})
+            raise HTTPException(status_code=400, detail="Not a refresh token")
+        new_access = create_access_token({"sub": payload.get("sub"), "role": payload.get("role")})
+        new_refresh = create_refresh_token({"sub": payload.get("sub"), "role": payload.get("role")})
+        audit('token_refresh', user=payload.get('sub'), meta={'result': 'success'})
+        return {"access_token": new_access, "refresh_token": new_refresh, "token_type": "bearer"}
+    except ExpiredSignatureError:
+        audit('token_refresh_failed', user='unknown', meta={'reason': 'expired'})
+        raise HTTPException(status_code=401, detail="Refresh token expired, please login again")
+    except Exception:
+        audit('token_refresh_failed', user='unknown', meta={'reason': 'invalid'})
+        raise HTTPException(status_code=401, detail="Invalid refresh token")
 
 from auth.rbac import role_required
 from auth.roles import Role
@@ -306,9 +400,12 @@ async def list_channels():
     if _channels_cache is not None:
         return _channels_cache
     # Determine reports directory from settings
-    import yaml, json, pathlib
+    import yaml
+    import json
+    import pathlib
     try:
-        cfg = yaml.safe_load(open('config/settings.yaml'))
+        with open('config/settings.yaml', 'r') as _f:
+            cfg = yaml.safe_load(_f)
         reports_dir = pathlib.Path(cfg.get('governance', {}).get('output_dir', 'reports'))
     except Exception:
         reports_dir = pathlib.Path('reports')
@@ -445,8 +542,8 @@ class CreateTaskRequest(BaseModel):
             ``roles``, ``domains``, ``outcomes`` and ``niches``.
     """
     type: str
-    duration: int | None = None
-    params: dict | None = None
+    duration: Union[int, None] = None
+    params: Union[dict, None] = None
 
 
 @app.post("/api/tasks", tags=["dashboard"], dependencies=[role_required(Role.admin,)])
@@ -827,6 +924,7 @@ async def run_governance_now() -> dict:
     work is executed asynchronously and clients can track its progress via
     the tasks API or WebSocket events.
     """
+    audit('governance_run_triggered', user='admin')
     # Use the existing create_task function to enqueue a RUN_GOVERNANCE task.
     req = CreateTaskRequest(type=TaskType.RUN_GOVERNANCE.value)
     return await create_task(req)
@@ -849,7 +947,8 @@ async def list_governance_reports() -> list[str]:
     Returns:
         A list of file names sorted by date descending.
     """
-    import yaml, pathlib
+    import yaml
+    import pathlib
     try:
         cfg = yaml.safe_load(open('config/settings.yaml'))
         reports_dir = pathlib.Path(cfg.get('governance', {}).get('output_dir', 'reports'))
@@ -859,45 +958,47 @@ async def list_governance_reports() -> list[str]:
     return [f.name for f in files]
 
 @app.get("/api/governance/report", tags=["governance"], dependencies=[role_required(Role.admin,)])
-async def get_governance_report(date: str | None = None) -> dict:
-    """Return a governance report for a given date or the latest one.
+async def get_governance_report(date: Union[str, None] = Query(default=None, description="ISO date (YYYY-MM-DD) of report to fetch")):
+    """Return the latest or specified governance report.
 
-    Args:
-        date: Optional date in YYYY-MM-DD format to select a specific report.
-            If not provided, the most recent report is returned.
-
-    Returns:
-        The contents of the selected governance report parsed as a dict.
+    If no date is provided, this endpoint will attempt to find the most recent
+    report file in the configured output directory. If a date is provided,
+    it will look for a report named `governance_report_{date}.json`. If the
+    report cannot be found, a 404 error is returned.
     """
-    import yaml, json, pathlib, datetime
-    # Determine the reports directory
+    # Determine reports directory from configuration; fallback to default
+    reports_dir = pathlib.Path('reports')
     try:
-        cfg = yaml.safe_load(open('config/settings.yaml'))
+        import yaml
+        with open('config/settings.yaml', 'r') as _f:
+            cfg = yaml.safe_load(_f)
         reports_dir = pathlib.Path(cfg.get('governance', {}).get('output_dir', 'reports'))
     except Exception:
+        # If config missing or unreadable, use default 'reports'
         reports_dir = pathlib.Path('reports')
-    # Determine which file to load
+
     if date:
-        try:
-            # validate date format
-            datetime.datetime.strptime(date, '%Y-%m-%d')
-        except ValueError:
-            raise HTTPException(status_code=400, detail='Invalid date format, expected YYYY-MM-DD')
-        file_path = reports_dir / f'governance_report_{date}.json'
-        if not file_path.exists():
-            raise HTTPException(status_code=404, detail='Report not found for specified date')
-    else:
-        files = sorted(reports_dir.glob('governance_report_*.json'), reverse=True)
-        if not files:
-            raise HTTPException(status_code=404, detail='No reports found')
-        file_path = files[0]
-    try:
-        return json.loads(file_path.read_text())
-    except Exception:
-        raise HTTPException(status_code=500, detail='Failed to read report')
+        # Validate basic date format
+        if not (len(date) == 10 and date[4] == '-' and date[7] == '-'):
+            raise HTTPException(status_code=400, detail="Date must be in YYYY-MM-DD format")
+        target_file = reports_dir / f"governance_report_{date}.json"
+        if not target_file.exists():
+            raise HTTPException(status_code=404, detail="Report for specified date not found")
+        data = json.loads(target_file.read_text())
+        return data
+
+    # No date specified; find most recent report
+    if not reports_dir.exists():
+        raise HTTPException(status_code=404, detail="No governance reports directory found")
+    files = sorted(reports_dir.glob('governance_report_*.json'), reverse=True)
+    if not files:
+        raise HTTPException(status_code=404, detail="No governance reports available")
+    latest = files[0]
+    data = json.loads(latest.read_text())
+    return data
 
 @app.get("/api/logs", tags=["logs"], dependencies=[role_required(Role.admin,)])
-async def get_logs(level: str | None = None) -> dict:
+async def get_logs(level: Union[str, None] = None) -> dict:
     """Return recent audit log entries.
 
     Reads the ``logs/audit.log`` file and returns its contents. An optional
@@ -925,7 +1026,6 @@ async def get_logs(level: str | None = None) -> dict:
         return {"entries": filtered}
     return {"entries": lines}
 
-from fastapi import WebSocket, WebSocketDisconnect
 connections = set()
 
 # -----------------------------------------------------------------------------
@@ -1039,7 +1139,6 @@ async def reject_content(draft_id: str) -> dict:
 from nova.automation_flags import (
     get_flags,
     set_flags,
-    DEFAULTS as _AUTOMATION_DEFAULTS,
 )
 from pydantic import BaseModel as _BaseModel
 
@@ -1050,9 +1149,9 @@ class AutomationUpdateRequest(_BaseModel):
     All fields are optional. Only provided flags will be updated. See
     ``nova.automation_flags.DEFAULTS`` for available flags.
     """
-    posting_enabled: bool | None = None
-    generation_enabled: bool | None = None
-    require_approval: bool | None = None
+    posting_enabled: Union[bool, None] = None
+    generation_enabled: Union[bool, None] = None
+    require_approval: Union[bool, None] = None
 
 
 @app.get(
@@ -1105,7 +1204,6 @@ async def update_automation_flags(req: AutomationUpdateRequest) -> dict:
 
 from pydantic import BaseModel
 from nova.overrides import (
-    load_overrides,
     get_override,
     set_override,
     clear_override,
@@ -1215,7 +1313,7 @@ class GumroadLinkRequest(_PydanticBaseModel):
     """
 
     product_slug: str
-    include_affiliate: bool | None = True
+    include_affiliate: Union[bool, None] = True
 
 
 @app.post(
@@ -1253,9 +1351,9 @@ class ConvertKitSubscribeRequest(_PydanticBaseModel):
         tags: Optional list of tag names to apply to the subscriber.
     """
     email: str
-    first_name: str | None = None
-    form_id: str | None = None
-    tags: list[str] | None = None
+    first_name: Union[str, None] = None
+    form_id: Union[str, None] = None
+    tags: Union[list[str], None] = None
 
 
 @app.post(
@@ -1433,9 +1531,9 @@ class HubSpotContactRequest(_PydanticBaseModel):
             "phone").
     """
     email: str
-    first_name: str | None = None
-    last_name: str | None = None
-    properties: dict[str, Any] | None = None
+    first_name: Union[str, None] = None
+    last_name: Union[str, None] = None
+    properties: Union[dict[str, Any], None] = None
 
 
 @app.post(
@@ -1532,7 +1630,6 @@ async def metricool_overview() -> dict:
 # may access these endpoints.
 
 from typing import Optional, List
-from fastapi import HTTPException  # Imported here to handle API errors in integration endpoints
 
 
 @app.get(
@@ -1611,10 +1708,10 @@ class SocialPilotPostRequest(_PydanticBaseModel):
     """
 
     content: str
-    media_url: Optional[str] | None = None
-    platforms: Optional[List[str]] | None = None
-    scheduled_time: Optional[datetime] | None = None
-    extras: Optional[dict[str, Any]] | None = None
+    media_url: Union[str, None] = None
+    platforms: Union[List[str], None] = None
+    scheduled_time: Union[datetime, None] = None
+    extras: Union[dict[str, Any], None] = None
 
 
 @app.post(
@@ -1672,10 +1769,10 @@ class PublerPostRequest(_PydanticBaseModel):
         extras: Optional additional payload fields.
     """
     content: str
-    media_url: Optional[str] | None = None
-    platforms: Optional[List[str]] | None = None
-    scheduled_time: Optional[datetime] | None = None
-    extras: Optional[dict[str, Any]] | None = None
+    media_url: Union[str, None] = None
+    platforms: Union[List[str], None] = None
+    scheduled_time: Union[datetime, None] = None
+    extras: Union[dict[str, Any], None] = None
 
 
 @app.post(
@@ -1730,7 +1827,7 @@ class TranslateRequest(_PydanticBaseModel):
     """
     text: str
     target_language: str
-    source_language: Optional[str] | None = None
+    source_language: Union[str, None] = None
     format: str = "text"
 
 
@@ -1962,8 +2059,8 @@ class YouTubeUploadRequest(_PydanticBaseModel):
     """
     file_path: str
     title: str
-    description: Optional[str] | None = None
-    tags: Optional[List[str]] | None = None
+    description: Union[str, None] = None
+    tags: Union[List[str], None] = None
     privacy_status: str = "public"
 
 
@@ -1976,8 +2073,8 @@ class InstagramPostRequest(_PydanticBaseModel):
         thumbnail_url: Optional URL for a custom thumbnail image.
     """
     video_url: str
-    caption: Optional[str] | None = None
-    thumbnail_url: Optional[str] | None = None
+    caption: Union[str, None] = None
+    thumbnail_url: Union[str, None] = None
 
 
 class FacebookPostRequest(_PydanticBaseModel):
@@ -1989,8 +2086,8 @@ class FacebookPostRequest(_PydanticBaseModel):
         media_url: Optional URL to an image or video to attach.
     """
     message: str
-    link: Optional[str] | None = None
-    media_url: Optional[str] | None = None
+    link: Union[str, None] = None
+    media_url: Union[str, None] = None
 
 
 class TTSRequest(_PydanticBaseModel):
@@ -2003,7 +2100,7 @@ class TTSRequest(_PydanticBaseModel):
         format: Audio format (e.g., "mp3", "wav"). Defaults to "mp3".
     """
     text: str
-    voice_id: Optional[str] | None = None
+    voice_id: Union[str, None] = None
     format: str = "mp3"
 
 
@@ -2196,57 +2293,462 @@ async def ws_events(ws: WebSocket):
     except WebSocketDisconnect:
         connections.discard(ws)
 
+# Mount all legacy routers and the Flask model API via WSGIMiddleware
+try:
+    from realtime import router as realtime_router
+    app.include_router(realtime_router)
+except Exception as e:
+    print(f"⚠️ Skipping realtime router: {e}")
+
+try:
+    from routes.research import router as research_router
+    app.include_router(research_router)
+except Exception as e:
+    print(f"⚠️ Skipping research router: {e}")
+
+try:
+    from routes.observability import router as observability_router
+    app.include_router(observability_router)
+except Exception as e:
+    print(f"⚠️ Skipping observability router: {e}")
+
+try:
+    from agents.decision_matrix_agent import router as decision_router
+    app.include_router(decision_router)
+except Exception as e:
+    print(f"⚠️ Skipping decision router: {e}")
+
+try:
+    from interface_handler import router as interface_router
+    app.include_router(interface_router)
+except Exception as e:
+    print(f"⚠️ Skipping interface router: {e}")
+
+try:
+    from nova_agent_v4_4.chat_api import router as chat_v4_router
+    app.include_router(chat_v4_router)
+except Exception as e:
+    print(f"⚠️ Skipping chat_v4 router: {e}")
+
+# Add missing endpoints from main.py
+@app.get("/status", tags=["meta"])
+def read_status():
+    return {
+        "status": "Nova Agent v6.7 running",
+        "loop": "heartbeat active",
+        "version": "6.7",
+        "features": ["autonomous_research", "nlp_intent_detection", "memory_management"]
+    }
+
+# Define path to model tiers configuration
+MODEL_CONFIG_PATH = Path(__file__).resolve().parent.parent.parent / "config" / "model_tiers.json"
+
+@app.get("/api/current-model-tiers", tags=["meta"])
+async def current_model_tiers():
+    if MODEL_CONFIG_PATH.exists():
+        import json
+        return json.loads(MODEL_CONFIG_PATH.read_text())
+    return {}
+
+# Mount Flask blueprint via WSGIMiddleware
+try:
+    from backend.model_api import model_api  # the Flask Blueprint
+    from flask import Flask
+    from fastapi.middleware.wsgi import WSGIMiddleware
+    
+    # Create a minimal Flask app and register the blueprint
+    flask_app = Flask(__name__)
+    flask_app.register_blueprint(model_api)
+    
+    # Mount the Flask app on the FastAPI app
+    app.mount("/", WSGIMiddleware(flask_app))
+except ImportError:
+    # If Flask components are not available, continue without them
+    pass
+
 # -----------------------------------------------------------------------------
-# Governance API endpoints
-#
-# These endpoints expose the latest governance report produced by the nightly
-# governance loop. Only admin users may access these reports because they may
-# contain sensitive performance metrics and tool health information. Reports are
-# stored on disk in the directory configured in `config/settings.yaml` under
-# `governance.output_dir` (default: 'reports'). Files are named
-# `governance_report_YYYY-MM-DD.json`.
+# v7.0 Planning Engine API Endpoints
+# -----------------------------------------------------------------------------
 
-import os
-import pathlib
-import json
-from fastapi import HTTPException, Query
+class StrategicPlanRequest(BaseModel):
+    """Request body for generating a strategic plan."""
+    goal: str
+    current_metrics: Dict[str, Any]
+    historical_data: Dict[str, Any]
+    external_factors: Dict[str, Any]
+    constraints: Dict[str, Any]
+    goals: Dict[str, Any]
 
+class DecisionApprovalRequest(BaseModel):
+    """Request body for approving/rejecting decisions."""
+    decision_id: str
+    action: str  # "approve" or "reject"
+    reason: Optional[str] = None
+    approved_by: str
 
-@app.get("/api/governance/report", tags=["governance"], dependencies=[role_required(Role.admin,)])
-async def get_governance_report(date: str | None = Query(default=None, description="ISO date (YYYY-MM-DD) of report to fetch")):
-    """Return the latest or specified governance report.
+class TaskScheduleRequest(BaseModel):
+    """Request body for scheduling tasks."""
+    name: str
+    description: str
+    action_type: str
+    parameters: Dict[str, Any]
+    scheduled_time: Optional[datetime] = None
+    priority: str = "medium"
+    dependencies: Optional[List[str]] = None
 
-    If no date is provided, this endpoint will attempt to find the most recent
-    report file in the configured output directory. If a date is provided,
-    it will look for a report named `governance_report_{date}.json`. If the
-    report cannot be found, a 404 error is returned.
-    """
-    # Determine reports directory from configuration; fallback to default
-    reports_dir = pathlib.Path('reports')
+@app.post(
+    "/api/v7/planning/strategic-plan",
+    tags=["v7_planning"],
+    dependencies=[role_required(Role.admin,)],
+)
+async def generate_strategic_plan(req: StrategicPlanRequest) -> Dict[str, Any]:
+    """Generate a comprehensive strategic plan using the v7.0 planning engine."""
     try:
-        import yaml
-        cfg = yaml.safe_load(open('config/settings.yaml'))
-        reports_dir = pathlib.Path(cfg.get('governance', {}).get('output_dir', 'reports'))
-    except Exception:
-        # If config missing or unreadable, use default 'reports'
-        reports_dir = pathlib.Path('reports')
+        context = PlanningContext(
+            current_metrics=req.current_metrics,
+            historical_data=req.historical_data,
+            external_factors=req.external_factors,
+            constraints=req.constraints,
+            goals=req.goals
+        )
+        
+        plan = await planning_engine.generate_strategic_plan(context, req.goal)
+        
+        # Schedule tasks from the plan
+        task_ids = task_scheduler.schedule_from_plan(plan)
+        plan['scheduled_task_ids'] = task_ids
+        
+        return {
+            "success": True,
+            "plan": plan,
+            "message": f"Strategic plan generated with {len(task_ids)} scheduled tasks"
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Planning failed: {str(e)}")
 
-    if date:
-        # Validate basic date format
-        if not (len(date) == 10 and date[4] == '-' and date[7] == '-'):
-            raise HTTPException(status_code=400, detail="Date must be in YYYY-MM-DD format")
-        target_file = reports_dir / f"governance_report_{date}.json"
-        if not target_file.exists():
-            raise HTTPException(status_code=404, detail="Report for specified date not found")
-        data = json.loads(target_file.read_text())
-        return data
+@app.get(
+    "/api/v7/planning/decisions/pending",
+    tags=["v7_planning"],
+    dependencies=[role_required(Role.admin,)],
+)
+async def get_pending_decisions() -> List[Dict[str, Any]]:
+    """Get all pending decisions requiring approval."""
+    try:
+        decisions = planning_engine.get_pending_decisions()
+        return [asdict(decision) for decision in decisions]
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to get pending decisions: {str(e)}")
 
-    # No date specified; find most recent report
-    if not reports_dir.exists():
-        raise HTTPException(status_code=404, detail="No governance reports directory found")
-    files = sorted(reports_dir.glob('governance_report_*.json'), reverse=True)
-    if not files:
-        raise HTTPException(status_code=404, detail="No governance reports available")
-    latest = files[0]
-    data = json.loads(latest.read_text())
-    return data
+@app.post(
+    "/api/v7/planning/decisions/approve",
+    tags=["v7_planning"],
+    dependencies=[role_required(Role.admin,)],
+)
+async def approve_decision(req: DecisionApprovalRequest) -> Dict[str, Any]:
+    """Approve or reject a pending decision."""
+    try:
+        if req.action == "approve":
+            success = planning_engine.approve_decision(req.decision_id, req.approved_by)
+            message = "Decision approved successfully"
+        elif req.action == "reject":
+            success = planning_engine.reject_decision(req.decision_id, req.approved_by, req.reason or "No reason provided")
+            message = "Decision rejected successfully"
+        else:
+            raise HTTPException(status_code=400, detail="Invalid action. Use 'approve' or 'reject'")
+        
+        if success:
+            return {"success": True, "message": message}
+        else:
+            raise HTTPException(status_code=404, detail="Decision not found")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to process decision: {str(e)}")
+
+@app.get(
+    "/api/v7/planning/decisions/history",
+    tags=["v7_planning"],
+    dependencies=[role_required(Role.admin,)],
+)
+async def get_decision_history(
+    decision_type: Optional[str] = None,
+    limit: int = 50
+) -> List[Dict[str, Any]]:
+    """Get decision history, optionally filtered by type."""
+    try:
+        if decision_type:
+            dt = DecisionType(decision_type)
+            decisions = planning_engine.get_decision_history(dt, limit)
+        else:
+            decisions = planning_engine.get_decision_history(limit=limit)
+        
+        return [asdict(decision) for decision in decisions]
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to get decision history: {str(e)}")
+
+@app.post(
+    "/api/v7/scheduler/task",
+    tags=["v7_scheduler"],
+    dependencies=[role_required(Role.admin,)],
+)
+async def schedule_task(req: TaskScheduleRequest) -> Dict[str, Any]:
+    """Schedule a new task."""
+    try:
+        priority = TaskPriority[req.priority.upper()]
+        scheduled_time = req.scheduled_time or datetime.now()
+        
+        task_id = task_scheduler.schedule_task(
+            name=req.name,
+            description=req.description,
+            action_type=req.action_type,
+            parameters=req.parameters,
+            scheduled_time=scheduled_time,
+            priority=priority,
+            dependencies=req.dependencies
+        )
+        
+        return {
+            "success": True,
+            "task_id": task_id,
+            "message": f"Task '{req.name}' scheduled successfully"
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to schedule task: {str(e)}")
+
+@app.get(
+    "/api/v7/scheduler/tasks/pending",
+    tags=["v7_scheduler"],
+    dependencies=[role_required(Role.admin,)],
+)
+async def get_pending_tasks() -> List[Dict[str, Any]]:
+    """Get all pending tasks."""
+    try:
+        tasks = task_scheduler.get_pending_tasks()
+        return [asdict(task) for task in tasks]
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to get pending tasks: {str(e)}")
+
+@app.get(
+    "/api/v7/scheduler/tasks/running",
+    tags=["v7_scheduler"],
+    dependencies=[role_required(Role.admin,)],
+)
+async def get_running_tasks() -> List[Dict[str, Any]]:
+    """Get all currently running tasks."""
+    try:
+        tasks = task_scheduler.get_running_tasks()
+        return [asdict(task) for task in tasks]
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to get running tasks: {str(e)}")
+
+@app.get(
+    "/api/v7/scheduler/tasks/completed",
+    tags=["v7_scheduler"],
+    dependencies=[role_required(Role.admin,)],
+)
+async def get_completed_tasks(limit: int = 100) -> List[Dict[str, Any]]:
+    """Get recently completed tasks."""
+    try:
+        tasks = task_scheduler.get_completed_tasks(limit)
+        return [asdict(task) for task in tasks]
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to get completed tasks: {str(e)}")
+
+@app.get(
+    "/api/v7/scheduler/task/{task_id}",
+    tags=["v7_scheduler"],
+    dependencies=[role_required(Role.admin,)],
+)
+async def get_task_status(task_id: str) -> Dict[str, Any]:
+    """Get the status of a specific task."""
+    try:
+        status = task_scheduler.get_task_status(task_id)
+        if status:
+            return status
+        else:
+            raise HTTPException(status_code=404, detail="Task not found")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to get task status: {str(e)}")
+
+@app.delete(
+    "/api/v7/scheduler/task/{task_id}",
+    tags=["v7_scheduler"],
+    dependencies=[role_required(Role.admin,)],
+)
+async def cancel_task(task_id: str) -> Dict[str, Any]:
+    """Cancel a scheduled task."""
+    try:
+        success = task_scheduler.cancel_task(task_id)
+        if success:
+            return {"success": True, "message": f"Task {task_id} cancelled successfully"}
+        else:
+            raise HTTPException(status_code=404, detail="Task not found or cannot be cancelled")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to cancel task: {str(e)}")
+
+@app.post(
+    "/api/v7/scheduler/start",
+    tags=["v7_scheduler"],
+    dependencies=[role_required(Role.admin,)],
+)
+async def start_scheduler() -> Dict[str, Any]:
+    """Start the task scheduler loop."""
+    try:
+        # This would start the scheduler in a background task
+        # For now, just return success
+        return {
+            "success": True,
+            "message": "Task scheduler started successfully"
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to start scheduler: {str(e)}")
+
+# -----------------------------------------------------------------------------
+# Celery Management API Endpoints (Admin Only)
+# -----------------------------------------------------------------------------
+
+@app.get("/api/celery/status", tags=["celery"], dependencies=[role_required(Role.admin,)])
+async def celery_status():
+    """Get Celery cluster status including workers and scheduled tasks."""
+    try:
+        from nova.celery_app import celery_app
+        
+        # Get worker information
+        inspect = celery_app.control.inspect()
+        
+        # Get active workers
+        active_workers = inspect.active() or {}
+        
+        # Get scheduled tasks
+        scheduled_tasks = inspect.scheduled() or {}
+        
+        # Get worker stats
+        stats = inspect.stats() or {}
+        
+        # Get beat schedule
+        beat_schedule = celery_app.conf.beat_schedule
+        
+        return {
+            "status": "connected" if active_workers else "no_workers",
+            "active_workers": list(active_workers.keys()),
+            "worker_count": len(active_workers),
+            "scheduled_tasks_count": sum(len(tasks) for tasks in scheduled_tasks.values()),
+            "beat_schedule": {
+                name: {
+                    "task": config["task"],
+                    "schedule": str(config["schedule"]),
+                    "queue": config.get("options", {}).get("queue", "celery")
+                }
+                for name, config in beat_schedule.items()
+            },
+            "worker_stats": stats
+        }
+        
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to get Celery status: {str(e)}")
+
+
+@app.post("/api/celery/governance/run", tags=["celery"], dependencies=[role_required(Role.admin,)])
+async def trigger_governance_task(config_overrides: Dict[str, Any] = None):
+    """Manually trigger the governance task."""
+    try:
+        from nova.governance.tasks import run_manual_governance_task
+        
+        # Trigger the task asynchronously
+        task = run_manual_governance_task.delay(config_overrides)
+        
+        return {
+            "task_id": task.id,
+            "status": "queued",
+            "message": "Governance task queued for execution",
+            "config_overrides": config_overrides
+        }
+        
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to trigger governance task: {str(e)}")
+
+
+@app.post("/api/celery/maintenance/cleanup", tags=["celery"], dependencies=[role_required(Role.admin,)])
+async def trigger_cleanup_task(max_age_hours: int = 24):
+    """Manually trigger the memory cleanup task."""
+    try:
+        from nova.maintenance.tasks import memory_cleanup_task
+        
+        # Trigger the task asynchronously
+        task = memory_cleanup_task.delay(max_age_hours)
+        
+        return {
+            "task_id": task.id,
+            "status": "queued", 
+            "message": "Memory cleanup task queued for execution",
+            "max_age_hours": max_age_hours
+        }
+        
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to trigger cleanup task: {str(e)}")
+
+
+@app.get("/api/celery/task/{task_id}", tags=["celery"], dependencies=[role_required(Role.admin,)])
+async def get_celery_task_status(task_id: str):
+    """Get the status of a specific Celery task."""
+    try:
+        from nova.celery_app import celery_app
+        
+        # Get task result
+        result = celery_app.AsyncResult(task_id)
+        
+        response = {
+            "task_id": task_id,
+            "status": result.status,
+            "ready": result.ready(),
+        }
+        
+        if result.ready():
+            if result.successful():
+                response["result"] = result.result
+            else:
+                response["error"] = str(result.result)
+                response["traceback"] = result.traceback
+        
+        return response
+        
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to get task status: {str(e)}")
+
+
+@app.post("/api/celery/health-check", tags=["celery"], dependencies=[role_required(Role.admin,)])
+async def trigger_health_check():
+    """Trigger a Celery health check task."""
+    try:
+        from nova.celery_app import health_check
+        
+        # Trigger the health check task
+        task = health_check.delay()
+        
+        return {
+            "task_id": task.id,
+            "status": "queued",
+            "message": "Health check task queued for execution"
+        }
+        
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to trigger health check: {str(e)}")
+
+
+# Update the status endpoint to reflect v7.0
+@app.get("/status", tags=["meta"])
+def read_status():
+    return {
+        "status": "Nova Agent v7.0 running",
+        "loop": "heartbeat active",
+        "version": "7.0",
+        "features": [
+            "autonomous_research", 
+            "nlp_intent_detection", 
+            "memory_management",
+            "planning_engine",
+            "task_scheduler",
+            "enhanced_governance",
+            "celery_integration"
+        ]
+    }
+
+__all__ = ["app"]

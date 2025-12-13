@@ -1,5 +1,5 @@
 """Automate Phase 3 enhancements integration."""
-import argparse, subprocess, sys, os, shutil, json, textwrap
+import argparse
 
 ENHANCEMENTS = ['alembic', 'ssr', 'metrics', 'auth', 'e2e', 'loadtest']
 

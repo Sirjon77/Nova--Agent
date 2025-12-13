@@ -13,10 +13,7 @@ from agents.promptgen import generate_prompt_variants
 from agents.rpmwatcher import check_rpm_drops
 from agents.avatarops import adjust_avatars
 
-from monetization_router import route_monetization
 from rpm_heatmap import generate_rpm_heatmap
-from funnel_tracker import track_funnel
-from tag_score_engine import tag_and_score
 from retargeting_optimizer import optimize_cta
 
 # Autonomous Research System
@@ -29,23 +26,60 @@ from metricool_post import schedule_post_metricool
 from convertkit_push import push_to_convertkit
 from gumroad_sync import log_sale_to_gumroad
 
-EMAIL_SENDER = "jonathanstuart2177@gmail.com"
-EMAIL_PASSWORD = "your_app_password_here"  # Use a Gmail App Password
-EMAIL_RECEIVER = "jonathanstuart2177@gmail.com"
+# Enhanced email configuration with security validation
+import os
+
+def get_email_config():
+    """Get email configuration with security validation."""
+    email_sender = os.getenv("EMAIL_SENDER")
+    email_password = os.getenv("EMAIL_PASSWORD")
+    email_receiver = os.getenv("EMAIL_RECEIVER")
+    
+    # Check for hardcoded values
+    if email_password in ["your_app_password_here", "password", "123456"]:
+        raise RuntimeError(
+            "EMAIL_PASSWORD contains forbidden value. "
+            "Please set a valid email app password in the environment."
+        )
+    
+    # Validate email format
+    if email_sender and "@" not in email_sender:
+        raise RuntimeError(f"Invalid email format for EMAIL_SENDER: {email_sender}")
+    
+    if email_receiver and "@" not in email_receiver:
+        raise RuntimeError(f"Invalid email format for EMAIL_RECEIVER: {email_receiver}")
+    
+    return email_sender, email_password, email_receiver
+
+# Get email configuration with validation
+EMAIL_SENDER, EMAIL_PASSWORD, EMAIL_RECEIVER = get_email_config()
 SMTP_SERVER = "smtp.gmail.com"
 SMTP_PORT = 587
 
 def send_email_log(subject, body):
-    msg = EmailMessage()
-    msg["From"] = EMAIL_SENDER
-    msg["To"] = EMAIL_RECEIVER
-    msg["Subject"] = subject
-    msg.set_content(body)
+    """Send email log with enhanced security validation."""
+    # Check if email credentials are properly configured
+    if not EMAIL_SENDER or not EMAIL_PASSWORD or not EMAIL_RECEIVER:
+        print("⚠️  Email not configured - skipping email log")
+        return
+    
+    try:
+        msg = EmailMessage()
+        msg["From"] = EMAIL_SENDER
+        msg["To"] = EMAIL_RECEIVER
+        msg["Subject"] = subject
+        msg.set_content(body)
 
-    with smtplib.SMTP(SMTP_SERVER, SMTP_PORT) as smtp:
-        smtp.starttls()
-        smtp.login(EMAIL_SENDER, EMAIL_PASSWORD)
-        smtp.send_message(msg)
+        with smtplib.SMTP(SMTP_SERVER, SMTP_PORT) as smtp:
+            smtp.starttls()
+            smtp.login(EMAIL_SENDER, EMAIL_PASSWORD)
+            smtp.send_message(msg)
+        
+        print(f"✅ Email log sent successfully to {EMAIL_RECEIVER}")
+        
+    except Exception as e:
+        print(f"❌ Email log failed: {str(e)}")
+        # Don't fail the entire loop due to email issues
 
 def run_nova_loop():
     report = []
@@ -82,12 +116,64 @@ def run_nova_loop():
         report.append(f"❌ Research error: {str(e)}")
 
     report.append("\n🔗 Syncing with External Platforms...")
+    
+    # Enhanced integration handling with environment variable validation
     try:
-        sync_to_notion("notion-db-id", {"Name": {"title": [{"text": {"content": "Nova Sync"}}]}}, "notion-token")
-        export_to_google_sheet("Nova Sheet", [["PromptID", "RPM", "Retention"]])
-        schedule_post_metricool("metricool-api-key", "account-id", "Scheduled Content", "2025-07-01T10:00:00Z")
-        push_to_convertkit("convertkit-api-key", "form-id", "user@example.com")
-        log_sale_to_gumroad("gumroad-token", "product-id")
+        # Notion Integration
+        notion_token = os.getenv("NOTION_TOKEN") or os.getenv("NOTION_API_KEY")
+        notion_db_id = os.getenv("NOTION_DATABASE_ID")
+        if notion_token and notion_db_id:
+            try:
+                sync_to_notion(notion_db_id, {"Name": {"title": [{"text": {"content": "Nova Sync"}}]}}, notion_token)
+                report.append("✅ Notion sync completed")
+            except Exception as e:
+                report.append(f"❌ Notion sync error: {str(e)}")
+        else:
+            report.append("ℹ️  Notion integration not configured; skipping")
+        
+        # Google Sheets Export
+        try:
+            export_to_google_sheet("Nova Sheet", [["PromptID", "RPM", "Retention"]])
+            report.append("✅ Google Sheets export completed")
+        except Exception as e:
+            report.append(f"❌ Google Sheets export error: {str(e)}")
+        
+        # Metricool Integration
+        metricool_key = os.getenv("METRICOOL_API_KEY")
+        metricool_account = os.getenv("METRICOOL_ACCOUNT_ID")
+        if metricool_key and metricool_account:
+            try:
+                schedule_post_metricool(metricool_key, metricool_account, "Scheduled Content", "2025-07-01T10:00:00Z")
+                report.append("✅ Metricool post scheduled")
+            except Exception as e:
+                report.append(f"❌ Metricool error: {str(e)}")
+        else:
+            report.append("ℹ️  Metricool integration not configured; skipping")
+        
+        # ConvertKit Integration
+        convertkit_key = os.getenv("CONVERTKIT_API_KEY")
+        convertkit_form = os.getenv("CONVERTKIT_FORM_ID")
+        if convertkit_key and convertkit_form:
+            try:
+                push_to_convertkit(convertkit_key, convertkit_form, "user@example.com")
+                report.append("✅ ConvertKit push completed")
+            except Exception as e:
+                report.append(f"❌ ConvertKit error: {str(e)}")
+        else:
+            report.append("ℹ️  ConvertKit integration not configured; skipping")
+        
+        # Gumroad Integration
+        gumroad_key = os.getenv("GUMROAD_API_KEY")
+        gumroad_product = os.getenv("GUMROAD_PRODUCT_ID")
+        if gumroad_key and gumroad_product:
+            try:
+                log_sale_to_gumroad(gumroad_key, gumroad_product)
+                report.append("✅ Gumroad sale logged")
+            except Exception as e:
+                report.append(f"❌ Gumroad error: {str(e)}")
+        else:
+            report.append("ℹ️  Gumroad integration not configured; skipping")
+            
     except Exception as e:
         report.append(f"❌ Integration error: {str(e)}")
 
@@ -109,7 +195,6 @@ except Exception as e:
 # === End Auto-sync ===
 
 
-import os
 from agent_spawner import AgentSpawner
 
 def simulate_agent_spawn_if_enabled():
@@ -139,7 +224,6 @@ def handle_loop():
 
 # Autonomous Crawler Trigger Logic (Nova Activated)
 import re
-from prompt_web_hook import process_prompt_for_crawl
 
 AUTO_CRAWL_ENABLED = True  # Can be overridden by .env in real deployment
 
@@ -239,7 +323,7 @@ def end_of_loop_hook():
 
 
 # === Cron Trigger: Daily Memory Export to S3 or GDrive ===
-import datetime, os
+import datetime
 from memory_export_to_s3 import export_logs_to_s3
 
 def try_export_memory():
@@ -292,7 +376,7 @@ if __name__ == "__main__":
 
 
 # === Nova Diagnostic Logger Hook ===
-import json, os
+import json
 from datetime import datetime
 
 def log_diagnostic(message):

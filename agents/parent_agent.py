@@ -1,5 +1,4 @@
 """Parent agent that delegates tasks to child helper agents."""
-from typing import List, Dict
 from agents.multi_step_planner import plan_and_execute
 
 class ParentAgent:

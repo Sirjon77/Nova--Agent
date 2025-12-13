@@ -1,5 +1,7 @@
 """Store tiny per‑workflow JSON summaries in Redis JSON."""
-import os, json, time
+import os
+import json
+import time
 try:
     import redis
 except ModuleNotFoundError:

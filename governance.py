@@ -1,4 +1,6 @@
-import yaml, builtins, importlib
+import yaml
+import builtins
+import importlib
 from logging_conf import audit_logger
 
 POLICY = yaml.safe_load(open('config/policy.yaml'))

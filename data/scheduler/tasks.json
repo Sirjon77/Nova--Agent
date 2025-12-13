@@ -1,0 +1,25 @@
+[
+  {
+    "task_id": "task_6d77d6d9",
+    "name": "Monitor key metrics for 24 hours",
+    "description": "Gather baseline data",
+    "action_type": "analyze_metrics",
+    "parameters": {
+      "action": "Monitor key metrics for 24 hours",
+      "timeline": "immediate",
+      "priority": "medium",
+      "expected_impact": "Gather baseline data"
+    },
+    "scheduled_time": "2025-08-07 17:51:26.423356",
+    "priority": "TaskPriority.MEDIUM",
+    "status": "TaskStatus.PENDING",
+    "created_at": "2025-08-07 17:51:26.423377",
+    "started_at": null,
+    "completed_at": null,
+    "result": null,
+    "error_message": null,
+    "retry_count": 0,
+    "max_retries": 3,
+    "dependencies": []
+  }
+]

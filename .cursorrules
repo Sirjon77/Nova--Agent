@@ -1,0 +1,37 @@
+# Nova Agent Development Rules
+
+## ALWAYS Load Context First
+Before any code changes or analysis:
+1. Load `docs/flattened-codebase.xml` - Contains the latest codebase snapshot
+2. This file is automatically updated on every commit
+3. If the file seems outdated, run: `npm run update-context`
+
+## Core Rules
+- Follow all rules in `.cursor/rules/00-nova-agent.md`
+- Apply BMAD planning from `.cursor/rules/01-nova-agent-bmad-planning.md`
+- Check agent-specific rules in `.cursor/rules/bmad/`
+
+## Context Management
+The flattened codebase is automatically:
+- Deleted and recreated on each commit (to save space)
+- Updated with latest code changes
+- Optimized to include only essential files
+- Referenced by all BMAD agents
+
+## Quick Commands
+```bash
+# Manual update if needed
+npm run update-context
+
+# Watch for changes
+npm run watch-context
+
+# Plan new features
+npm run new-feature -- --feature <name>
+```
+
+## Important Paths
+- Context: `docs/flattened-codebase.xml`
+- Rules: `.cursor/rules/`
+- Planning: `docs/planning/`
+- Scripts: `scripts/`

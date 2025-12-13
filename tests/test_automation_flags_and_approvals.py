@@ -8,7 +8,6 @@ environment variables are pointed at temporary locations. Tests use
 PyTest's `tmp_path` and `monkeypatch` fixtures.
 """
 
-import os
 import importlib
 
 

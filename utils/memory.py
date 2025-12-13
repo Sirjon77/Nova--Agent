@@ -2,7 +2,6 @@
 import datetime
 import time
 import json
-import os
 
 def timestamp_now():
     return datetime.datetime.utcnow().isoformat()

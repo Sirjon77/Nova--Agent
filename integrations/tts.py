@@ -46,7 +46,6 @@ def synthesize_speech(text: str, *, voice_id: Optional[str] = None, format: str 
             synthesis.
     """
     import os
-    import time
     import tempfile
     import requests
 

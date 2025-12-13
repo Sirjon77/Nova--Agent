@@ -96,7 +96,6 @@ def synthesize_speech(
             f"NaturalReader API returned {response.status_code}: {response.text}"
         )
     # The API returns binary audio content. Save to a temp file.
-    import tempfile
 
     suffix = f".{format.lower()}"
     with tempfile.NamedTemporaryFile(delete=False, suffix=suffix) as tmp_file:

@@ -14,7 +14,7 @@ class AgentSpawner:
 
     @require_nova_approval
     def spawn_agent(self, role_description, tools=[], goal="Execute assigned task"):
-        agent_id = str(uuid.uuid4())
+        str(uuid.uuid4())
         agent_name = f"{role_description.replace(' ', '')}Agent"
         created_at = datetime.datetime.utcnow().isoformat()
 

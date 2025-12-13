@@ -2,7 +2,6 @@
 import requests
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
-import time
 
 class DeepWebCrawler:
     def __init__(self, base_url, depth=3):

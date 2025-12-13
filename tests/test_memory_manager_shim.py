@@ -3,7 +3,6 @@ Unit tests for memory manager shim (legacy adapter).
 """
 
 import pytest
-from unittest.mock import patch, MagicMock
 
 from memory.legacy_adapter import save_to_memory, query_memory, fetch_from_memory, is_memory_available, get_memory_status
 

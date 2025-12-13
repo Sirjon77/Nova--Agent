@@ -1,5 +1,7 @@
 
-import os, hmac, hashlib, json, stripe, logging
+import os
+import stripe
+import logging
 from flask import Flask, request, abort
 
 stripe.api_key = os.getenv('STRIPE_SECRET_KEY')
@@ -14,10 +16,10 @@ def stripe_webhook():
         event = stripe.Webhook.construct_event(
             request.data, sig_header, endpoint_secret
         )
-    except ValueError as e:
+    except ValueError:
         logger.warning('Invalid payload')
         abort(400)
-    except stripe.error.SignatureVerificationError as e:
+    except stripe.error.SignatureVerificationError:
         logger.error('Invalid signature')
         abort(400)
     if event['type'] == 'checkout.session.completed':

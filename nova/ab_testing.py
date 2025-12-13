@@ -37,8 +37,8 @@ from __future__ import annotations
 import json
 import os
 import random
-from datetime import datetime
-from typing import Any, Dict, List, Optional, Union
+from datetime import timezone,  datetime
+from typing import Any, Dict, List
 
 
 class ABTestManager:
@@ -132,7 +132,7 @@ class ABTestManager:
             raise KeyError(f"Test '{test_id}' does not exist")
         variant = random.choice(variants)
         log_entry = {
-            "timestamp": datetime.utcnow().isoformat(),
+            "timestamp": datetime.now(timezone.utc).isoformat(),
             "variant": variant,
         }
         data.setdefault("serving_log", []).append(log_entry)
@@ -157,7 +157,7 @@ class ABTestManager:
         if variant not in variants:
             raise KeyError(f"Variant '{variant}' is not part of test '{test_id}'")
         result_entry = {
-            "timestamp": datetime.utcnow().isoformat(),
+            "timestamp": datetime.now(timezone.utc).isoformat(),
             "variant": variant,
             "metric": metric,
         }

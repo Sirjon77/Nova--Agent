@@ -16,7 +16,7 @@ import pytest
 @pytest.mark.asyncio
 async def test_task_manager_handles_many_tasks(monkeypatch):
     # Import task_manager and dummy_task from nova
-    from nova.task_manager import task_manager, TaskType, dummy_task
+    from nova.task_manager import task_manager, TaskType
     # Monkeypatch dummy_task to return immediately instead of sleeping
     async def fast_task(duration: int = 0):
         return {"slept": duration}

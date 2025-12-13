@@ -1,6 +1,7 @@
 
 # Simulate GWI CSV + FitFuel prompt rewrite
-import csv, json, random
+import csv
+import json
 
 def generate_mock_gwi_csv(filepath):
     rows = [

@@ -29,7 +29,7 @@ Usage example::
 from __future__ import annotations
 
 import os
-from typing import Any, Dict
+from typing import Any, Dict, Union
 
 import requests
 
@@ -60,8 +60,8 @@ def _hubspot_request(endpoint: str, method: str = "POST", *, data: Dict[str, Any
 def create_contact(
     *,
     email: str,
-    first_name: str | None = None,
-    last_name: str | None = None,
+    first_name: Union[str, None] = None,
+    last_name: Union[str, None] = None,
     **properties: Any,
 ) -> Dict[str, Any]:
     """Create a contact in HubSpot CRM.

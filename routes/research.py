@@ -10,7 +10,6 @@ Provides REST API endpoints for:
 
 from fastapi import APIRouter, HTTPException
 from typing import Dict, Any, Optional
-import asyncio
 
 from nova.research_dashboard import (
     get_dashboard_data, 

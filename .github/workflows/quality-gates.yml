@@ -1,0 +1,85 @@
+name: Quality Gates
+
+on:
+  pull_request:
+    branches: [ main, develop, to-do-list ]
+
+jobs:
+  quality-check:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.9
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pytest pytest-cov pytest-asyncio pytest-mock
+
+    - name: Create config directory and files
+      run: |
+        mkdir -p config
+        if [ ! -f config/policy.yaml ]; then
+          echo "sandbox:" > config/policy.yaml
+          echo "  memory_limit_mb: 512" >> config/policy.yaml
+        fi
+
+    - name: Run tests with coverage
+      env:
+        OPENAI_API_KEY: test-key
+        PUBLER_API_KEY: test-key
+        PUBLER_WORKSPACE_ID: test-workspace
+        METRICOOL_API_TOKEN: test-token
+        METRICOOL_ACCOUNT_ID: test-account
+        TEAMS_WEBHOOK_URL: https://test.webhook.url
+        RUNWAY_API_KEY: test-key
+        RUNWAY_MODEL_ID: test-model
+      run: |
+        pytest tests/ --cov=nova --cov=utils --cov=integrations --cov-report=xml --cov-report=term-missing --cov-fail-under=90
+
+    - name: Check coverage threshold
+      run: |
+        echo "=== COVERAGE REPORT ==="
+        coverage report --show-missing
+        echo ""
+        echo "=== COVERAGE THRESHOLD CHECK ==="
+        coverage report --fail-under=90 || (echo "❌ Coverage below 90% threshold" && exit 1)
+        echo "✅ Coverage meets 90% threshold"
+
+    - name: Comment coverage report
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const coverage = require('coverage');
+          const fs = require('fs');
+          
+          try {
+            const report = fs.readFileSync('coverage.xml', 'utf8');
+            const lines = report.match(/<coverage.*?lines-valid="(\d+)".*?lines-covered="(\d+)"/);
+            const total = parseInt(lines[1]);
+            const covered = parseInt(lines[2]);
+            const percentage = ((covered / total) * 100).toFixed(2);
+            
+            const comment = `## 📊 Coverage Report
+            
+            **Coverage:** ${percentage}% (${covered}/${total} lines)
+            **Status:** ${percentage >= 90 ? '✅ PASS' : '❌ FAIL'}
+            **Threshold:** 90%
+            
+            ${percentage >= 90 ? '🎉 Coverage meets quality standards!' : '⚠️ Coverage below threshold. Please add more tests.'}`;
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });
+          } catch (error) {
+            console.log('Could not parse coverage report:', error);
+          } 

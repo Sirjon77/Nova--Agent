@@ -16,16 +16,14 @@ import time
 import logging
 import random
 import statistics
-from typing import Dict, List, Any, Optional, Tuple
+from typing import Dict, List, Any, Optional
 from dataclasses import dataclass, asdict
-from datetime import datetime, timedelta
+from datetime import datetime
 from pathlib import Path
-import asyncio
 from concurrent.futures import ThreadPoolExecutor
 
 from utils.openai_wrapper import chat_completion
 from utils.memory_manager import store_long, get_relevant_memories
-from nova.nlp.intent_classifier import IntentType
 
 logger = logging.getLogger(__name__)
 
@@ -137,7 +135,7 @@ class AutonomousResearcher:
             performance_analysis = await self._analyze_current_performance()
             
             # Get relevant memories for context
-            memories = get_relevant_memories("performance", "recent", limit=50)
+            memories = get_relevant_memories("performance", "recent", top_k=50)
             
             prompt = f"""
             Based on the following performance analysis and recent system behavior,

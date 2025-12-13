@@ -1,5 +1,5 @@
 """Run Alembic migrations programmatically."""
-import os, sys
+import os
 from alembic import command
 from alembic.config import Config
 

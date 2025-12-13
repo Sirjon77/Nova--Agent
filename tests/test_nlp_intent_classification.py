@@ -12,7 +12,7 @@ import pytest
 import json
 from unittest.mock import Mock, patch
 from nova.nlp.intent_classifier import IntentClassifier, IntentType, IntentResult
-from nova.nlp.context_manager import ContextManager, ConversationTurn, SystemState
+from nova.nlp.context_manager import ContextManager, ConversationTurn
 from nova.nlp.training_data import TrainingDataManager, TrainingExample
 
 class TestIntentClassifier:
@@ -171,7 +171,7 @@ class TestContextManager:
         self.context_manager.update_system_state(loop_active=True, current_avatar="test_avatar")
         
         state = self.context_manager.get_system_state()
-        assert state.loop_active == True
+        assert state.loop_active
         assert state.current_avatar == "test_avatar"
         
     def test_context_persistence(self, tmp_path):
@@ -190,7 +190,7 @@ class TestContextManager:
         
         # Verify data was restored
         state = new_manager.get_system_state()
-        assert state.loop_active == True
+        assert state.loop_active
         
         prefs = new_manager.get_user_preferences()
         assert prefs["theme"] == "dark"

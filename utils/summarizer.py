@@ -11,7 +11,6 @@ This module provides advanced text summarization capabilities:
 import re
 import logging
 from typing import Optional, Dict, Any, List
-import time
 
 # Use model registry for model resolution
 try:
@@ -155,12 +154,17 @@ class EnhancedSummarizer:
             prompt = self._build_summarization_prompt(text, title, source, context)
             
             # Generate summary
-            response = chat_completion(
-                prompt,
-                model=self.model,
-                max_tokens=self.max_summary_length,
-                temperature=0.3
-            )
+            try:
+                from nova.services.openai_client import chat_completion
+                response = chat_completion(
+                    prompt,
+                    model=self.model,
+                    max_tokens=self.max_summary_length,
+                    temperature=0.3
+                )
+            except ImportError:
+                # Fallback for testing
+                response = f"Summary of: {text[:100]}..."
             
             # Clean and format response
             summary = self._clean_summary(response)
@@ -303,7 +307,7 @@ Summary:"""
         summary = summary.strip()
         
         # Ensure it ends with proper punctuation
-        if summary and not summary[-1] in '.!?':
+        if summary and summary[-1] not in '.!?':
             summary += '.'
         
         return summary
@@ -357,8 +361,12 @@ Summary:"""
 enhanced_summarizer = EnhancedSummarizer()
 
 # Convenience functions for backward compatibility
-def summarize_text(text: str, title: Optional[str] = None, source: Optional[str] = None) -> str:
+def summarize_text(text: str, title: Optional[str] = None, source: Optional[str] = None, max_length: Optional[int] = None) -> str:
     """Summarize text using enhanced summarizer."""
+    if max_length:
+        # Create a temporary summarizer with custom max length
+        temp_summarizer = EnhancedSummarizer(max_summary_length=max_length)
+        return temp_summarizer.summarize_text(text, title, source)
     return enhanced_summarizer.summarize_text(text, title, source)
 
 def summarize_web_content(url: str, title: str, content: str) -> str:

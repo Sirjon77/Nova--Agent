@@ -1,0 +1,52 @@
+name: BMAD Verify
+
+on:
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  verify-bmad:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install BMAD CLI (via npx) and verify
+        run: |
+          npm --version
+          npx --yes bmad-method@4.39.0 --help >/dev/null 2>&1 || {
+            echo "❌ bmad-method CLI not available via npx" >&2
+            exit 1
+          }
+
+      - name: Run BMAD flatten
+        run: |
+          npx --yes bmad-method@4.39.0 flatten --input . --output docs/flattened-codebase.xml.tmp
+          test -s docs/flattened-codebase.xml.tmp || { echo "❌ BMAD flatten produced no output"; exit 1; }
+
+      - name: Ensure committed snapshot is not fallback
+        run: |
+          if [ -f docs/flattened-codebase.xml ]; then
+            if grep -q '<method>optimized-fallback</method>' docs/flattened-codebase.xml; then
+              echo '❌ Found optimized-fallback snapshot committed. Please run BMAD flatten locally and commit the result.' >&2
+              exit 1
+            fi
+          else
+            echo '❌ docs/flattened-codebase.xml missing. Please commit the BMAD-generated snapshot.' >&2
+            exit 1
+          fi
+
+      - name: Optional diff (informational)
+        run: |
+          if ! diff -q docs/flattened-codebase.xml docs/flattened-codebase.xml.tmp >/dev/null 2>&1; then
+            echo 'ℹ️ BMAD CI output differs from committed snapshot. This might be OK depending on environment; prefer committing CI-sourced snapshot if deterministic.'
+          else
+            echo '✅ Committed snapshot matches BMAD CI output.'
+          fi
+

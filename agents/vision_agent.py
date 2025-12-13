@@ -1,5 +1,5 @@
 """Vision agent placeholder using GPT-4o vision endpoint."""
-import base64, requests, os
+import base64
 from utils.model_router import chat_completion
 
 # Use model registry for model resolution

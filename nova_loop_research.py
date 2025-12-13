@@ -1,6 +1,7 @@
 
 # Daily scan for new CSVs in research_insights/
-import os, datetime
+import os
+import datetime
 
 def scan_research_csvs(brand_folder="research_insights"):
     today = datetime.date.today().isoformat()

@@ -14,7 +14,7 @@ feedback loop can operate even without real analytics.
 from __future__ import annotations
 
 import random
-from typing import List
+from typing import List, Union
 
 from nova.multi_platform import PostAdapter  # type: ignore
 from nova.multi_account import MultiAccountDistributor  # type: ignore
@@ -51,7 +51,7 @@ def _extract_topic(prompt: str, topics: List[str]) -> str:
     return topics[0] if topics else ''
 
 
-def manage_platforms(video_path: str, prompt: str, prompt_id: str | None = None) -> str:
+def manage_platforms(video_path: str, prompt: str, prompt_id: Union[str, None] = None) -> str:
     """Post a video to multiple social platforms with tailored captions.
 
     Args:

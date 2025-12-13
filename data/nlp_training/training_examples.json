@@ -1,0 +1,299 @@
+[
+  {
+    "message": "test message",
+    "intent": "chat",
+    "confidence": 0.5,
+    "entities": {},
+    "context": {
+      "system_state": {
+        "loop_active": true,
+        "current_avatar": "test_avatar",
+        "last_rpm_check": 0.0,
+        "last_content_created": 0.0,
+        "active_platforms": [],
+        "current_task": null,
+        "error_count": 0,
+        "performance_metrics": {}
+      },
+      "recent_intents": [],
+      "user_preferences": {},
+      "session_duration": 36.910176038742065,
+      "conversation_length": 0,
+      "time_context": {
+        "hour": 17,
+        "day_of_week": 0,
+        "is_business_hours": true,
+        "time_since_last_rpm": 1754341877.759833,
+        "time_since_last_content": 1754341877.759834
+      }
+    },
+    "timestamp": 1754341877.979297,
+    "user_feedback": null,
+    "corrected_intent": null,
+    "source": "user_input"
+  },
+  {
+    "message": "test message",
+    "intent": "chat",
+    "confidence": 0.5,
+    "entities": {},
+    "context": {
+      "system_state": {
+        "loop_active": true,
+        "current_avatar": "test_avatar",
+        "last_rpm_check": 0.0,
+        "last_content_created": 0.0,
+        "active_platforms": [],
+        "current_task": null,
+        "error_count": 0,
+        "performance_metrics": {}
+      },
+      "recent_intents": [],
+      "user_preferences": {},
+      "session_duration": 42.330304861068726,
+      "conversation_length": 0,
+      "time_context": {
+        "hour": 17,
+        "day_of_week": 0,
+        "is_business_hours": true,
+        "time_since_last_rpm": 1754343150.751551,
+        "time_since_last_content": 1754343150.751552
+      }
+    },
+    "timestamp": 1754343150.983218,
+    "user_feedback": null,
+    "corrected_intent": null,
+    "source": "user_input"
+  },
+  {
+    "message": "test message",
+    "intent": "chat",
+    "confidence": 0.5,
+    "entities": {},
+    "context": {
+      "system_state": {
+        "loop_active": true,
+        "current_avatar": "test_avatar",
+        "last_rpm_check": 0.0,
+        "last_content_created": 0.0,
+        "active_platforms": [],
+        "current_task": null,
+        "error_count": 0,
+        "performance_metrics": {}
+      },
+      "recent_intents": [],
+      "user_preferences": {},
+      "session_duration": 43.03396391868591,
+      "conversation_length": 0,
+      "time_context": {
+        "hour": 17,
+        "day_of_week": 0,
+        "is_business_hours": true,
+        "time_since_last_rpm": 1754343272.3357859,
+        "time_since_last_content": 1754343272.335787
+      }
+    },
+    "timestamp": 1754343272.5771,
+    "user_feedback": null,
+    "corrected_intent": null,
+    "source": "user_input"
+  },
+  {
+    "message": "test message",
+    "intent": "chat",
+    "confidence": 0.5,
+    "entities": {},
+    "context": {
+      "system_state": {
+        "loop_active": true,
+        "current_avatar": "test_avatar",
+        "last_rpm_check": 0.0,
+        "last_content_created": 0.0,
+        "active_platforms": [],
+        "current_task": null,
+        "error_count": 0,
+        "performance_metrics": {}
+      },
+      "recent_intents": [],
+      "user_preferences": {},
+      "session_duration": 39.749804735183716,
+      "conversation_length": 0,
+      "time_context": {
+        "hour": 17,
+        "day_of_week": 0,
+        "is_business_hours": true,
+        "time_since_last_rpm": 1754343796.893485,
+        "time_since_last_content": 1754343796.893485
+      }
+    },
+    "timestamp": 1754343797.095681,
+    "user_feedback": null,
+    "corrected_intent": null,
+    "source": "user_input"
+  },
+  {
+    "message": "test message",
+    "intent": "chat",
+    "confidence": 0.5,
+    "entities": {},
+    "context": {
+      "system_state": {
+        "loop_active": true,
+        "current_avatar": "test_avatar",
+        "last_rpm_check": 0.0,
+        "last_content_created": 0.0,
+        "active_platforms": [],
+        "current_task": null,
+        "error_count": 0,
+        "performance_metrics": {}
+      },
+      "recent_intents": [],
+      "user_preferences": {},
+      "session_duration": 36.87726378440857,
+      "conversation_length": 0,
+      "time_context": {
+        "hour": 17,
+        "day_of_week": 0,
+        "is_business_hours": true,
+        "time_since_last_rpm": 1754343875.747892,
+        "time_since_last_content": 1754343875.747892
+      }
+    },
+    "timestamp": 1754343875.908419,
+    "user_feedback": null,
+    "corrected_intent": null,
+    "source": "user_input"
+  },
+  {
+    "message": "test message",
+    "intent": "chat",
+    "confidence": 0.5,
+    "entities": {},
+    "context": {
+      "system_state": {
+        "loop_active": true,
+        "current_avatar": "test_avatar",
+        "last_rpm_check": 0.0,
+        "last_content_created": 0.0,
+        "active_platforms": [],
+        "current_task": null,
+        "error_count": 0,
+        "performance_metrics": {}
+      },
+      "recent_intents": [],
+      "user_preferences": {},
+      "session_duration": 42.0866539478302,
+      "conversation_length": 0,
+      "time_context": {
+        "hour": 17,
+        "day_of_week": 0,
+        "is_business_hours": true,
+        "time_since_last_rpm": 1754344111.8346372,
+        "time_since_last_content": 1754344111.8346372
+      }
+    },
+    "timestamp": 1754344112.006629,
+    "user_feedback": null,
+    "corrected_intent": null,
+    "source": "user_input"
+  },
+  {
+    "message": "test message",
+    "intent": "chat",
+    "confidence": 0.5,
+    "entities": {},
+    "context": {
+      "system_state": {
+        "loop_active": true,
+        "current_avatar": "test_avatar",
+        "last_rpm_check": 0.0,
+        "last_content_created": 0.0,
+        "active_platforms": [],
+        "current_task": null,
+        "error_count": 0,
+        "performance_metrics": {}
+      },
+      "recent_intents": [],
+      "user_preferences": {},
+      "session_duration": 36.41243815422058,
+      "conversation_length": 0,
+      "time_context": {
+        "hour": 17,
+        "day_of_week": 0,
+        "is_business_hours": true,
+        "time_since_last_rpm": 1754344194.130854,
+        "time_since_last_content": 1754344194.130854
+      }
+    },
+    "timestamp": 1754344194.285757,
+    "user_feedback": null,
+    "corrected_intent": null,
+    "source": "user_input"
+  },
+  {
+    "message": "test message",
+    "intent": "chat",
+    "confidence": 0.5,
+    "entities": {},
+    "context": {
+      "system_state": {
+        "loop_active": true,
+        "current_avatar": "test_avatar",
+        "last_rpm_check": 0.0,
+        "last_content_created": 0.0,
+        "active_platforms": [],
+        "current_task": null,
+        "error_count": 0,
+        "performance_metrics": {}
+      },
+      "recent_intents": [],
+      "user_preferences": {},
+      "session_duration": 36.63574290275574,
+      "conversation_length": 0,
+      "time_context": {
+        "hour": 17,
+        "day_of_week": 0,
+        "is_business_hours": true,
+        "time_since_last_rpm": 1754344258.113937,
+        "time_since_last_content": 1754344258.113937
+      }
+    },
+    "timestamp": 1754344258.228559,
+    "user_feedback": null,
+    "corrected_intent": null,
+    "source": "user_input"
+  },
+  {
+    "message": "test message",
+    "intent": "chat",
+    "confidence": 0.5,
+    "entities": {},
+    "context": {
+      "system_state": {
+        "loop_active": true,
+        "current_avatar": "test_avatar",
+        "last_rpm_check": 0.0,
+        "last_content_created": 0.0,
+        "active_platforms": [],
+        "current_task": null,
+        "error_count": 0,
+        "performance_metrics": {}
+      },
+      "recent_intents": [],
+      "user_preferences": {},
+      "session_duration": 41.70861792564392,
+      "conversation_length": 0,
+      "time_context": {
+        "hour": 17,
+        "day_of_week": 0,
+        "is_business_hours": true,
+        "time_since_last_rpm": 1754344326.1741388,
+        "time_since_last_content": 1754344326.17414
+      }
+    },
+    "timestamp": 1754344326.450679,
+    "user_feedback": null,
+    "corrected_intent": null,
+    "source": "user_input"
+  }
+]

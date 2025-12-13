@@ -23,13 +23,14 @@ from __future__ import annotations
 
 import os
 import requests
+from typing import Union
 
 
 class TeamsNotificationError(Exception):
     """Raised when a Teams webhook call fails."""
 
 
-def send_message(message: str, *, title: str | None = None) -> bool:
+def send_message(message: str, *, title: Union[str, None] = None) -> bool:
     """Send a message to a Microsoft Teams channel via webhook.
 
     Args:

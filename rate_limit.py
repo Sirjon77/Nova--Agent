@@ -20,7 +20,7 @@ def rate_limited(key: str, limit: int, window: int = 60):
             for attempt in range(5):
                 try:
                     return func(*args, **kwargs)
-                except Exception as e:
+                except Exception:
                     if attempt == 4:
                         raise
                     backoff = 2 ** attempt

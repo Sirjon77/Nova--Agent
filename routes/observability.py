@@ -10,8 +10,7 @@ Provides REST API endpoints for:
 """
 
 from fastapi import APIRouter, HTTPException, Response
-from fastapi.responses import PlainTextResponse
-from typing import Dict, List, Any, Optional
+from typing import Dict, Any, Optional
 import time
 
 from nova.observability import (
@@ -19,9 +18,7 @@ from nova.observability import (
     get_metrics,
     get_performance_summary,
     get_audit_log,
-    get_error_summary,
-    record_request,
-    record_error
+    get_error_summary
 )
 
 router = APIRouter(prefix="/observability", tags=["observability"])

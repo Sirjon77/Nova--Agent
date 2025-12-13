@@ -1,8 +1,11 @@
 """FastAPI chat endpoint with short‑ and long‑term memory wiring."""
-import os, uuid, json
-from fastapi import APIRouter, Request, Response, Cookie
+import os
+import uuid
+import json
+from fastapi import APIRouter, Response, Cookie
 from pydantic import BaseModel
-from memory_router import assemble_prompt, store_short
+from .memory_router import assemble_prompt, store_short
+from typing import Union
 
 # Use the new OpenAI client wrapper that forces model translation
 try:
@@ -20,7 +23,7 @@ class ChatBody(BaseModel):
     message: str
 
 @router.post("/chat")
-async def chat(body: ChatBody, session_id: str | None = Cookie(default=None)):
+async def chat(body: ChatBody, session_id: Union[str, None] = Cookie(default=None)):
     # 1 ▪ Session cookie
     if not session_id:
         session_id = str(uuid.uuid4())

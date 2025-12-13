@@ -1,0 +1,44 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: check-merge-conflict
+        stages: [pre-commit]
+      - id: end-of-file-fixer
+        stages: [pre-commit]
+      - id: trailing-whitespace
+        stages: [pre-commit]
+      - id: mixed-line-ending
+        stages: [pre-commit]
+
+  - repo: https://github.com/psf/black
+    rev: 24.8.0
+    hooks:
+      - id: black
+        language_version: python3
+        stages: [pre-commit]
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.6.5
+    hooks:
+      - id: ruff
+        args: ["--fix"]
+        additional_dependencies: []
+        stages: [pre-commit]
+
+  # Local hook to keep the flattened codebase snapshot current
+  - repo: local
+    hooks:
+      - id: update-flattened-codebase
+        name: Update flattened codebase snapshot
+        entry: bash scripts/update-flattened-codebase.sh
+        language: system
+        pass_filenames: false
+        stages: [pre-commit]
+
+      - id: smoke-tests
+        name: Run smoke tests before push
+        entry: bash scripts/test-smoke.sh
+        language: system
+        pass_filenames: false
+        stages: [pre-push]

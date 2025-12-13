@@ -7,7 +7,7 @@ logging, and reflex capabilities for automatic error recovery.
 
 import traceback
 import logging
-from typing import Any, Callable, Optional
+from typing import Any, Callable
 from utils.memory_router import store_short, store_long
 
 logger = logging.getLogger(__name__)
@@ -38,7 +38,7 @@ def run_tool_call(session_id: str, tool_fn: Callable, *args, **kwargs) -> Any:
         return result
         
     except Exception as e:
-        error_msg = f"{e}\n{traceback.format_exc()}"
+        f"{e}\n{traceback.format_exc()}"
         status = "error"
         feedback = f"TOOL_CALL [{tool_fn.__name__}] -> {status}: {str(e)[:400]}"
         store_short(session_id, "SYSTEM", feedback)

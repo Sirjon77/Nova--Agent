@@ -15,13 +15,16 @@ tiktoken>=0.5.1
 uvicorn[standard]==0.29.0
 weaviate-client
 jsonschema
-gitpythonlangchain>=0.1.0
+gitpython
+langchain
 python-jose
 httpx
-prometheus-client
-pytest
+# Removed duplicate prometheus-client (kept versioned entry below)
+pytest>=8.0
 pytest-asyncio
-coverage
+pytest-cov>=5.0
+pytest-xdist>=3.5
+coverage>=7.5
 prometheus-fastapi-instrumentator
 starlette
 psutil
@@ -31,16 +34,60 @@ sentence-transformers>=2.2.0
 numpy>=1.21.0
 scikit-learn>=1.0.0
 
-# Observability Dependencies
+# Observability Dependencies  
 prometheus-client>=0.17.0
 psutil>=5.9.0
 
+# Protocol Buffers - fix version mismatch warnings and grpcio compatibility
+protobuf>=6.31.1,<7.0.0
+
 # Scheduling Dependencies
 schedule>=1.2.0
+apscheduler>=3.10.0
 
 # Browser Automation Dependencies
 playwright>=1.40.0
 
 # Additional Dependencies
-redis>=4.5.0
+redis>=5.0.0
 weaviate-client>=3.25.0
+
+# v7.0 Enhanced Analytics Dependencies
+numpy>=1.24.0
+scipy>=1.10.0
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# v7.0 Planning Engine Dependencies
+celery>=5.3.6
+flower>=2.0.0
+
+# v7.0 Memory & Vector Search Dependencies
+faiss-cpu>=1.7.4
+chromadb>=0.4.0
+
+# v7.0 Monitoring & Alerting Dependencies
+sentry-sdk>=1.28.0
+grafana-api>=1.0.3
+
+# v7.0 Content Generation Dependencies
+moviepy>=1.0.3
+pillow>=10.0.0
+opencv-python>=4.8.0
+
+# v7.0 API Integration Dependencies
+google-api-python-client>=2.100.0
+google-auth-httplib2>=0.1.0
+google-auth-oauthlib>=1.0.0
+tweepy>=4.14.0
+python-linkedin-v2>=0.8.0
+
+# v7.0 Security Dependencies
+cryptography>=41.0.0
+passlib>=1.7.4
+bcrypt>=4.0.0
+
+# v7.0 Testing Dependencies
+pytest-mock>=3.11.0
+pytest-benchmark>=4.0.0
+factory-boy>=3.3.0

@@ -8,10 +8,8 @@ that API calls are mocked so no external HTTP requests are made during
 testing.
 """
 
-import os
 import importlib
 from datetime import datetime
-from types import SimpleNamespace
 
 import pytest
 

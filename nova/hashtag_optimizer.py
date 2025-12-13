@@ -15,7 +15,7 @@ across multiple platforms without diluting the niche focus.
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import List, Dict, Tuple, Iterable, Any
+from typing import List, Dict, Tuple, Iterable, Any, Union
 
 
 @dataclass
@@ -142,7 +142,7 @@ class HashtagOptimizer:
             # In case of any error (network, parsing etc.), fall back
             return self.suggest(topic, count)
 
-    def suggest_dynamic(self, topic: str, count: int = 5, cfg: Dict[str, Any] | None = None) -> List[str]:
+    def suggest_dynamic(self, topic: str, count: int = 5, cfg: Union[Dict[str, Any], None] = None) -> List[str]:
         """Suggest hashtags using real‑time trend data when available.
 
         This convenience method attempts to fetch trending keywords for

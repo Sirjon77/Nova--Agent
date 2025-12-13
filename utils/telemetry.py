@@ -1,6 +1,9 @@
 """Simple telemetry emitter; routes to LangSmith if API key provided,
 else stdout JSON for Grafana Loki scrape."""
-import os, json, time, sys
+import os
+import json
+import time
+import sys
 
 LS_API = os.getenv("LANGSMITH_API_KEY")
 

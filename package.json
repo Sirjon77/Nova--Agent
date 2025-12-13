@@ -1,0 +1,40 @@
+{
+  "name": "nova-agent",
+  "version": "1.0.0",
+  "description": "**Status: FULLY OPERATIONAL & PRODUCTION-READY** ✅",
+  "main": "tailwind.config.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "devDependencies": {
+    "bmad-method": "^4.39.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "bmad:status": "npx bmad-method status",
+    "bmad:install": "npx bmad-method install",
+    "bmad:flatten": "./scripts/update-flattened-codebase.sh",
+    "update-context": "./scripts/update-flattened-codebase.sh",
+    "watch-context": "./scripts/update-flattened-codebase.sh --watch",
+    "bmad:plan-feature": "./scripts/bmad-planning.sh",
+    "bmad:quick-plan": "./scripts/bmad-planning.sh",
+    "bmad:full-plan": "./scripts/bmad-planning.sh --full",
+    "bmad:arch-review": "cat docs/flattened-codebase.xml | npx bmad-method orchestrator --task architecture-review",
+    "bmad:implement": "npx bmad-method orchestrator --task implement",
+    "plan": "./scripts/bmad-planning.sh",
+    "new-feature": "npm run bmad:full-plan"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sirjon77/Nova--Agent.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Sirjon77/Nova--Agent/issues"
+  },
+  "homepage": "https://github.com/Sirjon77/Nova--Agent#readme"
+}

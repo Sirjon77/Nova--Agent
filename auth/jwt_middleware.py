@@ -67,27 +67,56 @@ except Exception:
     # instantiate
     jwt = _MinimalJWT()
 from starlette.middleware.base import BaseHTTPMiddleware
-import os, datetime
-import secrets
+import os
+import datetime
 
-# Generate a secure random secret if not provided
+from datetime import timezone
+# Enhanced JWT secret management with security validation
 def get_jwt_secret():
+    """Get JWT secret with enhanced security validation."""
     secret = os.getenv('JWT_SECRET_KEY')
+    
     if not secret:
-        # Generate a secure random key if not provided
-        secret = secrets.token_urlsafe(32)
-        print(f"⚠️  WARNING: JWT_SECRET_KEY not set. Generated temporary key: {secret[:10]}...")
-        print("   Set JWT_SECRET_KEY environment variable for production use.")
-    elif secret == 'change-me':
-        # Generate a secure random key if using the default
-        secret = secrets.token_urlsafe(32)
-        print(f"⚠️  WARNING: Using default JWT_SECRET_KEY. Generated secure key: {secret[:10]}...")
-        print("   Set JWT_SECRET_KEY environment variable for production use.")
+        raise RuntimeError(
+            "JWT_SECRET_KEY is not set. This is a critical security requirement. "
+            "Please set JWT_SECRET_KEY environment variable with a strong secret "
+            "(minimum 32 characters, mixed case, numbers, and symbols)."
+        )
+    
+    # Check for forbidden values
+    forbidden_values = ['change-me', 'default', 'secret', 'key', 'password']
+    if secret in forbidden_values:
+        raise RuntimeError(
+            f"JWT_SECRET_KEY is using forbidden value '{secret}'. "
+            "Please set a strong, unique JWT secret in the environment."
+        )
+    
+    # Validate secret strength
+    if len(secret) < 32:
+        raise RuntimeError(
+            f"JWT_SECRET_KEY is too weak (length: {len(secret)}). "
+            "Minimum 32 characters required for security."
+        )
+    
+    # Check for weak patterns
+    if secret.islower() or secret.isupper() or secret.isdigit():
+        raise RuntimeError(
+            "JWT_SECRET_KEY is too weak. Must contain mixed case, numbers, and symbols."
+        )
+    
     return secret
 
-SECRET = get_jwt_secret()
+# Lazy loading of SECRET to prevent import-time security validation
+_SECRET = None
 ALGO = 'HS256'
 TTL_MIN = 30
+
+def _get_secret():
+    """Lazy load the JWT secret to prevent import-time validation."""
+    global _SECRET
+    if _SECRET is None:
+        _SECRET = get_jwt_secret()
+    return _SECRET
 
 def issue_token(username: str, role: str) -> str:
     """Generate a signed JWT for the given user and role.
@@ -105,13 +134,13 @@ def issue_token(username: str, role: str) -> str:
     # numeric date (number of seconds since the epoch) to be compatible with
     # both python-jose and our minimal JWT implementation. Python datetime
     # objects are not JSON serialisable, so we convert to an int.
-    exp_dt = datetime.datetime.utcnow() + datetime.timedelta(minutes=TTL_MIN)
+    exp_dt = datetime.datetime.now(timezone.utc) + datetime.timedelta(minutes=TTL_MIN)
     payload = {
         'sub': username,
         'role': role,
         'exp': int(exp_dt.timestamp()),
     }
-    return jwt.encode(payload, SECRET, algorithm=ALGO)
+    return jwt.encode(payload, _get_secret(), algorithm=ALGO)
 
 class JWTAuthMiddleware(BaseHTTPMiddleware):
     async def dispatch(self, request: Request, call_next):
@@ -139,7 +168,7 @@ class JWTAuthMiddleware(BaseHTTPMiddleware):
             raise HTTPException(status_code=401, detail='Missing token')
         token = hdr.split()[1]
         try:
-            payload = jwt.decode(token, SECRET, algorithms=[ALGO])
+            payload = jwt.decode(token, _get_secret(), algorithms=[ALGO])
         except (JWTError, KeyError):
             raise HTTPException(status_code=401, detail='Invalid token')
         # Attach role to request state for RBAC checks

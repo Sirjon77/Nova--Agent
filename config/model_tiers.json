@@ -11,6 +11,18 @@
     "max_tokens": 1000,
     "temperature": 0.4
   },
+  "budget_creative": {
+    "model": "gpt-4.1-nano",
+    "routes": ["ab_test", "hashtag", "hook"],
+    "max_tokens": 2000,
+    "temperature": 0.5
+  },
+  "standard_brain": {
+    "model": "o3",
+    "routes": ["script", "carousel", "dev"],
+    "max_tokens": 4000,
+    "temperature": 0.6
+  },
   "core": {
     "model": "gpt-4o",
     "routes": ["general", "analysis"],
@@ -22,6 +34,12 @@
     "routes": ["multimodal"],
     "max_tokens": 2000,
     "temperature": 0.5
+  },
+  "deep_research": {
+    "model": "o3-pro",
+    "routes": ["deep_reason"],
+    "max_tokens": 8000,
+    "temperature": 0.7
   },
   "retrieval": {
     "model": "gpt-4o",
@@ -35,11 +53,23 @@
     "max_tokens": 4000,
     "temperature": 0.6
   },
+  "embeddings": {
+    "model": "text-embedding-3-small",
+    "routes": ["embedding"],
+    "max_tokens": 8192,
+    "temperature": 0.0
+  },
   "tts_asr": {
     "model": "gpt-4o",
     "routes": ["voice"],
     "max_tokens": 1000,
     "temperature": 0.4
+  },
+  "images": {
+    "model": "GPT-Image-1",
+    "routes": ["image"],
+    "max_tokens": 1000,
+    "temperature": 0.7
   },
   "ultra": {
     "model": "gpt-4o",

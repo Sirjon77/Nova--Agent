@@ -14,7 +14,7 @@ import json
 import os
 import time
 import logging
-from typing import Dict, Any, List, Optional, Union
+from typing import Dict, Any, List, Optional
 from datetime import datetime
 from pathlib import Path
 
@@ -574,6 +574,10 @@ def store_long(session_id: str, content: str, metadata: Optional[Dict[str, Any]]
 def get_short(session_id: str, limit: int = 10) -> List[Dict[str, Any]]:
     """Get short-term memory for session."""
     return memory_manager.get_short_term(session_id, limit) 
+
+def get_relevant_memories(query: str, namespace: str = "general", top_k: int = 5) -> List[Dict[str, Any]]:
+    """Get relevant memories based on query."""
+    return memory_manager.get_relevant_memories(query, namespace, top_k)
 
 # Singleton MemoryManager for global access
 _memory_manager: Optional["MemoryManager"] = None

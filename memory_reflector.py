@@ -23,7 +23,7 @@ def refine_code_snippets():
         entries = json.load(f)
 
     for entry in entries[-5:]:  # Only review the most recent 5
-        prompt = entry["prompt"]
+        entry["prompt"]
         original = entry["response"]
 
         prompt_refine = (
